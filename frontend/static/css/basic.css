@@ -1,0 +1,185 @@
+:root {
+  --mainColor: #4758a8;
+  --greyColor: #767676;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.cv-preview-container section {
+  padding: 5px 30px;
+}
+
+.cv-preview-container h1,
+h2 {
+  color: var(--mainColor);
+  margin: 0;
+}
+
+.cv-preview-container h2 {
+  margin-bottom: 5px;
+}
+
+.cv-preview-container h3 {
+  margin: 0;
+}
+
+.cv-preview-container p {
+  margin: 5px 0;
+}
+
+.cv-preview-container .header {
+  padding: 10px 30px;
+}
+
+.cv-preview-container .profile-photo {
+  display: none;
+}
+
+.cv-preview-container .about p {
+  font-size: 10px;
+  margin: 5px 0;
+}
+
+.cv-preview-container .about h3 {
+  margin-top: 5px;
+  color: var(--greyColor);
+  font-weight: lighter;
+  font-size: 16px;
+}
+
+.cv-preview-container .about h1 {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.cv-preview-container .contact-bar {
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+}
+
+.cv-preview-container .contact-bar ul {
+  display: flex;
+  justify-content: space-evenly;
+  list-style: none;
+  font-size: 8px;
+  padding: 0;
+}
+
+.cv-preview-container .contact-bar .icon {
+  margin-right: 5px;
+  color: var(--mainColor);
+}
+
+.cv-preview-container .icon {
+  font-size: 10px;
+}
+
+.cv-preview-container .section-title {
+  font-size: 18px;
+}
+
+.cv-preview-container .skills ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  flex-wrap: wrap;
+  margin: 0;
+}
+
+.cv-preview-container .skills ul li {
+  border-radius: 5px;
+  background-color: var(--mainColor);
+  color: #fff;
+  padding: 5px 10px;
+  text-align: center;
+  margin: 5px 5px 0 0;
+  font-size: 10px;
+}
+
+.cv-preview-container .skills input {
+  display: none;
+}
+
+.cv-preview-container .job-title,
+.cv-preview-container .field-of-study {
+  font-size: 16px;
+}
+
+.cv-preview-container .course-name {
+  font-size: 14px;
+}
+
+.cv-preview-container .course-organizer {
+  font-size: 14px;
+  font-weight: lighter;
+  margin: 0;
+}
+
+.cv-preview-container .job-container,
+.cv-preview-container .study-container,
+.cv-preview-container .course-container {
+  margin: 10px 0;
+}
+
+.cv-preview-container .workplace,
+.cv-preview-container .school-name {
+  font-size: 15px;
+  font-weight: lighter;
+  margin: 0;
+}
+
+.cv-preview-container .time-range {
+  margin: 0;
+  font-style: italic;
+  color: #8d8d8d;
+  font-size: 10px;
+}
+
+.cv-preview-container .job-description {
+  font-size: 10px;
+}
+
+.cv-preview-container .certifications {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-gap: 15px;
+}
+
+.cv-preview-container .course-container {
+  height: 40px;
+  margin: 5px 0;
+}
+
+.cv-preview-container #course-1 {
+  grid-column-start: 2;
+  grid-row-start: 1;
+}
+
+.cv-preview-container .language {
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+.cv-preview-container .languages {
+  display: flex;
+}
+
+.cv-preview-container .language-container {
+  margin-right: 30px;
+  width: 25%;
+}
+
+.cv-preview-container .language-level {
+  margin: 5px 0;
+  font-style: italic;
+  color: #8d8d8d;
+  font-size: 10px;
+  color: var(--mainColor);
+  font-weight: bolder;
+}
+
+.language-level-dot {
+  display: none;
+}

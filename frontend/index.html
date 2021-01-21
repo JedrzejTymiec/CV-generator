@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Main page</title>
+    <link rel="stylesheet" type="text/css" href="./static/css/front-page.css" />
+    <link
+      href="./static/fontawesome-free-5.15.1-web/css/all.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <section class="select-buttons-container">
+      <div class="select-title-container">
+        <h1 class="select-title">CV Generator</h1>
+      </div>
+      <div class="select-buttons-wrapper">
+        <div class="select-button current">
+          <h5><i class="fas fa-check"></i>Create new</h5>
+        </div>
+        <div class="select-button">
+          <h5><i class="fas fa-check"></i>Edit saved</h5>
+        </div>
+      </div>
+    </section>
+    <section class="cv-preview-container">
+      <img id="template-type" src="./static/pictures/CV templates/Basic0.png" />
+    </section>
+    <section class="choose-buttons-container">
+      <div class="choose-title-container"><h4>Choose template & color</h4></div>
+      <ul class="template-list">
+        <li data-color="0">
+          <div id="basic" class="mp template-button">
+            <div class="template-name">Basic</div>
+          </div>
+          <div id="basic-dot-list" class="dot-list">
+            <div id="basic0" class="mp color-dot dot-1 current">
+              <i class="fas fa-check"></i>
+            </div>
+            <div id="basic1" class="mp color-dot dot-2">
+              <i class="fas fa-check"></i>
+            </div>
+            <div id="basic2" class="mp color-dot dot-3">
+              <i class="fas fa-check"></i>
+            </div>
+          </div>
+        </li>
+        <li data-color="0">
+          <div id="simple" class="mp template-button">
+            <div class="template-name">Simple</div>
+          </div>
+          <div id="simple-dot-list" class="dot-list">
+            <div id="simple0" class="mp color-dot dot-1 current">
+              <i class="fas fa-check"></i>
+            </div>
+            <div id="simple1" class="mp color-dot dot-2">
+              <i class="fas fa-check"></i>
+            </div>
+            <div id="simple2" class="mp color-dot dot-3">
+              <i class="fas fa-check"></i>
+            </div>
+          </div>
+        </li>
+        <li data-color="0">
+          <div id="executive" class="mp template-button">
+            <div class="template-name">Executive</div>
+          </div>
+          <div id="executive-dot-list" class="dot-list">
+            <div id="executive0" class="mp color-dot dot-1 current">
+              <i class="fas fa-check"></i>
+            </div>
+            <div id="executive1" class="mp color-dot dot-2">
+              <i class="fas fa-check"></i>
+            </div>
+            <div id="executive2" class="mp color-dot dot-3">
+              <i class="fas fa-check"></i>
+            </div>
+          </div>
+        </li>
+        <li data-color="0">
+          <div id="college" class="mp template-button">
+            <div class="template-name">College</div>
+          </div>
+          <div id="college-dot-list" class="dot-list">
+            <div id="college0" class="mp color-dot dot-1 current">
+              <i class="fas fa-check"></i>
+            </div>
+            <div id="college1" class="mp color-dot dot-2">
+              <i class="fas fa-check"></i>
+            </div>
+            <div id="college2" class="mp color-dot dot-3">
+              <i class="fas fa-check"></i>
+            </div>
+          </div>
+        </li>
+        <li data-color="0">
+          <div id="creative" class="mp template-button">
+            <div class="template-name">Creative</div>
+          </div>
+          <div id="creative-dot-list" class="dot-list">
+            <div id="creative0" class="mp color-dot dot-1 current">
+              <i class="fas fa-check"></i>
+            </div>
+            <div id="creative1" class="mp color-dot dot-2">
+              <i class="fas fa-check"></i>
+            </div>
+            <div id="creative2" class="mp color-dot dot-3">
+              <i class="fas fa-check"></i>
+            </div>
+          </div>
+        </li>
+        <li data-color="0">
+          <div id="professional" class="mp template-button">
+            <div class="template-name">Professional</div>
+          </div>
+          <div id="professional-dot-list" class="dot-list">
+            <div id="professional0" class="mp color-dot dot-1 current">
+              <i class="fas fa-check"></i>
+            </div>
+            <div id="professional1" class="mp color-dot dot-2">
+              <i class="fas fa-check"></i>
+            </div>
+            <div id="professional2" class="mp color-dot dot-3">
+              <i class="fas fa-check"></i>
+            </div>
+          </div>
+        </li>
+        <li data-color="0">
+          <div id="modern" class="mp template-button">
+            <div class="template-name">Modern</div>
+          </div>
+          <div id="modern-dot-list" class="dot-list">
+            <div id="modern0" class="mp color-dot dot-1 current">
+              <i class="fas fa-check"></i>
+            </div>
+            <div id="modern1" class="mp color-dot dot-2">
+              <i class="fas fa-check"></i>
+            </div>
+            <div id="modern2" class="mp color-dot dot-3">
+              <i class="fas fa-check"></i>
+            </div>
+          </div>
+        </li>
+        <li data-color="0">
+          <div id="functional" class="mp template-button">
+            <div class="template-name">Functional</div>
+          </div>
+          <div id="functional-dot-list" class="dot-list">
+            <div id="functional0" class="mp color-dot dot-1 current">
+              <i class="fas fa-check"></i>
+            </div>
+            <div id="functional1" class="mp color-dot dot-2">
+              <i class="fas fa-check"></i>
+            </div>
+            <div id="functional2" class="mp color-dot dot-3">
+              <i class="fas fa-check"></i>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="next-button-container">
+        <div class="next-button">
+          <a href="app"
+            ><h5>Next<i class="fas fa-arrow-right"></i></h5
+          ></a>
+        </div>
+      </div>
+    </section>
+    <script type="module" src="./static/index.js"></script>
+  </body>
+</html>

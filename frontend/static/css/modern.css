@@ -1,0 +1,335 @@
+:root {
+  --mainColor: #1b7a77;
+  --secondaryColor: #9bb4b3;
+  --langLevelColor: var(--secondaryColor);
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 65% 35%;
+  grid-template-areas:
+    "about contact"
+    "body body";
+}
+
+.cv-preview-container h1 {
+  margin: 0;
+}
+
+.cv-preview-container h2 {
+  margin: 0;
+}
+
+.cv-preview-container h2 {
+  margin-bottom: 10px;
+}
+
+.cv-preview-container h3,
+.cv-preview-container h4 {
+  margin: 0;
+}
+
+.cv-preview-container .resume-body section {
+  padding-left: 40px;
+}
+
+.cv-preview-container .header {
+  grid-area: about;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.cv-preview-container .about h3 {
+  color: var(--mainColor);
+  margin-top: 5px;
+  font-size: 16px;
+}
+
+.cv-preview-container .about h1 {
+  font-size: 22px;
+  margin-top: 20px;
+}
+
+.cv-preview-container .about p {
+  font-size: 10px;
+}
+
+.cv-preview-container .contact-bar {
+  grid-area: contact;
+  margin-top: 10px;
+  padding-right: 20px;
+}
+
+.cv-preview-container .skills input {
+  display: none;
+}
+
+.cv-preview-container .profile-photo {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 10px 20px 30px 20px;
+}
+
+.cv-preview-container .contact-bar ul {
+  list-style: none;
+  text-align: right;
+  margin-right: 15px;
+  font-size: 9px;
+}
+
+.cv-preview-container .contact-bar ul li {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-top: 10px;
+}
+
+.cv-preview-container .contact-bar .icon {
+  margin-left: 5px;
+  color: var(--mainColor);
+}
+
+.cv-preview-container .about p {
+  position: absolute;
+  width: 135%;
+  left: 5%;
+  bottom: -15px;
+  text-align: left;
+}
+
+.cv-preview-container .resume-body {
+  max-height: 700px;
+  grid-area: body;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.cv-preview-container .experience-container {
+  order: -1;
+  margin-right: 10px;
+}
+
+.cv-preview-container .education-container {
+  order: -1;
+  margin-right: 10px;
+  position: relative;
+}
+
+.cv-preview-container .education-container .dash {
+  left: 15px;
+}
+
+.cv-preview-container .certifications-container,
+.cv-preview-container .languages-container {
+  margin-left: 10px;
+}
+
+.cv-preview-container .skills-container {
+  margin-left: 10px;
+}
+
+.cv-preview-container .section-title {
+  position: relative;
+  left: -40px;
+  padding-left: 40px;
+  border-bottom: 1px solid var(--mainColor);
+  width: 100%;
+  font-size: 18px;
+}
+
+.cv-preview-container .skills ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0 10px 0 0;
+}
+
+.cv-preview-container .skills ul li {
+  border-radius: 5px;
+  background-color: var(--mainColor);
+  color: #fff;
+  padding: 5px 10px;
+  text-align: center;
+  margin: 5px;
+  font-size: 10px;
+}
+
+.cv-preview-container .time-range {
+  margin: 0;
+  font-style: italic;
+  color: var(--mainColor);
+  font-size: 10px;
+}
+
+.cv-preview-container .job-container {
+  margin: 20px 25px;
+  position: relative;
+}
+
+.cv-preview-container .job-title,
+.cv-preview-container .workplace {
+  position: relative;
+  left: -15px;
+}
+
+.cv-preview-container .experience-container .time-range {
+  position: relative;
+  left: -15px;
+}
+
+.cv-preview-container .field-of-study,
+.cv-preview-container .job-title {
+  font-size: 16px;
+}
+
+.cv-preview-container .field-of-study,
+.cv-preview-container .school-name,
+.cv-preview-container .education-container .time-range {
+  padding-left: 10px;
+}
+
+.cv-preview-container .course-name {
+  font-size: 14px;
+}
+
+.cv-preview-container .course-organizer {
+  font-size: 14px;
+  font-weight: lighter;
+  margin: 0;
+}
+
+.cv-preview-container .study-container,
+.cv-preview-container .course-container {
+  margin: 15px 0;
+}
+
+.cv-preview-container .workplace,
+.cv-preview-container .school-name,
+.cv-preview-container .course-organizer {
+  font-weight: lighter;
+  margin: 0;
+}
+
+.cv-preview-container .job-description {
+  position: relative;
+  font-size: 10px;
+}
+
+.cv-preview-container .job-description::before,
+.cv-preview-container .job-description::after {
+  border: 1px solid var(--mainColor);
+  bottom: 0;
+  content: "";
+  position: absolute;
+  top: -5px;
+  width: 3%;
+  height: 105%;
+  min-height: 43px;
+}
+
+.cv-preview-container .job-description::before {
+  border-right: none;
+  left: -15px;
+}
+
+.cv-preview-container .job-description::after {
+  border-left: none;
+  right: -15px;
+}
+
+.cv-preview-container .header .dash {
+  display: none;
+}
+
+.cv-preview-container .dash {
+  height: 11px;
+  width: 11px;
+  border: 4px solid var(--mainColor);
+  border-radius: 50%;
+  position: absolute;
+  left: -50px;
+}
+
+.cv-preview-container .job-container::before {
+  border-left: 1px solid var(--mainColor);
+  bottom: 0;
+  left: -41px;
+  content: "";
+  position: absolute;
+  top: 19px;
+  width: 3%;
+  min-height: 43px;
+  height: 103%;
+}
+
+.cv-preview-container #first-job::before {
+  display: none;
+}
+
+.cv-preview-container .language-container .language-level-scale {
+  display: flex;
+  width: 50%;
+  justify-content: space-evenly;
+}
+
+.cv-preview-container .languages {
+  padding-right: 20px;
+}
+
+.cv-preview-container .language {
+  font-size: 14px;
+}
+
+.cv-preview-container .language-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  align-items: center;
+}
+
+.cv-preview-container .languages-container .section-title {
+  margin-bottom: 20px;
+}
+
+.cv-preview-container .language-level {
+  display: none;
+}
+
+.cv-preview-container .language-level-scale .level {
+  width: 12px;
+  height: 12px;
+  background-color: var(--secondaryColor);
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.cv-preview-container .language-level-scale .inner {
+  width: 12px;
+  height: 12px;
+  background-color: var(--mainColor);
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.cv-preview-container .language-level-scale div {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 0 4px;
+  align-items: center;
+  justify-items: center;
+}
+
+.cv-preview-container .language-level-scale .level,
+.cv-preview-container .language-level-scale .inner {
+  grid-column: 1;
+  grid-row: 1;
+}

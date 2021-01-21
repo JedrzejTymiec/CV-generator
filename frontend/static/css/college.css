@@ -1,0 +1,193 @@
+:root {
+  --mainColor: #051561;
+  --greyColor: #767676;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 55% 45%;
+  grid-template-areas:
+    "about contact-bar"
+    "skills skills"
+    "resume-body resume-body";
+}
+
+.cv-preview-container h1,
+.cv-preview-container h2 {
+  color: var(--mainColor);
+  margin: 0;
+}
+
+.cv-preview-container h2 {
+  margin-bottom: 5px;
+  border-top: 2px solid #000;
+  border-bottom: 2px solid #000;
+  text-align: center;
+}
+
+.cv-preview-container h3 {
+  margin: 0;
+}
+
+.cv-preview-container .header {
+  padding: 10px 20px 0 20px;
+  grid-area: about;
+}
+
+.cv-preview-container .profile-photo {
+  display: none;
+}
+
+.cv-preview-container .about h3 {
+  margin-top: 5px;
+  color: var(--greyColor);
+  font-weight: lighter;
+  font-size: 16px;
+}
+
+.cv-preview-container .about h1 {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.cv-preview-container .about p {
+  font-size: 10px;
+  margin: 5px 0 0 0;
+}
+
+.cv-preview-container .contact-bar {
+  grid-area: contact-bar;
+  padding: 15px;
+}
+
+.cv-preview-container .contact-bar ul {
+  text-align: right;
+  list-style: none;
+  font-size: 8px;
+  margin-left: 20px;
+}
+
+.cv-preview-container .contact-bar ul li {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.cv-preview-container .contact-bar .icon {
+  margin-left: 5px;
+  color: var(--mainColor);
+}
+
+.cv-preview-container .icon {
+  font-size: 10px;
+}
+
+.cv-preview-container .section-title {
+  font-size: 18px;
+}
+
+.cv-preview-container .skills input {
+  display: none;
+}
+
+.cv-preview-container .skills ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  flex-wrap: wrap;
+  margin: 5px 0;
+}
+
+.cv-preview-container .skills ul li {
+  border-radius: 5px;
+  background-color: var(--mainColor);
+  color: #fff;
+  padding: 5px 10px;
+  text-align: center;
+  margin: 5px 5px 0 0;
+  font-size: 10px;
+}
+
+.cv-preview-container .skills {
+  padding: 0 20px;
+  grid-area: skills;
+}
+
+.cv-preview-container .job-container,
+.cv-preview-container .study-container,
+.cv-preview-container .course-container {
+  margin: 9px 0;
+  padding: 0 20px;
+}
+
+.cv-preview-container .workplace,
+.cv-preview-container .school-name,
+.cv-preview-container .course-organizer {
+  font-weight: lighter;
+  margin: 0;
+  font-size: 14px;
+}
+
+.cv-preview-container .job-title,
+.cv-preview-container .field-of-study {
+  font-size: 16px;
+}
+
+.cv-preview-container .course-name {
+  font-size: 14px;
+}
+
+.cv-preview-container .resume-body {
+  grid-area: resume-body;
+}
+
+.cv-preview-container .time-range {
+  margin: 0;
+  font-style: italic;
+  color: #8d8d8d;
+  font-size: 0.7rem;
+}
+
+.cv-preview-container .job-description {
+  font-size: 10px;
+}
+
+.cv-preview-container .certifications {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.cv-preview-container #course-1 {
+  grid-column-start: 2;
+  grid-row-start: 1;
+}
+
+.cv-preview-container .language-container {
+  padding: 0 20px 20px 20px;
+}
+
+.cv-preview-container .language {
+  margin-bottom: 0;
+  font-size: 14px;
+}
+
+.cv-preview-container .languages {
+  display: flex;
+}
+
+.cv-preview-container .language-container {
+  margin-right: 30px;
+}
+
+.cv-preview-container .language-level {
+  margin: 0;
+  font-style: italic;
+  color: #8d8d8d;
+  font-size: 10px;
+  color: var(--mainColor);
+  font-weight: bolder;
+}

@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>CV generator</title>
+    <link
+      href="./static/fontawesome-free-5.15.1-web/css/all.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="./static/css/app.css" />
+    <link
+      id="template-type"
+      rel="stylesheet"
+      type="text/css"
+      href="./static/css/basic.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="experience-modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1>Professional experience - new position</h1>
+          <h1>
+            <i data-modal="experience" class="close-modal fas fa-times"></i>
+          </h1>
+        </div>
+        <form>
+          <div class="form-body">
+            <div class="form-group">
+              <label class="form-label" for="position">Position*</label>
+              <input type="text" id="position" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="company">Company</label>
+              <input type="text" id="company" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="location">Location</label>
+              <input type="text" id="location" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="start-date">Start date*</label>
+              <input type="date" id="start-date" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="end-date">End date*</label>
+              <input type="date" id="end-date" />
+            </div>
+            <div class="form-group checkbox-group">
+              <label class="checkbox-label">Still working</label>
+              <input type="checkbox" class="checkbox" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="description">Description</label>
+              <textarea
+                type="textarea"
+                id="description"
+                maxlength="1000"
+                rows="1"
+              ></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div data-modal="experience" class="button close-modal">Cancel</div>
+            <div class="button">Save</div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div id="education-modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1>Education - new position</h1>
+          <h1>
+            <i data-modal="education" class="close-modal fas fa-times"></i>
+          </h1>
+        </div>
+        <form>
+          <div class="form-body">
+            <div class="form-group">
+              <label class="form-label" for="education-level"
+                >Education level*</label
+              >
+              <input type="text" id="education-level" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="shool">Shool name*</label>
+              <input type="text" id="shool" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="specialization"
+                >Specialization</label
+              >
+              <input type="text" id="specialization" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="start-date">Start date*</label>
+              <input type="date" id="start-date" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="end-date">End date*</label>
+              <input type="date" id="end-date" />
+            </div>
+            <div class="form-group checkbox-group">
+              <label class="checkbox-label">Still learning</label>
+              <input type="checkbox" class="checkbox" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="description">Description</label>
+              <textarea
+                type="textarea"
+                id="description"
+                maxlength="1000"
+                rows="1"
+              ></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div data-modal="education" class="button close-modal">Cancel</div>
+            <div class="button">Save</div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div id="certification-modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1>Education - new position</h1>
+          <h1>
+            <i data-modal="certification" class="close-modal fas fa-times"></i>
+          </h1>
+        </div>
+        <form>
+          <div class="form-body">
+            <div class="form-group">
+              <label class="form-label" for="certification-name">Name*</label>
+              <input type="text" id="certification-name" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="organizer">Organizer*</label>
+              <input type="text" id="organizer" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="participation-date"
+                >Participation date*</label
+              >
+              <input type="date" id="participation-date" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="description">Description</label>
+              <textarea
+                type="textarea"
+                id="description"
+                maxlength="1000"
+                rows="1"
+              ></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div data-modal="certification" class="button close-modal">
+              Cancel
+            </div>
+            <div class="button">Save</div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <section class="header-container">
+      <div class="header"><h1>CV Generator</h1></div>
+      <ul class="form-number-list">
+        <li>
+          <a href="/app/basic" data-link>
+            <div id="basic" class="form-number-dot current">
+              <p>1</p>
+            </div>
+            <p class="form-name">Basic data</p>
+          </a>
+        </li>
+        <li class="line"></li>
+        <li>
+          <a href="/app/experience" data-link>
+            <div id="experience" class="form-number-dot">
+              <p>2</p>
+            </div>
+            <p class="form-name">Experience</p>
+          </a>
+        </li>
+        <li class="line"></li>
+        <li>
+          <a href="/app/skills" data-link>
+            <div id="skills" class="form-number-dot">
+              <p>3</p>
+            </div>
+            <p class="form-name">Skills</p>
+          </a>
+        </li>
+        <li class="line"></li>
+        <li>
+          <a href="/app/download" data-link>
+            <div id="download" class="form-number-dot">
+              <p>4</p>
+            </div>
+            <p class="form-name">Download CV</p>
+          </a>
+        </li>
+      </ul>
+    </section>
+    <section class="app">
+      <div id="form-container"></div>
+      <div class="cv-preview-container">
+        <div class="templates-container">
+          <h4>Choosen template</h4>
+          <ul class="template-list">
+            <li id="basic" class="ap template-button current">Basic</li>
+            <li id="simple" class="ap template-button">Simple</li>
+            <li id="executive" class="ap template-button">Executive</li>
+            <li id="college" class="ap template-button">College</li>
+            <li id="creative" class="ap template-button">Creative</li>
+            <li id="professional" class="ap template-button">Professional</li>
+            <li id="modern" class="ap template-button">Modern</li>
+            <li id="functional" class="ap template-button">Functional</li>
+          </ul>
+          <h4>Choosen color</h4>
+          <div class="color-dots-list">
+            <div id="dot-1" class="ap color-dot current">
+              <i class="fas fa-check"></i>
+            </div>
+            <div id="dot-2" class="ap color-dot">
+              <i class="fas fa-check"></i>
+            </div>
+            <div id="dot-3" class="ap color-dot">
+              <i class="fas fa-check"></i>
+            </div>
+          </div>
+        </div>
+        <main class="cv-preview">
+          <section class="header">
+            <div class="photo-container">
+              <img
+                class="profile-photo"
+                src="./static/pictures/received_892288864215424.jpeg"
+              />
+            </div>
+            <div class="about">
+              <div class="dash"></div>
+              <h1>John Doe</h1>
+              <h3><span>Business Development</span> Manager</h3>
+              <p>
+                Professional Business Developer with more than four years of
+                experience in the business development processes. Involved in
+                product testing, management, and development of new business
+                opportunities.
+              </p>
+            </div>
+          </section>
+          <div class="contact-bar">
+            <ul>
+              <li>
+                <i class="icon fas fa-envelope"></i>
+                <span class="list-text">john.doe@gmail.com</span>
+              </li>
+              <li>
+                <i class="icon fas fa-phone"></i>
+                <span class="list-text">202-555-0166</span>
+              </li>
+              <li>
+                <i class="icon fas fa-map-marker-alt"></i>
+                <span class="list-text">New York, USA</span>
+              </li>
+              <li>
+                <i class="icon fab fa-linkedin"></i>
+                <span class="list-text">linkedin.com/in/john.doe</span>
+              </li>
+              <li>
+                <i class="icon fab fa-github"></i>
+                <span class="list-text">/John Doe</span>
+              </li>
+            </ul>
+          </div>
+          <div class="resume-body">
+            <section class="skills-container">
+              <h2 class="section-title">SKILLS</h2>
+              <div class="skills">
+                <div class="skill-scale-container">
+                  <div id="sc1" class="skill-scale"></div>
+                  <div id="sc2" class="skill-scale"></div>
+                  <div id="sc3" class="skill-scale"></div>
+                  <div id="sc4" class="skill-scale"></div>
+                </div>
+                <ul>
+                  <li>
+                    SEO
+                    <div id="js" class="skill-level" data-level="3">
+                      <div>
+                        <input
+                          id="js-slider"
+                          class="slider"
+                          type="range"
+                          value="25"
+                          min="1"
+                          max="100"
+                        />
+                      </div>
+                      <div>
+                        <div class="inner"></div>
+                        <div id="js1" data-on="off" class="level"></div>
+                      </div>
+                      <div>
+                        <div class="inner"></div>
+                        <div id="js2" data-on="off" class="level"></div>
+                      </div>
+                      <div>
+                        <div class="inner"></div>
+                        <div id="js3" data-on="off" class="level"></div>
+                      </div>
+                      <div>
+                        <div class="inner"></div>
+                        <div id="js4" data-on="off" class="level"></div>
+                      </div>
+                      <div>
+                        <div class="inner"></div>
+                        <div id="js5" data-on="off" class="level"></div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    Public Speaking
+                    <div id="sq" class="skill-level" data-level="3">
+                      <input
+                        id="sql-slider"
+                        class="slider"
+                        type="range"
+                        value="25"
+                        min="1"
+                        max="100"
+                      />
+                      <div>
+                        <div class="inner"></div>
+                        <div id="sq1" data-on="off" class="level"></div>
+                      </div>
+                      <div>
+                        <div class="inner"></div>
+                        <div id="sq2" data-on="off" class="level"></div>
+                      </div>
+                      <div>
+                        <div class="inner"></div>
+                        <div id="sq3" data-on="off" class="level"></div>
+                      </div>
+                      <div>
+                        <div class="inner"></div>
+                        <div id="sq4" data-on="off" class="level"></div>
+                      </div>
+                      <div>
+                        <div class="inner"></div>
+                        <div id="sq5" data-on="off" class="level"></div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    Negotiation
+                    <div id="ht" class="skill-level" data-level="3">
+                      <input
+                        id="html-slider"
+                        class="slider"
+                        type="range"
+                        value="25"
+                        min="1"
+                        max="100"
+                      />
+                      <div>
+                        <div class="inner"></div>
+                        <div id="ht1" data-on="off" class="level"></div>
+                      </div>
+                      <div>
+                        <div class="inner"></div>
+                        <div id="ht2" data-on="off" class="level"></div>
+                      </div>
+                      <div>
+                        <div class="inner"></div>
+                        <div id="ht3" data-on="off" class="level"></div>
+                      </div>
+                      <div>
+                        <div class="inner"></div>
+                        <div id="ht4" data-on="off" class="level"></div>
+                      </div>
+                      <div>
+                        <div class="inner"></div>
+                        <div id="ht5" data-on="off" class="level"></div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    Teamwork
+                    <div>
+                      <div id="cs" class="skill-level" data-level="3">
+                        <input
+                          id="css-slider"
+                          class="slider"
+                          type="range"
+                          value="25"
+                          min="1"
+                          max="100"
+                        />
+                        <div>
+                          <div class="inner"></div>
+                          <div id="cs1" data-on="off" class="level"></div>
+                        </div>
+                        <div>
+                          <div class="inner"></div>
+                          <div id="cs2" data-on="off" class="level"></div>
+                        </div>
+                        <div>
+                          <div class="inner"></div>
+                          <div id="cs3" data-on="off" class="level"></div>
+                        </div>
+                        <div>
+                          <div class="inner"></div>
+                          <div id="cs4" data-on="off" class="level"></div>
+                        </div>
+                        <div>
+                          <div class="inner"></div>
+                          <div id="cs5" data-on="off" class="level"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    Decision Making
+                    <div id="gi" class="skill-level" data-level="3">
+                      <input
+                        id="git-slider"
+                        class="slider"
+                        type="range"
+                        value="25"
+                        min="1"
+                        max="100"
+                      />
+                      <div>
+                        <div class="inner"></div>
+                        <div id="gi1" data-on="off" class="level"></div>
+                      </div>
+                      <div>
+                        <div class="inner"></div>
+                        <div id="gi2" data-on="off" class="level"></div>
+                      </div>
+                      <div>
+                        <div class="inner"></div>
+                        <div id="gi3" data-on="off" class="level"></div>
+                      </div>
+                      <div>
+                        <div class="inner"></div>
+                        <div id="gi4" data-on="off" class="level"></div>
+                      </div>
+                      <div>
+                        <div class="inner"></div>
+                        <div id="gi5" data-on="off" class="level"></div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    Research & Strategy
+                    <div id="jq" class="skill-level" data-level="3">
+                      <input
+                        id="jq-slider"
+                        class="slider"
+                        type="range"
+                        value="25"
+                        min="1"
+                        max="100"
+                      />
+                      <div>
+                        <div class="inner"></div>
+                        <div id="jq1" data-on="off" class="level"></div>
+                      </div>
+                      <div>
+                        <div class="inner"></div>
+                        <div id="jq2" data-on="off" class="level"></div>
+                      </div>
+                      <div>
+                        <div class="inner"></div>
+                        <div id="jq3" data-on="off" class="level"></div>
+                      </div>
+                      <div>
+                        <div class="inner"></div>
+                        <div id="jq4" data-on="off" class="level"></div>
+                      </div>
+                      <div>
+                        <div class="inner"></div>
+                        <div id="jq5" data-on="off" class="level"></div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    Emotional Intelligence
+                    <div id="re" class="skill-level" data-level="3">
+                      <input
+                        id="react-slider"
+                        class="slider"
+                        type="range"
+                        value="25"
+                        min="1"
+                        max="100"
+                      />
+                      <div>
+                        <div class="inner"></div>
+                        <div id="re1" data-on="off" class="level"></div>
+                      </div>
+                      <div>
+                        <div class="inner"></div>
+                        <div id="re2" data-on="off" class="level"></div>
+                      </div>
+                      <div>
+                        <div class="inner"></div>
+                        <div id="re3" data-on="off" class="level"></div>
+                      </div>
+                      <div>
+                        <div class="inner"></div>
+                        <div id="re4" data-on="off" class="level"></div>
+                      </div>
+                      <div>
+                        <div class="inner"></div>
+                        <div id="re5" data-on="off" class="level"></div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    Outbound Marketing
+                    <div id="nd" class="skill-level" data-level="3">
+                      <input
+                        id="node-slider"
+                        class="slider"
+                        type="range"
+                        value="25"
+                        min="1"
+                        max="100"
+                      />
+                      <div>
+                        <div class="inner"></div>
+                        <div id="nd1" data-on="off" class="level"></div>
+                      </div>
+                      <div>
+                        <div class="inner"></div>
+                        <div id="nd2" data-on="off" class="level"></div>
+                      </div>
+                      <div>
+                        <div class="inner"></div>
+                        <div id="nd3" data-on="off" class="level"></div>
+                      </div>
+                      <div>
+                        <div class="inner"></div>
+                        <div id="nd4" data-on="off" class="level"></div>
+                      </div>
+                      <div>
+                        <div class="inner"></div>
+                        <div id="nd5" data-on="off" class="level"></div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    Email Marketing
+                    <div id="ex" class="skill-level" data-level="3">
+                      <input
+                        id="express-slider"
+                        class="slider"
+                        type="range"
+                        value="25"
+                        min="1"
+                        max="100"
+                      />
+                      <div>
+                        <div class="inner"></div>
+                        <div id="ex1" data-on="off" class="level"></div>
+                      </div>
+                      <div>
+                        <div class="inner"></div>
+                        <div id="ex2" data-on="off" class="level"></div>
+                      </div>
+                      <div>
+                        <div class="inner"></div>
+                        <div id="ex3" data-on="off" class="level"></div>
+                      </div>
+                      <div>
+                        <div class="inner"></div>
+                        <div id="ex4" data-on="off" class="level"></div>
+                      </div>
+                      <div>
+                        <div class="inner"></div>
+                        <div id="ex5" data-on="off" class="level"></div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    Google Analytic
+                    <div id="sa" class="skill-level" data-level="3">
+                      <input
+                        id="sass-slider"
+                        class="slider"
+                        type="range"
+                        value="25"
+                        min="1"
+                        max="100"
+                      />
+                      <div>
+                        <div class="inner"></div>
+                        <div id="sa1" data-on="off" class="level"></div>
+                      </div>
+                      <div>
+                        <div class="inner"></div>
+                        <div id="sa2" data-on="off" class="level"></div>
+                      </div>
+                      <div>
+                        <div class="inner"></div>
+                        <div id="sa3" data-on="off" class="level"></div>
+                      </div>
+                      <div>
+                        <div class="inner"></div>
+                        <div id="sa4" data-on="off" class="level"></div>
+                      </div>
+                      <div>
+                        <div class="inner"></div>
+                        <div id="sa5" data-on="off" class="level"></div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    Sales & Marketing
+                    <div id="ps" class="skill-level" data-level="3">
+                      <input
+                        id="problem-slider"
+                        class="slider"
+                        type="range"
+                        value="25"
+                        min="1"
+                        max="100"
+                      />
+                      <div>
+                        <div class="inner"></div>
+                        <div id="ps1" data-on="off" class="level"></div>
+                      </div>
+                      <div>
+                        <div class="inner"></div>
+                        <div id="ps2" data-on="off" class="level"></div>
+                      </div>
+                      <div>
+                        <div class="inner"></div>
+                        <div id="ps3" data-on="off" class="level"></div>
+                      </div>
+                      <div>
+                        <div class="inner"></div>
+                        <div id="ps4" data-on="off" class="level"></div>
+                      </div>
+                      <div>
+                        <div class="inner"></div>
+                        <div id="ps5" data-on="off" class="level"></div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </section>
+            <section class="experience-container">
+              <h2 class="section-title">WORK EXPERIENCE</h2>
+              <div class="job-container">
+                <div class="dash"></div>
+                <div class="job">
+                  <h3 class="job-title">Business Development Manager</h3>
+                  <h4 class="workplace">AirState Solutions</h4>
+                  <p class="time-range">09.2014 - 06.2017</p>
+                  <p class="job-description">
+                    Succesfully managed $2-3 million budget projects and
+                    successfully archived the project scheluded goals. Developed
+                    and implemented new marketing and sales plans and defined
+                    the strategy for the next 5 years. Reviewed constantly the
+                    customer feedback and then suggested ways to improve the
+                    procces and customer service levels which increased the
+                    satisfaction rate from 81% to 95%. Ensured that new clients
+                    will grow into a loyal costumer base in a specialist niche
+                    market by implementing a new loyalty program.
+                  </p>
+                </div>
+              </div>
+              <div class="job-container" id="first-job">
+                <div class="dash"></div>
+                <div class="job">
+                  <h3 class="job-title">Business Development Assistant</h3>
+                  <h4 class="workplace">AirState Solutions</h4>
+                  <p class="time-range">08/2012 - 09/2014</p>
+                  <p class="job-description">
+                    Incereased the customer satisfaction rate by 25% by
+                    improving the customer service. Planned, supervised, and
+                    controlled daily activity of 3 junior business analysts.
+                    Improved the communication with the Marketing department to
+                    better understand the competetive position. Directed the
+                    creation and implementation of a Business Continuity Plan,
+                    and the managememnt of audit programs.
+                  </p>
+                </div>
+              </div>
+            </section>
+            <section class="education-container">
+              <h2 class="section-title">EDUCATION</h2>
+              <div class="study-container">
+                <div class="dash"></div>
+                <div class="study">
+                  <h3 class="field-of-study">
+                    MSc in Economics and Business Administration
+                  </h3>
+                  <h4 class="school-name">The University of Chicago</h4>
+                  <p class="time-range">09/2008 - 06/2010</p>
+                </div>
+              </div>
+            </section>
+            <section class="certifications-container">
+              <h2 class="section-title">CERTIFICATIONS</h2>
+              <div class="certifications">
+                <div class="course-container">
+                  <h3 class="course-name">
+                    JavaScript Full Stack Developer React/Node
+                  </h3>
+                  <h4 class="course-organizer">Altkom Akademia</h4>
+                </div>
+                <div class="course-container">
+                  <h3 class="course-name">Scrum Fundation</h3>
+                  <h4 class="course-organizer">Aptiv</h4>
+                </div>
+                <div id="course-1" class="course-container">
+                  <h3 class="course-name">ECDL Advanced</h3>
+                  <h4 class="course-organizer">
+                    ZSEiI in name of KEN in Giżycko
+                  </h4>
+                </div>
+              </div>
+            </section>
+            <section class="languages-container">
+              <h2 class="section-title">LANGUAGES</h2>
+              <div class="languages">
+                <div class="language-container">
+                  <h3 class="language">English</h3>
+                  <p class="language-level">Native</p>
+                  <div class="language-level-dot">
+                    <div id="pli" class="inner-dot"></div>
+                    <div id="plo" data-lvl="1" class="outer-dot"></div>
+                  </div>
+                  <div id="Polish" class="language-level-scale" data-lvl="5">
+                    <div>
+                      <div class="inner"></div>
+                      <div id="pl1" data-on="off" class="level"></div>
+                    </div>
+                    <div>
+                      <div class="inner"></div>
+                      <div id="pl2" data-on="off" class="level"></div>
+                    </div>
+                    <div>
+                      <div class="inner"></div>
+                      <div id="pl3" data-on="off" class="level"></div>
+                    </div>
+                    <div>
+                      <div class="inner"></div>
+                      <div id="pl4" data-on="off" class="level"></div>
+                    </div>
+                    <div>
+                      <div class="inner"></div>
+                      <div id="pl5" data-on="off" class="level"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="language-container">
+                  <h3 class="language">Spanish</h3>
+                  <p class="language-level">C1</p>
+                  <div class="language-level-dot">
+                    <div id="eni" class="inner-dot"></div>
+                    <div id="eno" data-lvl="1" class="outer-dot"></div>
+                  </div>
+                  <div id="English" class="language-level-scale" data-lvl="3">
+                    <div>
+                      <div class="inner"></div>
+                      <div id="en1" data-on="off" class="level"></div>
+                    </div>
+                    <div>
+                      <div class="inner"></div>
+                      <div id="en2" data-on="off" class="level"></div>
+                    </div>
+                    <div>
+                      <div class="inner"></div>
+                      <div id="en3" data-on="off" class="level"></div>
+                    </div>
+                    <div>
+                      <div class="inner"></div>
+                      <div id="en4" data-on="off" class="level"></div>
+                    </div>
+                    <div>
+                      <div class="inner"></div>
+                      <div id="en5" data-on="off" class="level"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="language-container">
+                  <h3 class="language">French</h3>
+                  <p class="language-level">B1</p>
+                  <div class="language-level-dot">
+                    <div id="eni" class="inner-dot"></div>
+                    <div id="eno" data-lvl="1" class="outer-dot"></div>
+                  </div>
+                  <div id="English" class="language-level-scale" data-lvl="3">
+                    <div>
+                      <div class="inner"></div>
+                      <div id="en1" data-on="off" class="level"></div>
+                    </div>
+                    <div>
+                      <div class="inner"></div>
+                      <div id="en2" data-on="off" class="level"></div>
+                    </div>
+                    <div>
+                      <div class="inner"></div>
+                      <div id="en3" data-on="off" class="level"></div>
+                    </div>
+                    <div>
+                      <div class="inner"></div>
+                      <div id="en4" data-on="off" class="level"></div>
+                    </div>
+                    <div>
+                      <div class="inner"></div>
+                      <div id="en5" data-on="off" class="level"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </main>
+      </div>
+    </section>
+    <script type="module" src="./static/index.js"></script>
+    <script type="module" src="./static/router.js"></script>
+  </body>
+</html>
