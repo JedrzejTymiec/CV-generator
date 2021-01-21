@@ -3,10 +3,14 @@ import ExperienceForm from "./views/ExperienceForm.js";
 import SkillsForm from "./views/SkillsForm.js";
 import Download from "./views/Download.js";
 import modalUI from "./modalUI.js";
+import appUI from "./appUI.js";
+import formUI from "./formUI.js";
 
 const navigateTo = (url) => {
   history.pushState(null, null, url);
   window.scroll(0, 0);
+  let currentPage = url.substring(url.lastIndexOf("/") + 1);
+  appUI.pagesDone(currentPage);
   router();
 };
 
@@ -55,6 +59,36 @@ const router = async () => {
   for (var i = 0; openModalButtons.length > i; i++) {
     openModalButtons[i].addEventListener("click", (e) => {
       modalUI.openModal(e.target);
+    });
+  }
+
+  let basic = document.getElementById("basic-data-form");
+  let residence = document.getElementById("residence-form");
+  let contact = document.getElementById("contact-form");
+  let language = document.getElementById("language-form");
+
+  if (basic) {
+    basic.addEventListener("submit", (e) => {
+      e.preventDefault();
+      formUI.basicData();
+    });
+  }
+  if (residence) {
+    residence.addEventListener("submit", (e) => {
+      e.preventDefault();
+      formUI.residenceData();
+    });
+  }
+  if (contact) {
+    contact.addEventListener("submit", (e) => {
+      e.preventDefault();
+      formUI.contactData();
+    });
+  }
+  if (language) {
+    language.addEventListener("submit", (e) => {
+      e.preventDefault();
+      formUI.languageData();
     });
   }
 };

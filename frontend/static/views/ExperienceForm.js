@@ -24,10 +24,10 @@ export default class extends AbstractView {
     >
       <i data-modal="education" class="fas fa-plus"></i>Add
     </button>
-    <form class="language-form">
+    <form class="language-form" id="language-form">
       <h1 class="form-title">Languages</h1>
       <div class="form-group">
-        <label class="form-label" for="language-input">Country*</label>
+        <label class="form-label" for="language-input">Language*</label>
         <select id="language-input">
           <option value="AF">Afrikaans</option>
           <option value="SQ">Albanian</option>
@@ -118,14 +118,6 @@ export default class extends AbstractView {
         <i class="fas fa-plus"></i>Add
       </button>
     </form>
-    <h1 class="form-title">Certifications</h1>
-    <button
-      data-modal="certification"
-      type="button"
-      class="add-button open-modal"
-    >
-      <i data-modal="certification" class="fas fa-plus"></i>Add
-    </button>
     <div class="experience-form-footer">
       <a href="/app/basic" data-link>
         <div class="back next-button">

@@ -1,3 +1,5 @@
+import formUI from "./formUI.js";
+
 class modalUI {
   static autoExpandTextarea = (field) => {
     field.style.height = "inherit";
@@ -22,6 +24,21 @@ class modalUI {
     let modal = button.dataset.modal;
     document.getElementById(modal + "-modal").style.display = "block";
     document.body.style.overflow = "hidden";
+
+    // LISTENER to modal submit
+    document
+      .getElementById("experience-form")
+      .addEventListener("submit", (e) => {
+        e.preventDefault();
+        formUI.experienceData();
+      });
+
+    document
+      .getElementById("education-form")
+      .addEventListener("submit", (e) => {
+        e.preventDefault();
+        formUI.educationData();
+      });
   };
 }
 

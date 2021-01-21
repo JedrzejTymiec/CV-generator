@@ -8,7 +8,17 @@ export default class extends AbstractView {
 
   async getHtml() {
     return `
-        <h1>Download view INCOMING</h1>
+    <div class="download-wrapper">
+          <h1>Congratulations!</h1>
+          <h3>Your CV is reday!</h3>
+          <h4>Download your CV as PDF file or save it</h4>
+        </div>
+        <div class="experience-form-footer">
+          <div class="back next-button">
+            <i class="fas fa-download"></i>Download
+          </div>
+          <div class="back next-button"><i class="far fa-save"></i>Save</div>
+        </div>
         `;
   }
 }

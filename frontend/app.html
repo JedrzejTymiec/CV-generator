@@ -28,7 +28,7 @@
             <i data-modal="experience" class="close-modal fas fa-times"></i>
           </h1>
         </div>
-        <form>
+        <form id="experience-form">
           <div class="form-body">
             <div class="form-group">
               <label class="form-label" for="position">Position*</label>
@@ -43,22 +43,24 @@
               <input type="text" id="location" />
             </div>
             <div class="form-group">
-              <label class="form-label" for="start-date">Start date*</label>
-              <input type="date" id="start-date" />
+              <label class="form-label" for="exp-start-date">Start date*</label>
+              <input type="date" id="exp-start-date" />
             </div>
             <div class="form-group">
-              <label class="form-label" for="end-date">End date*</label>
-              <input type="date" id="end-date" />
+              <label class="form-label" for="exp-end-date">End date*</label>
+              <input type="date" id="exp-end-date" />
             </div>
             <div class="form-group checkbox-group">
               <label class="checkbox-label">Still working</label>
               <input type="checkbox" class="checkbox" />
             </div>
             <div class="form-group">
-              <label class="form-label" for="description">Description</label>
+              <label class="form-label" for="exp-description"
+                >Description</label
+              >
               <textarea
                 type="textarea"
-                id="description"
+                id="exp-description"
                 maxlength="1000"
                 rows="1"
               ></textarea>
@@ -66,7 +68,7 @@
           </div>
           <div class="modal-footer">
             <div data-modal="experience" class="button close-modal">Cancel</div>
-            <div class="button">Save</div>
+            <button type="submit" class="button">Save</button>
           </div>
         </form>
       </div>
@@ -79,7 +81,7 @@
             <i data-modal="education" class="close-modal fas fa-times"></i>
           </h1>
         </div>
-        <form>
+        <form id="education-form">
           <div class="form-body">
             <div class="form-group">
               <label class="form-label" for="education-level"
@@ -88,8 +90,8 @@
               <input type="text" id="education-level" />
             </div>
             <div class="form-group">
-              <label class="form-label" for="shool">Shool name*</label>
-              <input type="text" id="shool" />
+              <label class="form-label" for="school">School name*</label>
+              <input type="text" id="school" />
             </div>
             <div class="form-group">
               <label class="form-label" for="specialization"
@@ -98,22 +100,24 @@
               <input type="text" id="specialization" />
             </div>
             <div class="form-group">
-              <label class="form-label" for="start-date">Start date*</label>
-              <input type="date" id="start-date" />
+              <label class="form-label" for="edu-start-date">Start date*</label>
+              <input type="date" id="edu-start-date" />
             </div>
             <div class="form-group">
-              <label class="form-label" for="end-date">End date*</label>
-              <input type="date" id="end-date" />
+              <label class="form-label" for="edu-end-date">End date*</label>
+              <input type="date" id="edu-end-date" />
             </div>
             <div class="form-group checkbox-group">
               <label class="checkbox-label">Still learning</label>
               <input type="checkbox" class="checkbox" />
             </div>
             <div class="form-group">
-              <label class="form-label" for="description">Description</label>
+              <label class="form-label" for="edu-description"
+                >Description</label
+              >
               <textarea
                 type="textarea"
-                id="description"
+                id="edu-description"
                 maxlength="1000"
                 rows="1"
               ></textarea>
@@ -121,7 +125,7 @@
           </div>
           <div class="modal-footer">
             <div data-modal="education" class="button close-modal">Cancel</div>
-            <div class="button">Save</div>
+            <button type="submit" class="button">Save</button>
           </div>
         </form>
       </div>
@@ -129,7 +133,7 @@
     <div id="certification-modal" class="modal">
       <div class="modal-content">
         <div class="modal-header">
-          <h1>Education - new position</h1>
+          <h1>Certification - new position</h1>
           <h1>
             <i data-modal="certification" class="close-modal fas fa-times"></i>
           </h1>
@@ -151,10 +155,12 @@
               <input type="date" id="participation-date" />
             </div>
             <div class="form-group">
-              <label class="form-label" for="description">Description</label>
+              <label class="form-label" for="cer-description"
+                >Description</label
+              >
               <textarea
                 type="textarea"
-                id="description"
+                id="cer-description"
                 maxlength="1000"
                 rows="1"
               ></textarea>

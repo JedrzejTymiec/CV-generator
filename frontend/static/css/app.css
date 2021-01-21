@@ -296,7 +296,8 @@ button {
   margin-top: 40px;
 }
 
-.back .fas {
+.back .fas,
+.back .far {
   margin-right: 20px;
   margin-left: 0;
 }
@@ -387,6 +388,30 @@ button {
   border: none;
   border-bottom: 1px solid #a0a0a0;
   font-size: 18px;
+}
+
+/* Download style +-*********************************************************** */
+
+.resume-img {
+  width: 50%;
+  height: auto;
+}
+
+.download-wrapper {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.download-wrapper h1 {
+  font-size: 35px;
+}
+
+.download-wrapper h3 {
+  font-size: 25px;
+}
+
+.download-wrapper h4 {
+  color: var(--label-color);
 }
 
 /* CV preview styles ******************************************************** */

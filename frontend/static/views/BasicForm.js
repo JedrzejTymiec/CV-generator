@@ -28,7 +28,7 @@ export default class extends AbstractView {
           </div>
           <button type="submit" class="save-button"><i class="far fa-save"></i>Save</button>
         </form>
-        <form>
+        <form id="residence-form">
           <h1 class="form-title">Place of residence</h1>
           <div class="form-group">
             <label class="form-label" for="country-input">Country*</label>
@@ -287,15 +287,15 @@ export default class extends AbstractView {
           </div>
           <button type="submit" class="save-button"><i class="far fa-save"></i>Save</button>
         </form>
-        <form>
+        <form id="contact-form">
           <h1 class="form-title">Contact Data</h1>
           <div class="form-group">
-            <label class="form-label" for="city-input">Phone Number*</label>
-            <input type="tel" id="city-input">
+            <label class="form-label" for="phone-input">Phone Number*</label>
+            <input type="tel" id="phone-input">
           </div>
           <div class="form-group">
-            <label class="form-label" for="city-input">Email*</label>
-            <input type="email" id="city-input">
+            <label class="form-label" for="email-input">Email*</label>
+            <input type="email" id="email-input">
           </div>
           <button type="submit" class="save-button"><i class="far fa-save"></i>Save</button>
           <h4 class="form-label">* Required fields</h4>
