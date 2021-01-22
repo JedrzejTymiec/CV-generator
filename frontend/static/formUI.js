@@ -1,4 +1,6 @@
-class basicData {
+import previewUpdate from "./previewUpdate.js";
+
+class BasicData {
   constructor(name, surname, dateOfBirth) {
     this.name = name;
     this.surname = surname;
@@ -6,21 +8,21 @@ class basicData {
   }
 }
 
-class residence {
+class Residence {
   constructor(country, city) {
     this.country = country;
     this.city = city;
   }
 }
 
-class contact {
+class Contact {
   constructor(phone, email) {
     this.phone = phone;
     this.email = email;
   }
 }
 
-class experience {
+class Experience {
   constructor(position, company, location, startDate, endDate, description) {
     this.position = position;
     this.company = company;
@@ -31,7 +33,7 @@ class experience {
   }
 }
 
-class education {
+class Education {
   constructor(educationLevel, school, spec, startDate, endDate, description) {
     this.educationLevel = educationLevel;
     this.school = school;
@@ -42,14 +44,14 @@ class education {
   }
 }
 
-class language {
+class Language {
   constructor(language, level) {
     this.language = language;
     this.level = level;
   }
 }
 
-class certification {
+class Certification {
   constructor(name, organizer, participationDate, description) {
     this.name = name;
     this.organizer = organizer;
@@ -64,26 +66,33 @@ class formUI {
     let surname = document.getElementById("surname-input").value;
     let birth = document.getElementById("date-of-birth").value;
 
-    let person = new basicData(name, surname, birth);
-    console.log(person);
+    let basicData = new BasicData(name, surname, birth);
+
+    localStorage.setItem("basicData", JSON.stringify(basicData));
+
+    previewUpdate.basicUpdate();
   }
 
   static residenceData() {
     let country = document.getElementById("country-input").value;
     let city = document.getElementById("city-input").value;
 
-    let personsResidence = new residence(country, city);
+    let residenceData = new Residence(country, city);
 
-    console.log(personsResidence);
+    localStorage.setItem("residenceData", JSON.stringify(residenceData));
+
+    previewUpdate.residenceUpdate();
   }
 
   static contactData() {
     let phone = document.getElementById("phone-input").value;
     let email = document.getElementById("email-input").value;
 
-    let contactData = new contact(phone, email);
+    let contactData = new Contact(phone, email);
 
-    console.log(contactData);
+    localStorage.setItem("contactData", JSON.stringify(contactData));
+
+    previewUpdate.contactUpdate();
   }
 
   static experienceData() {
@@ -94,7 +103,7 @@ class formUI {
     let endDate = document.getElementById("exp-end-date").value;
     let description = document.getElementById("exp-description").value;
 
-    let experienceData = new experience(
+    let experienceData = new Experience(
       position,
       company,
       location,
@@ -103,7 +112,9 @@ class formUI {
       description
     );
 
-    console.log(experienceData);
+    localStorage.setItem("experienceData", JSON.stringify(experienceData));
+
+    previewUpdate.experienceUpdate();
   }
 
   static educationData() {
@@ -114,7 +125,7 @@ class formUI {
     let endDate = document.getElementById("edu-end-date").value;
     let description = document.getElementById("edu-description").value;
 
-    let educationData = new education(
+    let educationData = new Education(
       educationLevel,
       school,
       spec,
@@ -123,16 +134,20 @@ class formUI {
       description
     );
 
-    console.log(educationData);
+    localStorage.setItem("educationData", JSON.stringify(educationData));
+
+    previewUpdate.educationUpdate();
   }
 
   static languageData() {
     let formLanguage = document.getElementById("language-input").value;
     let level = document.getElementById("language-level-input").value;
 
-    let languageData = new language(formLanguage, level);
+    let languageData = new Language(formLanguage, level);
 
-    console.log(languageData);
+    localStorage.setItem("languageData", JSON.stringify(languageData));
+
+    previewUpdate.languageUpdate();
   }
 
   static certificationData() {
@@ -141,14 +156,19 @@ class formUI {
     let participationDate = document.getElementById("participation-date").value;
     let description = document.getElementById("cer-description");
 
-    let certificationData = new certification(
+    let certificationData = new Certification(
       name,
       organizer,
       participationDate,
       description
     );
 
-    console.log(certificationData);
+    localStorage.setItem(
+      "certificationData",
+      JSON.stringify(certificationData)
+    );
+
+    previewUpdate.certificationUpdate();
   }
 }
 

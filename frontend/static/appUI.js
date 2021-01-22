@@ -65,18 +65,18 @@ class appUI {
 
   static pagesDone(currentPage) {
     if (currentPage === "basic") {
-      document.getElementById("basic").innerHTML = `<p>1</p>`;
+      document.getElementById("basic-form").innerHTML = `<p>1</p>`;
       document.getElementById("experience").innerHTML = `<p>2</p>`;
       document.getElementById("skills").innerHTML = `<p>3</p>`;
     } else if (currentPage === "experience") {
       document.getElementById(
-        "basic"
+        "basic-form"
       ).innerHTML = `<p><i class="fas fa-check"></i></p>`;
       document.getElementById("experience").innerHTML = `<p>2</p>`;
       document.getElementById("skills").innerHTML = `<p>3</p>`;
     } else if (currentPage === "skills") {
       document.getElementById(
-        "basic"
+        "basic-form"
       ).innerHTML = `<p><i class="fas fa-check"></i></p>`;
       document.getElementById(
         "experience"
@@ -84,7 +84,7 @@ class appUI {
       document.getElementById("skills").innerHTML = `<p>3</p>`;
     } else if (currentPage === "download") {
       document.getElementById(
-        "basic"
+        "basic-form"
       ).innerHTML = `<p><i class="fas fa-check"></i></p>`;
       document.getElementById(
         "experience"

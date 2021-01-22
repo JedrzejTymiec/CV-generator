@@ -69,6 +69,7 @@ for (var i = 0; selectButtons.length > i; i++) {
 }
 
 for (var i = 0; appTemplateButtons.length > i; i++) {
+  console.log(appTemplateButtons);
   appTemplateButtons[i].addEventListener("click", (e) => {
     let template = e.target.id;
     appUI.changeTemplate(template, appTemplateButtons);
@@ -81,45 +82,3 @@ for (var i = 0; appColorDots.length > i; i++) {
     appUI.changeColor(id);
   });
 }
-
-// //ustawienie nasłuchu do ustawiania template
-// for (var i = 0; templateButtons.length > i; i++) {
-//   templateButtons[i].addEventListener("click", function func(e) {
-//     let template = e.target.id;
-//     if (!template) {
-//       template = e.target.parentNode.id;
-//     }
-//     for (var i = 0; templateButtons.length > i; i++) {
-//       templateButtons[i].className = "template-button";
-//     }
-//     setTemplate(template);
-//   });
-// }
-
-// for (var i = 0; templateColorDots.length > i; i++) {
-//   templateColorDots[i].addEventListener("click", (e) => {
-//     let template = e.target.id;
-//     console.log(template);
-//   });
-// }
-
-// for (var i = 0; creativeSkillLevelButtons.length > i; i++) {
-//   //ustawienie nasłuchu kliknięcia dla przycisków radio
-//   creativeSkillLevelButtons[i].addEventListener("click", (e) => {
-//     let clickId = e.target.id;
-//     let skill = clickId.charAt(0) + clickId.charAt(1);
-//     let level = clickId.charAt(2);
-//     let on = e.target.dataset.on;
-//     radioButtonSkills(skill, level, on, e); //wywołanie obsługi przycisków radio
-//   });
-// }
-
-// for (var i = 0; creativeLanguageLevelButtons.length > i; i++) {
-//   //ustawienie nasłuchu przycisków poziomu języka creative template
-//   creativeLanguageLevelButtons[i].addEventListener("click", (e) => {
-//     let language = e.target.id.charAt(0) + e.target.id.charAt(1);
-//     let level = e.target.dataset.lvl;
-//     let target = e.target;
-//     creativeLanguageLevel(level, language, target);
-//   });
-// }
