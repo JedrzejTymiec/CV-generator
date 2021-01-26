@@ -69,7 +69,6 @@ for (var i = 0; selectButtons.length > i; i++) {
 }
 
 for (var i = 0; appTemplateButtons.length > i; i++) {
-  console.log(appTemplateButtons);
   appTemplateButtons[i].addEventListener("click", (e) => {
     let template = e.target.id;
     appUI.changeTemplate(template, appTemplateButtons);
