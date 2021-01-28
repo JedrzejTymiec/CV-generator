@@ -65,32 +65,32 @@ class appUI {
 
   static pagesDone(currentPage) {
     if (currentPage === "basic") {
-      document.getElementById("basic-form").innerHTML = `<p>1</p>`;
-      document.getElementById("experience").innerHTML = `<p>2</p>`;
-      document.getElementById("skills").innerHTML = `<p>3</p>`;
+      document.getElementById("basic-form-dot").innerHTML = `<p>1</p>`;
+      document.getElementById("experience-form-dot").innerHTML = `<p>2</p>`;
+      document.getElementById("skills-form-dot").innerHTML = `<p>3</p>`;
     } else if (currentPage === "experience") {
       document.getElementById(
-        "basic-form"
+        "basic-form-dot"
       ).innerHTML = `<p><i class="fas fa-check"></i></p>`;
-      document.getElementById("experience").innerHTML = `<p>2</p>`;
-      document.getElementById("skills").innerHTML = `<p>3</p>`;
+      document.getElementById("experience-form-dot").innerHTML = `<p>2</p>`;
+      document.getElementById("skills-form-dot").innerHTML = `<p>3</p>`;
     } else if (currentPage === "skills") {
       document.getElementById(
-        "basic-form"
+        "basic-form-dot"
       ).innerHTML = `<p><i class="fas fa-check"></i></p>`;
       document.getElementById(
-        "experience"
+        "experience-form-dot"
       ).innerHTML = `<p><i class="fas fa-check"></i></p>`;
-      document.getElementById("skills").innerHTML = `<p>3</p>`;
+      document.getElementById("skills-form-dot").innerHTML = `<p>3</p>`;
     } else if (currentPage === "download") {
       document.getElementById(
-        "basic-form"
+        "basic-form-dot"
       ).innerHTML = `<p><i class="fas fa-check"></i></p>`;
       document.getElementById(
-        "experience"
+        "experience-form-dot"
       ).innerHTML = `<p><i class="fas fa-check"></i></p>`;
       document.getElementById(
-        "skills"
+        "skills-form-dot"
       ).innerHTML = `<p><i class="fas fa-check"></i></p>`;
     }
   }

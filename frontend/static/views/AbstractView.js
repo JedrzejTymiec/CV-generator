@@ -7,7 +7,8 @@ export default class {
       formNumberDots[i].className = "form-number-dot";
     }
     document.title = title.charAt(0).toUpperCase() + title.slice(1);
-    document.getElementById(title).classList.add("current");
+    console.log(title);
+    document.getElementById(title + "-form-dot").classList.add("current");
   }
 
   async getHtml() {

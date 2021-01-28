@@ -64,7 +64,7 @@ for (var i = 0; selectButtons.length > i; i++) {
     for (var i = 0; selectButtons.length > i; i++) {
       selectButtons[i].className = "select-button";
     }
-    e.target.parentNode.classList.add("current");
+    e.target.parentNode.classList.add("currents");
   });
 }
 
