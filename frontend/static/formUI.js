@@ -112,9 +112,7 @@ class formUI {
       description
     );
 
-    localStorage.setItem("experienceData", JSON.stringify(experienceData));
-
-    previewUpdate.experienceUpdate();
+    previewUpdate.addNewJob(experienceData);
   }
 
   static educationData() {

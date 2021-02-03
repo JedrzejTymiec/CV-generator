@@ -9,6 +9,8 @@ export default class extends AbstractView {
   async getHtml() {
     return `
     <h1 class="form-title">Experience</h1>
+    <ul id="form-job-list">
+    </ul>
     <button
       data-modal="experience"
       type="button"
@@ -109,9 +111,13 @@ export default class extends AbstractView {
           <option value="A1 - Beginner">A1 - Beginner</option>
           <option value="A2 - Elementary">A2 - Elementary</option>
           <option value="B1 - Intermediate">B1 - Intermediate</option>
-          <option value="B2 - Upper Intermediate">B2 - Upper Intermediate</option>
+          <option value="B2 - Upper Intermediate">
+            B2 - Upper Intermediate
+          </option>
           <option value="C1 - Advanced">C1 - Advanced</option>
-          <option selected="selected" value="C2 - Proficient">C2 - Proficient</option>
+          <option selected="selected" value="C2 - Proficient">
+            C2 - Proficient
+          </option>
         </select>
       </div>
       <button type="submit" class="add-language add-button">

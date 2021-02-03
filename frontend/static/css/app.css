@@ -226,6 +226,10 @@ input {
   text-align: center;
 }
 
+.save-button:hover {
+  cursor: pointer;
+}
+
 button {
   outline: none;
   border: none;
@@ -497,4 +501,35 @@ button {
   font-weight: 500;
   text-transform: uppercase;
   font-size: 14px;
+}
+
+/* form experience entries ****************************************************** */
+#form-job-list {
+  list-style: none;
+}
+
+#form-job-list li {
+  margin-top: 15px;
+}
+
+.job-action-icons {
+  text-align: end;
+}
+
+.job-action-icons i:last-child {
+  margin-left: 10px;
+}
+
+.form-job-container {
+  background-color: #b1b1b1;
+  padding: 20px;
+}
+
+.job-description {
+  list-style: none;
+  padding: 0;
+}
+
+.job-description li:last-child {
+  margin-top: 15px;
 }

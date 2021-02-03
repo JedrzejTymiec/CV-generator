@@ -5,6 +5,7 @@ import Download from "./views/Download.js";
 import modalUI from "./modalUI.js";
 import appUI from "./appUI.js";
 import formUI from "./formUI.js";
+import previewUpdate from "./previewUpdate.js";
 
 const navigateTo = (url) => {
   history.pushState(null, null, url);
@@ -91,6 +92,8 @@ const router = async () => {
       formUI.languageData();
     });
   }
+
+  previewUpdate.refreshExperience();
 };
 
 window.addEventListener("popstate", router);
@@ -109,4 +112,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
   router();
+});
+
+// MODAL SUBMIT liteners
+
+document.getElementById("experience-form").addEventListener("submit", (e) => {
+  e.preventDefault();
+  formUI.experienceData();
+  modalUI.clearExperienceInputs();
+  modalUI.closeModal(e.target);
+});
+document.getElementById("education-form").addEventListener("submit", (e) => {
+  e.preventDefault();
+  formUI.educationData();
 });

@@ -1,5 +1,3 @@
-import formUI from "./formUI.js";
-
 class modalUI {
   static autoExpandTextarea = (field) => {
     field.style.height = "inherit";
@@ -24,22 +22,32 @@ class modalUI {
     let modal = button.dataset.modal;
     document.getElementById(modal + "-modal").style.display = "block";
     document.body.style.overflow = "hidden";
-
-    // LISTENER to modal submit
-    document
-      .getElementById("experience-form")
-      .addEventListener("submit", (e) => {
-        e.preventDefault();
-        formUI.experienceData();
-      });
-
-    document
-      .getElementById("education-form")
-      .addEventListener("submit", (e) => {
-        e.preventDefault();
-        formUI.educationData();
-      });
   };
+
+  static clearExperienceInputs() {
+    document.getElementById("position").value = "";
+    document.getElementById("company").value = "";
+    document.getElementById("location").value = "";
+    document.getElementById("exp-start-date").value = "";
+    document.getElementById("exp-end-date").value = "";
+    document.getElementById("exp-description").value = "";
+  }
+
+  static clearEducationInputs() {
+    document.getElementById("education-level").value = "";
+    document.getElementById("shool").value = "";
+    document.getElementById("specialization").value = "";
+    document.getElementById("edu-start-date").value = "";
+    document.getElementById("edu-end-date").value = "";
+    document.getElementById("edu-description").value = "";
+  }
+
+  static clearCertificationInputs() {
+    document.getElementById("certification-name").value = "";
+    document.getElementById("organizer").value = "";
+    document.getElementById("participation-date").value = "";
+    document.getElementById("cer-description").value = "";
+  }
 }
 
 export default modalUI;
