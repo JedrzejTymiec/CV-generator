@@ -7,7 +7,7 @@ class MainPageUI {
     }
 
     document.getElementById("template-type").src =
-      "./static/pictures/CV templates/" + templateType + ".png";
+      "./pictures/CV templates/" + templateType + ".png";
 
     document.getElementById(id).classList.add("current");
     document.getElementById(id + "-dot-list").style.zIndex = "1";
