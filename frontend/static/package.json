@@ -22,11 +22,16 @@
     "@babel/core": "^7.12.9",
     "@babel/preset-env": "^7.12.7",
     "babel-loader": "^8.2.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-stage-0": "^6.24.1",
     "webpack": "^5.10.1",
     "webpack-cli": "^4.2.0",
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "mongoose": "^5.11.7"
+    "@babel/polyfill": "^7.12.1",
+    "mongoose": "^5.11.7",
+    "uuid": "^8.3.2"
   }
 }

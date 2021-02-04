@@ -96,33 +96,22 @@ const router = async () => {
   previewUpdate.refreshExperience();
 };
 
-window.addEventListener("popstate", router);
+// window.addEventListener("popstate", router);
 
-document.addEventListener("DOMContentLoaded", () => {
-  document.body.addEventListener("click", (e) => {
-    if (e.target.matches("[data-link]")) {
-      e.preventDefault();
-      navigateTo(e.target.href);
-    } else if (e.target.parentNode.matches("[data-link]")) {
-      e.preventDefault();
-      navigateTo(e.target.parentNode.href);
-    } else if (e.target.parentNode.parentNode.matches("[data-link]")) {
-      e.preventDefault();
-      navigateTo(e.target.parentNode.parentNode.href);
-    }
-  });
-  router();
-});
+// document.addEventListener("DOMContentLoaded", () => {
+//   document.body.addEventListener("click", (e) => {
+//     if (e.target.matches("[data-link]")) {
+//       e.preventDefault();
+//       navigateTo(e.target.href);
+//     } else if (e.target.parentNode.matches("[data-link]")) {
+//       e.preventDefault();
+//       navigateTo(e.target.parentNode.href);
+//     } else if (e.target.parentNode.parentNode.matches("[data-link]")) {
+//       e.preventDefault();
+//       navigateTo(e.target.parentNode.parentNode.href);
+//     }
+//   });
+//   router();
+// });
 
-// MODAL SUBMIT liteners
-
-document.getElementById("experience-form").addEventListener("submit", (e) => {
-  e.preventDefault();
-  formUI.experienceData();
-  modalUI.clearExperienceInputs();
-  modalUI.closeModal(e.target);
-});
-document.getElementById("education-form").addEventListener("submit", (e) => {
-  e.preventDefault();
-  formUI.educationData();
-});
+export { router, navigateTo };

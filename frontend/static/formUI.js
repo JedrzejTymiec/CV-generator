@@ -1,4 +1,5 @@
 import previewUpdate from "./previewUpdate.js";
+import { v4 as uuidv4 } from "uuid";
 
 class BasicData {
   constructor(name, surname, dateOfBirth) {
@@ -23,7 +24,16 @@ class Contact {
 }
 
 class Experience {
-  constructor(position, company, location, startDate, endDate, description) {
+  constructor(
+    id,
+    position,
+    company,
+    location,
+    startDate,
+    endDate,
+    description
+  ) {
+    this.id = id;
     this.position = position;
     this.company = company;
     this.location = location;
@@ -96,6 +106,7 @@ class formUI {
   }
 
   static experienceData() {
+    let id = uuidv4();
     let position = document.getElementById("position").value;
     let company = document.getElementById("company").value;
     let location = document.getElementById("location").value;
@@ -104,6 +115,7 @@ class formUI {
     let description = document.getElementById("exp-description").value;
 
     let experienceData = new Experience(
+      id,
       position,
       company,
       location,
@@ -116,6 +128,7 @@ class formUI {
   }
 
   static educationData() {
+    let id = uuidv4();
     let educationLevel = document.getElementById("education-level").value;
     let school = document.getElementById("school").value;
     let spec = document.getElementById("specialization").value;
@@ -123,7 +136,10 @@ class formUI {
     let endDate = document.getElementById("edu-end-date").value;
     let description = document.getElementById("edu-description").value;
 
+    console.log(id);
+
     let educationData = new Education(
+      id,
       educationLevel,
       school,
       spec,

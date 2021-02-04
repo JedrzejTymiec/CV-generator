@@ -28,10 +28,10 @@ class previewUpdate {
         "experienceDataList",
         JSON.stringify(experienceData)
       );
-      this.refreshExperience();
     } else {
       localStorage.setItem("experienceDataList", JSON.stringify([job]));
     }
+    this.refreshExperience();
   }
 
   static refreshExperience() {

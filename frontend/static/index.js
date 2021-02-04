@@ -1,6 +1,8 @@
 import mainPageUI from "./mainPageUI.js";
 import appUI from "./appUI.js";
 import modalUI from "./modalUI.js";
+import formUI from "./formUI.js";
+import { router, navigateTo } from "./router.js";
 
 appUI.setTemplate();
 
@@ -81,3 +83,35 @@ for (var i = 0; appColorDots.length > i; i++) {
     appUI.changeColor(id);
   });
 }
+
+// MODAL SUBMIT liteners
+
+document.getElementById("experience-form").addEventListener("submit", (e) => {
+  e.preventDefault();
+  formUI.experienceData();
+  modalUI.clearExperienceInputs();
+  modalUI.closeModal(e.target);
+});
+
+document.getElementById("education-form").addEventListener("submit", (e) => {
+  e.preventDefault();
+  formUI.educationData();
+});
+
+window.addEventListener("popstate", router);
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.body.addEventListener("click", (e) => {
+    if (e.target.matches("[data-link]")) {
+      e.preventDefault();
+      navigateTo(e.target.href);
+    } else if (e.target.parentNode.matches("[data-link]")) {
+      e.preventDefault();
+      navigateTo(e.target.parentNode.href);
+    } else if (e.target.parentNode.parentNode.matches("[data-link]")) {
+      e.preventDefault();
+      navigateTo(e.target.parentNode.parentNode.href);
+    }
+  });
+  router();
+});
