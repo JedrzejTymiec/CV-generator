@@ -4,15 +4,9 @@ const router = express.Router();
 
 const app = express();
 
-app.use(
-  "/static",
-  express.static(path.resolve(__dirname, "frontend", "static"))
-);
+app.use("/js", express.static(path.resolve(__dirname, "frontend", "js")));
 
-app.use(
-  "/app/static",
-  express.static(path.resolve(__dirname, "frontend", "static"))
-);
+app.use("/app/js", express.static(path.resolve(__dirname, "frontend", "js")));
 
 app.get("/", (req, res) => {
   res.sendFile(path.resolve(__dirname, "frontend", "index.html"));

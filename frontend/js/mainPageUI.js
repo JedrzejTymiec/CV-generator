@@ -17,7 +17,7 @@ class MainPageUI {
 
   static setTemplateColor(template) {
     document.getElementById("template-type").src =
-      "./static/pictures/CV templates/" + template + ".png";
+      "./js/pictures/CV templates/" + template + ".png";
 
     let templateType = template.slice(0, -1);
 

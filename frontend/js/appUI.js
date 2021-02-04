@@ -5,7 +5,7 @@ class appUI {
       buttonList[i].className = "ap template-button";
     }
     document.getElementById("template-type").href =
-      "./static/css/" + template + ".css";
+      "./js/css/" + template + ".css";
 
     document.getElementById(template).classList.add("current");
   }
