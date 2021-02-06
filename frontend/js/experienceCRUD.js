@@ -4,15 +4,16 @@ class experienceCRUD {
       localStorage.getItem("experienceDataList")
     );
     let nr;
-    // loop to check if experienceList conatins job (in case of edition)
-    for (var i = 0; experienceDataList.length > i; i++) {
-      if (experienceDataList[i].id === job.id) {
-        nr = i;
-        break;
-      }
-    }
+
     //checks if there is list of jobs to add to
     if (experienceDataList) {
+      // loop to check if experienceList conatins job (in case of edition)
+      for (var i = 0; experienceDataList.length > i; i++) {
+        if (experienceDataList[i].id === job.id) {
+          nr = i;
+          break;
+        }
+      }
       // if contains then replace, if not then add
       if (nr >= 0) {
         experienceDataList[nr] = job;
@@ -55,7 +56,7 @@ class experienceCRUD {
       return `
         <li class="form-job-container">
           <div class="job-action-icons" data-id=${element.id}>
-            <i class="fas fa-edit" data-edit data-modal="experience"></i><i class="fas fa-trash-alt" data-delete></i>
+            <i class="fas fa-edit" data-expEdit data-modal="experience"></i><i class="fas fa-trash-alt" data-expDelete></i>
           </div>
           <ul class="job-description">
             <li>Okres: <span>${element.startDate} - ${element.endDate}</span></li>

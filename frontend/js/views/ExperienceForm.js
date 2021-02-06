@@ -19,6 +19,8 @@ export default class extends AbstractView {
       <i data-modal="experience" class="fas fa-plus"></i>Add
     </button>
     <h1 class="form-title">Education</h1>
+    <ul id="form-education-list">
+    </ul>
     <button
       data-modal="education"
       type="button"

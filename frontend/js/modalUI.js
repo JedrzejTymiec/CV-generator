@@ -18,12 +18,10 @@ class modalUI {
     document.body.style.overflow = "visible";
   };
 
-  static openModal = (button, edit) => {
+  static openModal = (button) => {
     let modal = button.dataset.modal;
     document.getElementById(modal + "-modal").style.display = "block";
     document.body.style.overflow = "hidden";
-    if (edit) {
-    }
   };
 
   static clearExperienceInputs() {
@@ -37,7 +35,7 @@ class modalUI {
 
   static clearEducationInputs() {
     document.getElementById("education-level").value = "";
-    document.getElementById("shool").value = "";
+    document.getElementById("school").value = "";
     document.getElementById("specialization").value = "";
     document.getElementById("edu-start-date").value = "";
     document.getElementById("edu-end-date").value = "";
@@ -67,6 +65,24 @@ class modalUI {
     document.getElementById("exp-start-date").value = startDate;
     document.getElementById("exp-end-date").value = endDate;
     document.getElementById("exp-description").value = description;
+  }
+
+  static editEducationInputs(
+    id,
+    educationLevel,
+    school,
+    spec,
+    startDate,
+    endDate,
+    description
+  ) {
+    document.getElementById("education-form").dataset.id = id;
+    document.getElementById("education-level").value = educationLevel;
+    document.getElementById("school").value = school;
+    document.getElementById("specialization").value = spec;
+    document.getElementById("edu-start-date").value = startDate;
+    document.getElementById("edu-end-date").value = endDate;
+    document.getElementById("edu-description").value = description;
   }
 }
 

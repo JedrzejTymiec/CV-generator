@@ -44,7 +44,16 @@ class Experience {
 }
 
 class Education {
-  constructor(educationLevel, school, spec, startDate, endDate, description) {
+  constructor(
+    id,
+    educationLevel,
+    school,
+    spec,
+    startDate,
+    endDate,
+    description
+  ) {
+    this.id = id;
     this.educationLevel = educationLevel;
     this.school = school;
     this.spec = spec;
@@ -131,8 +140,13 @@ class formUI {
     return experienceData;
   }
 
-  static educationData() {
-    let id = uuidv4();
+  static educationData(editId) {
+    let id;
+    if (editId) {
+      id = editId;
+    } else {
+      id = uuidv4();
+    }
     let educationLevel = document.getElementById("education-level").value;
     let school = document.getElementById("school").value;
     let spec = document.getElementById("specialization").value;
@@ -149,8 +163,7 @@ class formUI {
       endDate,
       description
     );
-
-    localStorage.setItem("educationData", JSON.stringify(educationData));
+    return educationData;
   }
 
   static languageData() {

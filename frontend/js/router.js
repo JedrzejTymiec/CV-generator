@@ -6,6 +6,7 @@ import modalUI from "./modalUI.js";
 import appUI from "./appUI.js";
 import formUI from "./formUI.js";
 import experienceCRUD from "./experienceCRUD.js";
+import educationCRUD from "./educationCRUD.js";
 
 const navigateTo = (url) => {
   history.pushState(null, null, url);
@@ -94,6 +95,7 @@ const router = async () => {
   }
 
   experienceCRUD.readExperience();
+  educationCRUD.readEducation();
 };
 
 export { router, navigateTo };

@@ -4,6 +4,7 @@ import modalUI from "./modalUI.js";
 import formUI from "./formUI.js";
 import { router, navigateTo } from "./router.js";
 import experienceCRUD from "./experienceCRUD.js";
+import educationCRUD from "./educationCRUD.js";
 
 appUI.setTemplate();
 
@@ -103,7 +104,16 @@ document.getElementById("experience-form").addEventListener("submit", (e) => {
 
 document.getElementById("education-form").addEventListener("submit", (e) => {
   e.preventDefault();
-  formUI.educationData();
+  let newEdu;
+  let editId = document.getElementById("education-form").dataset.id;
+  if (editId != "") {
+    newEdu = formUI.educationData(editId);
+  } else {
+    newEdu = formUI.educationData();
+  }
+  educationCRUD.addEducation(newEdu);
+  modalUI.clearEducationInputs();
+  modalUI.closeModal(e.target);
 });
 
 window.addEventListener("popstate", router);
@@ -119,10 +129,10 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if (e.target.parentNode.parentNode.matches("[data-link]")) {
       e.preventDefault();
       navigateTo(e.target.parentNode.parentNode.href);
-    } else if (e.target.matches("[data-delete]")) {
+    } else if (e.target.matches("[data-expdelete]")) {
       experienceCRUD.deleteExperience(e.target.parentNode.dataset.id);
       experienceCRUD.readExperience();
-    } else if (e.target.matches("[data-edit]")) {
+    } else if (e.target.matches("[data-expedit]")) {
       let jobToEdit = experienceCRUD.updateExperience(
         e.target.parentNode.dataset.id
       );
@@ -135,6 +145,23 @@ document.addEventListener("DOMContentLoaded", () => {
         jobToEdit.startDate,
         jobToEdit.endDate,
         jobToEdit.description
+      );
+    } else if (e.target.matches("[data-edudelete]")) {
+      educationCRUD.deleteEducation(e.target.parentNode.dataset.id);
+      educationCRUD.readEducation();
+    } else if (e.target.matches("[data-eduedit]")) {
+      let eduToEdit = educationCRUD.updateEducation(
+        e.target.parentNode.dataset.id
+      );
+      modalUI.openModal(e.target);
+      modalUI.editEducationInputs(
+        eduToEdit.id,
+        eduToEdit.educationLevel,
+        eduToEdit.school,
+        eduToEdit.spec,
+        eduToEdit.startDate,
+        eduToEdit.endDate,
+        eduToEdit.description
       );
     }
   });
