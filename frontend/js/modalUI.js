@@ -18,10 +18,12 @@ class modalUI {
     document.body.style.overflow = "visible";
   };
 
-  static openModal = (button) => {
+  static openModal = (button, edit) => {
     let modal = button.dataset.modal;
     document.getElementById(modal + "-modal").style.display = "block";
     document.body.style.overflow = "hidden";
+    if (edit) {
+    }
   };
 
   static clearExperienceInputs() {
@@ -47,6 +49,24 @@ class modalUI {
     document.getElementById("organizer").value = "";
     document.getElementById("participation-date").value = "";
     document.getElementById("cer-description").value = "";
+  }
+
+  static editExperienceInputs(
+    id,
+    position,
+    company,
+    location,
+    startDate,
+    endDate,
+    description
+  ) {
+    document.getElementById("experience-form").dataset.id = id;
+    document.getElementById("position").value = position;
+    document.getElementById("company").value = company;
+    document.getElementById("location").value = location;
+    document.getElementById("exp-start-date").value = startDate;
+    document.getElementById("exp-end-date").value = endDate;
+    document.getElementById("exp-description").value = description;
   }
 }
 

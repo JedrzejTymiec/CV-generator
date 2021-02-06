@@ -3,6 +3,7 @@ import appUI from "./appUI.js";
 import modalUI from "./modalUI.js";
 import formUI from "./formUI.js";
 import { router, navigateTo } from "./router.js";
+import previewUpdate from "./previewUpdate.js";
 
 appUI.setTemplate();
 
@@ -88,7 +89,14 @@ for (var i = 0; appColorDots.length > i; i++) {
 
 document.getElementById("experience-form").addEventListener("submit", (e) => {
   e.preventDefault();
-  formUI.experienceData();
+  let newJob;
+  let editId = document.getElementById("experience-form").dataset.id;
+  if (editId !== "") {
+    newJob = formUI.experienceData(editId);
+  } else {
+    newJob = formUI.experienceData();
+  }
+  previewUpdate.addJob(newJob);
   modalUI.clearExperienceInputs();
   modalUI.closeModal(e.target);
 });
@@ -111,6 +119,21 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if (e.target.parentNode.parentNode.matches("[data-link]")) {
       e.preventDefault();
       navigateTo(e.target.parentNode.parentNode.href);
+    } else if (e.target.matches("[data-delete]")) {
+      previewUpdate.deleteJob(e.target.parentNode.dataset.id);
+      previewUpdate.addJobView();
+    } else if (e.target.matches("[data-edit]")) {
+      let jobToEdit = previewUpdate.editJob(e.target.parentNode.dataset.id);
+      modalUI.openModal(e.target);
+      modalUI.editExperienceInputs(
+        jobToEdit.id,
+        jobToEdit.position,
+        jobToEdit.company,
+        jobToEdit.location,
+        jobToEdit.startDate,
+        jobToEdit.endDate,
+        jobToEdit.description
+      );
     }
   });
   router();

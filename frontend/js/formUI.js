@@ -105,8 +105,13 @@ class formUI {
     previewUpdate.contactUpdate();
   }
 
-  static experienceData() {
-    let id = uuidv4();
+  static experienceData(editId) {
+    let id;
+    if (editId) {
+      id = editId;
+    } else {
+      id = uuidv4();
+    }
     let position = document.getElementById("position").value;
     let company = document.getElementById("company").value;
     let location = document.getElementById("location").value;
@@ -123,8 +128,7 @@ class formUI {
       endDate,
       description
     );
-
-    previewUpdate.addNewJob(experienceData);
+    return experienceData;
   }
 
   static educationData() {
@@ -135,8 +139,6 @@ class formUI {
     let startDate = document.getElementById("edu-start-date").value;
     let endDate = document.getElementById("edu-end-date").value;
     let description = document.getElementById("edu-description").value;
-
-    console.log(id);
 
     let educationData = new Education(
       id,
