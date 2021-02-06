@@ -1,4 +1,4 @@
-import previewUpdate from "./previewUpdate.js";
+import basicDataUpdate from "./basicDataUpdate.js";
 import { v4 as uuidv4 } from "uuid";
 
 class BasicData {
@@ -80,7 +80,7 @@ class formUI {
 
     localStorage.setItem("basicData", JSON.stringify(basicData));
 
-    previewUpdate.basicUpdate();
+    basicDataUpdate.basicUpdate();
   }
 
   static residenceData() {
@@ -91,7 +91,7 @@ class formUI {
 
     localStorage.setItem("residenceData", JSON.stringify(residenceData));
 
-    previewUpdate.residenceUpdate();
+    basicDataUpdate.residenceUpdate();
   }
 
   static contactData() {
@@ -102,7 +102,7 @@ class formUI {
 
     localStorage.setItem("contactData", JSON.stringify(contactData));
 
-    previewUpdate.contactUpdate();
+    basicDataUpdate.contactUpdate();
   }
 
   static experienceData(editId) {
@@ -151,8 +151,6 @@ class formUI {
     );
 
     localStorage.setItem("educationData", JSON.stringify(educationData));
-
-    previewUpdate.educationUpdate();
   }
 
   static languageData() {
@@ -162,8 +160,6 @@ class formUI {
     let languageData = new Language(formLanguage, level);
 
     localStorage.setItem("languageData", JSON.stringify(languageData));
-
-    previewUpdate.languageUpdate();
   }
 
   static certificationData() {
@@ -183,8 +179,6 @@ class formUI {
       "certificationData",
       JSON.stringify(certificationData)
     );
-
-    previewUpdate.certificationUpdate();
   }
 }
 

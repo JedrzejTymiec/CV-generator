@@ -5,7 +5,7 @@ import Download from "./views/Download.js";
 import modalUI from "./modalUI.js";
 import appUI from "./appUI.js";
 import formUI from "./formUI.js";
-import previewUpdate from "./previewUpdate.js";
+import experienceCRUD from "./experienceCRUD.js";
 
 const navigateTo = (url) => {
   history.pushState(null, null, url);
@@ -93,7 +93,7 @@ const router = async () => {
     });
   }
 
-  previewUpdate.addJobView();
+  experienceCRUD.readExperience();
 };
 
 export { router, navigateTo };

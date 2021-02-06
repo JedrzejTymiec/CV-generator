@@ -3,7 +3,7 @@ import appUI from "./appUI.js";
 import modalUI from "./modalUI.js";
 import formUI from "./formUI.js";
 import { router, navigateTo } from "./router.js";
-import previewUpdate from "./previewUpdate.js";
+import experienceCRUD from "./experienceCRUD.js";
 
 appUI.setTemplate();
 
@@ -96,7 +96,7 @@ document.getElementById("experience-form").addEventListener("submit", (e) => {
   } else {
     newJob = formUI.experienceData();
   }
-  previewUpdate.addJob(newJob);
+  experienceCRUD.addExperience(newJob);
   modalUI.clearExperienceInputs();
   modalUI.closeModal(e.target);
 });
@@ -120,10 +120,12 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault();
       navigateTo(e.target.parentNode.parentNode.href);
     } else if (e.target.matches("[data-delete]")) {
-      previewUpdate.deleteJob(e.target.parentNode.dataset.id);
-      previewUpdate.addJobView();
+      experienceCRUD.deleteExperience(e.target.parentNode.dataset.id);
+      experienceCRUD.readExperience();
     } else if (e.target.matches("[data-edit]")) {
-      let jobToEdit = previewUpdate.editJob(e.target.parentNode.dataset.id);
+      let jobToEdit = experienceCRUD.updateExperience(
+        e.target.parentNode.dataset.id
+      );
       modalUI.openModal(e.target);
       modalUI.editExperienceInputs(
         jobToEdit.id,
