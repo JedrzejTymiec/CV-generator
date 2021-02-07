@@ -71,7 +71,8 @@ class Language {
 }
 
 class Certification {
-  constructor(name, organizer, participationDate, description) {
+  constructor(id, name, organizer, participationDate, description) {
+    this.id = id;
     this.name = name;
     this.organizer = organizer;
     this.participationDate = participationDate;
@@ -175,23 +176,26 @@ class formUI {
     localStorage.setItem("languageData", JSON.stringify(languageData));
   }
 
-  static certificationData() {
+  static certificationData(editId) {
+    let id;
+    if (editId) {
+      id = editId;
+    } else {
+      id = uuidv4();
+    }
     let name = document.getElementById("certification-name").value;
     let organizer = document.getElementById("organizer").value;
     let participationDate = document.getElementById("participation-date").value;
-    let description = document.getElementById("cer-description");
+    let description = document.getElementById("cer-description").value;
 
     let certificationData = new Certification(
+      id,
       name,
       organizer,
       participationDate,
       description
     );
-
-    localStorage.setItem(
-      "certificationData",
-      JSON.stringify(certificationData)
-    );
+    return certificationData;
   }
 }
 

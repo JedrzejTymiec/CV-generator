@@ -21,6 +21,8 @@ export default class extends AbstractView {
     </button>
   </form>
   <h1 class="form-title">Certifications</h1>
+  <ul id="form-certification-list">
+    </ul>
     <button
       data-modal="certification"
       type="button"

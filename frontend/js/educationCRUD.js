@@ -4,10 +4,10 @@ class educationCRUD {
       localStorage.getItem("educationDataList")
     );
     let nr;
-    //checks if there is list of jobs to add to
+    //checks if there is list of education to add to
     if (educationDataList) {
       //loop to check if educationList contains edu (in case of edition)
-      for (var i = 0; educationDataList.length > i; i++) {
+      for (let i = 0; educationDataList.length > i; i++) {
         if (educationDataList[i].id === edu.id) {
           nr = i;
           break;
@@ -41,23 +41,21 @@ class educationCRUD {
   }
 
   static updateEducation(id) {
-    let jobList = JSON.parse(localStorage.getItem("educationDataList"));
-    return jobList.find((element) => element.id === id);
+    let eduList = JSON.parse(localStorage.getItem("educationDataList"));
+    return eduList.find((element) => element.id === id);
   }
 
   static readEducation() {
     let educationData = JSON.parse(localStorage.getItem("educationDataList"));
     let educationListContainer = document.getElementById("form-education-list");
-    let newLi = document.createElement("li");
-    newLi.className = "form-education-container";
 
     let eduList = educationData.map((element) => {
       return `
-          <li class="form-education-container">
-          <div class="edu-action-icons" data-id=${element.id}>
-            <i class="fas fa-edit" data-eduEdit data-modal="education"></i><i class="fas fa-trash-alt" data-eduDelete></i>
+          <li class="form-entry-container">
+          <div class="entry-action-icons" data-id=${element.id}>
+            <i class="fas fa-edit" data-eduedit data-modal="education"></i><i class="fas fa-trash-alt" data-edudelete></i>
           </div>
-          <ul class="edu-description">
+          <ul class="entry-description">
             <li>Okres: <span>${element.startDate} - ${element.endDate}</span></li>
             <li>Kierunek: <span>${element.spec}</span></li>
             <li>Nazwa szkoły: <span>${element.school}</span></li>

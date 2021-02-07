@@ -5,6 +5,7 @@ import formUI from "./formUI.js";
 import { router, navigateTo } from "./router.js";
 import experienceCRUD from "./experienceCRUD.js";
 import educationCRUD from "./educationCRUD.js";
+import certificationCRUD from "./certificationCRUD.js";
 
 appUI.setTemplate();
 
@@ -116,6 +117,22 @@ document.getElementById("education-form").addEventListener("submit", (e) => {
   modalUI.closeModal(e.target);
 });
 
+document
+  .getElementById("certification-form")
+  .addEventListener("submit", (e) => {
+    e.preventDefault();
+    let newCer;
+    let editId = document.getElementById("certification-form").dataset.id;
+    if (editId != "") {
+      newCer = formUI.certificationData(editId);
+    } else {
+      newCer = formUI.certificationData();
+    }
+    certificationCRUD.addCertification(newCer);
+    modalUI.clearCertificationInputs();
+    modalUI.closeModal(e.target);
+  });
+
 window.addEventListener("popstate", router);
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -162,6 +179,22 @@ document.addEventListener("DOMContentLoaded", () => {
         eduToEdit.startDate,
         eduToEdit.endDate,
         eduToEdit.description
+      );
+    } else if (e.target.matches("[data-cerdelete]")) {
+      certificationCRUD.deleteCertification(e.target.parentNode.dataset.id);
+      certificationCRUD.readCertification();
+    } else if (e.target.matches("[data-ceredit]")) {
+      // console.log(e.target.parentNode.dataset.id);
+      let cerToEdit = certificationCRUD.updateCertification(
+        e.target.parentNode.dataset.id
+      );
+      modalUI.openModal(e.target);
+      modalUI.editCertificationInputs(
+        cerToEdit.id,
+        cerToEdit.name,
+        cerToEdit.organizer,
+        cerToEdit.participationDate,
+        cerToEdit.description
       );
     }
   });

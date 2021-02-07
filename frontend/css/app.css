@@ -504,32 +504,31 @@ button {
 }
 
 /* form experience entries ****************************************************** */
-#form-job-list {
+#form-job-list, #form-education-list, #form-certification-list {
   list-style: none;
 }
 
-#form-job-list li {
-  margin-top: 15px;
-}
-
-.job-action-icons {
+.entry-action-icons {
   text-align: end;
 }
 
-.job-action-icons i:last-child {
+.entry-action-icons i:last-child {
   margin-left: 10px;
 }
 
-.form-job-container {
+.form-entry-container {
   background-color: #b1b1b1;
   padding: 20px;
+  margin-top: 15px;
 }
 
-.job-description {
+.entry-description {
   list-style: none;
   padding: 0;
 }
 
-.job-description li:last-child {
+.entry-description li:last-child {
   margin-top: 15px;
 }
+
+/* form education entries

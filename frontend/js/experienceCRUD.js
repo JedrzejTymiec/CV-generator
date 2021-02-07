@@ -49,16 +49,14 @@ class experienceCRUD {
   static readExperience() {
     let experienceData = JSON.parse(localStorage.getItem("experienceDataList"));
     let jobListContainer = document.getElementById("form-job-list");
-    let newLi = document.createElement("li");
-    newLi.className = "form-job-container";
 
     let jobList = experienceData.map((element) => {
       return `
-        <li class="form-job-container">
-          <div class="job-action-icons" data-id=${element.id}>
+        <li class="form-entry-container">
+          <div class="entry-action-icons" data-id=${element.id}>
             <i class="fas fa-edit" data-expEdit data-modal="experience"></i><i class="fas fa-trash-alt" data-expDelete></i>
           </div>
-          <ul class="job-description">
+          <ul class="entry-description">
             <li>Okres: <span>${element.startDate} - ${element.endDate}</span></li>
             <li>Stanowisko: <span>${element.position}</span></li>
             <li>Firma: <span>${element.company}</span></li>

@@ -84,6 +84,20 @@ class modalUI {
     document.getElementById("edu-end-date").value = endDate;
     document.getElementById("edu-description").value = description;
   }
+
+  static editCertificationInputs(
+    id,
+    name,
+    organizer,
+    participationDate,
+    description
+  ) {
+    document.getElementById("certification-form").dataset.id = id;
+    document.getElementById("certification-name").value = name;
+    document.getElementById("organizer").value = organizer;
+    document.getElementById("participation-date").value = participationDate;
+    document.getElementById("cer-description").value = description;
+  }
 }
 
 export default modalUI;

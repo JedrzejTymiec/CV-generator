@@ -7,6 +7,7 @@ import appUI from "./appUI.js";
 import formUI from "./formUI.js";
 import experienceCRUD from "./experienceCRUD.js";
 import educationCRUD from "./educationCRUD.js";
+import certificationCRUD from "./certificationCRUD.js";
 
 const navigateTo = (url) => {
   history.pushState(null, null, url);
@@ -94,8 +95,15 @@ const router = async () => {
     });
   }
 
-  experienceCRUD.readExperience();
-  educationCRUD.readEducation();
+  let currentPage = window.location.href.substring(
+    window.location.href.lastIndexOf("/") + 1
+  );
+  if (currentPage === "experience") {
+    experienceCRUD.readExperience();
+    educationCRUD.readEducation();
+  } else if (currentPage === "skills") {
+    certificationCRUD.readCertification();
+  }
 };
 
 export { router, navigateTo };
