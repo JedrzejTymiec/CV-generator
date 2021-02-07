@@ -1,11 +1,11 @@
-import basicDataUpdate from "./basicDataUpdate.js";
 import { v4 as uuidv4 } from "uuid";
 
 class BasicData {
-  constructor(name, surname, dateOfBirth) {
+  constructor(name, surname, proffesion, about) {
     this.name = name;
     this.surname = surname;
-    this.birth = dateOfBirth;
+    this.proffesion = proffesion;
+    this.about = about;
   }
 }
 
@@ -17,9 +17,11 @@ class Residence {
 }
 
 class Contact {
-  constructor(phone, email) {
+  constructor(phone, email, linkedin, github) {
     this.phone = phone;
     this.email = email;
+    this.linkedin = linkedin;
+    this.github = github;
   }
 }
 
@@ -64,7 +66,8 @@ class Education {
 }
 
 class Language {
-  constructor(language, level) {
+  constructor(id, language, level) {
+    this.id = id;
     this.language = language;
     this.level = level;
   }
@@ -84,13 +87,12 @@ class formUI {
   static basicData() {
     let name = document.getElementById("name-input").value;
     let surname = document.getElementById("surname-input").value;
-    let birth = document.getElementById("date-of-birth").value;
+    let proffesion = document.getElementById("proffesion-input").value;
+    let about = document.getElementById("about-input").value;
 
-    let basicData = new BasicData(name, surname, birth);
+    let basicData = new BasicData(name, surname, proffesion, about);
 
-    localStorage.setItem("basicData", JSON.stringify(basicData));
-
-    basicDataUpdate.basicUpdate();
+    return basicData;
   }
 
   static residenceData() {
@@ -99,20 +101,18 @@ class formUI {
 
     let residenceData = new Residence(country, city);
 
-    localStorage.setItem("residenceData", JSON.stringify(residenceData));
-
-    basicDataUpdate.residenceUpdate();
+    return residenceData;
   }
 
   static contactData() {
     let phone = document.getElementById("phone-input").value;
     let email = document.getElementById("email-input").value;
+    let linkedin = document.getElementById("linkedin-input").value;
+    let github = document.getElementById("github-input").value;
 
-    let contactData = new Contact(phone, email);
+    let contactData = new Contact(phone, email, linkedin, github);
 
-    localStorage.setItem("contactData", JSON.stringify(contactData));
-
-    basicDataUpdate.contactUpdate();
+    return contactData;
   }
 
   static experienceData(editId) {
@@ -168,12 +168,13 @@ class formUI {
   }
 
   static languageData() {
+    let id = uuidv4();
     let formLanguage = document.getElementById("language-input").value;
     let level = document.getElementById("language-level-input").value;
 
-    let languageData = new Language(formLanguage, level);
+    let languageData = new Language(id, formLanguage, level);
 
-    localStorage.setItem("languageData", JSON.stringify(languageData));
+    return languageData;
   }
 
   static certificationData(editId) {

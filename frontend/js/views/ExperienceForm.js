@@ -30,6 +30,7 @@ export default class extends AbstractView {
     </button>
     <form class="language-form" id="language-form">
       <h1 class="form-title">Languages</h1>
+      <ul id="form-languages-container"></ul>
       <div class="form-group">
         <label class="form-label" for="language-input">Language*</label>
         <select id="language-input">

@@ -8,6 +8,7 @@ import formUI from "./formUI.js";
 import experienceCRUD from "./experienceCRUD.js";
 import educationCRUD from "./educationCRUD.js";
 import certificationCRUD from "./certificationCRUD.js";
+import basicDataCRUD from "./basicDataCRUD.js";
 
 const navigateTo = (url) => {
   history.pushState(null, null, url);
@@ -73,25 +74,30 @@ const router = async () => {
   if (basic) {
     basic.addEventListener("submit", (e) => {
       e.preventDefault();
-      formUI.basicData();
+      let newData = formUI.basicData();
+      console.log(newData);
+      basicDataCRUD.addBasicData(newData);
     });
   }
   if (residence) {
     residence.addEventListener("submit", (e) => {
       e.preventDefault();
-      formUI.residenceData();
+      let newData = formUI.residenceData();
+      basicDataCRUD.addResidenceData(newData);
     });
   }
   if (contact) {
     contact.addEventListener("submit", (e) => {
       e.preventDefault();
-      formUI.contactData();
+      let newData = formUI.contactData();
+      basicDataCRUD.addContactData(newData);
     });
   }
   if (language) {
     language.addEventListener("submit", (e) => {
       e.preventDefault();
-      formUI.languageData();
+      // let newData = formUI.basicData();
+      // basicDataCRUD.addBasicData(newData);
     });
   }
 
@@ -103,6 +109,10 @@ const router = async () => {
     educationCRUD.readEducation();
   } else if (currentPage === "skills") {
     certificationCRUD.readCertification();
+  } else if (currentPage === "basic") {
+    basicDataCRUD.readBasicData();
+    basicDataCRUD.readResidenceData();
+    basicDataCRUD.readContactData();
   }
 };
 

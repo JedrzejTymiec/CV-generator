@@ -48,10 +48,11 @@ class experienceCRUD {
 
   static readExperience() {
     let experienceData = JSON.parse(localStorage.getItem("experienceDataList"));
-    let jobListContainer = document.getElementById("form-job-list");
+    if (experienceData) {
+      let jobListContainer = document.getElementById("form-job-list");
 
-    let jobList = experienceData.map((element) => {
-      return `
+      let jobList = experienceData.map((element) => {
+        return `
         <li class="form-entry-container">
           <div class="entry-action-icons" data-id=${element.id}>
             <i class="fas fa-edit" data-expEdit data-modal="experience"></i><i class="fas fa-trash-alt" data-expDelete></i>
@@ -63,9 +64,9 @@ class experienceCRUD {
             <li>Opis: <span>${element.description}</span>
           </ul>
         </li>`;
-    });
-
-    jobListContainer.innerHTML = jobList.join("");
+      });
+      jobListContainer.innerHTML = jobList.join("");
+    }
   }
 }
 

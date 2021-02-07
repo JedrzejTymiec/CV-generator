@@ -52,12 +52,13 @@ class certificationCRUD {
     let certificationDataList = JSON.parse(
       localStorage.getItem("certificationDataList")
     );
-    let certificationListContainer = document.getElementById(
-      "form-certification-list"
-    );
+    if (certificationDataList) {
+      let certificationListContainer = document.getElementById(
+        "form-certification-list"
+      );
 
-    let cerList = certificationDataList.map((element) => {
-      return `
+      let cerList = certificationDataList.map((element) => {
+        return `
           <li class="form-entry-container">
           <div class="entry-action-icons" data-id=${element.id}>
             <i class="fas fa-edit" data-ceredit data-modal="certification"></i><i class="fas fa-trash-alt" data-cerdelete></i>
@@ -69,8 +70,9 @@ class certificationCRUD {
             <li>Opis: <span>${element.description}</span>
           </ul>
         </li>`;
-    });
-    certificationListContainer.innerHTML = cerList.join("");
+      });
+      certificationListContainer.innerHTML = cerList.join("");
+    }
   }
 }
 

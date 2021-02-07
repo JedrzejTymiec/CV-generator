@@ -23,8 +23,17 @@ export default class extends AbstractView {
             <input type="text" id="surname-input">
           </div>
           <div class="form-group">
-            <label class="form-label" for="date-of-birth">Date of birth*</label>
-            <input type="date" id="date-of-birth">
+            <label class="form-label" for="proffesion-input">Proffesion*</label>
+            <input type="text" id="proffesion-input">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="about-input">About yourself*</label>
+            <textarea
+                type="textarea"
+                id="about-input"
+                maxlength="1000"
+                rows="1"
+              ></textarea>
           </div>
           <button type="submit" class="save-button"><i class="far fa-save"></i>Save</button>
         </form>
@@ -296,6 +305,14 @@ export default class extends AbstractView {
           <div class="form-group">
             <label class="form-label" for="email-input">Email*</label>
             <input type="email" id="email-input">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="linkedin-input">Linkedin profile*</label>
+            <input type="text" id="linkedin-input">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="github-input">Github link*</label>
+            <input type="text" id="github-input">
           </div>
           <button type="submit" class="save-button"><i class="far fa-save"></i>Save</button>
           <h4 class="form-label">* Required fields</h4>

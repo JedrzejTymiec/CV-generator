@@ -47,24 +47,28 @@ class educationCRUD {
 
   static readEducation() {
     let educationData = JSON.parse(localStorage.getItem("educationDataList"));
-    let educationListContainer = document.getElementById("form-education-list");
+    if (educationData) {
+      let educationListContainer = document.getElementById(
+        "form-education-list"
+      );
 
-    let eduList = educationData.map((element) => {
-      return `
-          <li class="form-entry-container">
-          <div class="entry-action-icons" data-id=${element.id}>
-            <i class="fas fa-edit" data-eduedit data-modal="education"></i><i class="fas fa-trash-alt" data-edudelete></i>
-          </div>
-          <ul class="entry-description">
-            <li>Okres: <span>${element.startDate} - ${element.endDate}</span></li>
-            <li>Kierunek: <span>${element.spec}</span></li>
-            <li>Nazwa szkoły: <span>${element.school}</span></li>
-            <li>Poziom: <span>${element.educationLevel}</span>
-            <li>Opis: <span>${element.description}</span>
-          </ul>
-        </li>`;
-    });
-    educationListContainer.innerHTML = eduList.join("");
+      let eduList = educationData.map((element) => {
+        return `
+        <li class="form-entry-container">
+        <div class="entry-action-icons" data-id=${element.id}>
+          <i class="fas fa-edit" data-eduedit data-modal="education"></i><i class="fas fa-trash-alt" data-edudelete></i>
+        </div>
+        <ul class="entry-description">
+          <li>Okres: <span>${element.startDate} - ${element.endDate}</span></li>
+          <li>Kierunek: <span>${element.spec}</span></li>
+          <li>Nazwa szkoły: <span>${element.school}</span></li>
+          <li>Poziom: <span>${element.educationLevel}</span>
+          <li>Opis: <span>${element.description}</span>
+        </ul>
+      </li>`;
+      });
+      educationListContainer.innerHTML = eduList.join("");
+    }
   }
 }
 

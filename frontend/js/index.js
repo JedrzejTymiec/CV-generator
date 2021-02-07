@@ -26,8 +26,6 @@ document.addEventListener(
   false
 );
 
-//UTWORZYĆ FUNKCJĘ STARTOWĄ DODAJĄCĄ EventListenery
-
 for (var i = 0; templateButtons.length > i; i++) {
   templateButtons[i].addEventListener("click", (e) => {
     let templateType = e.target.id;
