@@ -9,6 +9,7 @@ import experienceCRUD from "./experienceCRUD.js";
 import educationCRUD from "./educationCRUD.js";
 import certificationCRUD from "./certificationCRUD.js";
 import basicDataCRUD from "./basicDataCRUD.js";
+import langSkillCRUD from "./languageSkillsCRUD.js";
 
 const navigateTo = (url) => {
   history.pushState(null, null, url);
@@ -96,8 +97,8 @@ const router = async () => {
   if (language) {
     language.addEventListener("submit", (e) => {
       e.preventDefault();
-      // let newData = formUI.basicData();
-      // basicDataCRUD.addBasicData(newData);
+      let newData = formUI.languageData();
+      langSkillCRUD.addLanguage(newData);
     });
   }
 
@@ -107,6 +108,7 @@ const router = async () => {
   if (currentPage === "experience") {
     experienceCRUD.readExperience();
     educationCRUD.readEducation();
+    langSkillCRUD.readLanguages();
   } else if (currentPage === "skills") {
     certificationCRUD.readCertification();
   } else if (currentPage === "basic") {

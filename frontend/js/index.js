@@ -6,6 +6,7 @@ import { router, navigateTo } from "./router.js";
 import experienceCRUD from "./experienceCRUD.js";
 import educationCRUD from "./educationCRUD.js";
 import certificationCRUD from "./certificationCRUD.js";
+import langSkillCRUD from "./languageSkillsCRUD.js";
 
 appUI.setTemplate();
 
@@ -194,6 +195,8 @@ document.addEventListener("DOMContentLoaded", () => {
         cerToEdit.participationDate,
         cerToEdit.description
       );
+    } else if (e.target.matches("[data-landelete]")) {
+      langSkillCRUD.deleteLanguage(e.target.parentNode.dataset.id);
     }
   });
   router();

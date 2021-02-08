@@ -292,6 +292,35 @@ button {
   width: 80%;
 }
 
+#form-languages-container {
+  list-style: none;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.form-language-container {
+  margin: 5px 20px;
+  width: 40%;
+  background-color: #b1b1b1;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.form-language-container i {
+  margin-left: 15px;
+  transition: 250ms;
+}
+
+.form-language-container i:hover {
+  cursor:pointer;
+  color: #FFF;
+}
+
 .language-form .form-group {
   width: 40%;
 }
@@ -514,6 +543,15 @@ button {
 
 .entry-action-icons i:last-child {
   margin-left: 10px;
+}
+
+.entry-action-icons i {
+  transition: 250ms;
+}
+
+.entry-action-icons i:hover {
+  color: #FFF;
+  cursor: pointer;
 }
 
 .form-entry-container {
