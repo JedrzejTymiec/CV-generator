@@ -71,6 +71,7 @@ const router = async () => {
   let residence = document.getElementById("residence-form");
   let contact = document.getElementById("contact-form");
   let language = document.getElementById("language-form");
+  let skills = document.getElementById("skills-form");
 
   if (basic) {
     basic.addEventListener("submit", (e) => {
@@ -101,6 +102,14 @@ const router = async () => {
       langSkillCRUD.addLanguage(newData);
     });
   }
+  if (skills) {
+    skills.addEventListener("submit", (e) => {
+      e.preventDefault();
+      let newData = formUI.skillData();
+      langSkillCRUD.addSkill(newData);
+      document.getElementById("skill-input").value = "";
+    });
+  }
 
   let currentPage = window.location.href.substring(
     window.location.href.lastIndexOf("/") + 1
@@ -111,6 +120,7 @@ const router = async () => {
     langSkillCRUD.readLanguages();
   } else if (currentPage === "skills") {
     certificationCRUD.readCertification();
+    langSkillCRUD.readSkills();
   } else if (currentPage === "basic") {
     basicDataCRUD.readBasicData();
     basicDataCRUD.readResidenceData();

@@ -83,6 +83,13 @@ class Certification {
   }
 }
 
+class Skill {
+  constructor(id, skill) {
+    this.id = id;
+    this.skill = skill;
+  }
+}
+
 class formUI {
   static basicData() {
     let name = document.getElementById("name-input").value;
@@ -197,6 +204,15 @@ class formUI {
       description
     );
     return certificationData;
+  }
+
+  static skillData() {
+    let id = uuidv4();
+    let skill = document.getElementById("skill-input").value;
+
+    let skillData = new Skill(id, skill);
+
+    return skillData;
   }
 }
 

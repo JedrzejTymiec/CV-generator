@@ -8,13 +8,14 @@ export default class extends AbstractView {
 
   async getHtml() {
     return `
-    <form>
+    <form id="skills-form">
     <h1 class="form-title">Skills</h1>
+    <ul id="form-skills-container"></ul>
     <div class="form-group">
-      <label class="form-label" for="surname-input"
+      <label class="form-label" for="skill-input"
         >Enter your skill</label
       >
-      <input type="text" id="surname-input" />
+      <input type="text" id="skill-input" />
     </div>
     <button type="submit" class="add-language add-button">
       <i class="fas fa-plus"></i>Add

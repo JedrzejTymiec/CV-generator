@@ -292,7 +292,7 @@ button {
   width: 80%;
 }
 
-#form-languages-container {
+#form-languages-container, #form-skills-container {
   list-style: none;
   text-align: center;
   display: flex;
@@ -302,7 +302,7 @@ button {
   width: 100%;
 }
 
-.form-language-container {
+.form-language-container, .form-skill-container {
   margin: 5px 20px;
   width: 40%;
   background-color: #b1b1b1;
@@ -311,12 +311,12 @@ button {
   justify-content: space-evenly;
 }
 
-.form-language-container i {
+.form-language-container i, .form-skill-container i {
   margin-left: 15px;
   transition: 250ms;
 }
 
-.form-language-container i:hover {
+.form-language-container i:hover, .form-skill-container i:hover {
   cursor:pointer;
   color: #FFF;
 }

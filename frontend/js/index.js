@@ -197,6 +197,8 @@ document.addEventListener("DOMContentLoaded", () => {
       );
     } else if (e.target.matches("[data-landelete]")) {
       langSkillCRUD.deleteLanguage(e.target.parentNode.dataset.id);
+    } else if (e.target.matches("[data-skidelete]")) {
+      langSkillCRUD.deleteSkill(e.target.parentNode.dataset.id);
     }
   });
   router();
