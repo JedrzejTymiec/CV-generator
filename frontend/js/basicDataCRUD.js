@@ -1,25 +1,35 @@
 class basicDataUpdate {
   static readBasicData() {
     let basicData = JSON.parse(localStorage.getItem("basicData"));
+    let currentPage = window.location.href.substring(
+      window.location.href.lastIndexOf("/") + 1
+    );
 
-    if (basicData) {
+    if (basicData && currentPage === "basic") {
       document.getElementById("name-input").value = basicData.name;
       document.getElementById("surname-input").value = basicData.surname;
+      document.getElementById("proffesion-input").value = basicData.proffesion;
+      document.getElementById("about-input").value = basicData.about;
+    }
+    if (basicData) {
+      document.getElementById("about").innerText = basicData.about;
       document.querySelector(".about h1").innerText =
         basicData.name + " " + basicData.surname;
-      document.getElementById("proffesion-input").value = basicData.proffesion;
       document.getElementById("proffesion").innerText = basicData.proffesion;
-      document.getElementById("about-input").value = basicData.about;
-      document.getElementById("about").innerText = basicData.about;
     }
   }
 
   static readResidenceData() {
     let residenceData = JSON.parse(localStorage.getItem("residenceData"));
+    let currentPage = window.location.href.substring(
+      window.location.href.lastIndexOf("/") + 1
+    );
 
-    if (residenceData) {
+    if (residenceData && currentPage === "basic") {
       document.getElementById("country-input").value = residenceData.country;
       document.getElementById("city-input").value = residenceData.city;
+    }
+    if (residenceData) {
       document.getElementById("residence").innerText =
         residenceData.city + ", " + residenceData.country;
     }
@@ -27,12 +37,17 @@ class basicDataUpdate {
 
   static readContactData() {
     let contactData = JSON.parse(localStorage.getItem("contactData"));
+    let currentPage = window.location.href.substring(
+      window.location.href.lastIndexOf("/") + 1
+    );
 
-    if (contactData) {
+    if (contactData && currentPage === "basic") {
       document.getElementById("phone-input").value = contactData.phone;
       document.getElementById("email-input").value = contactData.email;
       document.getElementById("linkedin-input").value = contactData.linkedin;
       document.getElementById("github-input").value = contactData.github;
+    }
+    if (contactData) {
       document.getElementById("phone").innerText = contactData.phone;
       document.getElementById("email").innerText = contactData.email;
       document.getElementById("linkedin").innerText = contactData.linkedin;

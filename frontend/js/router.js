@@ -14,8 +14,6 @@ import langSkillCRUD from "./languageSkillsCRUD.js";
 const navigateTo = (url) => {
   history.pushState(null, null, url);
   window.scroll(0, 0);
-  let currentPage = url.substring(url.lastIndexOf("/") + 1);
-  appUI.pagesDone(currentPage);
   router();
 };
 
@@ -114,18 +112,22 @@ const router = async () => {
   let currentPage = window.location.href.substring(
     window.location.href.lastIndexOf("/") + 1
   );
+
+  appUI.pagesDone(currentPage);
+
   if (currentPage === "experience") {
-    experienceCRUD.readExperience();
-    educationCRUD.readEducation();
     langSkillCRUD.readLanguages();
   } else if (currentPage === "skills") {
-    certificationCRUD.readCertification();
     langSkillCRUD.readSkills();
   } else if (currentPage === "basic") {
-    basicDataCRUD.readBasicData();
-    basicDataCRUD.readResidenceData();
-    basicDataCRUD.readContactData();
   }
+
+  experienceCRUD.readExperience();
+  educationCRUD.readEducation();
+  certificationCRUD.readCertification();
+  basicDataCRUD.readBasicData();
+  basicDataCRUD.readResidenceData();
+  basicDataCRUD.readContactData();
 };
 
 export { router, navigateTo };

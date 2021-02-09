@@ -8,6 +8,7 @@ class appUI {
       "./css/" + template + ".css";
 
     document.getElementById(template).classList.add("current");
+    localStorage.setItem("template", template);
   }
 
   static setTemplate() {
@@ -17,10 +18,6 @@ class appUI {
     this.changeTemplate(template);
     this.changeColor("dot-" + (parseInt(color) + 1));
   }
-
-  static openModal = () => {
-    document.getElementById("modal").style.display = "block";
-  };
 
   static changeColor(id) {
     if (document.getElementById(id)) {
@@ -40,6 +37,7 @@ class appUI {
         "--headerBackground",
         "#4758a8"
       );
+      localStorage.setItem("color", "0");
     }
     if (id === "dot-2") {
       document.documentElement.style.setProperty("--mainColor", "#051561");
@@ -50,6 +48,7 @@ class appUI {
         "--headerBackground",
         "#808080"
       );
+      localStorage.setItem("color", "1");
     }
     if (id === "dot-3") {
       document.documentElement.style.setProperty("--mainColor", "#616d84");
@@ -60,6 +59,7 @@ class appUI {
         "--headerBackground",
         "#051561"
       );
+      localStorage.setItem("color", "2");
     }
   }
 

@@ -48,9 +48,11 @@ class experienceCRUD {
 
   static readExperience() {
     let experienceData = JSON.parse(localStorage.getItem("experienceDataList"));
-    if (experienceData) {
-      let jobListContainer = document.getElementById("form-job-list");
-
+    let formJobListContainer = document.getElementById("form-job-list");
+    let previewJobListContainer = document.getElementById(
+      "preview-job-list-container"
+    );
+    if (experienceData && formJobListContainer) {
       let jobList = experienceData.map((element) => {
         return `
         <li class="form-entry-container">
@@ -65,7 +67,26 @@ class experienceCRUD {
           </ul>
         </li>`;
       });
-      jobListContainer.innerHTML = jobList.join("");
+      formJobListContainer.innerHTML = jobList.join("");
+    }
+    if (experienceData && previewJobListContainer) {
+      let previewJobList = experienceData.map((element) => {
+        return `<div class="job-container">
+        <div class="dash"></div>
+        <div class="job">
+          <h3 class="job-title">${element.position}</h3>
+          <h4 class="workplace">${element.company}</h4>
+          <p class="time-range">${element.startDate} - ${element.endDate}</p>
+          <p class="job-description">${element.description}</p>
+        </div>
+      </div>`;
+      });
+
+      previewJobListContainer.innerHTML = previewJobList.join("");
+
+      document
+        .querySelector("#preview-job-list-container .job-container:last-child")
+        .setAttribute("id", "first-job");
     }
   }
 }

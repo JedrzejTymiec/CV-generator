@@ -52,11 +52,13 @@ class certificationCRUD {
     let certificationDataList = JSON.parse(
       localStorage.getItem("certificationDataList")
     );
-    if (certificationDataList) {
-      let certificationListContainer = document.getElementById(
-        "form-certification-list"
-      );
-
+    let formCertificationListContainer = document.getElementById(
+      "form-certification-list"
+    );
+    let previewCertificationListContainer = document.getElementById(
+      "preview-certification-container"
+    );
+    if (certificationDataList && formCertificationListContainer) {
       let cerList = certificationDataList.map((element) => {
         return `
           <li class="form-entry-container">
@@ -71,7 +73,16 @@ class certificationCRUD {
           </ul>
         </li>`;
       });
-      certificationListContainer.innerHTML = cerList.join("");
+      formCertificationListContainer.innerHTML = cerList.join("");
+    }
+    if (certificationDataList && previewCertificationListContainer) {
+      let previewCerList = certificationDataList.map((element) => {
+        return `<div class="course-container">
+        <h3 class="course-name">${element.name}</h3>
+        <h4 class="course-organizer">${element.organizer}</h4>
+      </div>`;
+      });
+      previewCertificationListContainer.innerHTML = previewCerList.join("");
     }
   }
 }

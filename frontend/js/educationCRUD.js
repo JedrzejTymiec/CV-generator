@@ -47,11 +47,13 @@ class educationCRUD {
 
   static readEducation() {
     let educationData = JSON.parse(localStorage.getItem("educationDataList"));
-    if (educationData) {
-      let educationListContainer = document.getElementById(
-        "form-education-list"
-      );
-
+    let formEducationListContainer = document.getElementById(
+      "form-education-list"
+    );
+    let previewEducationListContainer = document.getElementById(
+      "preview-education-list-container"
+    );
+    if (educationData && formEducationListContainer) {
       let eduList = educationData.map((element) => {
         return `
         <li class="form-entry-container">
@@ -67,7 +69,20 @@ class educationCRUD {
         </ul>
       </li>`;
       });
-      educationListContainer.innerHTML = eduList.join("");
+      formEducationListContainer.innerHTML = eduList.join("");
+    }
+    if (educationData && previewEducationListContainer) {
+      let previewEduList = educationData.map((element) => {
+        return `<div class="study-container">
+        <div class="dash"></div>
+        <div class="study">
+          <h3 class="field-of-study">${element.spec}</h3>
+          <h4 class="school-name">${element.school}</h4>
+          <p class="time-range">${element.startDate} - ${element.endDate}</p>
+        </div>
+      </div>`;
+      });
+      previewEducationListContainer.innerHTML = previewEduList.join("");
     }
   }
 }

@@ -84,9 +84,10 @@ class Certification {
 }
 
 class Skill {
-  constructor(id, skill) {
+  constructor(id, skill, level) {
     this.id = id;
     this.skill = skill;
+    this.level = level;
   }
 }
 
@@ -209,8 +210,9 @@ class formUI {
   static skillData() {
     let id = uuidv4();
     let skill = document.getElementById("skill-input").value;
+    let level = document.getElementById("skill-level-input").value;
 
-    let skillData = new Skill(id, skill);
+    let skillData = new Skill(id, skill, level);
 
     return skillData;
   }
