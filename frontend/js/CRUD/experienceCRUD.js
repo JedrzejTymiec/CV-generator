@@ -6,17 +6,17 @@ class Experience {
     position,
     company,
     location,
-    startDate,
-    endDate,
-    description
+    expstart,
+    expend,
+    expdescription
   ) {
     this.id = id;
     this.position = position;
     this.company = company;
     this.location = location;
-    this.startDate = startDate;
-    this.endDate = endDate;
-    this.description = description;
+    this.expstart = expstart;
+    this.expend = expend;
+    this.expdescription = expdescription;
   }
 }
 
@@ -28,21 +28,21 @@ class experienceCRUD {
     } else {
       id = uuidv4();
     }
-    let position = document.getElementById("position").value;
-    let company = document.getElementById("company").value;
-    let location = document.getElementById("location").value;
-    let startDate = document.getElementById("exp-start-date").value;
-    let endDate = document.getElementById("exp-end-date").value;
-    let description = document.getElementById("exp-description").value;
+    let position = document.getElementById("position-input").value;
+    let company = document.getElementById("company-input").value;
+    let location = document.getElementById("location-input").value;
+    let expStart = document.getElementById("expstart-input").value;
+    let expEnd = document.getElementById("expend-input").value;
+    let expDescription = document.getElementById("expdescription-input").value;
 
     let experienceData = new Experience(
       id,
       position,
       company,
       location,
-      startDate,
-      endDate,
-      description
+      expStart,
+      expEnd,
+      expDescription
     );
     return experienceData;
   }
@@ -67,7 +67,7 @@ class experienceCRUD {
         experienceDataList.push(job);
       }
       localStorage.setItem(
-        "experienceDataList",
+        "experienceData",
         JSON.stringify(experienceDataList)
       );
     } else {
@@ -106,10 +106,10 @@ class experienceCRUD {
             <i class="fas fa-edit" data-expEdit data-modal="experience"></i><i class="fas fa-trash-alt" data-expDelete></i>
           </div>
           <ul class="entry-description">
-            <li>Okres: <span>${element.startDate} - ${element.endDate}</span></li>
+            <li>Okres: <span>${element.expstart} - ${element.expend}</span></li>
             <li>Stanowisko: <span>${element.position}</span></li>
             <li>Firma: <span>${element.company}</span></li>
-            <li>Opis: <span>${element.description}</span>
+            <li>Opis: <span>${element.expdescription}</span>
           </ul>
         </li>`;
       });
@@ -122,8 +122,8 @@ class experienceCRUD {
         <div class="job">
           <h3 class="job-title">${element.position}</h3>
           <h4 class="workplace">${element.company}</h4>
-          <p class="time-range">${element.startDate} - ${element.endDate}</p>
-          <p class="job-description">${element.description}</p>
+          <p class="time-range">${element.expstart} - ${element.expend}</p>
+          <p class="job-description">${element.expdescription}</p>
         </div>
       </div>`;
       });

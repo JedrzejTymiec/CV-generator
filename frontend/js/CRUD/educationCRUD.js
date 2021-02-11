@@ -11,12 +11,12 @@ class Education {
     description
   ) {
     this.id = id;
-    this.educationLevel = educationLevel;
+    this.edulevel = educationLevel;
     this.school = school;
-    this.spec = spec;
-    this.startDate = startDate;
-    this.endDate = endDate;
-    this.description = description;
+    this.specialization = spec;
+    this.edustart = startDate;
+    this.eduend = endDate;
+    this.edudescription = description;
   }
 }
 
@@ -28,12 +28,12 @@ class educationCRUD {
     } else {
       id = uuidv4();
     }
-    let educationLevel = document.getElementById("education-level").value;
-    let school = document.getElementById("school").value;
-    let spec = document.getElementById("specialization").value;
-    let startDate = document.getElementById("edu-start-date").value;
-    let endDate = document.getElementById("edu-end-date").value;
-    let description = document.getElementById("edu-description").value;
+    let educationLevel = document.getElementById("edulevel-input").value;
+    let school = document.getElementById("school-input").value;
+    let spec = document.getElementById("specialization-input").value;
+    let startDate = document.getElementById("edustart-input").value;
+    let endDate = document.getElementById("eduend-input").value;
+    let description = document.getElementById("edudescription-input").value;
 
     let educationData = new Education(
       id,
@@ -104,11 +104,11 @@ class educationCRUD {
           <i class="fas fa-edit" data-eduedit data-modal="education"></i><i class="fas fa-trash-alt" data-edudelete></i>
         </div>
         <ul class="entry-description">
-          <li>Okres: <span>${element.startDate} - ${element.endDate}</span></li>
-          <li>Kierunek: <span>${element.spec}</span></li>
+          <li>Okres: <span>${element.edustart} - ${element.eduend}</span></li>
+          <li>Kierunek: <span>${element.specialization}</span></li>
           <li>Nazwa szkoły: <span>${element.school}</span></li>
-          <li>Poziom: <span>${element.educationLevel}</span>
-          <li>Opis: <span>${element.description}</span>
+          <li>Poziom: <span>${element.edulevel}</span>
+          <li>Opis: <span>${element.edudescription}</span>
         </ul>
       </li>`;
       });
@@ -119,9 +119,9 @@ class educationCRUD {
         return `<div class="study-container">
         <div class="dash"></div>
         <div class="study">
-          <h3 class="field-of-study">${element.spec}</h3>
+          <h3 class="field-of-study">${element.specialization}</h3>
           <h4 class="school-name">${element.school}</h4>
-          <p class="time-range">${element.startDate} - ${element.endDate}</p>
+          <p class="time-range">${element.edustart} - ${element.eduend}</p>
         </div>
       </div>`;
       });

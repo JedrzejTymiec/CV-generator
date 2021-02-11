@@ -47,39 +47,45 @@
         <form id="experience-form" data-modal="experience" data-id="">
           <div class="form-body">
             <div class="form-group">
-              <label class="form-label" for="position">Position*</label>
-              <input type="text" id="position" />
+              <label class="form-label" for="position-input">Position*</label>
+              <input type="text" id="position-input" />
+              <span id="position-input-alert"></span>
             </div>
             <div class="form-group">
-              <label class="form-label" for="company">Company</label>
-              <input type="text" id="company" />
+              <label class="form-label" for="company-input">Company</label>
+              <input type="text" id="company-input" />
+              <span id="company-input-alert"></span>
             </div>
             <div class="form-group">
-              <label class="form-label" for="location">Location</label>
-              <input type="text" id="location" />
+              <label class="form-label" for="location-input">Location</label>
+              <input type="text" id="location-input" />
+              <span id="location-input-alert"></span>
             </div>
             <div class="form-group">
-              <label class="form-label" for="exp-start-date">Start date*</label>
-              <input type="date" id="exp-start-date" />
+              <label class="form-label" for="expstart-input">Start date*</label>
+              <input type="date" id="expstart-input" />
+              <span id="expstart-input-alert"></span>
             </div>
             <div class="form-group">
-              <label class="form-label" for="exp-end-date">End date*</label>
-              <input type="date" id="exp-end-date" />
+              <label class="form-label" for="expend-input">End date*</label>
+              <input type="date" id="expend-input" />
+              <span id="expend-input-alert"></span>
             </div>
             <div class="form-group checkbox-group">
               <label class="checkbox-label">Still working</label>
               <input type="checkbox" class="checkbox" />
             </div>
             <div class="form-group">
-              <label class="form-label" for="exp-description"
+              <label class="form-label" for="expdescription-input"
                 >Description</label
               >
               <textarea
                 type="textarea"
-                id="exp-description"
+                id="expdescription-input"
                 maxlength="1000"
                 rows="1"
               ></textarea>
+              <span id="expdescription-input-alert"></span>
             </div>
           </div>
           <div class="modal-footer">
@@ -100,43 +106,49 @@
         <form id="education-form" data-modal="education" data-id="">
           <div class="form-body">
             <div class="form-group">
-              <label class="form-label" for="education-level"
+              <label class="form-label" for="edulevel-input"
                 >Education level*</label
               >
-              <input type="text" id="education-level" />
+              <input type="text" id="edulevel-input" />
+              <span id="edulevel-input-alert"></span>
             </div>
             <div class="form-group">
-              <label class="form-label" for="school">School name*</label>
-              <input type="text" id="school" />
+              <label class="form-label" for="school-input">School name*</label>
+              <input type="text" id="school-input" />
+              <span id="school-input-alert"></span>
             </div>
             <div class="form-group">
-              <label class="form-label" for="specialization"
+              <label class="form-label" for="specialization-input"
                 >Specialization</label
               >
-              <input type="text" id="specialization" />
+              <input type="text" id="specialization-input" />
+              <span id="specialization-input-alert"></span>
             </div>
             <div class="form-group">
-              <label class="form-label" for="edu-start-date">Start date*</label>
-              <input type="date" id="edu-start-date" />
+              <label class="form-label" for="edustart-input">Start date*</label>
+              <input type="date" id="edustart-input" />
+              <span id="edustart-input-alert"></span>
             </div>
             <div class="form-group">
-              <label class="form-label" for="edu-end-date">End date*</label>
-              <input type="date" id="edu-end-date" />
+              <label class="form-label" for="eduend-input">End date*</label>
+              <input type="date" id="eduend-input" />
+              <span id="eduend-input-alert"></span>
             </div>
             <div class="form-group checkbox-group">
               <label class="checkbox-label">Still learning</label>
               <input type="checkbox" class="checkbox" />
             </div>
             <div class="form-group">
-              <label class="form-label" for="edu-description"
+              <label class="form-label" for="edudescription-input"
                 >Description</label
               >
               <textarea
                 type="textarea"
-                id="edu-description"
+                id="edudescription-input"
                 maxlength="1000"
                 rows="1"
               ></textarea>
+              <span id="edudescription-input-alert"></span>
             </div>
           </div>
           <div class="modal-footer">
@@ -157,29 +169,33 @@
         <form id="certification-form" data-modal="certification" data-id="">
           <div class="form-body">
             <div class="form-group">
-              <label class="form-label" for="certification-name">Name*</label>
-              <input type="text" id="certification-name" />
+              <label class="form-label" for="certname-input">Name*</label>
+              <input type="text" id="certname-input" />
+              <span id="certname-input-alert"></span>
             </div>
             <div class="form-group">
-              <label class="form-label" for="organizer">Organizer*</label>
-              <input type="text" id="organizer" />
+              <label class="form-label" for="organizer-input">Organizer*</label>
+              <input type="text" id="organizer-input" />
+              <span id="organizer-input-alert"></span>
             </div>
             <div class="form-group">
-              <label class="form-label" for="participation-date"
+              <label class="form-label" for="certdate-input"
                 >Participation date*</label
               >
-              <input type="date" id="participation-date" />
+              <input type="date" id="certdate-input" />
+              <span id="certdate-input-alert"></span>
             </div>
             <div class="form-group">
-              <label class="form-label" for="cer-description"
+              <label class="form-label" for="cerdescription-input"
                 >Description</label
               >
               <textarea
                 type="textarea"
-                id="cer-description"
+                id="cerdescription-input"
                 maxlength="1000"
                 rows="1"
               ></textarea>
+              <span id="cerdescription-input-alert"></span>
             </div>
           </div>
           <div class="modal-footer">
@@ -349,6 +365,5 @@
       </div>
     </section>
     <script type="module" src="./js/build/app.bundle.js"></script>
-    <!-- <script type="module" src="./static/router.js"></script> -->
   </body>
 </html>

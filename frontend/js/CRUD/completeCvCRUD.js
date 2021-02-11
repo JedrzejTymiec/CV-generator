@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
-import { navigateTo } from "./router.js";
+import { navigateTo } from "../router";
 
 class completeCV {
   constructor(

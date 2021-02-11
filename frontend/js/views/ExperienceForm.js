@@ -34,6 +34,7 @@ export default class extends AbstractView {
       <div class="form-group">
         <label class="form-label" for="language-input">Language*</label>
         <select id="language-input">
+          <option selected="selected" value=""> - </option>
           <option value="Afrikaans">Afrikaans</option>
           <option value="Albanian">Albanian</option>
           <option value="Arabic">Arabic</option>
@@ -80,7 +81,7 @@ export default class extends AbstractView {
           <option value="Nepali">Nepali</option>
           <option value="Norwegian">Norwegian</option>
           <option value="Persian">Persian</option>
-          <option selected="selected" value="Polish">Polish</option>
+          <option value="Polish">Polish</option>
           <option value="Portuguese">Portuguese</option>
           <option value="Punjabi">Punjabi</option>
           <option value="Quechua">Quechua</option>
@@ -107,15 +108,16 @@ export default class extends AbstractView {
           <option value="Welsh">Welsh</option>
           <option value="Xhosa">Xhosa</option>
         </select>
+        <span id="language-input-alert"></span>
       </div>
       <div class="form-group">
         <label class="form-label" for="language-level-input">Level*</label>
         <select id="language-level-input">
-          <option value="1A1/A2 - Beginner">A1/A2 - Beginner</option>
+          <option selected="selected" value="1A1/A2 - Beginner">A1/A2 - Beginner</option>
           <option value="2B1 - Intermediate">B1 - Intermediate</option>
           <option value="3B2 - Upper Intermediate">B2 - Upper Intermediate</option>
           <option value="4C1 - Advanced">C1 - Advanced</option>
-          <option selected="selected" value="5C2 - Proficient">C2 - Proficient</option>
+          <option value="5C2 - Proficient">C2 - Proficient</option>
         </select>
       </div>
       <button type="submit" class="add-language add-button">

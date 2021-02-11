@@ -25,28 +25,28 @@ class modalUI {
   };
 
   static clearExperienceInputs() {
-    document.getElementById("position").value = "";
-    document.getElementById("company").value = "";
-    document.getElementById("location").value = "";
-    document.getElementById("exp-start-date").value = "";
-    document.getElementById("exp-end-date").value = "";
-    document.getElementById("exp-description").value = "";
+    document.getElementById("position-input").value = "";
+    document.getElementById("company-input").value = "";
+    document.getElementById("location-input").value = "";
+    document.getElementById("expstart-input").value = "";
+    document.getElementById("expend-input").value = "";
+    document.getElementById("expdescription-input").value = "";
   }
 
   static clearEducationInputs() {
-    document.getElementById("education-level").value = "";
-    document.getElementById("school").value = "";
-    document.getElementById("specialization").value = "";
-    document.getElementById("edu-start-date").value = "";
-    document.getElementById("edu-end-date").value = "";
-    document.getElementById("edu-description").value = "";
+    document.getElementById("edulevel-input").value = "";
+    document.getElementById("school-input").value = "";
+    document.getElementById("specialization-input").value = "";
+    document.getElementById("edustart-input").value = "";
+    document.getElementById("eduend-input").value = "";
+    document.getElementById("edudescription-input").value = "";
   }
 
   static clearCertificationInputs() {
-    document.getElementById("certification-name").value = "";
-    document.getElementById("organizer").value = "";
-    document.getElementById("participation-date").value = "";
-    document.getElementById("cer-description").value = "";
+    document.getElementById("certname-input").value = "";
+    document.getElementById("organizer-input").value = "";
+    document.getElementById("certdate-input").value = "";
+    document.getElementById("cerdescription-input").value = "";
   }
 
   static editExperienceInputs(
@@ -56,15 +56,15 @@ class modalUI {
     location,
     startDate,
     endDate,
-    description
+    expdescription
   ) {
     document.getElementById("experience-form").dataset.id = id;
-    document.getElementById("position").value = position;
-    document.getElementById("company").value = company;
-    document.getElementById("location").value = location;
-    document.getElementById("exp-start-date").value = startDate;
-    document.getElementById("exp-end-date").value = endDate;
-    document.getElementById("exp-description").value = description;
+    document.getElementById("position-input").value = position;
+    document.getElementById("company-input").value = company;
+    document.getElementById("location-input").value = location;
+    document.getElementById("expstart-input").value = startDate;
+    document.getElementById("expend-input").value = endDate;
+    document.getElementById("expdescription-input").value = expdescription;
   }
 
   static editEducationInputs(
@@ -77,12 +77,12 @@ class modalUI {
     description
   ) {
     document.getElementById("education-form").dataset.id = id;
-    document.getElementById("education-level").value = educationLevel;
-    document.getElementById("school").value = school;
-    document.getElementById("specialization").value = spec;
-    document.getElementById("edu-start-date").value = startDate;
-    document.getElementById("edu-end-date").value = endDate;
-    document.getElementById("edu-description").value = description;
+    document.getElementById("edulevel-input").value = educationLevel;
+    document.getElementById("school-input").value = school;
+    document.getElementById("specialization-input").value = spec;
+    document.getElementById("edustart-input").value = startDate;
+    document.getElementById("eduend-input").value = endDate;
+    document.getElementById("edudescription-input").value = description;
   }
 
   static editCertificationInputs(
@@ -93,10 +93,10 @@ class modalUI {
     description
   ) {
     document.getElementById("certification-form").dataset.id = id;
-    document.getElementById("certification-name").value = name;
-    document.getElementById("organizer").value = organizer;
-    document.getElementById("participation-date").value = participationDate;
-    document.getElementById("cer-description").value = description;
+    document.getElementById("certname-input").value = name;
+    document.getElementById("organizer-input").value = organizer;
+    document.getElementById("certdate-input").value = participationDate;
+    document.getElementById("cerdescription-input").value = description;
   }
 }
 

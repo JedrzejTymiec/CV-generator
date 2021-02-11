@@ -1,4 +1,4 @@
-import langSkillLevel from "./langSkillLevel";
+import langSkillLevel from "../langSkillLevel.js";
 import { v4 as uuidv4 } from "uuid";
 
 class Language {
@@ -137,23 +137,6 @@ class langSkillCRUD {
       localStorage.setItem("skillsData", JSON.stringify([data]));
     }
     this.readSkills();
-  }
-
-  static checkForDuplicates(data) {
-    let skillData = JSON.parse(localStorage.getItem("skillsData"));
-    if (skillData) {
-      let contains = skillData.filter((element) => {
-        if (data.skill === element.skill) {
-          return element;
-        }
-      });
-      if (contains.length !== 0) {
-        return true;
-      }
-      return false;
-    } else {
-      return false;
-    }
   }
 
   static deleteSkill(id) {

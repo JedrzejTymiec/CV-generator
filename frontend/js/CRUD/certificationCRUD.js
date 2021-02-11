@@ -3,10 +3,10 @@ import { v4 as uuidv4 } from "uuid";
 class Certification {
   constructor(id, name, organizer, participationDate, description) {
     this.id = id;
-    this.name = name;
+    this.certname = name;
     this.organizer = organizer;
-    this.participationDate = participationDate;
-    this.description = description;
+    this.certdate = participationDate;
+    this.cerdescription = description;
   }
 }
 
@@ -18,10 +18,10 @@ class certificationCRUD {
     } else {
       id = uuidv4();
     }
-    let name = document.getElementById("certification-name").value;
-    let organizer = document.getElementById("organizer").value;
-    let participationDate = document.getElementById("participation-date").value;
-    let description = document.getElementById("cer-description").value;
+    let name = document.getElementById("certname-input").value;
+    let organizer = document.getElementById("organizer-input").value;
+    let participationDate = document.getElementById("certdate-input").value;
+    let description = document.getElementById("cerdescription-input").value;
 
     let certificationData = new Certification(
       id,
@@ -100,10 +100,10 @@ class certificationCRUD {
             <i class="fas fa-edit" data-ceredit data-modal="certification"></i><i class="fas fa-trash-alt" data-cerdelete></i>
           </div>
           <ul class="entry-description">
-            <li>Okres: <span>${element.participationDate}</span></li>
-            <li>Nazwa: <span>${element.name}</span></li>
+            <li>Okres: <span>${element.certdate}</span></li>
+            <li>Nazwa: <span>${element.certname}</span></li>
             <li>Organizator: <span>${element.organizer}</span></li>
-            <li>Opis: <span>${element.description}</span>
+            <li>Opis: <span>${element.cerdescription}</span>
           </ul>
         </li>`;
       });
@@ -112,7 +112,7 @@ class certificationCRUD {
     if (certificationDataList && previewCertificationListContainer) {
       let previewCerList = certificationDataList.map((element) => {
         return `<div class="course-container">
-        <h3 class="course-name">${element.name}</h3>
+        <h3 class="course-name">${element.certname}</h3>
         <h4 class="course-organizer">${element.organizer}</h4>
       </div>`;
       });

@@ -4,12 +4,13 @@ import SkillsForm from "./views/SkillsForm.js";
 import Download from "./views/Download.js";
 import modalUI from "./modalUI.js";
 import appUI from "./appUI.js";
-import experienceCRUD from "./experienceCRUD.js";
-import educationCRUD from "./educationCRUD.js";
-import certificationCRUD from "./certificationCRUD.js";
-import basicDataCRUD from "./basicDataCRUD.js";
-import langSkillCRUD from "./languageSkillsCRUD.js";
-import completeCvCRUD from "./completeCvCRUD.js";
+import experienceCRUD from "./CRUD/experienceCRUD.js";
+import educationCRUD from "./CRUD/educationCRUD.js";
+import certificationCRUD from "./CRUD/certificationCRUD.js";
+import basicDataCRUD from "./CRUD/basicDataCRUD.js";
+import langSkillCRUD from "./CRUD/languageSkillsCRUD.js";
+import completeCvCRUD from "./CRUD/completeCvCRUD.js";
+import validation from "./validation.js";
 
 const navigateTo = (url) => {
   history.pushState(null, null, url);
@@ -76,48 +77,60 @@ const router = async () => {
     basic.addEventListener("submit", (e) => {
       e.preventDefault();
       let newData = basicDataCRUD.basicData();
-      basicDataCRUD.addBasicData(newData);
+      let valid = validation.validateData(newData);
+      if (valid) {
+        basicDataCRUD.addBasicData(newData);
+      }
     });
   }
   if (residence) {
     residence.addEventListener("submit", (e) => {
       e.preventDefault();
       let newData = basicDataCRUD.residenceData();
-      basicDataCRUD.addResidenceData(newData);
+      let valid = validation.validateData(newData);
+      if (valid) {
+        basicDataCRUD.addResidenceData(newData);
+      }
     });
   }
   if (contact) {
     contact.addEventListener("submit", (e) => {
       e.preventDefault();
       let newData = basicDataCRUD.contactData();
-      basicDataCRUD.addContactData(newData);
+      let valid = validation.validateData(newData);
+      if (valid) {
+        basicDataCRUD.addContactData(newData);
+      }
     });
   }
   if (language) {
     language.addEventListener("submit", (e) => {
       e.preventDefault();
       let newData = langSkillCRUD.languageData();
-      langSkillCRUD.addLanguage(newData);
+      let valid = validation.validateData(newData);
+      if (valid) {
+        let contains = validation.checkForDuplicates(newData);
+        if (contains) {
+          validation.showDoubleAlert("language");
+        } else {
+          langSkillCRUD.addLanguage(newData);
+        }
+      }
     });
   }
   if (skills) {
     skills.addEventListener("submit", (e) => {
       e.preventDefault();
       let newData = langSkillCRUD.skillData();
-      let contains = langSkillCRUD.checkForDuplicates(newData);
-      if (contains) {
-        document.getElementById("skill-input-alert").innerText =
-          "Skill already on list!";
-        document.getElementById("skill-input").style.borderBottom =
-          "1px solid #ff0000";
-        document.getElementById("skill-input").addEventListener("focus", () => {
-          document.getElementById("skill-input-alert").innerText = "";
-          document.getElementById("skill-input").style.borderBottom =
-            "1px solid #a0a0a0";
-        });
-      } else {
-        langSkillCRUD.addSkill(newData);
-        document.getElementById("skill-input").value = "";
+      let valid = validation.validateData(newData);
+      if (valid) {
+        let contains = validation.checkForDuplicates(newData);
+        if (contains) {
+          validation.showDoubleAlert("skill");
+        } else {
+          langSkillCRUD.addSkill(newData);
+          document.getElementById("skill-input").value = "";
+        }
       }
     });
   }

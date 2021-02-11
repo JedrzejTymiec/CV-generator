@@ -2,11 +2,12 @@ import mainPageUI from "./mainPageUI.js";
 import appUI from "./appUI.js";
 import modalUI from "./modalUI.js";
 import { router, navigateTo } from "./router.js";
-import experienceCRUD from "./experienceCRUD.js";
-import educationCRUD from "./educationCRUD.js";
-import certificationCRUD from "./certificationCRUD.js";
-import langSkillCRUD from "./languageSkillsCRUD.js";
-import completeCvCRUD from "./completeCvCRUD.js";
+import experienceCRUD from "./CRUD/experienceCRUD.js";
+import educationCRUD from "./CRUD/educationCRUD.js";
+import certificationCRUD from "./CRUD/certificationCRUD.js";
+import langSkillCRUD from "./CRUD/languageSkillsCRUD.js";
+import completeCvCRUD from "./CRUD/completeCvCRUD.js";
+import validation from "./validation.js";
 
 appUI.setTemplate();
 
@@ -91,32 +92,38 @@ let experienceForm = document.getElementById("experience-form");
 if (experienceForm) {
   experienceForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    let newJob;
+    let newData;
     let editId = document.getElementById("experience-form").dataset.id;
     if (editId !== "") {
-      newJob = experienceCRUD.experienceData(editId);
+      newData = experienceCRUD.experienceData(editId);
     } else {
-      newJob = experienceCRUD.experienceData();
+      newData = experienceCRUD.experienceData();
     }
-    experienceCRUD.addExperience(newJob);
-    modalUI.clearExperienceInputs();
-    modalUI.closeModal(e.target);
+    let valid = validation.validateData(newData);
+    if (valid) {
+      experienceCRUD.addExperience(newData);
+      modalUI.clearExperienceInputs();
+      modalUI.closeModal(e.target);
+    }
   });
 }
 let educationForm = document.getElementById("education-form");
 if (educationForm) {
   educationForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    let newEdu;
+    let newData;
     let editId = document.getElementById("education-form").dataset.id;
     if (editId != "") {
-      newEdu = educationCRUD.educationData(editId);
+      newData = educationCRUD.educationData(editId);
     } else {
-      newEdu = educationCRUD.educationData();
+      newData = educationCRUD.educationData();
     }
-    educationCRUD.addEducation(newEdu);
-    modalUI.clearEducationInputs();
-    modalUI.closeModal(e.target);
+    let valid = validation.validateData(newData);
+    if (valid) {
+      educationCRUD.addEducation(newData);
+      modalUI.clearEducationInputs();
+      modalUI.closeModal(e.target);
+    }
   });
 }
 
@@ -124,16 +131,19 @@ let certificationForm = document.getElementById("certification-form");
 if (certificationForm) {
   certificationForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    let newCer;
+    let newData;
     let editId = document.getElementById("certification-form").dataset.id;
     if (editId != "") {
-      newCer = certificationCRUD.certificationData(editId);
+      newData = certificationCRUD.certificationData(editId);
     } else {
-      newCer = certificationCRUD.certificationData();
+      newData = certificationCRUD.certificationData();
     }
-    certificationCRUD.addCertification(newCer);
-    modalUI.clearCertificationInputs();
-    modalUI.closeModal(e.target);
+    let valid = validation.validateData(newData);
+    if (valid) {
+      certificationCRUD.addCertification(newData);
+      modalUI.clearCertificationInputs();
+      modalUI.closeModal(e.target);
+    }
   });
 }
 
@@ -192,9 +202,9 @@ document.addEventListener("DOMContentLoaded", () => {
         jobToEdit.position,
         jobToEdit.company,
         jobToEdit.location,
-        jobToEdit.startDate,
-        jobToEdit.endDate,
-        jobToEdit.description
+        jobToEdit.expstart,
+        jobToEdit.expend,
+        jobToEdit.expdescription
       );
     } else if (e.target.matches("[data-edudelete]")) {
       educationCRUD.deleteEducation(e.target.parentNode.dataset.id);
@@ -206,12 +216,12 @@ document.addEventListener("DOMContentLoaded", () => {
       modalUI.openModal(e.target);
       modalUI.editEducationInputs(
         eduToEdit.id,
-        eduToEdit.educationLevel,
+        eduToEdit.edulevel,
         eduToEdit.school,
-        eduToEdit.spec,
-        eduToEdit.startDate,
-        eduToEdit.endDate,
-        eduToEdit.description
+        eduToEdit.specialization,
+        eduToEdit.edustart,
+        eduToEdit.eduend,
+        eduToEdit.edudescription
       );
     } else if (e.target.matches("[data-cerdelete]")) {
       certificationCRUD.deleteCertification(e.target.parentNode.dataset.id);
@@ -223,10 +233,10 @@ document.addEventListener("DOMContentLoaded", () => {
       modalUI.openModal(e.target);
       modalUI.editCertificationInputs(
         cerToEdit.id,
-        cerToEdit.name,
+        cerToEdit.certname,
         cerToEdit.organizer,
-        cerToEdit.participationDate,
-        cerToEdit.description
+        cerToEdit.certdate,
+        cerToEdit.cerdescription
       );
     } else if (e.target.matches("[data-landelete]")) {
       langSkillCRUD.deleteLanguage(e.target.parentNode.dataset.id);
