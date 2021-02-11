@@ -1,31 +1,58 @@
 import langSkillLevel from "./langSkillLevel";
+import { v4 as uuidv4 } from "uuid";
+
+class Language {
+  constructor(id, language, level) {
+    this.id = id;
+    this.language = language;
+    this.level = level;
+  }
+}
+
+class Skill {
+  constructor(id, skill, level) {
+    this.id = id;
+    this.skill = skill;
+    this.level = level;
+  }
+}
 
 class langSkillCRUD {
+  static languageData() {
+    let id = uuidv4();
+    let formLanguage = document.getElementById("language-input").value;
+    let level = document.getElementById("language-level-input").value;
+
+    let languageData = new Language(id, formLanguage, level);
+
+    return languageData;
+  }
+
   static addLanguage(data) {
-    let languageList = JSON.parse(localStorage.getItem("languageList"));
+    let languageList = JSON.parse(localStorage.getItem("languagesData"));
 
     if (languageList) {
       languageList.push(data);
-      localStorage.setItem("languageList", JSON.stringify(languageList));
+      localStorage.setItem("languagesData", JSON.stringify(languageList));
     } else {
-      localStorage.setItem("languageList", JSON.stringify([data]));
+      localStorage.setItem("languagesData", JSON.stringify([data]));
     }
     this.readLanguages();
   }
 
   static deleteLanguage(id) {
-    let languageList = JSON.parse(localStorage.getItem("languageList"));
+    let languageList = JSON.parse(localStorage.getItem("languagesData"));
     let newLangList = languageList.filter((element) => {
       if (element.id !== id) {
         return element;
       }
     });
-    localStorage.setItem("languageList", JSON.stringify(newLangList));
+    localStorage.setItem("languagesData", JSON.stringify(newLangList));
     this.readLanguages();
   }
 
   static readLanguages() {
-    let languageData = JSON.parse(localStorage.getItem("languageList"));
+    let languageData = JSON.parse(localStorage.getItem("languagesData"));
     let languageListContainer = document.getElementById(
       "form-languages-container"
     );
@@ -77,33 +104,60 @@ class langSkillCRUD {
       </div>`;
       });
       previewlanguageListContainer.innerHTML = previewLanguageList.join("");
+      languageData.forEach((element) => {
+        langSkillLevel.creativeLanguageLevel(
+          element.level.charAt(0),
+          element.language
+        );
+        langSkillLevel.radioButtonSkills(
+          element.language,
+          element.level.charAt(0)
+        );
+      });
     }
-    languageData.forEach((element) => {
-      langSkillLevel.creativeLanguageLevel(
-        element.level.charAt(0),
-        element.language
-      );
-      langSkillLevel.radioButtonSkills(
-        element.language,
-        element.level.charAt(0)
-      );
-    });
+  }
+
+  static skillData() {
+    let id = uuidv4();
+    let skill = document.getElementById("skill-input").value;
+    let level = document.getElementById("skill-level-input").value;
+
+    let skillData = new Skill(id, skill, level);
+
+    return skillData;
   }
 
   static addSkill(data) {
-    let skillData = JSON.parse(localStorage.getItem("skillData"));
+    let skillData = JSON.parse(localStorage.getItem("skillsData"));
 
     if (skillData) {
       skillData.push(data);
-      localStorage.setItem("skillData", JSON.stringify(skillData));
+      localStorage.setItem("skillsData", JSON.stringify(skillData));
     } else {
-      localStorage.setItem("skillData", JSON.stringify([data]));
+      localStorage.setItem("skillsData", JSON.stringify([data]));
     }
     this.readSkills();
   }
 
+  static checkForDuplicates(data) {
+    let skillData = JSON.parse(localStorage.getItem("skillsData"));
+    if (skillData) {
+      let contains = skillData.filter((element) => {
+        if (data.skill === element.skill) {
+          return element;
+        }
+      });
+      if (contains.length !== 0) {
+        return true;
+      }
+      return false;
+    } else {
+      return false;
+    }
+  }
+
   static deleteSkill(id) {
-    let skillData = JSON.parse(localStorage.getItem("skillData"));
+    let skillData = JSON.parse(localStorage.getItem("skillsData"));
 
     let newSkillData = skillData.filter((element) => {
       if (element.id !== id) {
@@ -111,12 +165,12 @@ class langSkillCRUD {
       }
     });
 
-    localStorage.setItem("skillData", JSON.stringify(newSkillData));
+    localStorage.setItem("skillsData", JSON.stringify(newSkillData));
     this.readSkills();
   }
 
   static readSkills() {
-    let skillData = JSON.parse(localStorage.getItem("skillData"));
+    let skillData = JSON.parse(localStorage.getItem("skillsData"));
     let formSkillContainer = document.getElementById("form-skills-container");
     let previewSkillContainer = document.getElementById(
       "preview-skills-container"
@@ -172,10 +226,13 @@ class langSkillCRUD {
       </li>`;
       });
       previewSkillContainer.innerHTML = previewSkillList.join("");
+      skillData.forEach((element) => {
+        langSkillLevel.radioButtonSkills(
+          element.skill,
+          element.level.charAt(0)
+        );
+      });
     }
-    skillData.forEach((element) => {
-      langSkillLevel.radioButtonSkills(element.skill, element.level.charAt(0));
-    });
   }
 }
 

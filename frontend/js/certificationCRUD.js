@@ -1,7 +1,41 @@
+import { v4 as uuidv4 } from "uuid";
+
+class Certification {
+  constructor(id, name, organizer, participationDate, description) {
+    this.id = id;
+    this.name = name;
+    this.organizer = organizer;
+    this.participationDate = participationDate;
+    this.description = description;
+  }
+}
+
 class certificationCRUD {
+  static certificationData(editId) {
+    let id;
+    if (editId) {
+      id = editId;
+    } else {
+      id = uuidv4();
+    }
+    let name = document.getElementById("certification-name").value;
+    let organizer = document.getElementById("organizer").value;
+    let participationDate = document.getElementById("participation-date").value;
+    let description = document.getElementById("cer-description").value;
+
+    let certificationData = new Certification(
+      id,
+      name,
+      organizer,
+      participationDate,
+      description
+    );
+    return certificationData;
+  }
+
   static addCertification(cer) {
     let certificationDataList = JSON.parse(
-      localStorage.getItem("certificationDataList")
+      localStorage.getItem("certificationData")
     );
     let nr;
     //checks if there is list of certifications to add to
@@ -20,37 +54,37 @@ class certificationCRUD {
         certificationDataList.push(cer);
       }
       localStorage.setItem(
-        "certificationDataList",
+        "certificationData",
         JSON.stringify(certificationDataList)
       );
     } else {
       //create new list if there isn't one
-      localStorage.setItem("certificationDataList", JSON.stringify([cer]));
+      localStorage.setItem("certificationData", JSON.stringify([cer]));
     }
     this.readCertification();
   }
 
   static deleteCertification(id) {
-    let cerList = JSON.parse(localStorage.getItem("certificationDataList"));
+    let cerList = JSON.parse(localStorage.getItem("certificationData"));
     let newCertificationList = cerList.filter((element) => {
       if (element.id != id) {
         return element;
       }
     });
     localStorage.setItem(
-      "certificationDataList",
+      "certificationData",
       JSON.stringify(newCertificationList)
     );
   }
 
   static updateCertification(id) {
-    let cerList = JSON.parse(localStorage.getItem("certificationDataList"));
+    let cerList = JSON.parse(localStorage.getItem("certificationData"));
     return cerList.find((element) => element.id === id);
   }
 
   static readCertification() {
     let certificationDataList = JSON.parse(
-      localStorage.getItem("certificationDataList")
+      localStorage.getItem("certificationData")
     );
     let formCertificationListContainer = document.getElementById(
       "form-certification-list"

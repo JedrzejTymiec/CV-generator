@@ -17,8 +17,9 @@ export default class extends AbstractView {
           <div class="back next-button">
             <i class="fas fa-download"></i>Download
           </div>
-          <div class="back next-button"><i class="far fa-save"></i>Save</div>
+          <div id="save-cv-button" class="back next-button"><i class="far fa-save"></i>Save</div>
         </div>
+        <div id="saved-cv-list"></div>
         `;
   }
 }

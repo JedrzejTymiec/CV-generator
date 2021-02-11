@@ -1,7 +1,8 @@
 :root {
   --background-color: #f1f1f1;
   --border-color: #d7d7d7;
-
+  --entry-bg: #d0d0d0;
+  --entry-hover: #c4c4c4;
   --label-color: #a3a3a3;
 }
 
@@ -292,7 +293,8 @@ button {
   width: 80%;
 }
 
-#form-languages-container, #form-skills-container {
+#form-languages-container,
+#form-skills-container {
   list-style: none;
   text-align: center;
   display: flex;
@@ -302,23 +304,26 @@ button {
   width: 100%;
 }
 
-.form-language-container, .form-skill-container {
+.form-language-container,
+.form-skill-container {
   margin: 5px 20px;
   width: 40%;
-  background-color: #b1b1b1;
+  background-color: var(--entry-bg);
   border-radius: 10px;
   display: flex;
   justify-content: space-evenly;
 }
 
-.form-language-container i, .form-skill-container i {
+.form-language-container i,
+.form-skill-container i {
   margin-left: 15px;
   transition: 250ms;
 }
 
-.form-language-container i:hover, .form-skill-container i:hover {
-  cursor:pointer;
-  color: #FFF;
+.form-language-container i:hover,
+.form-skill-container i:hover {
+  cursor: pointer;
+  color: #fff;
 }
 
 .language-form .form-group {
@@ -338,6 +343,11 @@ button {
 .experience-form-footer {
   display: flex;
   justify-content: space-evenly;
+}
+
+.form-group span {
+  color: #ff0000;
+  position: absolute;
 }
 
 /* Modals styles **************************************************************************/
@@ -421,6 +431,23 @@ button {
   border: none;
   border-bottom: 1px solid #a0a0a0;
   font-size: 18px;
+}
+
+#warning-modal .modal-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 400px;
+}
+
+#warning-modal .modal-content h1 {
+  font-size: 40px;
+  width: 90%;
+  text-align: center;
+}
+
+#warning-modal .modal-footer {
+  justify-self: flex-end;
 }
 
 /* Download style +-*********************************************************** */
@@ -533,7 +560,9 @@ button {
 }
 
 /* form experience entries ****************************************************** */
-#form-job-list, #form-education-list, #form-certification-list {
+#form-job-list,
+#form-education-list,
+#form-certification-list {
   list-style: none;
 }
 
@@ -550,13 +579,14 @@ button {
 }
 
 .entry-action-icons i:hover {
-  color: #FFF;
+  color: #fff;
   cursor: pointer;
 }
 
 .form-entry-container {
-  background-color: #b1b1b1;
+  background-color: var(--entry-bg);
   padding: 20px;
+
   margin-top: 15px;
 }
 
@@ -569,4 +599,54 @@ button {
   margin-top: 15px;
 }
 
-/* form education entries
+/* complete CV list */
+
+.cv-list-entry {
+  background-color: var(--entry-bg);
+  justify-items: center;
+
+  display: flex;
+  margin: 10px;
+  justify-content: space-between;
+}
+
+.entry-body-wrapper {
+  margin: 0;
+  display: flex;
+}
+
+.entry-wrapper {
+  position: relative;
+}
+
+.cv-action-icons {
+  font-size: 22px;
+  margin-right: 10px;
+  margin-top: 10px;
+  font-size: 22px;
+
+  position: absolute;
+
+  bottom: 60%;
+  left: 90%;
+}
+
+.cv-action-icons i {
+  transition: 250ms;
+}
+
+.cv-action-icons i:hover {
+  color: #fff;
+  cursor: pointer;
+}
+
+.cv-list-entry:hover {
+  background-color: var(--entry-hover);
+  cursor: pointer;
+}
+
+.cv-list-entry img {
+  width: 100px;
+  height: auto;
+  margin-right: 15px;
+}

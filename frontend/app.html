@@ -20,6 +20,22 @@
     />
   </head>
   <body>
+    <div id="warning-modal" class="modal">
+      <div class="modal-content">
+        <h1>Are you sure you want to delete this CV?</h1>
+        <div class="modal-footer">
+          <div data-modal="warning" class="button close-modal">Cancel</div>
+          <button
+            id="delete-cv-button"
+            data-modal="warning"
+            data-id=""
+            class="button"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
     <div id="experience-modal" class="modal">
       <div class="modal-content">
         <div class="modal-header">
@@ -216,7 +232,7 @@
       </ul>
     </section>
     <section class="app">
-      <div id="form-container"></div>
+      <div id="form-container" data-id=""></div>
       <div class="cv-preview-container">
         <div class="templates-container">
           <h4>Choosen template</h4>

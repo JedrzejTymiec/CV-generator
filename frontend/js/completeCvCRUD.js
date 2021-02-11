@@ -1,0 +1,143 @@
+import { v4 as uuidv4 } from "uuid";
+import { navigateTo } from "./router.js";
+
+class completeCV {
+  constructor(
+    id,
+    basic,
+    residence,
+    contact,
+    experience,
+    education,
+    languages,
+    skills,
+    certification
+  ) {
+    this.id = id;
+    this.basic = basic;
+    this.residence = residence;
+    this.contact = contact;
+    this.experience = experience;
+    this.education = education;
+    this.languages = languages;
+    this.skills = skills;
+    this.certification = certification;
+  }
+}
+
+class completeCvCRUD {
+  static completeCvData(editId) {
+    let id;
+    if (editId) {
+      id = editId;
+    } else {
+      id = uuidv4();
+    }
+    let basicData = JSON.parse(localStorage.getItem("basicData"));
+    let residenceData = JSON.parse(localStorage.getItem("residenceData"));
+    let contactData = JSON.parse(localStorage.getItem("contactData"));
+    let experienceData = JSON.parse(localStorage.getItem("experienceData"));
+    let educationData = JSON.parse(localStorage.getItem("educationData"));
+    let languagesData = JSON.parse(localStorage.getItem("languagesData"));
+    let skillsData = JSON.parse(localStorage.getItem("skillsData"));
+    let certificationData = JSON.parse(
+      localStorage.getItem("certificationData")
+    );
+
+    let newCv = new completeCV(
+      id,
+      basicData,
+      residenceData,
+      contactData,
+      experienceData,
+      educationData,
+      languagesData,
+      skillsData,
+      certificationData
+    );
+    return newCv;
+  }
+
+  static addCv(data) {
+    let cvData = JSON.parse(localStorage.getItem("completeCvList"));
+    let nr;
+    if (cvData) {
+      for (let i = 0; cvData.length > i; i++) {
+        if (cvData[i].id === data.id) {
+          nr = i;
+          break;
+        }
+      }
+      if (nr >= 0) {
+        cvData[nr] = data;
+      } else {
+        cvData.push(data);
+      }
+      localStorage.setItem("completeCvList", JSON.stringify(cvData));
+    } else {
+      localStorage.setItem("completeCvList", JSON.stringify([data]));
+    }
+    this.readCv();
+  }
+
+  static deleteCv(id) {
+    let cvData = JSON.parse(localStorage.getItem("completeCvList"));
+    let newCvData = cvData.filter((element) => {
+      if (element.id != id) {
+        return element;
+      }
+    });
+    localStorage.setItem("completeCvList", JSON.stringify(newCvData));
+  }
+
+  static updateCv(id) {
+    let cvData = JSON.parse(localStorage.getItem("completeCvList"));
+    let cvToEdit = cvData.find((element) => element.id === id);
+    document.getElementById("form-container").dataset.id = cvToEdit.id;
+    localStorage.setItem("basicData", JSON.stringify(cvToEdit.basic));
+    localStorage.setItem("residenceData", JSON.stringify(cvToEdit.residence));
+    localStorage.setItem("contactData", JSON.stringify(cvToEdit.contact));
+    localStorage.setItem("experienceData", JSON.stringify(cvToEdit.experience));
+    localStorage.setItem("educationData", JSON.stringify(cvToEdit.education));
+    localStorage.setItem("languagesData", JSON.stringify(cvToEdit.languages));
+    localStorage.setItem("skillsData", JSON.stringify(cvToEdit.skills));
+    localStorage.setItem(
+      "certificationData",
+      JSON.stringify(cvToEdit.certification)
+    );
+  }
+
+  static readCv() {
+    let cvData = JSON.parse(localStorage.getItem("completeCvList"));
+    let cvListContainer = document.getElementById("saved-cv-list");
+    if (cvData && cvListContainer) {
+      let cvList = cvData.map((element) => {
+        return `
+        <div class="entry-wrapper">
+          <div class="cv-list-entry" data-id=${element.id}>
+            <div class="entry-body-wrapper">
+              <img src="../pictures/240_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg" />
+              <div>
+                <h3>${element.basic.name} ${element.basic.surname}</h3>
+                <h5>${element.basic.proffesion}</h5>
+              </div>
+            </div>
+          </div>
+          <div class="cv-action-icons">
+            <i class="fas fa-trash-alt" data-cvdelete data-modal="warning" data-id=${element.id}></i>
+          </div>
+        </div>`;
+      });
+      cvListContainer.innerHTML = cvList.join("");
+    }
+    let cvEntriesList = document.getElementsByClassName("cv-list-entry");
+    for (let i = 0; cvEntriesList.length > i; i++) {
+      cvEntriesList[i].addEventListener("click", () => {
+        this.updateCv(cvEntriesList[i].dataset.id);
+        navigateTo("basic");
+      });
+    }
+  }
+}
+
+export default completeCvCRUD;

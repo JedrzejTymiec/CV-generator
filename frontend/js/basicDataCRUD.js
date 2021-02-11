@@ -1,4 +1,59 @@
+class BasicData {
+  constructor(name, surname, proffesion, about) {
+    this.name = name;
+    this.surname = surname;
+    this.proffesion = proffesion;
+    this.about = about;
+  }
+}
+
+class Residence {
+  constructor(country, city) {
+    this.country = country;
+    this.city = city;
+  }
+}
+
+class Contact {
+  constructor(phone, email, linkedin, github) {
+    this.phone = phone;
+    this.email = email;
+    this.linkedin = linkedin;
+    this.github = github;
+  }
+}
+
 class basicDataUpdate {
+  static basicData() {
+    let name = document.getElementById("name-input").value;
+    let surname = document.getElementById("surname-input").value;
+    let proffesion = document.getElementById("proffesion-input").value;
+    let about = document.getElementById("about-input").value;
+
+    let basicData = new BasicData(name, surname, proffesion, about);
+
+    return basicData;
+  }
+
+  static residenceData() {
+    let country = document.getElementById("country-input").value;
+    let city = document.getElementById("city-input").value;
+
+    let residenceData = new Residence(country, city);
+
+    return residenceData;
+  }
+
+  static contactData() {
+    let phone = document.getElementById("phone-input").value;
+    let email = document.getElementById("email-input").value;
+    let linkedin = document.getElementById("linkedin-input").value;
+    let github = document.getElementById("github-input").value;
+
+    let contactData = new Contact(phone, email, linkedin, github);
+
+    return contactData;
+  }
   static readBasicData() {
     let basicData = JSON.parse(localStorage.getItem("basicData"));
     let currentPage = window.location.href.substring(
@@ -56,38 +111,19 @@ class basicDataUpdate {
   }
 
   static addBasicData(data) {
-    let basicData = JSON.parse(localStorage.getItem("basicData"));
-
-    basicData.name = data.name;
-    basicData.surname = data.surname;
-    basicData.proffesion = data.proffesion;
-    basicData.about = data.about;
-
-    localStorage.setItem("basicData", JSON.stringify(basicData));
+    localStorage.setItem("basicData", JSON.stringify(data));
 
     this.readBasicData();
   }
 
   static addResidenceData(data) {
-    let residenceData = JSON.parse(localStorage.getItem("residenceData"));
-
-    residenceData.country = data.country;
-    residenceData.city = data.city;
-
-    localStorage.setItem("residenceData", JSON.stringify(residenceData));
+    localStorage.setItem("residenceData", JSON.stringify(data));
 
     this.readResidenceData();
   }
 
   static addContactData(data) {
-    let contactData = JSON.parse(localStorage.getItem("contactData"));
-
-    contactData.phone = data.phone;
-    contactData.email = data.email;
-    contactData.linkedin = data.linkedin;
-    contactData.github = data.github;
-
-    localStorage.setItem("contactData", JSON.stringify(contactData));
+    localStorage.setItem("contactData", JSON.stringify(data));
 
     this.readContactData();
   }

@@ -1,8 +1,54 @@
+import { v4 as uuidv4 } from "uuid";
+
+class Education {
+  constructor(
+    id,
+    educationLevel,
+    school,
+    spec,
+    startDate,
+    endDate,
+    description
+  ) {
+    this.id = id;
+    this.educationLevel = educationLevel;
+    this.school = school;
+    this.spec = spec;
+    this.startDate = startDate;
+    this.endDate = endDate;
+    this.description = description;
+  }
+}
+
 class educationCRUD {
-  static addEducation(edu) {
-    let educationDataList = JSON.parse(
-      localStorage.getItem("educationDataList")
+  static educationData(editId) {
+    let id;
+    if (editId) {
+      id = editId;
+    } else {
+      id = uuidv4();
+    }
+    let educationLevel = document.getElementById("education-level").value;
+    let school = document.getElementById("school").value;
+    let spec = document.getElementById("specialization").value;
+    let startDate = document.getElementById("edu-start-date").value;
+    let endDate = document.getElementById("edu-end-date").value;
+    let description = document.getElementById("edu-description").value;
+
+    let educationData = new Education(
+      id,
+      educationLevel,
+      school,
+      spec,
+      startDate,
+      endDate,
+      description
     );
+    return educationData;
+  }
+
+  static addEducation(edu) {
+    let educationDataList = JSON.parse(localStorage.getItem("educationData"));
     let nr;
     //checks if there is list of education to add to
     if (educationDataList) {
@@ -19,34 +65,31 @@ class educationCRUD {
       } else {
         educationDataList.push(edu);
       }
-      localStorage.setItem(
-        "educationDataList",
-        JSON.stringify(educationDataList)
-      );
+      localStorage.setItem("educationData", JSON.stringify(educationDataList));
     } else {
       //create new list if there isn't one
-      localStorage.setItem("educationDataList", JSON.stringify([edu]));
+      localStorage.setItem("educationData", JSON.stringify([edu]));
     }
     this.readEducation();
   }
 
   static deleteEducation(id) {
-    let eduList = JSON.parse(localStorage.getItem("educationDataList"));
+    let eduList = JSON.parse(localStorage.getItem("educationData"));
     let newEducationList = eduList.filter((element) => {
       if (element.id != id) {
         return element;
       }
     });
-    localStorage.setItem("educationDataList", JSON.stringify(newEducationList));
+    localStorage.setItem("educationData", JSON.stringify(newEducationList));
   }
 
   static updateEducation(id) {
-    let eduList = JSON.parse(localStorage.getItem("educationDataList"));
+    let eduList = JSON.parse(localStorage.getItem("educationData"));
     return eduList.find((element) => element.id === id);
   }
 
   static readEducation() {
-    let educationData = JSON.parse(localStorage.getItem("educationDataList"));
+    let educationData = JSON.parse(localStorage.getItem("educationData"));
     let formEducationListContainer = document.getElementById(
       "form-education-list"
     );

@@ -1,8 +1,54 @@
+import { v4 as uuidv4 } from "uuid";
+
+class Experience {
+  constructor(
+    id,
+    position,
+    company,
+    location,
+    startDate,
+    endDate,
+    description
+  ) {
+    this.id = id;
+    this.position = position;
+    this.company = company;
+    this.location = location;
+    this.startDate = startDate;
+    this.endDate = endDate;
+    this.description = description;
+  }
+}
+
 class experienceCRUD {
-  static addExperience(job) {
-    let experienceDataList = JSON.parse(
-      localStorage.getItem("experienceDataList")
+  static experienceData(editId) {
+    let id;
+    if (editId) {
+      id = editId;
+    } else {
+      id = uuidv4();
+    }
+    let position = document.getElementById("position").value;
+    let company = document.getElementById("company").value;
+    let location = document.getElementById("location").value;
+    let startDate = document.getElementById("exp-start-date").value;
+    let endDate = document.getElementById("exp-end-date").value;
+    let description = document.getElementById("exp-description").value;
+
+    let experienceData = new Experience(
+      id,
+      position,
+      company,
+      location,
+      startDate,
+      endDate,
+      description
     );
+    return experienceData;
+  }
+
+  static addExperience(job) {
+    let experienceDataList = JSON.parse(localStorage.getItem("experienceData"));
     let nr;
 
     //checks if there is list of jobs to add to
@@ -26,28 +72,28 @@ class experienceCRUD {
       );
     } else {
       //create new list if there isn't one
-      localStorage.setItem("experienceDataList", JSON.stringify([job]));
+      localStorage.setItem("experienceData", JSON.stringify([job]));
     }
     this.readExperience();
   }
 
   static deleteExperience(id) {
-    let jobList = JSON.parse(localStorage.getItem("experienceDataList"));
+    let jobList = JSON.parse(localStorage.getItem("experienceData"));
     let newJobList = jobList.filter((element) => {
       if (element.id != id) {
         return element;
       }
     });
-    localStorage.setItem("experienceDataList", JSON.stringify(newJobList));
+    localStorage.setItem("experienceData", JSON.stringify(newJobList));
   }
 
   static updateExperience(id) {
-    let jobList = JSON.parse(localStorage.getItem("experienceDataList"));
+    let jobList = JSON.parse(localStorage.getItem("experienceData"));
     return jobList.find((element) => element.id === id);
   }
 
   static readExperience() {
-    let experienceData = JSON.parse(localStorage.getItem("experienceDataList"));
+    let experienceData = JSON.parse(localStorage.getItem("experienceData"));
     let formJobListContainer = document.getElementById("form-job-list");
     let previewJobListContainer = document.getElementById(
       "preview-job-list-container"
@@ -69,7 +115,7 @@ class experienceCRUD {
       });
       formJobListContainer.innerHTML = jobList.join("");
     }
-    if (experienceData && previewJobListContainer) {
+    if (experienceData) {
       let previewJobList = experienceData.map((element) => {
         return `<div class="job-container">
         <div class="dash"></div>
@@ -84,9 +130,13 @@ class experienceCRUD {
 
       previewJobListContainer.innerHTML = previewJobList.join("");
 
-      document
-        .querySelector("#preview-job-list-container .job-container:last-child")
-        .setAttribute("id", "first-job");
+      if (experienceData.length > 0) {
+        document
+          .querySelector(
+            "#preview-job-list-container .job-container:last-child"
+          )
+          .setAttribute("id", "first-job");
+      }
     }
   }
 }

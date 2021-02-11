@@ -4,12 +4,12 @@ import SkillsForm from "./views/SkillsForm.js";
 import Download from "./views/Download.js";
 import modalUI from "./modalUI.js";
 import appUI from "./appUI.js";
-import formUI from "./formUI.js";
 import experienceCRUD from "./experienceCRUD.js";
 import educationCRUD from "./educationCRUD.js";
 import certificationCRUD from "./certificationCRUD.js";
 import basicDataCRUD from "./basicDataCRUD.js";
 import langSkillCRUD from "./languageSkillsCRUD.js";
+import completeCvCRUD from "./completeCvCRUD.js";
 
 const navigateTo = (url) => {
   history.pushState(null, null, url);
@@ -70,42 +70,67 @@ const router = async () => {
   let contact = document.getElementById("contact-form");
   let language = document.getElementById("language-form");
   let skills = document.getElementById("skills-form");
+  let saveCVButton = document.getElementById("save-cv-button");
 
   if (basic) {
     basic.addEventListener("submit", (e) => {
       e.preventDefault();
-      let newData = formUI.basicData();
-      console.log(newData);
+      let newData = basicDataCRUD.basicData();
       basicDataCRUD.addBasicData(newData);
     });
   }
   if (residence) {
     residence.addEventListener("submit", (e) => {
       e.preventDefault();
-      let newData = formUI.residenceData();
+      let newData = basicDataCRUD.residenceData();
       basicDataCRUD.addResidenceData(newData);
     });
   }
   if (contact) {
     contact.addEventListener("submit", (e) => {
       e.preventDefault();
-      let newData = formUI.contactData();
+      let newData = basicDataCRUD.contactData();
       basicDataCRUD.addContactData(newData);
     });
   }
   if (language) {
     language.addEventListener("submit", (e) => {
       e.preventDefault();
-      let newData = formUI.languageData();
+      let newData = langSkillCRUD.languageData();
       langSkillCRUD.addLanguage(newData);
     });
   }
   if (skills) {
     skills.addEventListener("submit", (e) => {
       e.preventDefault();
-      let newData = formUI.skillData();
-      langSkillCRUD.addSkill(newData);
-      document.getElementById("skill-input").value = "";
+      let newData = langSkillCRUD.skillData();
+      let contains = langSkillCRUD.checkForDuplicates(newData);
+      if (contains) {
+        document.getElementById("skill-input-alert").innerText =
+          "Skill already on list!";
+        document.getElementById("skill-input").style.borderBottom =
+          "1px solid #ff0000";
+        document.getElementById("skill-input").addEventListener("focus", () => {
+          document.getElementById("skill-input-alert").innerText = "";
+          document.getElementById("skill-input").style.borderBottom =
+            "1px solid #a0a0a0";
+        });
+      } else {
+        langSkillCRUD.addSkill(newData);
+        document.getElementById("skill-input").value = "";
+      }
+    });
+  }
+  if (saveCVButton) {
+    saveCVButton.addEventListener("click", () => {
+      let id = document.getElementById("form-container").dataset.id;
+      let newData;
+      if (id !== "") {
+        newData = completeCvCRUD.completeCvData(id);
+      } else {
+        newData = completeCvCRUD.completeCvData();
+      }
+      completeCvCRUD.addCv(newData);
     });
   }
 
@@ -128,6 +153,7 @@ const router = async () => {
   basicDataCRUD.readBasicData();
   basicDataCRUD.readResidenceData();
   basicDataCRUD.readContactData();
+  completeCvCRUD.readCv();
 };
 
 export { router, navigateTo };

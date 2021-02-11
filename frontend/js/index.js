@@ -1,12 +1,12 @@
 import mainPageUI from "./mainPageUI.js";
 import appUI from "./appUI.js";
 import modalUI from "./modalUI.js";
-import formUI from "./formUI.js";
 import { router, navigateTo } from "./router.js";
 import experienceCRUD from "./experienceCRUD.js";
 import educationCRUD from "./educationCRUD.js";
 import certificationCRUD from "./certificationCRUD.js";
 import langSkillCRUD from "./languageSkillsCRUD.js";
+import completeCvCRUD from "./completeCvCRUD.js";
 
 appUI.setTemplate();
 
@@ -87,52 +87,86 @@ for (var i = 0; appColorDots.length > i; i++) {
 }
 
 // MODAL SUBMIT liteners
+let experienceForm = document.getElementById("experience-form");
+if (experienceForm) {
+  experienceForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let newJob;
+    let editId = document.getElementById("experience-form").dataset.id;
+    if (editId !== "") {
+      newJob = experienceCRUD.experienceData(editId);
+    } else {
+      newJob = experienceCRUD.experienceData();
+    }
+    experienceCRUD.addExperience(newJob);
+    modalUI.clearExperienceInputs();
+    modalUI.closeModal(e.target);
+  });
+}
+let educationForm = document.getElementById("education-form");
+if (educationForm) {
+  educationForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let newEdu;
+    let editId = document.getElementById("education-form").dataset.id;
+    if (editId != "") {
+      newEdu = educationCRUD.educationData(editId);
+    } else {
+      newEdu = educationCRUD.educationData();
+    }
+    educationCRUD.addEducation(newEdu);
+    modalUI.clearEducationInputs();
+    modalUI.closeModal(e.target);
+  });
+}
 
-document.getElementById("experience-form").addEventListener("submit", (e) => {
-  e.preventDefault();
-  let newJob;
-  let editId = document.getElementById("experience-form").dataset.id;
-  if (editId !== "") {
-    newJob = formUI.experienceData(editId);
-  } else {
-    newJob = formUI.experienceData();
-  }
-  experienceCRUD.addExperience(newJob);
-  modalUI.clearExperienceInputs();
-  modalUI.closeModal(e.target);
-});
-
-document.getElementById("education-form").addEventListener("submit", (e) => {
-  e.preventDefault();
-  let newEdu;
-  let editId = document.getElementById("education-form").dataset.id;
-  if (editId != "") {
-    newEdu = formUI.educationData(editId);
-  } else {
-    newEdu = formUI.educationData();
-  }
-  educationCRUD.addEducation(newEdu);
-  modalUI.clearEducationInputs();
-  modalUI.closeModal(e.target);
-});
-
-document
-  .getElementById("certification-form")
-  .addEventListener("submit", (e) => {
+let certificationForm = document.getElementById("certification-form");
+if (certificationForm) {
+  certificationForm.addEventListener("submit", (e) => {
     e.preventDefault();
     let newCer;
     let editId = document.getElementById("certification-form").dataset.id;
     if (editId != "") {
-      newCer = formUI.certificationData(editId);
+      newCer = certificationCRUD.certificationData(editId);
     } else {
-      newCer = formUI.certificationData();
+      newCer = certificationCRUD.certificationData();
     }
     certificationCRUD.addCertification(newCer);
     modalUI.clearCertificationInputs();
     modalUI.closeModal(e.target);
   });
+}
 
-window.addEventListener("popstate", router);
+let deleteCvButton = document.getElementById("delete-cv-button");
+if (deleteCvButton) {
+  deleteCvButton.addEventListener("click", (e) => {
+    completeCvCRUD.deleteCv(e.target.dataset.id);
+    modalUI.closeModal(e.target);
+    completeCvCRUD.readCv();
+  });
+}
+
+let currentPage = window.location.href.substring(
+  window.location.href.lastIndexOf("/") + 1
+);
+
+if (currentPage !== "") {
+  window.addEventListener("popstate", router);
+}
+
+let newButton = document.getElementById("new-button");
+if (newButton) {
+  newButton.addEventListener("click", () => {
+    localStorage.removeItem("basicData");
+    localStorage.removeItem("residenceData");
+    localStorage.removeItem("contactData");
+    localStorage.removeItem("experienceData");
+    localStorage.removeItem("educationData");
+    localStorage.removeItem("languagesData");
+    localStorage.removeItem("skillsData");
+    localStorage.removeItem("certificationData");
+  });
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   document.body.addEventListener("click", (e) => {
@@ -183,7 +217,6 @@ document.addEventListener("DOMContentLoaded", () => {
       certificationCRUD.deleteCertification(e.target.parentNode.dataset.id);
       certificationCRUD.readCertification();
     } else if (e.target.matches("[data-ceredit]")) {
-      // console.log(e.target.parentNode.dataset.id);
       let cerToEdit = certificationCRUD.updateCertification(
         e.target.parentNode.dataset.id
       );
@@ -199,7 +232,16 @@ document.addEventListener("DOMContentLoaded", () => {
       langSkillCRUD.deleteLanguage(e.target.parentNode.dataset.id);
     } else if (e.target.matches("[data-skidelete]")) {
       langSkillCRUD.deleteSkill(e.target.parentNode.dataset.id);
+    } else if (e.target.matches("[data-cvdelete]")) {
+      modalUI.openModal(e.target);
+      document.getElementById("delete-cv-button").dataset.id =
+        e.target.dataset.id;
     }
   });
-  router();
+  let currentPage = window.location.href.substring(
+    window.location.href.lastIndexOf("/") + 1
+  );
+  if (currentPage !== "") {
+    router();
+  }
 });
