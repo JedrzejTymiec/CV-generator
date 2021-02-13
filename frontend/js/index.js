@@ -9,6 +9,8 @@ import langSkillCRUD from "./CRUD/languageSkillsCRUD.js";
 import completeCvCRUD from "./CRUD/completeCvCRUD.js";
 import validation from "./validation.js";
 
+("use strict");
+
 appUI.setTemplate();
 
 let templateButtons = document.getElementsByClassName("mp template-button");
@@ -185,10 +187,24 @@ document.addEventListener("DOMContentLoaded", () => {
       navigateTo(e.target.href);
     } else if (e.target.parentNode.matches("[data-link]")) {
       e.preventDefault();
-      navigateTo(e.target.parentNode.href);
+      if (e.target.matches("[data-valid]")) {
+        let valid = validation.validateBasicPage();
+        if (valid) {
+          navigateTo(e.target.parentNode.href);
+        }
+      } else {
+        navigateTo(e.target.parentNode.href);
+      }
     } else if (e.target.parentNode.parentNode.matches("[data-link]")) {
       e.preventDefault();
-      navigateTo(e.target.parentNode.parentNode.href);
+      if (e.target.parentNode.matches("[data-valid]")) {
+        let valid = validation.validateBasicPage();
+        if (valid) {
+          navigateTo(e.target.parentNode.parentNode.href);
+        }
+      } else {
+        navigateTo(e.target.parentNode.parentNode.href);
+      }
     } else if (e.target.matches("[data-expdelete]")) {
       experienceCRUD.deleteExperience(e.target.parentNode.dataset.id);
       experienceCRUD.readExperience();

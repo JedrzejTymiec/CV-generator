@@ -143,29 +143,32 @@ const router = async () => {
       } else {
         newData = completeCvCRUD.completeCvData();
       }
-      completeCvCRUD.addCv(newData);
+      let valid = validation.completeValidation(newData);
+      if (valid) {
+        completeCvCRUD.addCv(newData);
+      }
     });
   }
 
   let currentPage = window.location.href.substring(
     window.location.href.lastIndexOf("/") + 1
   );
-
   appUI.pagesDone(currentPage);
 
-  if (currentPage === "experience") {
-    langSkillCRUD.readLanguages();
-  } else if (currentPage === "skills") {
-    langSkillCRUD.readSkills();
-  } else if (currentPage === "basic") {
-  }
-
-  experienceCRUD.readExperience();
-  educationCRUD.readEducation();
-  certificationCRUD.readCertification();
   basicDataCRUD.readBasicData();
   basicDataCRUD.readResidenceData();
   basicDataCRUD.readContactData();
+
+  if (document.getElementById("form-container").dataset.valid === "false") {
+    validation.validateBasicPage();
+  }
+
+  langSkillCRUD.readLanguages();
+  langSkillCRUD.readSkills();
+  experienceCRUD.readExperience();
+  educationCRUD.readEducation();
+  certificationCRUD.readCertification();
+
   completeCvCRUD.readCv();
 };
 

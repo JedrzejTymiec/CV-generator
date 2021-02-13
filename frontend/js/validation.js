@@ -1,3 +1,5 @@
+import basicDataCRUD from "./CRUD/basicDataCRUD.js";
+
 class validation {
   static checkForDuplicates(data) {
     let listData;
@@ -52,7 +54,6 @@ class validation {
         invalidData.push(prop);
       }
     }
-    console.log(invalidData);
     if (invalidData.length > 0) {
       for (let i = 0; invalidData.length > i; i++) {
         this.showEmptyAlert(invalidData[i]);
@@ -61,6 +62,40 @@ class validation {
       return true;
     }
   }
+
+  static completeValidation(data) {
+    if (
+      data.basic === null ||
+      data.contact === null ||
+      data.residence === null
+    ) {
+      document.getElementById("complete-cv-warning").style.zIndex = "1";
+      document.getElementById("form-container").dataset.valid = "false";
+    } else {
+      document.getElementById("form-container").dataset.valid = "true";
+      return true;
+    }
+  }
+
+  static validateBasicPage() {
+    let basicData = basicDataCRUD.basicData();
+    let contactData = basicDataCRUD.contactData();
+    let residenceData = basicDataCRUD.residenceData();
+    let basic = this.validateData(basicData);
+    let contact = this.validateData(contactData);
+    let residence = this.validateData(residenceData);
+    if (basic && contact && residence) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  // static dateValidation(data) {
+  //   let startDate;
+  //   let endDate;
+
+  // }
 }
 
 export default validation;

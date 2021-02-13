@@ -64,7 +64,7 @@ class experienceCRUD {
       if (nr >= 0) {
         experienceDataList[nr] = job;
       } else {
-        experienceDataList.push(job);
+        experienceDataList.unshift(job);
       }
       localStorage.setItem(
         "experienceData",

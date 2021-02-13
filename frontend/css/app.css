@@ -477,6 +477,18 @@ button {
   color: var(--label-color);
 }
 
+#complete-cv-warning {
+  color: red;
+  margin-bottom: 0;
+  position: relative;
+  z-index: -1;
+}
+
+#download-button,
+#save-cv-button {
+  margin-top: 30px;
+}
+
 /* CV preview styles ******************************************************** */
 
 .cv-preview-container {

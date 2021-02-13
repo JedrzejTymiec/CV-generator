@@ -329,7 +329,7 @@ export default class extends AbstractView {
           <h4 class="form-label">* Required fields</h4>
         </form>
         <a href="/app/experience" data-link>
-          <div class="next-button">
+          <div class="next-button" data-valid>
             Next<i class="fas fa-arrow-right"></i>
           </div>
         </a>

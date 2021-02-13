@@ -63,7 +63,7 @@ class educationCRUD {
       if (nr >= 0) {
         educationDataList[nr] = edu;
       } else {
-        educationDataList.push(edu);
+        educationDataList.unshift(edu);
       }
       localStorage.setItem("educationData", JSON.stringify(educationDataList));
     } else {

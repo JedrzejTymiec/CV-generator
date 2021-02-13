@@ -12,9 +12,10 @@ export default class extends AbstractView {
           <h1>Congratulations!</h1>
           <h3>Your CV is reday!</h3>
           <h4>Download your CV as PDF file or save it</h4>
+          <h4 id="complete-cv-warning">You need to fill required fields first</h4>
         </div>
         <div class="experience-form-footer">
-          <div class="back next-button">
+          <div id="download-button" class="back next-button">
             <i class="fas fa-download"></i>Download
           </div>
           <div id="save-cv-button" class="back next-button"><i class="far fa-save"></i>Save</div>
