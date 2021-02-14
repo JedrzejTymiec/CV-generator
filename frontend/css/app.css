@@ -148,8 +148,35 @@ form h4 {
 .photo-container {
   position: relative;
   margin-left: 5%;
+  display: flex;
+  margin: auto;
 
   max-width: 220px;
+}
+
+.photo-container input {
+  display: none;
+}
+
+#form-photo {
+  object-fit: cover;
+  overflow: hidden;
+  width: auto;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#image-field {
+  position: relative;
+  border: 1px solid var(--border-color);
+  height: 150px;
+  width: 150px;
+  text-align: center;
+  padding-top: 50px;
+  color: var(--border-color);
+  cursor: pointer;
 }
 
 .form-photo {
@@ -160,6 +187,16 @@ form h4 {
 }
 
 .delete-photo-button {
+  display: none;
+}
+
+#save-photo-button {
+  display: block;
+  cursor: pointer;
+}
+
+.delete-photo-button,
+#save-photo-button {
   background-color: #1825aa;
 
   height: 40px;
@@ -170,12 +207,13 @@ form h4 {
   color: #fff;
 
   position: absolute;
-  bottom: -10px;
-  right: -20px;
+  bottom: -5%;
+  right: 25%;
 }
 
-.delete-photo-button i {
-  font-size: 18px;
+.delete-photo-button i,
+#save-photo-button i {
+  font-size: 22px;
   margin-top: 10px;
 }
 

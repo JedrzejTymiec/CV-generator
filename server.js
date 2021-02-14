@@ -1,5 +1,8 @@
 const express = require("express");
 const path = require("path");
+const fs = require("fs");
+const bodyParser = require("body-parser");
+const fileupload = require("express-fileupload");
 
 const app = express();
 
@@ -23,6 +26,27 @@ app.get("/", (req, res) => {
 
 app.get("/app*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "frontend", "app.html"));
+});
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(fileupload());
+
+app.post("/upload", (req, res) => {
+  let fileName = req.files.file.name;
+  let path = __dirname + "/pictures/" + fileName;
+  req.files.file.mv(path, (err) => {
+    console.error(err);
+    res.writeHead(500, {
+      "Content-Type": "application/json",
+    });
+    res.end(JSON.stringify({ status: "error", message: err }));
+  });
+
+  res.writeHead(200, {
+    "Content-Type": "application/json",
+  });
+  res.end(JSON.stringify({ status: "success", path: path }));
 });
 
 const port = process.env.PORT || 5000;
