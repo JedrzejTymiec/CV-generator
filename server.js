@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
 const fileupload = require("express-fileupload");
+const fs = require("fs");
 
 const app = express();
 
@@ -47,6 +48,20 @@ app.post("/upload", (req, res) => {
   //   "Content-Type": "application/json",
   // });
   res.send(JSON.stringify({ status: "success", path: path }));
+});
+
+app.delete("/delete", (req, res) => {
+  console.log(req.body);
+  let name = req.body.name;
+  let path = __dirname + "/pictures/" + name;
+
+  fs.unlink(path, (err) => {
+    if (err) {
+      console.log(err);
+    }
+  });
+
+  res.send(req.body);
 });
 
 const port = process.env.PORT || 5000;

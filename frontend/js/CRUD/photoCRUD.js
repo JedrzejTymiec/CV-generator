@@ -1,18 +1,20 @@
 import { click, dropHandle, updatePhoto } from "../photoUpload.js";
 
 class PhotoData {
-  constructor(isPhoto, path) {
+  constructor(isPhoto, name, path) {
     this.isPhoto = isPhoto;
+    this.name = name;
     this.path = path;
   }
 }
 
 class photoCRUD {
-  static photoData(name) {
+  static photoData(data) {
     let isPhoto = true;
+    let name = data;
     let path = "../pictures/" + name;
 
-    let photoData = new PhotoData(isPhoto, path);
+    let photoData = new PhotoData(isPhoto, name, path);
 
     return photoData;
   }

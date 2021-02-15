@@ -1,4 +1,3 @@
-import basicDataUpdate from "./CRUD/basicDataCRUD";
 import photoCRUD from "./CRUD/photoCRUD";
 
 function photoUpload() {
@@ -63,17 +62,31 @@ function photoUpload() {
 
   document
     .getElementById("delete-photo-button")
-    .addEventListener("click", () => {
-      photoCRUD.deletePhoto();
-      photoCRUD.readPhoto();
-      imageField.addEventListener("click", click);
-      imageField.addEventListener("drop", dropHandle);
-      document.getElementById("image-input-alert").style.display = "block";
-      document.getElementById("image-input-alert").style.color = "#ff0000";
-      document.getElementById("image-input-alert").innerText = "Photo deleted!";
-      setTimeout(() => {
-        document.getElementById("image-input-alert").style.display = "none";
-      }, 3000);
+    .addEventListener("click", async () => {
+      let photoData = JSON.parse(localStorage.getItem("photoData"));
+      let body = new FormData();
+
+      body.append("name", photoData.name);
+      try {
+        let res = await fetch("/delete", {
+          method: "DELETE",
+          body: body,
+        });
+        photoCRUD.deletePhoto();
+        photoCRUD.readPhoto();
+        imageField.addEventListener("click", click);
+        imageField.addEventListener("drop", dropHandle);
+        document.getElementById("image-input-alert").style.display = "block";
+        document.getElementById("image-input-alert").style.color = "#ff0000";
+        document.getElementById("image-input-alert").innerText =
+          "Photo deleted!";
+        setTimeout(() => {
+          document.getElementById("image-input-alert").style.display = "none";
+        }, 3000);
+      } catch (err) {
+        console.log("Error!");
+        console.log(err);
+      }
     });
 }
 
