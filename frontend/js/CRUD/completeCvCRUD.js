@@ -4,6 +4,7 @@ import { navigateTo } from "../router";
 class completeCV {
   constructor(
     id,
+    photo,
     basic,
     residence,
     contact,
@@ -14,6 +15,7 @@ class completeCV {
     certification
   ) {
     this.id = id;
+    this.photo = photo;
     this.basic = basic;
     this.residence = residence;
     this.contact = contact;
@@ -33,6 +35,7 @@ class completeCvCRUD {
     } else {
       id = uuidv4();
     }
+    let photoData = JSON.parse(localStorage.getItem("photoData"));
     let basicData = JSON.parse(localStorage.getItem("basicData"));
     let residenceData = JSON.parse(localStorage.getItem("residenceData"));
     let contactData = JSON.parse(localStorage.getItem("contactData"));
@@ -46,6 +49,7 @@ class completeCvCRUD {
 
     let newCv = new completeCV(
       id,
+      photoData,
       basicData,
       residenceData,
       contactData,
@@ -112,11 +116,12 @@ class completeCvCRUD {
     let cvListContainer = document.getElementById("saved-cv-list");
     if (cvData && cvListContainer) {
       let cvList = cvData.map((element) => {
+        console.log(element);
         return `
         <div class="entry-wrapper">
           <div class="cv-list-entry" data-id=${element.id}>
             <div class="entry-body-wrapper">
-              <img src="../pictures/240_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg" />
+              <img src="${element.photo.path}" />
               <div>
                 <h3>${element.basic.name} ${element.basic.surname}</h3>
                 <h5>${element.basic.proffesion}</h5>

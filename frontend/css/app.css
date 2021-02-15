@@ -188,8 +188,9 @@ form h4 {
   -webkit-filter: blur(1.5px);
 }
 
-.delete-photo-button {
-  display: block;
+#delete-photo-button {
+  display: none;
+  cursor: pointer;
 }
 
 #save-photo-button {
@@ -197,7 +198,7 @@ form h4 {
   cursor: pointer;
 }
 
-.delete-photo-button,
+#delete-photo-button,
 #save-photo-button {
   background-color: #1825aa;
 
@@ -217,7 +218,7 @@ form h4 {
   align-items: center;
 }
 
-.delete-photo-button i,
+#delete-photo-button i,
 #save-photo-button i {
   font-size: 30px;
 }
@@ -671,6 +672,10 @@ button {
 .entry-body-wrapper {
   margin: 0;
   display: flex;
+}
+
+.entry-body-wrapper img {
+  object-fit: cover;
 }
 
 .entry-wrapper {

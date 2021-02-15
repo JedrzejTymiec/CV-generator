@@ -54,6 +54,7 @@ class basicDataUpdate {
 
     return contactData;
   }
+
   static readBasicData() {
     let basicData = JSON.parse(localStorage.getItem("basicData"));
     let currentPage = window.location.href.substring(

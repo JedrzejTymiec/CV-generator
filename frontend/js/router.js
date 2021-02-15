@@ -11,6 +11,7 @@ import basicDataCRUD from "./CRUD/basicDataCRUD.js";
 import langSkillCRUD from "./CRUD/languageSkillsCRUD.js";
 import completeCvCRUD from "./CRUD/completeCvCRUD.js";
 import validation from "./validation.js";
+import photoCRUD from "./CRUD/photoCRUD.js";
 import { photoUpload } from "./photoUpload.js";
 
 const navigateTo = (url) => {
@@ -76,6 +77,7 @@ const router = async () => {
 
   if (basic) {
     photoUpload();
+    photoCRUD.readPhoto();
     basic.addEventListener("submit", (e) => {
       e.preventDefault();
       let newData = basicDataCRUD.basicData();
@@ -157,6 +159,7 @@ const router = async () => {
   );
   appUI.pagesDone(currentPage);
 
+  photoCRUD.readPhoto();
   basicDataCRUD.readBasicData();
   basicDataCRUD.readResidenceData();
   basicDataCRUD.readContactData();
