@@ -11,7 +11,7 @@ import basicDataCRUD from "./CRUD/basicDataCRUD.js";
 import langSkillCRUD from "./CRUD/languageSkillsCRUD.js";
 import completeCvCRUD from "./CRUD/completeCvCRUD.js";
 import validation from "./validation.js";
-import photo from "./photoUpload.js";
+import { photoUpload } from "./photoUpload.js";
 
 const navigateTo = (url) => {
   history.pushState(null, null, url);
@@ -75,7 +75,7 @@ const router = async () => {
   let saveCVButton = document.getElementById("save-cv-button");
 
   if (basic) {
-    photo.addListeners();
+    photoUpload();
     basic.addEventListener("submit", (e) => {
       e.preventDefault();
       let newData = basicDataCRUD.basicData();

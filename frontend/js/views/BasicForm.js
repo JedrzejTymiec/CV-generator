@@ -12,17 +12,17 @@ export default class extends AbstractView {
           <h1 class="form-title">Photo</h1>
           <h4 class="form-label">Show photo in resume <>add toggle switch<></add></h4>
           <div class="photo-container">
-            <label id="image-field">
-              <input type="file" id="image-input" accept="image/png, image/jpeg">
-              Click or drag</br> to upload
-            </label>
-            <span id="image-input-alert"></span> 
+            <div id="image-field">
+              <span class="input-placeholder">Drop file</br> or click to upload</span>
+              <input type="file" id="image-input">
+            </div>
+            <span id="image-input-alert"></span>
             <div class="delete-photo-button">
               <i class="fas fa-trash-alt"></i>
             </div>
             <div id="save-photo-button">
               <i class="far fa-save"></i>
-            </div>
+            </div> 
           </div>
           <h1 class="form-title">Basic data</h1>
           <div class="form-group">

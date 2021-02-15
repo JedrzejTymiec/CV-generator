@@ -1,122 +1,104 @@
-class photo {
-  static addListeners() {
-    let imageField = document.getElementById("image-field");
-    let imageInput = document.getElementById("image-input");
-    let fileName;
+function photoUpload() {
+  const imageField = document.getElementById("image-field");
+  const imageInput = document.getElementById("image-input");
 
-    [
-      "drag",
-      "dragstart",
-      "dragend",
-      "dragover",
-      "dragenter",
-      "dragleave",
-      "drop",
-    ].forEach((dragEvent) => {
-      imageField.addEventListener(dragEvent, preventDragDefault);
-    });
+  imageField.addEventListener("click", () => {
+    imageInput.click();
+  });
 
-    ["dragover", "dragenter"].forEach((dragEvent) => {
-      imageField.addEventListener(dragEvent, () => {
-        imageField.classList.add("dragging");
-      });
-    });
-
-    ["dragleave", "dragend", "drop"].forEach((dragEvent) => {
-      imageField.addEventListener(dragEvent, () => {
-        imageField.classList.remove("dragging");
-      });
-    });
-
-    document.getElementById("image-input").onchange = (e) => {
-      let file = e.target.files[0];
-
-      if (checkFileProperties(file)) {
-        handleUploadedFile(file);
-      }
-    };
-
-    function preventDragDefault(e) {
-      e.preventDefault();
-      e.stopPropagation();
+  imageInput.addEventListener("change", () => {
+    if (imageInput.isDefaultNamespace.length) {
+      updatePhoto(imageInput.files[0]);
     }
+  });
 
-    function checkFileProperties(file) {
-      //   theErrorMessage.classList.add("hide");
-      //   theSuccessMessage.classList.add("hide");
+  imageField.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    imageField.classList.add("dragging");
+  });
 
-      if (file.type !== "image/png" && file.type !== "image/jpeg") {
-        console.log("File type mismatch");
-        // theErrorMessage.innerHTML = "File type should be png or jpg/jpeg...";
-        // theErrorMessage.classList.remove("hide");
-        return false;
-      }
+  ["dragleave", "dragend"].forEach((drag) => {
+    imageField.addEventListener(drag, () => {
+      imageField.classList.remove("dragging");
+    });
+  });
 
-      if (file.size > 500000) {
-        console.log("File too large");
-        // theErrorMessage.innerHTML =
-        //  "File too large, cannot be more than 500KB...";
-        // theErrorMessage.classList.remove("hide");
-        return false;
-      }
+  imageField.addEventListener("drop", (e) => {
+    e.preventDefault();
 
-      return true;
+    if (e.dataTransfer.files.length == 1) {
+      imageInput.files = e.dataTransfer.files;
+
+      updatePhoto(e.dataTransfer.files[0]);
+    } else {
+      document.getElementById("image-input-alert").style.display = "block";
+      document.getElementById("image-input-alert").innerText =
+        "Only one file can be uploaded";
+      imageField.classList.remove("dragging");
+      imageField.addEventListener("click", () => {
+        document.getElementById("image-input-alert").style.display = "none";
+      });
     }
+  });
 
-    const handleUploadedFile = (file) => {
-      fileName = file.name;
-      clearImage();
-      let img = document.createElement("img");
-      img.setAttribute("id", "form-photo");
-      img.file = file;
-      imageField.appendChild(img);
+  document
+    .getElementById("save-photo-button")
+    .addEventListener("click", async () => {
+      let body = new FormData();
 
-      let reader = new FileReader();
-      reader.onload = ((img) => {
-        return (e) => {
-          img.src = e.target.result;
-        };
-      })(img);
-      reader.readAsDataURL(file);
-    };
-
-    const clearImage = (e) => {
-      if (e) {
-        e.preventDefault();
-      }
-
-      let img = document.getElementById("form-photo");
-
-      if (img) {
-        imageField.removeChild(img);
-        imageInput.value = null;
-      }
-    };
-
-    document
-      .getElementById("save-photo-button")
-      .addEventListener("click", () => {
-        let img = document.getElementById("form-photo");
-        let imgI = document.getElementById("image-input");
-        let body = new FormData();
-
-        body.append("file", imgI.files[0]);
-        body.append("name", "name");
-
-        console.log(body);
-
-        fetch("/upload", {
+      body.append("file", imageInput.files[0]);
+      body.append("name", "name");
+      try {
+        let res = await fetch("/upload", {
           method: "POST",
           body: body,
-        })
-          .then((res) => {
-            res.json();
-          })
-          .then((data) => {
-            console.log(data);
-          });
-      });
+        });
+        console.log("Response:");
+        console.log(await res.json());
+        document.getElementById("image-input-alert").style.display = "block";
+        document.getElementById("image-input-alert").style.color = "#54AD67";
+        document.getElementById("image-input-alert").innerText =
+          "Photo uploaded!";
+        setTimeout(() => {
+          document.getElementById("image-input-alert").style.display = "none";
+        }, 3000);
+      } catch (err) {
+        console.log("Error!");
+        console.log(err);
+      }
+    });
+}
+
+function updatePhoto(file) {
+  const imageField = document.getElementById("image-field");
+
+  if (file.type.startsWith("image/")) {
+    if (document.querySelector("#image-field span")) {
+      document.querySelector("#image-field span").remove();
+    }
+    const reader = new FileReader();
+
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      photoElement.style.backgroundImage = `url('${reader.result}')`;
+    };
+
+    let photoElement = document.getElementById("photo");
+
+    if (!photoElement) {
+      photoElement = document.createElement("div");
+      photoElement.setAttribute("id", "photo");
+      imageField.appendChild(photoElement);
+    }
+  } else {
+    document.getElementById("image-input-alert").style.display = "block";
+    document.getElementById("image-input-alert").innerText =
+      "Only image files accepted";
+    imageField.classList.remove("dragging");
+    imageField.addEventListener("click", () => {
+      document.getElementById("image-input-alert").style.display = "none";
+    });
   }
 }
 
-export default photo;
+export { photoUpload };

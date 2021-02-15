@@ -1,6 +1,5 @@
 const express = require("express");
 const path = require("path");
-const fs = require("fs");
 const bodyParser = require("body-parser");
 const fileupload = require("express-fileupload");
 
@@ -35,18 +34,19 @@ app.use(fileupload());
 app.post("/upload", (req, res) => {
   let fileName = req.files.file.name;
   let path = __dirname + "/pictures/" + fileName;
-  req.files.file.mv(path, (err) => {
-    console.error(err);
-    res.writeHead(500, {
-      "Content-Type": "application/json",
-    });
-    res.end(JSON.stringify({ status: "error", message: err }));
-  });
+  req.files.file.mv(path);
+  //  (err) => {
+  //   console.error(err);
+  //   res.writeHead(500, {
+  //     "Content-Type": "application/json",
+  //   });
+  //   res.end(JSON.stringify({ status: "error", message: err }));
+  // });
 
-  res.writeHead(200, {
-    "Content-Type": "application/json",
-  });
-  res.end(JSON.stringify({ status: "success", path: path }));
+  // res.writeHead(200, {
+  //   "Content-Type": "application/json",
+  // });
+  res.send(JSON.stringify({ status: "success", path: path }));
 });
 
 const port = process.env.PORT || 5000;

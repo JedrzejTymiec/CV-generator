@@ -146,48 +146,50 @@ form h4 {
 }
 
 .photo-container {
-  position: relative;
-  margin-left: 5%;
   display: flex;
-  margin: auto;
-
-  max-width: 220px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
 }
 
-.photo-container input {
+#image-input {
   display: none;
-}
-
-#form-photo {
-  object-fit: cover;
-  overflow: hidden;
-  width: auto;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
 }
 
 #image-field {
-  position: relative;
+  width: 200px;
+  height: 200px;
   border: 1px solid var(--border-color);
-  height: 150px;
-  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--label-color);
   text-align: center;
-  padding-top: 50px;
-  color: var(--border-color);
   cursor: pointer;
 }
 
-.form-photo {
-  max-height: 300px;
+#photo {
+  height: 100%;
   width: 100%;
-  object-fit: cover;
-  border: 1px solid #a0a0a0;
+  overflow: hidden;
+  background-size: cover;
+}
+
+#image-input-alert {
+  display: none;
+  color: #ff0000;
+  position: absolute;
+  bottom: -10%;
+}
+
+.dragging span {
+  filter: blur(1.5px);
+  -webkit-filter: blur(1.5px);
 }
 
 .delete-photo-button {
-  display: none;
+  display: block;
 }
 
 #save-photo-button {
@@ -199,22 +201,25 @@ form h4 {
 #save-photo-button {
   background-color: #1825aa;
 
-  height: 40px;
-  width: 40px;
+  height: 60px;
+  width: 60px;
   border-radius: 50%;
 
   text-align: center;
   color: #fff;
 
   position: absolute;
-  bottom: -5%;
-  right: 25%;
+  bottom: -10%;
+  right: 27%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .delete-photo-button i,
 #save-photo-button i {
-  font-size: 22px;
-  margin-top: 10px;
+  font-size: 30px;
 }
 
 .form-group {
