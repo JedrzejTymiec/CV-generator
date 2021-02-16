@@ -47,13 +47,7 @@ function photoUpload() {
         imageField.style.cursor = "auto";
         document.getElementById("save-photo-button").style.display = "none";
         document.getElementById("delete-photo-button").style.display = "flex";
-        document.getElementById("image-input-alert").style.display = "block";
-        document.getElementById("image-input-alert").style.color = "#54AD67";
-        document.getElementById("image-input-alert").innerText =
-          "Photo uploaded!";
-        setTimeout(() => {
-          document.getElementById("image-input-alert").style.display = "none";
-        }, 3000);
+        displayAlert(true, "Photo uploaded!");
       } catch (err) {
         console.log("Error!");
         console.log(err);
@@ -76,13 +70,7 @@ function photoUpload() {
         photoCRUD.readPhoto();
         imageField.addEventListener("click", click);
         imageField.addEventListener("drop", dropHandle);
-        document.getElementById("image-input-alert").style.display = "block";
-        document.getElementById("image-input-alert").style.color = "#ff0000";
-        document.getElementById("image-input-alert").innerText =
-          "Photo deleted!";
-        setTimeout(() => {
-          document.getElementById("image-input-alert").style.display = "none";
-        }, 3000);
+        displayAlert(false, "Photo deleted!");
       } catch (err) {
         console.log("Error!");
         console.log(err);
@@ -107,15 +95,24 @@ function dropHandle(e) {
 
     updatePhoto(e.dataTransfer.files[0]);
   } else {
-    document.getElementById("image-input-alert").style.display = "block";
-    document.getElementById("image-input-alert").style.color = "#ff0000";
-    document.getElementById("image-input-alert").innerText =
-      "Only one file can be uploaded";
+    displayAlert(false, "Only one file can be uploaded");
     imageField.classList.remove("dragging");
-    imageField.addEventListener("click", () => {
-      document.getElementById("image-input-alert").style.display = "none";
-    });
   }
+}
+
+function displayAlert(type, text) {
+  let color;
+  if (type) {
+    color = "#54AD67";
+  } else {
+    color = "#ff0000";
+  }
+  document.getElementById("image-input-alert").style.color = color;
+  document.getElementById("image-input-alert").style.display = "block";
+  document.getElementById("image-input-alert").innerText = `${text}`;
+  setTimeout(() => {
+    document.getElementById("image-input-alert").style.display = "none";
+  }, 3000);
 }
 
 function updatePhoto(file) {
@@ -143,14 +140,8 @@ function updatePhoto(file) {
           photoElement.style.backgroundImage = `url('${reader.result}')`;
         };
       } else {
-        document.getElementById("image-input-alert").style.display = "block";
-        document.getElementById("image-input-alert").style.color = "#ff0000";
-        document.getElementById("image-input-alert").innerText =
-          "Only image files accepted";
+        displayAlert(false, "Only image files accepted");
         imageField.classList.remove("dragging");
-        imageField.addEventListener("click", () => {
-          document.getElementById("image-input-alert").style.display = "none";
-        });
       }
     } else if (typeof file === "string") {
       if (document.querySelector("#image-field span")) {
