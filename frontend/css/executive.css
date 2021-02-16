@@ -30,7 +30,7 @@ body {
   padding: 10px 20px;
   display: flex;
   background-size: cover;
-  background-image: url(../pictures/Hexagon-dotted-connect-line-background.jpg);
+  background-image: url(../../pictures/Hexagon-dotted-connect-line-background.jpg);
 }
 
 .cv-preview-container .profile-photo {

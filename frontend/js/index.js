@@ -162,6 +162,8 @@ let currentPage = window.location.href.substring(
   window.location.href.lastIndexOf("/") + 1
 );
 
+console.log(currentPage);
+
 if (currentPage !== "") {
   window.addEventListener("popstate", router);
 }

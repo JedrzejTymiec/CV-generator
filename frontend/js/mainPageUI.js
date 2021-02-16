@@ -7,7 +7,7 @@ class MainPageUI {
     }
 
     document.getElementById("template-type").src =
-      "./pictures/CV templates/" + templateType + ".png";
+      "../../pictures/CV templates/" + templateType + ".png";
 
     document.getElementById(id).classList.add("current");
     document.getElementById(id + "-dot-list").style.zIndex = "1";
@@ -17,7 +17,7 @@ class MainPageUI {
 
   static setTemplateColor(template) {
     document.getElementById("template-type").src =
-      "./pictures/CV templates/" + template + ".png";
+      "../../pictures/CV templates/" + template + ".png";
 
     let templateType = template.slice(0, -1);
 

@@ -40,7 +40,7 @@ class photoCRUD {
     } else {
       updatePhoto();
       document.querySelector(".photo-container .profile-photo").src =
-        "../pictures/240_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg";
+        "../pictures/default-profile-icon-16.jpg";
     }
   }
 
