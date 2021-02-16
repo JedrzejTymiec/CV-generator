@@ -108,6 +108,19 @@ class experienceCRUD {
     let previewJobListContainer = document.getElementById(
       "preview-job-list-container"
     );
+    //move still working to the begining of list
+    let stillWorking = [];
+    let pastExperience = [];
+
+    experienceData.forEach((element) => {
+      if (element.stillWorking) {
+        stillWorking.push(element);
+      } else {
+        pastExperience.push(element);
+      }
+    });
+    experienceData = stillWorking.concat(pastExperience.reverse());
+
     if (experienceData && formJobListContainer) {
       let jobList = experienceData.map((element) => {
         return `

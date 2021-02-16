@@ -106,6 +106,19 @@ class educationCRUD {
     let previewEducationListContainer = document.getElementById(
       "preview-education-list-container"
     );
+    //move still learning to the begining of list
+    let stillLearning = [];
+    let pastExperience = [];
+
+    educationData.forEach((element) => {
+      if (element.stillLearning) {
+        stillLeraning.push(element);
+      } else {
+        pastExperience.push(element);
+      }
+    });
+    educationData = stillLearning.concat(pastExperience.reverse());
+
     if (educationData && formEducationListContainer) {
       let eduList = educationData.map((element) => {
         return `
