@@ -8,6 +8,7 @@ class Education {
     spec,
     startDate,
     endDate,
+    stillLearning,
     description
   ) {
     this.id = id;
@@ -16,6 +17,7 @@ class Education {
     this.specialization = spec;
     this.edustart = startDate;
     this.eduend = endDate;
+    this.stillLearning = stillLearning;
     this.edudescription = description;
   }
 }
@@ -32,8 +34,15 @@ class educationCRUD {
     let school = document.getElementById("school-input").value;
     let spec = document.getElementById("specialization-input").value;
     let startDate = document.getElementById("edustart-input").value;
-    let endDate = document.getElementById("eduend-input").value;
+    let endDate;
+    let stillLearning = document.getElementById("educheck").checked;
     let description = document.getElementById("edudescription-input").value;
+
+    if (stillLearning) {
+      endDate = "now";
+    } else {
+      endDate = document.getElementById("eduend-input").value;
+    }
 
     let educationData = new Education(
       id,
@@ -42,6 +51,7 @@ class educationCRUD {
       spec,
       startDate,
       endDate,
+      stillLearning,
       description
     );
     return educationData;

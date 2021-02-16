@@ -30,6 +30,18 @@ document.addEventListener(
   false
 );
 
+//daisable enddate input after checking still working
+
+let checkbox = document.getElementsByClassName("checkbox");
+for (let i = 0; checkbox.length > i; i++) {
+  checkbox[i].addEventListener("change", (e) => {
+    let checkType = e.target.id.slice(0, 3);
+    let input = document.getElementById(checkType + "end-input");
+    input.setAttribute("disabled", "");
+    input.style.color = "#a3a3a3";
+  });
+}
+
 for (var i = 0; templateButtons.length > i; i++) {
   templateButtons[i].addEventListener("click", (e) => {
     let templateType = e.target.id;

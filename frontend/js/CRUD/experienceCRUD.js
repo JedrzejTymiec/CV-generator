@@ -8,6 +8,7 @@ class Experience {
     location,
     expstart,
     expend,
+    stillWorking,
     expdescription
   ) {
     this.id = id;
@@ -16,6 +17,7 @@ class Experience {
     this.location = location;
     this.expstart = expstart;
     this.expend = expend;
+    this.stillWorking = stillWorking;
     this.expdescription = expdescription;
   }
 }
@@ -32,8 +34,15 @@ class experienceCRUD {
     let company = document.getElementById("company-input").value;
     let location = document.getElementById("location-input").value;
     let expStart = document.getElementById("expstart-input").value;
-    let expEnd = document.getElementById("expend-input").value;
+    let expEnd;
+    let stillWorking = document.getElementById("expcheck").checked;
     let expDescription = document.getElementById("expdescription-input").value;
+
+    if (stillWorking) {
+      expEnd = "now";
+    } else {
+      expEnd = document.getElementById("expend-input").value;
+    }
 
     let experienceData = new Experience(
       id,
@@ -42,6 +51,7 @@ class experienceCRUD {
       location,
       expStart,
       expEnd,
+      stillWorking,
       expDescription
     );
     return experienceData;
