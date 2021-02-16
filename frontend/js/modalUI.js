@@ -1,3 +1,5 @@
+import validation from "./validation";
+
 class modalUI {
   static autoExpandTextarea = (field) => {
     field.style.height = "inherit";
@@ -24,29 +26,19 @@ class modalUI {
     document.body.style.overflow = "hidden";
   };
 
-  static clearExperienceInputs() {
-    document.getElementById("position-input").value = "";
-    document.getElementById("company-input").value = "";
-    document.getElementById("location-input").value = "";
-    document.getElementById("expstart-input").value = "";
-    document.getElementById("expend-input").value = "";
-    document.getElementById("expdescription-input").value = "";
-  }
-
-  static clearEducationInputs() {
-    document.getElementById("edulevel-input").value = "";
-    document.getElementById("school-input").value = "";
-    document.getElementById("specialization-input").value = "";
-    document.getElementById("edustart-input").value = "";
-    document.getElementById("eduend-input").value = "";
-    document.getElementById("edudescription-input").value = "";
-  }
-
-  static clearCertificationInputs() {
-    document.getElementById("certname-input").value = "";
-    document.getElementById("organizer-input").value = "";
-    document.getElementById("certdate-input").value = "";
-    document.getElementById("cerdescription-input").value = "";
+  static clearInputs(inputs) {
+    let inputsList = document.querySelectorAll(
+      `#${inputs}-form input, #${inputs}-form textarea`
+    );
+    for (let i = 0; inputsList.length > i; i++) {
+      if (inputsList[i].type !== "checkbox") {
+        inputsList[i].value = "";
+        validation.clearAlert(inputsList[i].id);
+      }
+      if (inputsList[i].type === "checkbox" && inputsList[i].checked) {
+        inputsList[i].click();
+      }
+    }
   }
 
   static editExperienceInputs(
@@ -56,14 +48,19 @@ class modalUI {
     location,
     startDate,
     endDate,
+    stillWorking,
     expdescription
   ) {
+    if (stillWorking) {
+      document.getElementById("expcheck").click();
+    } else {
+      document.getElementById("expend-input").value = endDate;
+    }
     document.getElementById("experience-form").dataset.id = id;
     document.getElementById("position-input").value = position;
     document.getElementById("company-input").value = company;
     document.getElementById("location-input").value = location;
     document.getElementById("expstart-input").value = startDate;
-    document.getElementById("expend-input").value = endDate;
     document.getElementById("expdescription-input").value = expdescription;
   }
 
@@ -74,14 +71,19 @@ class modalUI {
     spec,
     startDate,
     endDate,
+    stillLearning,
     description
   ) {
+    if (stillLearning) {
+      document.getElementById("educheck").click();
+    } else {
+      document.getElementById("eduend-input").value = endDate;
+    }
     document.getElementById("education-form").dataset.id = id;
     document.getElementById("edulevel-input").value = educationLevel;
     document.getElementById("school-input").value = school;
     document.getElementById("specialization-input").value = spec;
     document.getElementById("edustart-input").value = startDate;
-    document.getElementById("eduend-input").value = endDate;
     document.getElementById("edudescription-input").value = description;
   }
 

@@ -55,6 +55,7 @@ const router = async () => {
   for (var i = 0; closeModalButtons.length > i; i++) {
     closeModalButtons[i].addEventListener("click", (e) => {
       modalUI.closeModal(e.target);
+      modalUI.clearInputs(e.target.dataset.modal);
     });
   }
 
@@ -130,7 +131,7 @@ const router = async () => {
       if (valid) {
         let contains = validation.checkForDuplicates(newData);
         if (contains) {
-          validation.showDoubleAlert("skill");
+          validation.showAlert("skill", "Skill already on list!");
         } else {
           langSkillCRUD.addSkill(newData);
           document.getElementById("skill-input").value = "";

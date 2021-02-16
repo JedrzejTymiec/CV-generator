@@ -23,9 +23,8 @@ class validation {
     }
   }
 
-  static showDoubleAlert(input) {
-    document.getElementById(input + "-input-alert").innerText =
-      input.charAt(0).toUpperCase() + input.slice(1) + " already on list!";
+  static showAlert(input, text) {
+    document.getElementById(input + "-input-alert").innerText = `${text}`;
     document.getElementById(input + "-input").style.borderBottom =
       "1px solid #ff0000";
     document.getElementById(input + "-input").addEventListener("focus", () => {
@@ -35,16 +34,9 @@ class validation {
     });
   }
 
-  static showEmptyAlert(input) {
-    document.getElementById(input + "-input-alert").innerText =
-      "Can't be empty!";
-    document.getElementById(input + "-input").style.borderBottom =
-      "1px solid #ff0000";
-    document.getElementById(input + "-input").addEventListener("focus", () => {
-      document.getElementById(input + "-input-alert").innerText = "";
-      document.getElementById(input + "-input").style.borderBottom =
-        "1px solid #a0a0a0";
-    });
+  static clearAlert(input) {
+    document.getElementById(input + "-alert").innerText = "";
+    document.getElementById(input).style.borderBottom = "1px solid #a0a0a0";
   }
 
   static validateData(data) {
@@ -56,7 +48,7 @@ class validation {
     }
     if (invalidData.length > 0) {
       for (let i = 0; invalidData.length > i; i++) {
-        this.showEmptyAlert(invalidData[i]);
+        this.showAlert(invalidData[i], "Can't be empty!");
       }
     } else {
       return true;
@@ -91,11 +83,55 @@ class validation {
     }
   }
 
-  // static dateValidation(data) {
-  //   let startDate;
-  //   let endDate;
+  static dateValidation(data) {
+    let today = new Date();
+    let startDate;
+    let endDate;
+    let startInput;
+    let endInput;
+    if (data.company) {
+      startDate = new Date(data.expstart);
+      endDate = new Date(data.expend);
+      startInput = "expstart";
+      endInput = "expend";
+    } else if (data.school) {
+      startDate = new Date(data.edustart);
+      endDate = new Date(data.eduend);
+      startInput = "edustart";
+      endInput = "eduend";
+    } else if (data.certdate) {
+      startDate = new Date(data.certdate);
+      startInput = "certdate";
+    }
+    if (startDate && endDate) {
+      if (startDate.getTime() > endDate.getTime()) {
+        this.showAlert(
+          startInput,
+          "End date cannot be earlier than start date!"
+        );
+        this.showAlert(endInput, "End date cannot be earlier than start date!");
+        return false;
+      }
+      if (
+        endDate.getTime() > today.getTime() ||
+        startDate.getTime() > today.getTime()
+      ) {
+        if (endDate.getTime() > today.getTime()) {
+          this.showAlert(endInput, "Date cannot be from the future!");
+        }
+        if (startDate.getTime() > today.getTime()) {
+          this.showAlert(startInput, "Date cannot be from the future!");
+        }
+        return false;
+      }
+    }
+    if (startDate.getTime() > today.getTime()) {
+      this.showAlert(startInput, "Date cannot be from the future!");
+      return false;
+    }
 
-  // }
+    return true;
+  }
 }
 
 export default validation;

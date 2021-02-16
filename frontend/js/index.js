@@ -37,8 +37,13 @@ for (let i = 0; checkbox.length > i; i++) {
   checkbox[i].addEventListener("change", (e) => {
     let checkType = e.target.id.slice(0, 3);
     let input = document.getElementById(checkType + "end-input");
-    input.setAttribute("disabled", "");
-    input.style.color = "#a3a3a3";
+    if (e.target.checked) {
+      input.setAttribute("disabled", "");
+      input.style.color = "#a3a3a3";
+    } else {
+      input.removeAttribute("disabled");
+      input.style.color = "#000";
+    }
   });
 }
 
@@ -115,9 +120,12 @@ if (experienceForm) {
     }
     let valid = validation.validateData(newData);
     if (valid) {
-      experienceCRUD.addExperience(newData);
-      modalUI.clearExperienceInputs();
-      modalUI.closeModal(e.target);
+      let validDate = validation.dateValidation(newData);
+      if (validDate) {
+        experienceCRUD.addExperience(newData);
+        modalUI.clearInputs("experience");
+        modalUI.closeModal(e.target);
+      }
     }
   });
 }
@@ -134,9 +142,12 @@ if (educationForm) {
     }
     let valid = validation.validateData(newData);
     if (valid) {
-      educationCRUD.addEducation(newData);
-      modalUI.clearEducationInputs();
-      modalUI.closeModal(e.target);
+      let validDate = validation.dateValidation(newData);
+      if (validDate) {
+        educationCRUD.addEducation(newData);
+        modalUI.clearInputs("education");
+        modalUI.closeModal(e.target);
+      }
     }
   });
 }
@@ -154,9 +165,12 @@ if (certificationForm) {
     }
     let valid = validation.validateData(newData);
     if (valid) {
-      certificationCRUD.addCertification(newData);
-      modalUI.clearCertificationInputs();
-      modalUI.closeModal(e.target);
+      let validDate = validation.dateValidation(newData);
+      if (validDate) {
+        certificationCRUD.addCertification(newData);
+        modalUI.clearInputs("certification");
+        modalUI.closeModal(e.target);
+      }
     }
   });
 }
@@ -234,6 +248,7 @@ document.addEventListener("DOMContentLoaded", () => {
         jobToEdit.location,
         jobToEdit.expstart,
         jobToEdit.expend,
+        jobToEdit.stillWorking,
         jobToEdit.expdescription
       );
     } else if (e.target.matches("[data-edudelete]")) {
@@ -251,6 +266,7 @@ document.addEventListener("DOMContentLoaded", () => {
         eduToEdit.specialization,
         eduToEdit.edustart,
         eduToEdit.eduend,
+        eduToEdit.stillLearning,
         eduToEdit.edudescription
       );
     } else if (e.target.matches("[data-cerdelete]")) {
