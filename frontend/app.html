@@ -18,6 +18,22 @@
       href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
       rel="stylesheet"
     />
+
+    <link
+      rel="stylesheet"
+      href="https://kendo.cdn.telerik.com/2017.2.621/styles/kendo.common-material.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://kendo.cdn.telerik.com/2017.2.621/styles/kendo.material.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://kendo.cdn.telerik.com/2017.2.621/styles/kendo.material.mobile.min.css"
+    />
+    <script src="https://kendo.cdn.telerik.com/2017.2.621/js/jquery.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2017.2.621/js/jszip.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2017.2.621/js/kendo.all.min.js"></script>
   </head>
   <body>
     <div id="warning-modal" class="modal">
@@ -277,7 +293,7 @@
             </div>
           </div>
         </div>
-        <main class="cv-preview">
+        <main class="cv-preview" id="myCanvas">
           <section class="header">
             <div class="photo-container">
               <img
@@ -367,5 +383,6 @@
       </div>
     </section>
     <script type="module" src="./js/build/app.bundle.js"></script>
+    <script src="../content/shared/js/pako.min.js"></script>
   </body>
 </html>

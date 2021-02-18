@@ -153,6 +153,26 @@ const router = async () => {
         completeCvCRUD.addCv(newData);
       }
     });
+
+    document
+      .getElementById("download-button")
+      .addEventListener("click", ExportPdf);
+
+    function ExportPdf() {
+      kendo.drawing
+        .drawDOM("#myCanvas", {
+          forcePageBreak: ".page-break",
+          paperSize: "A4",
+          margin: { top: "1cm", bottom: "1cm" },
+          scale: 0.8,
+          height: 500,
+          template: $("#page-template").html(),
+          keepTogether: ".prevent-split",
+        })
+        .then(function (group) {
+          kendo.drawing.pdf.saveAs(group, "Exported_Itinerary.pdf");
+        });
+    }
   }
 
   let currentPage = window.location.href.substring(
