@@ -21,7 +21,6 @@ class photoCRUD {
 
   static readPhoto() {
     let photoData = JSON.parse(localStorage.getItem("photoData"));
-    console.log(photoData);
     if (photoData) {
       if (document.getElementById("image-field")) {
         updatePhoto(photoData.path);
@@ -39,8 +38,6 @@ class photoCRUD {
         photoData.path;
     } else {
       updatePhoto();
-      document.querySelector(".photo-container .profile-photo").src =
-        "../pictures/default-profile-icon-16.jpg";
     }
   }
 

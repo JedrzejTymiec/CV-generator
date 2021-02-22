@@ -100,28 +100,30 @@ class educationCRUD {
 
   static readEducation() {
     let educationData = JSON.parse(localStorage.getItem("educationData"));
-    let formEducationListContainer = document.getElementById(
-      "form-education-list"
-    );
-    let previewEducationListContainer = document.getElementById(
-      "preview-education-list-container"
-    );
-    //move still learning to the begining of list
-    let stillLearning = [];
-    let pastExperience = [];
+    if (educationData) {
+      let formEducationListContainer = document.getElementById(
+        "form-education-list"
+      );
+      let previewEducationListContainer = document.getElementById(
+        "preview-education-list-container"
+      );
 
-    educationData.forEach((element) => {
-      if (element.stillLearning) {
-        stillLeraning.push(element);
-      } else {
-        pastExperience.push(element);
-      }
-    });
-    educationData = stillLearning.concat(pastExperience.reverse());
+      //move still learning to the begining of list
 
-    if (educationData && formEducationListContainer) {
-      let eduList = educationData.map((element) => {
-        return `
+      let stillLearning = [];
+      let pastExperience = [];
+      educationData.forEach((element) => {
+        if (element.stillLearning) {
+          stillLeraning.push(element);
+        } else {
+          pastExperience.push(element);
+        }
+      });
+      educationData = stillLearning.concat(pastExperience.reverse());
+
+      if (formEducationListContainer) {
+        let eduList = educationData.map((element) => {
+          return `
         <li class="form-entry-container">
         <div class="entry-action-icons" data-id=${element.id}>
           <i class="fas fa-edit" data-eduedit data-modal="education"></i><i class="fas fa-trash-alt" data-edudelete></i>
@@ -134,12 +136,12 @@ class educationCRUD {
           <li>Opis: <span>${element.edudescription}</span>
         </ul>
       </li>`;
-      });
-      formEducationListContainer.innerHTML = eduList.join("");
-    }
-    if (educationData && previewEducationListContainer) {
-      let previewEduList = educationData.map((element) => {
-        return `<div class="study-container">
+        });
+        formEducationListContainer.innerHTML = eduList.join("");
+      }
+      if (previewEducationListContainer) {
+        let previewEduList = educationData.map((element) => {
+          return `<div class="study-container">
         <div class="dash"></div>
         <div class="study">
           <h3 class="field-of-study">${element.specialization}</h3>
@@ -147,8 +149,9 @@ class educationCRUD {
           <p class="time-range">${element.edustart} - ${element.eduend}</p>
         </div>
       </div>`;
-      });
-      previewEducationListContainer.innerHTML = previewEduList.join("");
+        });
+        previewEducationListContainer.innerHTML = previewEduList.join("");
+      }
     }
   }
 }

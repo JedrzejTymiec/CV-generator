@@ -116,7 +116,6 @@ class completeCvCRUD {
     let cvListContainer = document.getElementById("saved-cv-list");
     if (cvData && cvListContainer) {
       let cvList = cvData.map((element) => {
-        console.log(element);
         return `
         <div class="entry-wrapper">
           <div class="cv-list-entry" data-id=${element.id}>

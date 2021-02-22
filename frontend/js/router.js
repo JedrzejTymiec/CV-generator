@@ -116,7 +116,7 @@ const router = async () => {
       if (valid) {
         let contains = validation.checkForDuplicates(newData);
         if (contains) {
-          validation.showDoubleAlert("language");
+          validation.showAlert("language", "Language already on list");
         } else {
           langSkillCRUD.addLanguage(newData);
         }

@@ -289,7 +289,7 @@ export default class extends AbstractView {
               <option value="United Kingdom">United Kingdom</option>
               <option value="Ukraine">Ukraine</option>
               <option value="United Arab Erimates">United Arab Emirates</option>
-              <option value="United States of America">United States of America</option>
+              <option value="USA">USA</option>
               <option value="Uraguay">Uruguay</option>
               <option value="Uzbekistan">Uzbekistan</option>
               <option value="Vanuatu">Vanuatu</option>

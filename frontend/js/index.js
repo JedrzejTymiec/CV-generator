@@ -188,8 +188,6 @@ let currentPage = window.location.href.substring(
   window.location.href.lastIndexOf("/") + 1
 );
 
-console.log(currentPage);
-
 if (currentPage !== "") {
   window.addEventListener("popstate", router);
 }
@@ -210,6 +208,7 @@ if (newButton) {
 
 document.addEventListener("DOMContentLoaded", () => {
   document.body.addEventListener("click", (e) => {
+    console.log(e.target);
     if (e.target.matches("[data-link]")) {
       e.preventDefault();
       navigateTo(e.target.href);

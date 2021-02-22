@@ -104,26 +104,27 @@ class experienceCRUD {
 
   static readExperience() {
     let experienceData = JSON.parse(localStorage.getItem("experienceData"));
-    let formJobListContainer = document.getElementById("form-job-list");
-    let previewJobListContainer = document.getElementById(
-      "preview-job-list-container"
-    );
-    //move still working to the begining of list
-    let stillWorking = [];
-    let pastExperience = [];
+    if (experienceData) {
+      let formJobListContainer = document.getElementById("form-job-list");
+      let previewJobListContainer = document.getElementById(
+        "preview-job-list-container"
+      );
 
-    experienceData.forEach((element) => {
-      if (element.stillWorking) {
-        stillWorking.push(element);
-      } else {
-        pastExperience.push(element);
-      }
-    });
-    experienceData = stillWorking.concat(pastExperience.reverse());
+      //move still working to the begining of list
+      let stillWorking = [];
+      let pastExperience = [];
+      experienceData.forEach((element) => {
+        if (element.stillWorking) {
+          stillWorking.push(element);
+        } else {
+          pastExperience.push(element);
+        }
+      });
+      experienceData = stillWorking.concat(pastExperience.reverse());
 
-    if (experienceData && formJobListContainer) {
-      let jobList = experienceData.map((element) => {
-        return `
+      if (formJobListContainer) {
+        let jobList = experienceData.map((element) => {
+          return `
         <li class="form-entry-container">
           <div class="entry-action-icons" data-id=${element.id}>
             <i class="fas fa-edit" data-expEdit data-modal="experience"></i><i class="fas fa-trash-alt" data-expDelete></i>
@@ -135,10 +136,9 @@ class experienceCRUD {
             <li>Opis: <span>${element.expdescription}</span>
           </ul>
         </li>`;
-      });
-      formJobListContainer.innerHTML = jobList.join("");
-    }
-    if (experienceData) {
+        });
+        formJobListContainer.innerHTML = jobList.join("");
+      }
       let previewJobList = experienceData.map((element) => {
         return `<div class="job-container">
         <div class="dash"></div>

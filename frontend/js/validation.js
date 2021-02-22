@@ -5,21 +5,34 @@ class validation {
     let listData;
     if (data.skill) {
       listData = JSON.parse(localStorage.getItem("skillsData"));
+      if (listData) {
+        let contains = listData.filter((element) => {
+          if (data.skill === element.skill) {
+            return element;
+          }
+        });
+        if (contains.length !== 0) {
+          return true;
+        }
+        return false;
+      } else {
+        return false;
+      }
     } else if (data.language) {
       listData = JSON.parse(localStorage.getItem("languagesData"));
-    }
-    if (listData) {
-      let contains = listData.filter((element) => {
-        if (data.skill === element.skill) {
-          return element;
+      if (listData) {
+        let contains = listData.filter((element) => {
+          if (data.language === element.language) {
+            return element;
+          }
+        });
+        if (contains.length !== 0) {
+          return true;
         }
-      });
-      if (contains.length !== 0) {
-        return true;
+        return false;
+      } else {
+        return false;
       }
-      return false;
-    } else {
-      return false;
     }
   }
 
