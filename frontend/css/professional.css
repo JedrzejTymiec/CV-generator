@@ -79,6 +79,7 @@ main {
 }
 
 .cv-preview-container .profile-photo {
+  display: none;
   height: 100px;
   width: 100px;
   grid-area: photo;

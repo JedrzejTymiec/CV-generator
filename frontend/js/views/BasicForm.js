@@ -10,7 +10,13 @@ export default class extends AbstractView {
     return `
     <form id="basic-data-form">
           <h1 class="form-title">Photo</h1>
-          <h4 class="form-label">Show photo in resume <>add toggle switch<></add></h4>
+          <div class="photo-toggle-container">
+            <h4 class="form-label">Show photo in resume</h4>
+            <label class="switch">
+              <input type="checkbox" id="photo-display" data-checked="">
+              <span class="slider round"></span>
+            </label>
+          </div>
           <div class="photo-container">
             <div id="image-field">
               <span class="input-placeholder">Drop file</br> or click to upload</span>

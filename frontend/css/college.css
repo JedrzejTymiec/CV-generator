@@ -36,10 +36,19 @@ main {
 .cv-preview-container .header {
   padding: 10px 20px 0 20px;
   grid-area: about;
+  position: relative;
 }
 
 .cv-preview-container .profile-photo {
   display: none;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 20px;
+  position: absolute;
+  right: -15%;
+  top: 0;
 }
 
 .cv-preview-container .about h3 {

@@ -29,6 +29,7 @@ main {
 }
 
 .cv-preview-container .profile-photo {
+  display: none;
   height: 115px;
   width: 115px;
   border-radius: 50%;

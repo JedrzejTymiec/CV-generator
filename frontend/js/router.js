@@ -69,6 +69,23 @@ const router = async () => {
     });
   }
 
+  let photoToggle = document.getElementById("photo-display");
+  if (photoToggle) {
+    photoToggle.addEventListener("change", () => {
+      if (photoToggle.checked) {
+        document.querySelector(".profile-photo").style.display = "block";
+        photoToggle.dataset.checked = "true";
+      } else {
+        document.querySelector(".profile-photo").style.display = "none";
+        photoToggle.dataset.checked = "false";
+      }
+      if (photoToggle.dataset.checked === "ture") {
+        document.querySelector(".slider:before").style.transform =
+          "translateX(26px)";
+      }
+    });
+  }
+
   let basic = document.getElementById("basic-data-form");
   let residence = document.getElementById("residence-form");
   let contact = document.getElementById("contact-form");

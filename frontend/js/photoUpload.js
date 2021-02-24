@@ -168,6 +168,8 @@ function updatePhoto(file) {
       document.getElementById("save-photo-button").style.display = "flex";
       document.getElementById("delete-photo-button").style.display = "none";
     }
+    document.querySelector(".photo-container img").src =
+      "../pictures/default-profile-icon-16.jpg";
   }
 }
 
