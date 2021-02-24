@@ -162,10 +162,12 @@ function updatePhoto(file) {
     if (photoElement) {
       photoElement.remove();
     }
-    document.querySelector("#image-field span").style.display = "inline";
-    document.getElementById("image-field").style.cursor = "pointer";
-    document.getElementById("save-photo-button").style.display = "flex";
-    document.getElementById("delete-photo-button").style.display = "none";
+    if (document.getElementById("#image-field")) {
+      document.querySelector("#image-field span").style.display = "inline";
+      document.getElementById("image-field").style.cursor = "pointer";
+      document.getElementById("save-photo-button").style.display = "flex";
+      document.getElementById("delete-photo-button").style.display = "none";
+    }
   }
 }
 

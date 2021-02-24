@@ -88,7 +88,7 @@ for (var i = 0; selectButtons.length > i; i++) {
     for (var i = 0; selectButtons.length > i; i++) {
       selectButtons[i].className = "select-button";
     }
-    e.target.parentNode.classList.add("currents");
+    e.target.parentNode.classList.add("current");
   });
 }
 
@@ -194,7 +194,8 @@ if (currentPage !== "") {
 
 let newButton = document.getElementById("new-button");
 if (newButton) {
-  newButton.addEventListener("click", () => {
+  function newHandle() {
+    localStorage.removeItem("photoData");
     localStorage.removeItem("basicData");
     localStorage.removeItem("residenceData");
     localStorage.removeItem("contactData");
@@ -203,7 +204,9 @@ if (newButton) {
     localStorage.removeItem("languagesData");
     localStorage.removeItem("skillsData");
     localStorage.removeItem("certificationData");
-  });
+  }
+  newHandle();
+  newButton.addEventListener("click", newHandle);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
