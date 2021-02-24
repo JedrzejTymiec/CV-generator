@@ -107,7 +107,11 @@ class basicDataUpdate {
       document.getElementById("phone").innerText = contactData.phone;
       document.getElementById("email").innerText = contactData.email;
       document.getElementById("linkedin").innerText = contactData.linkedin;
+      document.getElementById("linkedin").parentNode.href =
+        "https://www." + contactData.linkedin;
       document.getElementById("github").innerText = contactData.github;
+      document.getElementById("github").parentNode.href =
+        "https://www." + contactData.github;
     }
   }
 

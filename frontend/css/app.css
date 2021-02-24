@@ -752,3 +752,8 @@ button {
   height: auto;
   margin-right: 15px;
 }
+.contact-bar a {
+  text-decoration: none;
+  color: #000;
+  cursor: pointer;
+}
