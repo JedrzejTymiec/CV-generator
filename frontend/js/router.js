@@ -92,35 +92,7 @@ const router = async () => {
   }
 
   let photoToggle = document.getElementById("photo-display");
-  function toggleHandle() {
-    if (photoToggle.dataset.toggle === "false") {
-      photoToggle.dataset.toggle = "true";
-      toggle();
-      let photoData = JSON.parse(localStorage.getItem("photoData"));
-      photoData.showPhoto = "true";
-      localStorage.setItem("photoData", JSON.stringify(photoData));
-    } else {
-      photoToggle.dataset.toggle = "false";
-      let photoData = JSON.parse(localStorage.getItem("photoData"));
-      photoData.showPhoto = "false";
-      localStorage.setItem("photoData", JSON.stringify(photoData));
-      toggle();
-    }
-  }
-  function toggle() {
-    if (photoToggle.dataset.toggle === "true") {
-      document.querySelector(".slider").style.transform = "translateX(30px)";
-      document.querySelector(".slide-track").style.backgroundColor =
-        "var(--main-color)";
-      document.querySelector(".profile-photo").style.display = "block";
-    } else {
-      document.querySelector(".slider").style.transform = "none";
-      document.querySelector(".slide-track").style.backgroundColor =
-        "var(--label-color)";
-      document.querySelector(".profile-photo").style.display = "none";
-      photoToggle.dataset.toggle = "false";
-    }
-  }
+
   if (photoToggle) {
     toggle();
     photoToggle.addEventListener("change", toggleHandle);
@@ -247,4 +219,44 @@ const router = async () => {
   }
 };
 
-export { router, navigateTo };
+function toggleHandle() {
+  let photoToggle = document.getElementById("photo-display");
+  if (photoToggle) {
+    if (photoToggle.dataset.toggle === "false") {
+      photoToggle.dataset.toggle = "true";
+      toggle();
+      let photoData = JSON.parse(localStorage.getItem("photoData"));
+      if (photoData) {
+        photoData.showPhoto = "true";
+        localStorage.setItem("photoData", JSON.stringify(photoData));
+      }
+    } else {
+      photoToggle.dataset.toggle = "false";
+      let photoData = JSON.parse(localStorage.getItem("photoData"));
+      if (photoData) {
+        photoData.showPhoto = "false";
+        localStorage.setItem("photoData", JSON.stringify(photoData));
+      }
+      toggle();
+    }
+  }
+}
+function toggle() {
+  let photoToggle = document.getElementById("photo-display");
+  if (photoToggle) {
+    if (photoToggle.dataset.toggle === "true") {
+      document.querySelector(".slider").style.transform = "translateX(30px)";
+      document.querySelector(".slide-track").style.backgroundColor =
+        "var(--main-color)";
+      document.querySelector(".profile-photo").style.display = "block";
+    } else {
+      document.querySelector(".slider").style.transform = "none";
+      document.querySelector(".slide-track").style.backgroundColor =
+        "var(--label-color)";
+      document.querySelector(".profile-photo").style.display = "none";
+      photoToggle.dataset.toggle = "false";
+    }
+  }
+}
+
+export { router, navigateTo, toggle };

@@ -1,4 +1,5 @@
 import photoCRUD from "./CRUD/photoCRUD";
+import { toggle } from "./router.js";
 
 function photoUpload() {
   const imageField = document.getElementById("image-field");
@@ -47,11 +48,12 @@ function photoUpload() {
         imageField.style.cursor = "auto";
         document.getElementById("save-photo-button").style.display = "none";
         document.getElementById("delete-photo-button").style.display = "flex";
-        if (
-          document.getElementById("photo-display").dataset.toggle === "false"
-        ) {
-          document.querySelector(".slide-track").click();
-        }
+        toggle();
+        // if (
+        //   document.getElementById("photo-display").dataset.toggle === "false"
+        // ) {
+        //   document.querySelector(".slide-track").click();
+        // }
         displayAlert(true, "Photo uploaded!");
       } catch (err) {
         console.log("Error!");
