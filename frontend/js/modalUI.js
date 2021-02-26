@@ -1,7 +1,7 @@
 import validation from "./validation";
 
 class modalUI {
-  static autoExpandTextarea = (field) => {
+  static autoExpandTextarea(field) {
     field.style.height = "inherit";
     var computed = window.getComputedStyle(field);
     var height =
@@ -12,19 +12,21 @@ class modalUI {
       parseInt(computed.getPropertyValue("border-bottom-width"), 10);
 
     field.style.height = height + "px";
-  };
+  }
 
-  static closeModal = (button) => {
+  static closeModal(button) {
     let modal = button.dataset.modal;
     document.getElementById(modal + "-modal").style.display = "none";
     document.body.style.overflow = "visible";
-  };
+    let id = button.dataset.modal.slice(0, 3);
+    document.getElementById(id + "description-input").style.height = "31px";
+  }
 
-  static openModal = (button) => {
+  static openModal(button) {
     let modal = button.dataset.modal;
     document.getElementById(modal + "-modal").style.display = "block";
     document.body.style.overflow = "hidden";
-  };
+  }
 
   static clearInputs(inputs) {
     let inputsList = document.querySelectorAll(

@@ -116,12 +116,16 @@ class completeCvCRUD {
     let cvListContainer = document.getElementById("saved-cv-list");
     if (cvData && cvListContainer) {
       let cvList = cvData.map((element) => {
+        let img = element.photo
+          ? `<img src='${element.photo.path}' />`
+          : '<img style="display:none;" />';
+
         return `
         <div class="entry-wrapper">
           <div class="cv-list-entry" data-id=${element.id}>
             <div class="entry-body-wrapper">
-              <img src="${element.photo.path}" />
-              <div>
+            ${img}
+              <div class="cv-entry-desc">
                 <h3>${element.basic.name} ${element.basic.surname}</h3>
                 <h5>${element.basic.proffesion}</h5>
               </div>
