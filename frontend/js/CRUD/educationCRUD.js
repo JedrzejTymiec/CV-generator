@@ -11,14 +11,14 @@ class Education {
     stillLearning,
     description
   ) {
-    this.id = id;
-    this.edulevel = educationLevel;
-    this.school = school;
-    this.specialization = spec;
-    this.edustart = startDate;
-    this.eduend = endDate;
-    this.stillLearning = stillLearning;
-    this.edudescription = description;
+    this.id = { data: id, isRequired: true };
+    this.edulevel = { data: educationLevel, isRequired: true };
+    this.school = { data: school, isRequired: true };
+    this.specialization = { data: spec, isRequired: false };
+    this.edustart = { data: startDate, isRequired: true };
+    this.eduend = { data: endDate, isRequired: true };
+    this.stillLearning = { data: stillLearning, isRequired: false };
+    this.edudescription = { data: description, isRequired: false };
   }
 }
 
@@ -64,7 +64,7 @@ class educationCRUD {
     if (educationDataList) {
       //loop to check if educationList contains edu (in case of edition)
       for (let i = 0; educationDataList.length > i; i++) {
-        if (educationDataList[i].id === edu.id) {
+        if (educationDataList[i].id.data === edu.id.data) {
           nr = i;
           break;
         }
@@ -86,7 +86,7 @@ class educationCRUD {
   static deleteEducation(id) {
     let eduList = JSON.parse(localStorage.getItem("educationData"));
     let newEducationList = eduList.filter((element) => {
-      if (element.id != id) {
+      if (element.id.data != id) {
         return element;
       }
     });
@@ -95,15 +95,15 @@ class educationCRUD {
 
   static updateEducation(id) {
     let eduList = JSON.parse(localStorage.getItem("educationData"));
-    return eduList.find((element) => element.id === id);
+    return eduList.find((element) => element.id.data === id);
   }
 
   static readEducation() {
     let educationData = JSON.parse(localStorage.getItem("educationData"));
-    if (educationData) {
-      let formEducationListContainer = document.getElementById(
-        "form-education-list"
-      );
+    let formEducationListContainer = document.getElementById(
+      "form-education-list"
+    );
+    if (educationData.length !== 0) {
       let previewEducationListContainer = document.getElementById(
         "preview-education-list-container"
       );
@@ -113,7 +113,7 @@ class educationCRUD {
       let stillLearning = [];
       let pastExperience = [];
       educationData.forEach((element) => {
-        if (element.stillLearning) {
+        if (element.stillLearning.data) {
           stillLeraning.push(element);
         } else {
           pastExperience.push(element);
@@ -125,15 +125,15 @@ class educationCRUD {
         let eduList = educationData.map((element) => {
           return `
         <li class="form-entry-container">
-        <div class="entry-action-icons" data-id=${element.id}>
+        <div class="entry-action-icons" data-id=${element.id.data}>
           <i class="fas fa-edit" data-eduedit data-modal="education"></i><i class="fas fa-trash-alt" data-edudelete></i>
         </div>
         <ul class="entry-description">
-          <li>Okres: <span>${element.edustart} - ${element.eduend}</span></li>
-          <li>Kierunek: <span>${element.specialization}</span></li>
-          <li>Nazwa szkoły: <span>${element.school}</span></li>
-          <li>Poziom: <span>${element.edulevel}</span>
-          <li>Opis: <span>${element.edudescription}</span>
+          <li>Okres: <span>${element.edustart.data} - ${element.eduend.data}</span></li>
+          <li>Kierunek: <span>${element.specialization.data}</span></li>
+          <li>Nazwa szkoły: <span>${element.school.data}</span></li>
+          <li>Poziom: <span>${element.edulevel.data}</span>
+          <li>Opis: <span>${element.edudescription.data}</span>
         </ul>
       </li>`;
         });
@@ -144,13 +144,18 @@ class educationCRUD {
           return `<div class="study-container">
         <div class="dash"></div>
         <div class="study">
-          <h3 class="field-of-study">${element.specialization}</h3>
-          <h4 class="school-name">${element.school}</h4>
-          <p class="time-range">${element.edustart} - ${element.eduend}</p>
+          <h3 class="field-of-study">${element.specialization.data}</h3>
+          <h4 class="school-name">${element.school.data}</h4>
+          <p class="time-range">${element.edustart.data} - ${element.eduend.data}</p>
         </div>
       </div>`;
         });
         previewEducationListContainer.innerHTML = previewEduList.join("");
+      }
+    } else {
+      document.querySelector(".education-container").style.display = "none";
+      if (formEducationListContainer) {
+        formEducationListContainer.innerHTML = "";
       }
     }
   }

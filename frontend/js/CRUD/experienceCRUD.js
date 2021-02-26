@@ -11,14 +11,14 @@ class Experience {
     stillWorking,
     expdescription
   ) {
-    this.id = id;
-    this.position = position;
-    this.company = company;
-    this.location = location;
-    this.expstart = expstart;
-    this.expend = expend;
-    this.stillWorking = stillWorking;
-    this.expdescription = expdescription;
+    this.id = { data: id, isRequired: true };
+    this.position = { data: position, isRequired: true };
+    this.company = { data: company, isRequired: false };
+    this.location = { data: location, isRequired: false };
+    this.expstart = { data: expstart, isRequired: true };
+    this.expend = { data: expend, isRequired: true };
+    this.stillWorking = { data: stillWorking, isRequired: false };
+    this.expdescription = { data: expdescription, isRequired: false };
   }
 }
 
@@ -65,7 +65,7 @@ class experienceCRUD {
     if (experienceDataList) {
       // loop to check if experienceList conatins job (in case of edition)
       for (var i = 0; experienceDataList.length > i; i++) {
-        if (experienceDataList[i].id === job.id) {
+        if (experienceDataList[i].id.data === job.id.data) {
           nr = i;
           break;
         }
@@ -90,7 +90,7 @@ class experienceCRUD {
   static deleteExperience(id) {
     let jobList = JSON.parse(localStorage.getItem("experienceData"));
     let newJobList = jobList.filter((element) => {
-      if (element.id != id) {
+      if (element.id.data != id) {
         return element;
       }
     });
@@ -99,13 +99,13 @@ class experienceCRUD {
 
   static updateExperience(id) {
     let jobList = JSON.parse(localStorage.getItem("experienceData"));
-    return jobList.find((element) => element.id === id);
+    return jobList.find((element) => element.id.data === id);
   }
 
   static readExperience() {
     let experienceData = JSON.parse(localStorage.getItem("experienceData"));
-    if (experienceData) {
-      let formJobListContainer = document.getElementById("form-job-list");
+    let formJobListContainer = document.getElementById("form-job-list");
+    if (experienceData.length !== 0) {
       let previewJobListContainer = document.getElementById(
         "preview-job-list-container"
       );
@@ -114,7 +114,7 @@ class experienceCRUD {
       let stillWorking = [];
       let pastExperience = [];
       experienceData.forEach((element) => {
-        if (element.stillWorking) {
+        if (element.stillWorking.data) {
           stillWorking.push(element);
         } else {
           pastExperience.push(element);
@@ -126,14 +126,14 @@ class experienceCRUD {
         let jobList = experienceData.map((element) => {
           return `
         <li class="form-entry-container">
-          <div class="entry-action-icons" data-id=${element.id}>
+          <div class="entry-action-icons" data-id=${element.id.data}>
             <i class="fas fa-edit" data-expEdit data-modal="experience"></i><i class="fas fa-trash-alt" data-expDelete></i>
           </div>
           <ul class="entry-description">
-            <li>Okres: <span>${element.expstart} - ${element.expend}</span></li>
-            <li>Stanowisko: <span>${element.position}</span></li>
-            <li>Firma: <span>${element.company}</span></li>
-            <li>Opis: <span>${element.expdescription}</span>
+            <li>Okres: <span>${element.expstart.data} - ${element.expend.data}</span></li>
+            <li>Stanowisko: <span>${element.position.data}</span></li>
+            <li>Firma: <span>${element.company.data}</span></li>
+            <li>Opis: <span>${element.expdescription.data}</span>
           </ul>
         </li>`;
         });
@@ -143,10 +143,10 @@ class experienceCRUD {
         return `<div class="job-container">
         <div class="dash"></div>
         <div class="job">
-          <h3 class="job-title">${element.position}</h3>
-          <h4 class="workplace">${element.company}</h4>
-          <p class="time-range">${element.expstart} - ${element.expend}</p>
-          <p class="job-description">${element.expdescription}</p>
+          <h3 class="job-title">${element.position.data}</h3>
+          <h4 class="workplace">${element.company.data}</h4>
+          <p class="time-range">${element.expstart.data} - ${element.expend.data}</p>
+          <p class="job-description">${element.expdescription.data}</p>
         </div>
       </div>`;
       });
@@ -159,6 +159,11 @@ class experienceCRUD {
             "#preview-job-list-container .job-container:last-child"
           )
           .setAttribute("id", "first-job");
+      }
+    } else {
+      document.querySelector(".experience-container").style.display = "none";
+      if (formJobListContainer) {
+        formJobListContainer.innerHTML = "";
       }
     }
   }

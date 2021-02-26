@@ -335,12 +335,12 @@ export default class extends AbstractView {
             <span id="email-input-alert"></span>
           </div>
           <div class="form-group">
-            <label class="form-label" for="linkedin-input">Linkedin profile*</label>
+            <label class="form-label" for="linkedin-input">Linkedin profile</label>
             <input type="text" id="linkedin-input">
             <span id="linkedin-input-alert"></span>
           </div>
           <div class="form-group">
-            <label class="form-label" for="github-input">Github link*</label>
+            <label class="form-label" for="github-input">Github link</label>
             <input type="text" id="github-input">
             <span id="github-input-alert"></span>
           </div>

@@ -3,17 +3,17 @@ import { v4 as uuidv4 } from "uuid";
 
 class Language {
   constructor(id, language, level) {
-    this.id = id;
-    this.language = language;
-    this.level = level;
+    this.id = { data: id, isRequired: true };
+    this.language = { data: language, isRequired: true };
+    this.level = { data: level, isRequired: true };
   }
 }
 
 class Skill {
   constructor(id, skill, level) {
-    this.id = id;
-    this.skill = skill;
-    this.level = level;
+    this.id = { data: id, isRequired: true };
+    this.skill = { data: skill, isRequired: true };
+    this.level = { data: level, isRequired: true };
   }
 }
 
@@ -43,7 +43,7 @@ class langSkillCRUD {
   static deleteLanguage(id) {
     let languageList = JSON.parse(localStorage.getItem("languagesData"));
     let newLangList = languageList.filter((element) => {
-      if (element.id !== id) {
+      if (element.id.data !== id) {
         return element;
       }
     });
@@ -60,60 +60,79 @@ class langSkillCRUD {
       "preview-languages-container"
     );
 
-    if (languageData && languageListContainer) {
-      let languageList = languageData.map((element) => {
-        return `<li class="form-language-container" data-id=${element.id}>
-              <span>${element.language}: ${element.level.substring(
-          1
-        )}</span> <i class="fas fa-times" data-landelete></i>
+    if (languageData && languageData.length !== 0) {
+      if (languageListContainer) {
+        let languageList = languageData.map((element) => {
+          return `<li class="form-language-container" data-id=${
+            element.id.data
+          }>
+              <span>${element.language.data}: ${element.level.data.substring(
+            1
+          )}</span> <i class="fas fa-times" data-landelete></i>
           </li>`;
-      });
-      languageListContainer.innerHTML = languageList.join("");
-    }
-    if (languageData) {
-      let previewLanguageList = languageData.map((element) => {
-        return `<div class="language-container">
-        <h3 class="language">${element.language}</h3>
-        <p class="language-level">${element.level.substring(1)}</p>
+        });
+        languageListContainer.innerHTML = languageList.join("");
+      }
+      if (previewlanguageListContainer) {
+        let previewLanguageList = languageData.map((element) => {
+          return `<div class="language-container">
+        <h3 class="language">${element.language.data}</h3>
+        <p class="language-level.data">${element.level.data.substring(1)}</p>
         <div class="language-level-dot">
-          <div id="${element.language}i" class="inner-dot"></div>
+          <div id="${element.language.data}i" class="inner-dot"></div>
           <div id="plo" data-lvl="1" class="outer-dot"></div>
         </div>
         <div id="Polish" class="language-level-scale" data-lvl="5">
           <div>
             <div class="inner"></div>
-            <div id="${element.language}1" data-on="off" class="level"></div>
+            <div id="${
+              element.language.data
+            }1" data-on="off" class="level"></div>
           </div>
           <div>
             <div class="inner"></div>
-            <div id="${element.language}2" data-on="off" class="level"></div>
+            <div id="${
+              element.language.data
+            }2" data-on="off" class="level"></div>
           </div>
           <div>
             <div class="inner"></div>
-            <div id="${element.language}3" data-on="off" class="level"></div>
+            <div id="${
+              element.language.data
+            }3" data-on="off" class="level"></div>
           </div>
           <div>
             <div class="inner"></div>
-            <div id="${element.language}4" data-on="off" class="level"></div>
+            <div id="${
+              element.language.data
+            }4" data-on="off" class="level"></div>
           </div>
           <div>
             <div class="inner"></div>
-            <div id="${element.language}5" data-on="off" class="level"></div>
+            <div id="${
+              element.language.data
+            }5" data-on="off" class="level"></div>
           </div>
         </div>
       </div>`;
-      });
-      previewlanguageListContainer.innerHTML = previewLanguageList.join("");
-      languageData.forEach((element) => {
-        langSkillLevel.creativeLanguageLevel(
-          element.level.charAt(0),
-          element.language
-        );
-        langSkillLevel.radioButtonSkills(
-          element.language,
-          element.level.charAt(0)
-        );
-      });
+        });
+        previewlanguageListContainer.innerHTML = previewLanguageList.join("");
+        languageData.forEach((element) => {
+          langSkillLevel.creativeLanguageLevel(
+            element.level.data.charAt(0),
+            element.language.data
+          );
+          langSkillLevel.radioButtonSkills(
+            element.language.data,
+            element.level.data.charAt(0)
+          );
+        });
+      }
+    } else {
+      document.querySelector(".languages-container").style.display = "none";
+      if (languageListContainer) {
+        languageListContainer.innerHTML = "";
+      }
     }
   }
 
@@ -143,7 +162,7 @@ class langSkillCRUD {
     let skillData = JSON.parse(localStorage.getItem("skillsData"));
 
     let newSkillData = skillData.filter((element) => {
-      if (element.id !== id) {
+      if (element.id.data !== id) {
         return element;
       }
     });
@@ -159,21 +178,22 @@ class langSkillCRUD {
       "preview-skills-container"
     );
 
-    if (skillData && formSkillContainer) {
-      let skillList = skillData.map((element) => {
-        return `
-        <li class="form-skill-container" data-id=${element.id}>
-              <span>${element.skill}: ${element.level.substring(
-          1
-        )}</span> <i class="fas fa-times" data-skidelete></i>
+    if (skillData && skillData.length !== 0) {
+      if (formSkillContainer) {
+        let skillList = skillData.map((element) => {
+          return `
+        <li class="form-skill-container" data-id=${element.id.data}>
+              <span>${element.skill.data}: ${element.level.data.substring(
+            1
+          )}</span> <i class="fas fa-times" data-skidelete></i>
           </li>`;
-      });
-      formSkillContainer.innerHTML = skillList.join("");
-    }
-    if (skillData) {
-      let previewSkillList = skillData.map((element) => {
-        return `<li>
-        ${element.skill}
+        });
+        formSkillContainer.innerHTML = skillList.join("");
+      }
+      if (previewSkillContainer) {
+        let previewSkillList = skillData.map((element) => {
+          return `<li>
+        ${element.skill.data}
         <div id="js" class="skill-level" data-level="3">
           <div>
             <input
@@ -187,34 +207,40 @@ class langSkillCRUD {
           </div>
           <div>
             <div class="inner"></div>
-            <div id="${element.skill}1" data-on="off" class="level"></div>
+            <div id="${element.skill.data}1" data-on="off" class="level"></div>
           </div>
           <div>
             <div class="inner"></div>
-            <div id="${element.skill}2" data-on="off" class="level"></div>
+            <div id="${element.skill.data}2" data-on="off" class="level"></div>
           </div>
           <div>
             <div class="inner"></div>
-            <div id="${element.skill}3" data-on="off" class="level"></div>
+            <div id="${element.skill.data}3" data-on="off" class="level"></div>
           </div>
           <div>
             <div class="inner"></div>
-            <div id="${element.skill}4" data-on="off" class="level"></div>
+            <div id="${element.skill.data}4" data-on="off" class="level"></div>
           </div>
           <div>
             <div class="inner"></div>
-            <div id="${element.skill}5" data-on="off" class="level"></div>
+            <div id="${element.skill.data}5" data-on="off" class="level"></div>
           </div>
         </div>
       </li>`;
-      });
-      previewSkillContainer.innerHTML = previewSkillList.join("");
-      skillData.forEach((element) => {
-        langSkillLevel.radioButtonSkills(
-          element.skill,
-          element.level.charAt(0)
-        );
-      });
+        });
+        previewSkillContainer.innerHTML = previewSkillList.join("");
+        skillData.forEach((element) => {
+          langSkillLevel.radioButtonSkills(
+            element.skill.data,
+            element.level.data.charAt(0)
+          );
+        });
+      }
+    } else {
+      document.querySelector(".skills-container").style.display = "none";
+      if (formSkillContainer) {
+        formSkillContainer.innerHTML = "";
+      }
     }
   }
 }

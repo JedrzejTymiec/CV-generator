@@ -7,7 +7,7 @@ class validation {
       listData = JSON.parse(localStorage.getItem("skillsData"));
       if (listData) {
         let contains = listData.filter((element) => {
-          if (data.skill === element.skill) {
+          if (data.skill.data === element.skill.data) {
             return element;
           }
         });
@@ -22,7 +22,7 @@ class validation {
       listData = JSON.parse(localStorage.getItem("languagesData"));
       if (listData) {
         let contains = listData.filter((element) => {
-          if (data.language === element.language) {
+          if (data.language.data === element.language.data) {
             return element;
           }
         });
@@ -55,7 +55,7 @@ class validation {
   static validateData(data) {
     let invalidData = [];
     for (const prop in data) {
-      if (data[prop] === "") {
+      if (data[prop].data === "" && data[prop].isRequired) {
         invalidData.push(prop);
       }
     }

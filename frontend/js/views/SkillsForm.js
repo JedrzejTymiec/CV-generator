@@ -19,7 +19,7 @@ export default class extends AbstractView {
       <span id="skill-input-alert"></span>
     </div>
       <div class="form-group">
-        <label class="form-label" for="skill-level-input">Level*</label>
+        <label class="form-label" for="skill-level-input">Level</label>
         <select id="skill-level-input">
           <option value="1Trainee">Trainee</option>
           <option value="2Junior">Junior</option>

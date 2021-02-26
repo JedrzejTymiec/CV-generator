@@ -244,14 +244,14 @@ document.addEventListener("DOMContentLoaded", () => {
         );
         modalUI.openModal(e.target);
         modalUI.editExperienceInputs(
-          jobToEdit.id,
-          jobToEdit.position,
-          jobToEdit.company,
-          jobToEdit.location,
-          jobToEdit.expstart,
-          jobToEdit.expend,
-          jobToEdit.stillWorking,
-          jobToEdit.expdescription
+          jobToEdit.id.data,
+          jobToEdit.position.data,
+          jobToEdit.company.data,
+          jobToEdit.location.data,
+          jobToEdit.expstart.data,
+          jobToEdit.expend.data,
+          jobToEdit.stillWorking.data,
+          jobToEdit.expdescription.data
         );
       } else if (e.target.matches("[data-edudelete]")) {
         educationCRUD.deleteEducation(e.target.parentNode.dataset.id);
@@ -262,14 +262,14 @@ document.addEventListener("DOMContentLoaded", () => {
         );
         modalUI.openModal(e.target);
         modalUI.editEducationInputs(
-          eduToEdit.id,
-          eduToEdit.edulevel,
-          eduToEdit.school,
-          eduToEdit.specialization,
-          eduToEdit.edustart,
-          eduToEdit.eduend,
-          eduToEdit.stillLearning,
-          eduToEdit.edudescription
+          eduToEdit.id.data,
+          eduToEdit.edulevel.data,
+          eduToEdit.school.data,
+          eduToEdit.specialization.data,
+          eduToEdit.edustart.data,
+          eduToEdit.eduend.data,
+          eduToEdit.stillLearning.data,
+          eduToEdit.edudescription.data
         );
       } else if (e.target.matches("[data-cerdelete]")) {
         certificationCRUD.deleteCertification(e.target.parentNode.dataset.id);
@@ -280,11 +280,11 @@ document.addEventListener("DOMContentLoaded", () => {
         );
         modalUI.openModal(e.target);
         modalUI.editCertificationInputs(
-          cerToEdit.id,
-          cerToEdit.certname,
-          cerToEdit.organizer,
-          cerToEdit.certdate,
-          cerToEdit.cerdescription
+          cerToEdit.id.data,
+          cerToEdit.certname.data,
+          cerToEdit.organizer.data,
+          cerToEdit.certdate.data,
+          cerToEdit.cerdescription.data
         );
       } else if (e.target.matches("[data-landelete]")) {
         langSkillCRUD.deleteLanguage(e.target.parentNode.dataset.id);

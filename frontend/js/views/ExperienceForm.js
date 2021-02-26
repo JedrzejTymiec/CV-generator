@@ -32,7 +32,7 @@ export default class extends AbstractView {
       <h1 class="form-title">Languages</h1>
       <ul id="form-languages-container"></ul>
       <div class="form-group">
-        <label class="form-label" for="language-input">Language*</label>
+        <label class="form-label" for="language-input">Language</label>
         <select id="language-input">
           <option selected="selected" value=""> - </option>
           <option value="Afrikaans">Afrikaans</option>
@@ -111,7 +111,7 @@ export default class extends AbstractView {
         <span id="language-input-alert"></span>
       </div>
       <div class="form-group">
-        <label class="form-label" for="language-level-input">Level*</label>
+        <label class="form-label" for="language-level-input">Level</label>
         <select id="language-level-input">
           <option selected="selected" value="1A1/A2 - Beginner">A1/A2 - Beginner</option>
           <option value="2B1 - Intermediate">B1 - Intermediate</option>

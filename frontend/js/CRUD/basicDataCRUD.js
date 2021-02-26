@@ -1,25 +1,25 @@
 class BasicData {
   constructor(name, surname, proffesion, about) {
-    this.name = name;
-    this.surname = surname;
-    this.proffesion = proffesion;
-    this.about = about;
+    this.name = { data: name, isRequired: true };
+    this.surname = { data: surname, isRequired: true };
+    this.proffesion = { data: proffesion, isRequired: true };
+    this.about = { data: about, isRequired: true };
   }
 }
 
 class Residence {
   constructor(country, city) {
-    this.country = country;
-    this.city = city;
+    this.country = { data: country, isRequired: true };
+    this.city = { data: city, isRequired: true };
   }
 }
 
 class Contact {
   constructor(phone, email, linkedin, github) {
-    this.phone = phone;
-    this.email = email;
-    this.linkedin = linkedin;
-    this.github = github;
+    this.phone = { data: phone, isRequired: true };
+    this.email = { data: email, isRequired: true };
+    this.linkedin = { data: linkedin, isRequired: false };
+    this.github = { data: github, isRequired: false };
   }
 }
 
@@ -63,16 +63,18 @@ class basicDataUpdate {
     );
 
     if (basicData && currentPage === "basic") {
-      document.getElementById("name-input").value = basicData.name;
-      document.getElementById("surname-input").value = basicData.surname;
-      document.getElementById("proffesion-input").value = basicData.proffesion;
-      document.getElementById("about-input").value = basicData.about;
+      document.getElementById("name-input").value = basicData.name.data;
+      document.getElementById("surname-input").value = basicData.surname.data;
+      document.getElementById("proffesion-input").value =
+        basicData.proffesion.data;
+      document.getElementById("about-input").value = basicData.about.data;
     }
     if (basicData) {
-      document.getElementById("about").innerText = basicData.about;
+      document.getElementById("about").innerText = basicData.about.data;
       document.querySelector(".about h1").innerText =
-        basicData.name + " " + basicData.surname;
-      document.getElementById("proffesion").innerText = basicData.proffesion;
+        basicData.name.data + " " + basicData.surname.data;
+      document.getElementById("proffesion").innerText =
+        basicData.proffesion.data;
     }
   }
 
@@ -83,12 +85,13 @@ class basicDataUpdate {
     );
 
     if (residenceData && currentPage === "basic") {
-      document.getElementById("country-input").value = residenceData.country;
-      document.getElementById("city-input").value = residenceData.city;
+      document.getElementById("country-input").value =
+        residenceData.country.data;
+      document.getElementById("city-input").value = residenceData.city.data;
     }
     if (residenceData) {
       document.getElementById("residence").innerText =
-        residenceData.city + ", " + residenceData.country;
+        residenceData.city.data + ", " + residenceData.country.data;
     }
   }
 
@@ -99,20 +102,34 @@ class basicDataUpdate {
     );
 
     if (contactData && currentPage === "basic") {
-      document.getElementById("phone-input").value = contactData.phone;
-      document.getElementById("email-input").value = contactData.email;
-      document.getElementById("linkedin-input").value = contactData.linkedin;
-      document.getElementById("github-input").value = contactData.github;
+      document.getElementById("phone-input").value = contactData.phone.data;
+      document.getElementById("email-input").value = contactData.email.data;
+      document.getElementById("linkedin-input").value =
+        contactData.linkedin.data;
+      document.getElementById("github-input").value = contactData.github.data;
     }
     if (contactData) {
-      document.getElementById("phone").innerText = contactData.phone;
-      document.getElementById("email").innerText = contactData.email;
-      document.getElementById("linkedin").innerText = contactData.linkedin;
-      document.getElementById("linkedin").parentNode.href =
-        "https://www." + contactData.linkedin;
-      document.getElementById("github").innerText = contactData.github;
-      document.getElementById("github").parentNode.href =
-        "https://www." + contactData.github;
+      document.getElementById("phone").innerText = contactData.phone.data;
+      document.getElementById("email").innerText = contactData.email.data;
+      if (contactData.linkedin.data !== "") {
+        document.getElementById("linkedin").parentNode.style.display =
+          "list-item";
+        document.getElementById("linkedin").innerText =
+          contactData.linkedin.data;
+        document.getElementById("linkedin").parentNode.href =
+          "https://www." + contactData.linkedin.data;
+      } else {
+        document.getElementById("linkedin").parentNode.style.display = "none";
+      }
+      if (contactData.github.data !== "") {
+        document.getElementById("github").parentNode.style.display =
+          "list-item";
+        document.getElementById("github").innerText = contactData.github.data;
+        document.getElementById("github").parentNode.href =
+          "https://www." + contactData.github.data;
+      } else {
+        document.getElementById("github").parentNode.style.display = "none";
+      }
     }
   }
 

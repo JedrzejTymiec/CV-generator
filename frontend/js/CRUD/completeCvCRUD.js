@@ -126,13 +126,13 @@ class completeCvCRUD {
             <div class="entry-body-wrapper">
             ${img}
               <div class="cv-entry-desc">
-                <h3>${element.basic.name} ${element.basic.surname}</h3>
-                <h5>${element.basic.proffesion}</h5>
+                <h3>${element.basic.name.data} ${element.basic.surname.data}</h3>
+                <h5>${element.basic.proffesion.data}</h5>
               </div>
             </div>
           </div>
           <div class="cv-action-icons">
-            <i class="fas fa-trash-alt" data-cvdelete data-modal="warning" data-id=${element.id}></i>
+            <i class="fas fa-trash-alt" data-cvdelete data-modal="warning" data-id=${element.id.data}></i>
           </div>
         </div>`;
       });
