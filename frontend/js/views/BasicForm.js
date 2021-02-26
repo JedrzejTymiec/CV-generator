@@ -44,7 +44,7 @@ export default class extends AbstractView {
             <span id="surname-input-alert"></span>
           </div>
           <div class="form-group">
-            <label class="form-label" for="proffesion-input">Proffesion*</label>
+            <label class="form-label" for="proffesion-input">Proffesion</label>
             <input type="text" id="proffesion-input">
             <span id="proffesion-input-alert"></span>
           </div>

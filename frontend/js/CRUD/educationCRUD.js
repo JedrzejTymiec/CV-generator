@@ -103,11 +103,10 @@ class educationCRUD {
     let formEducationListContainer = document.getElementById(
       "form-education-list"
     );
-    if (educationData.length !== 0) {
-      let previewEducationListContainer = document.getElementById(
-        "preview-education-list-container"
-      );
-
+    let previewEducationListContainer = document.getElementById(
+      "preview-education-list-container"
+    );
+    if (educationData && educationData.length !== 0) {
       //move still learning to the begining of list
 
       let stillLearning = [];
@@ -140,6 +139,7 @@ class educationCRUD {
         formEducationListContainer.innerHTML = eduList.join("");
       }
       if (previewEducationListContainer) {
+        document.querySelector(".education-container").style.display = "block";
         let previewEduList = educationData.map((element) => {
           return `<div class="study-container">
         <div class="dash"></div>

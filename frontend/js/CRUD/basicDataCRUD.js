@@ -2,7 +2,7 @@ class BasicData {
   constructor(name, surname, proffesion, about) {
     this.name = { data: name, isRequired: true };
     this.surname = { data: surname, isRequired: true };
-    this.proffesion = { data: proffesion, isRequired: true };
+    this.proffesion = { data: proffesion, isRequired: false };
     this.about = { data: about, isRequired: true };
   }
 }

@@ -105,11 +105,10 @@ class experienceCRUD {
   static readExperience() {
     let experienceData = JSON.parse(localStorage.getItem("experienceData"));
     let formJobListContainer = document.getElementById("form-job-list");
-    if (experienceData.length !== 0) {
-      let previewJobListContainer = document.getElementById(
-        "preview-job-list-container"
-      );
-
+    let previewJobListContainer = document.getElementById(
+      "preview-job-list-container"
+    );
+    if (experienceData && experienceData.length !== 0) {
       //move still working to the begining of list
       let stillWorking = [];
       let pastExperience = [];
@@ -139,8 +138,10 @@ class experienceCRUD {
         });
         formJobListContainer.innerHTML = jobList.join("");
       }
-      let previewJobList = experienceData.map((element) => {
-        return `<div class="job-container">
+      if (previewJobListContainer) {
+        document.querySelector(".experience-container").style.display = "block";
+        let previewJobList = experienceData.map((element) => {
+          return `<div class="job-container">
         <div class="dash"></div>
         <div class="job">
           <h3 class="job-title">${element.position.data}</h3>
@@ -149,9 +150,10 @@ class experienceCRUD {
           <p class="job-description">${element.expdescription.data}</p>
         </div>
       </div>`;
-      });
+        });
 
-      previewJobListContainer.innerHTML = previewJobList.join("");
+        previewJobListContainer.innerHTML = previewJobList.join("");
+      }
 
       if (experienceData.length > 0) {
         document

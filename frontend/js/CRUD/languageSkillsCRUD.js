@@ -74,6 +74,7 @@ class langSkillCRUD {
         languageListContainer.innerHTML = languageList.join("");
       }
       if (previewlanguageListContainer) {
+        document.querySelector(".languages-container").style.display = "block";
         let previewLanguageList = languageData.map((element) => {
           return `<div class="language-container">
         <h3 class="language">${element.language.data}</h3>
@@ -191,6 +192,7 @@ class langSkillCRUD {
         formSkillContainer.innerHTML = skillList.join("");
       }
       if (previewSkillContainer) {
+        document.querySelector(".skills-container").style.display = "block";
         let previewSkillList = skillData.map((element) => {
           return `<li>
         ${element.skill.data}

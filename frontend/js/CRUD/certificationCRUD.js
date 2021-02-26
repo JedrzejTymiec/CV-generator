@@ -111,6 +111,8 @@ class certificationCRUD {
         formCertificationListContainer.innerHTML = cerList.join("");
       }
       if (previewCertificationListContainer) {
+        document.querySelector(".certifications-container").style.display =
+          "block";
         let previewCerList = certificationDataList.map((element) => {
           return `<div class="course-container">
         <h3 class="course-name">${element.certname.data}</h3>
