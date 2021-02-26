@@ -48,6 +48,28 @@ const router = async () => {
 
   document.querySelector("#form-container").innerHTML = await view.getHtml();
 
+  let currentPage = window.location.href.substring(
+    window.location.href.lastIndexOf("/") + 1
+  );
+  appUI.pagesDone(currentPage);
+
+  photoCRUD.readPhoto();
+  basicDataCRUD.readBasicData();
+  basicDataCRUD.readResidenceData();
+  basicDataCRUD.readContactData();
+
+  if (document.getElementById("form-container").dataset.valid === "false") {
+    validation.validateBasicPage();
+  }
+
+  langSkillCRUD.readLanguages();
+  langSkillCRUD.readSkills();
+  experienceCRUD.readExperience();
+  educationCRUD.readEducation();
+  certificationCRUD.readCertification();
+
+  completeCvCRUD.readCv();
+
   //Close modal
 
   let closeModalButtons = document.getElementsByClassName("close-modal");
@@ -70,20 +92,38 @@ const router = async () => {
   }
 
   let photoToggle = document.getElementById("photo-display");
+  function toggleHandle() {
+    if (photoToggle.dataset.toggle === "false") {
+      photoToggle.dataset.toggle = "true";
+      toggle();
+      let photoData = JSON.parse(localStorage.getItem("photoData"));
+      photoData.showPhoto = "true";
+      localStorage.setItem("photoData", JSON.stringify(photoData));
+    } else {
+      photoToggle.dataset.toggle = "false";
+      let photoData = JSON.parse(localStorage.getItem("photoData"));
+      photoData.showPhoto = "false";
+      localStorage.setItem("photoData", JSON.stringify(photoData));
+      toggle();
+    }
+  }
+  function toggle() {
+    if (photoToggle.dataset.toggle === "true") {
+      document.querySelector(".slider").style.transform = "translateX(30px)";
+      document.querySelector(".slide-track").style.backgroundColor =
+        "var(--main-color)";
+      document.querySelector(".profile-photo").style.display = "block";
+    } else {
+      document.querySelector(".slider").style.transform = "none";
+      document.querySelector(".slide-track").style.backgroundColor =
+        "var(--label-color)";
+      document.querySelector(".profile-photo").style.display = "none";
+      photoToggle.dataset.toggle = "false";
+    }
+  }
   if (photoToggle) {
-    photoToggle.addEventListener("change", () => {
-      if (photoToggle.checked) {
-        document.querySelector(".profile-photo").style.display = "block";
-        photoToggle.dataset.checked = "true";
-      } else {
-        document.querySelector(".profile-photo").style.display = "none";
-        photoToggle.dataset.checked = "false";
-      }
-      if (photoToggle.dataset.checked === "ture") {
-        document.querySelector(".slider:before").style.transform =
-          "translateX(26px)";
-      }
-    });
+    toggle();
+    photoToggle.addEventListener("change", toggleHandle);
   }
 
   let basic = document.getElementById("basic-data-form");
@@ -164,6 +204,7 @@ const router = async () => {
         newData = completeCvCRUD.completeCvData(id);
       } else {
         newData = completeCvCRUD.completeCvData();
+        document.getElementById("form-container").dataset.id = newData.id;
       }
       let valid = validation.completeValidation(newData);
       if (valid) {
@@ -204,28 +245,6 @@ const router = async () => {
         });
     }
   }
-
-  let currentPage = window.location.href.substring(
-    window.location.href.lastIndexOf("/") + 1
-  );
-  appUI.pagesDone(currentPage);
-
-  photoCRUD.readPhoto();
-  basicDataCRUD.readBasicData();
-  basicDataCRUD.readResidenceData();
-  basicDataCRUD.readContactData();
-
-  if (document.getElementById("form-container").dataset.valid === "false") {
-    validation.validateBasicPage();
-  }
-
-  langSkillCRUD.readLanguages();
-  langSkillCRUD.readSkills();
-  experienceCRUD.readExperience();
-  educationCRUD.readEducation();
-  certificationCRUD.readCertification();
-
-  completeCvCRUD.readCv();
 };
 
 export { router, navigateTo };

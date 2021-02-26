@@ -47,6 +47,11 @@ function photoUpload() {
         imageField.style.cursor = "auto";
         document.getElementById("save-photo-button").style.display = "none";
         document.getElementById("delete-photo-button").style.display = "flex";
+        if (
+          document.getElementById("photo-display").dataset.toggle === "false"
+        ) {
+          document.querySelector(".slide-track").click();
+        }
         displayAlert(true, "Photo uploaded!");
       } catch (err) {
         console.log("Error!");
@@ -70,6 +75,8 @@ function photoUpload() {
         photoCRUD.readPhoto();
         imageField.addEventListener("click", click);
         imageField.addEventListener("drop", dropHandle);
+        imageInput.value = "";
+        console.log(imageInput.files);
         displayAlert(false, "Photo deleted!");
       } catch (err) {
         console.log("Error!");
@@ -117,7 +124,6 @@ function displayAlert(type, text) {
 
 function updatePhoto(file) {
   const imageField = document.getElementById("image-field");
-
   let photoElement = document.getElementById("photo");
 
   if (file) {
@@ -159,10 +165,11 @@ function updatePhoto(file) {
       }
     }
   } else {
+    console.log("else");
     if (photoElement) {
       photoElement.remove();
     }
-    if (document.getElementById("#image-field")) {
+    if (imageField) {
       document.querySelector("#image-field span").style.display = "inline";
       document.getElementById("image-field").style.cursor = "pointer";
       document.getElementById("save-photo-button").style.display = "flex";

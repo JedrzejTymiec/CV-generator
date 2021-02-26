@@ -13,8 +13,10 @@ export default class extends AbstractView {
           <div class="photo-toggle-container">
             <h4 class="form-label">Show photo in resume</h4>
             <label class="switch">
-              <input type="checkbox" id="photo-display" data-checked="">
-              <span class="slider round"></span>
+              <input type="checkbox" id="photo-display" data-toggle="false">
+              <div class="slide-track">
+                <div class="slider"></div>
+              </div>
             </label>
           </div>
           <div class="photo-container">

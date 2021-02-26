@@ -211,89 +211,90 @@ if (newButton) {
 
 document.addEventListener("DOMContentLoaded", () => {
   document.body.addEventListener("click", (e) => {
-    console.log(e.target);
-    if (e.target.matches("[data-link]")) {
-      e.preventDefault();
-      navigateTo(e.target.href);
-    } else if (e.target.parentNode.matches("[data-link]")) {
-      e.preventDefault();
-      if (e.target.matches("[data-valid]")) {
-        let valid = validation.validateBasicPage();
-        if (valid) {
+    if (e.target.tagName !== "BODY") {
+      if (e.target.matches("[data-link]")) {
+        e.preventDefault();
+        navigateTo(e.target.href);
+      } else if (e.target.parentNode.matches("[data-link]")) {
+        e.preventDefault();
+        if (e.target.matches("[data-valid]")) {
+          let valid = validation.validateBasicPage();
+          if (valid) {
+            navigateTo(e.target.parentNode.href);
+          }
+        } else {
           navigateTo(e.target.parentNode.href);
         }
-      } else {
-        navigateTo(e.target.parentNode.href);
-      }
-    } else if (e.target.parentNode.parentNode.matches("[data-link]")) {
-      e.preventDefault();
-      if (e.target.parentNode.matches("[data-valid]")) {
-        let valid = validation.validateBasicPage();
-        if (valid) {
+      } else if (e.target.parentNode.parentNode.matches("[data-link]")) {
+        e.preventDefault();
+        if (e.target.parentNode.matches("[data-valid]")) {
+          let valid = validation.validateBasicPage();
+          if (valid) {
+            navigateTo(e.target.parentNode.parentNode.href);
+          }
+        } else {
           navigateTo(e.target.parentNode.parentNode.href);
         }
-      } else {
-        navigateTo(e.target.parentNode.parentNode.href);
+      } else if (e.target.matches("[data-expdelete]")) {
+        experienceCRUD.deleteExperience(e.target.parentNode.dataset.id);
+        experienceCRUD.readExperience();
+      } else if (e.target.matches("[data-expedit]")) {
+        let jobToEdit = experienceCRUD.updateExperience(
+          e.target.parentNode.dataset.id
+        );
+        modalUI.openModal(e.target);
+        modalUI.editExperienceInputs(
+          jobToEdit.id,
+          jobToEdit.position,
+          jobToEdit.company,
+          jobToEdit.location,
+          jobToEdit.expstart,
+          jobToEdit.expend,
+          jobToEdit.stillWorking,
+          jobToEdit.expdescription
+        );
+      } else if (e.target.matches("[data-edudelete]")) {
+        educationCRUD.deleteEducation(e.target.parentNode.dataset.id);
+        educationCRUD.readEducation();
+      } else if (e.target.matches("[data-eduedit]")) {
+        let eduToEdit = educationCRUD.updateEducation(
+          e.target.parentNode.dataset.id
+        );
+        modalUI.openModal(e.target);
+        modalUI.editEducationInputs(
+          eduToEdit.id,
+          eduToEdit.edulevel,
+          eduToEdit.school,
+          eduToEdit.specialization,
+          eduToEdit.edustart,
+          eduToEdit.eduend,
+          eduToEdit.stillLearning,
+          eduToEdit.edudescription
+        );
+      } else if (e.target.matches("[data-cerdelete]")) {
+        certificationCRUD.deleteCertification(e.target.parentNode.dataset.id);
+        certificationCRUD.readCertification();
+      } else if (e.target.matches("[data-ceredit]")) {
+        let cerToEdit = certificationCRUD.updateCertification(
+          e.target.parentNode.dataset.id
+        );
+        modalUI.openModal(e.target);
+        modalUI.editCertificationInputs(
+          cerToEdit.id,
+          cerToEdit.certname,
+          cerToEdit.organizer,
+          cerToEdit.certdate,
+          cerToEdit.cerdescription
+        );
+      } else if (e.target.matches("[data-landelete]")) {
+        langSkillCRUD.deleteLanguage(e.target.parentNode.dataset.id);
+      } else if (e.target.matches("[data-skidelete]")) {
+        langSkillCRUD.deleteSkill(e.target.parentNode.dataset.id);
+      } else if (e.target.matches("[data-cvdelete]")) {
+        modalUI.openModal(e.target);
+        document.getElementById("delete-cv-button").dataset.id =
+          e.target.dataset.id;
       }
-    } else if (e.target.matches("[data-expdelete]")) {
-      experienceCRUD.deleteExperience(e.target.parentNode.dataset.id);
-      experienceCRUD.readExperience();
-    } else if (e.target.matches("[data-expedit]")) {
-      let jobToEdit = experienceCRUD.updateExperience(
-        e.target.parentNode.dataset.id
-      );
-      modalUI.openModal(e.target);
-      modalUI.editExperienceInputs(
-        jobToEdit.id,
-        jobToEdit.position,
-        jobToEdit.company,
-        jobToEdit.location,
-        jobToEdit.expstart,
-        jobToEdit.expend,
-        jobToEdit.stillWorking,
-        jobToEdit.expdescription
-      );
-    } else if (e.target.matches("[data-edudelete]")) {
-      educationCRUD.deleteEducation(e.target.parentNode.dataset.id);
-      educationCRUD.readEducation();
-    } else if (e.target.matches("[data-eduedit]")) {
-      let eduToEdit = educationCRUD.updateEducation(
-        e.target.parentNode.dataset.id
-      );
-      modalUI.openModal(e.target);
-      modalUI.editEducationInputs(
-        eduToEdit.id,
-        eduToEdit.edulevel,
-        eduToEdit.school,
-        eduToEdit.specialization,
-        eduToEdit.edustart,
-        eduToEdit.eduend,
-        eduToEdit.stillLearning,
-        eduToEdit.edudescription
-      );
-    } else if (e.target.matches("[data-cerdelete]")) {
-      certificationCRUD.deleteCertification(e.target.parentNode.dataset.id);
-      certificationCRUD.readCertification();
-    } else if (e.target.matches("[data-ceredit]")) {
-      let cerToEdit = certificationCRUD.updateCertification(
-        e.target.parentNode.dataset.id
-      );
-      modalUI.openModal(e.target);
-      modalUI.editCertificationInputs(
-        cerToEdit.id,
-        cerToEdit.certname,
-        cerToEdit.organizer,
-        cerToEdit.certdate,
-        cerToEdit.cerdescription
-      );
-    } else if (e.target.matches("[data-landelete]")) {
-      langSkillCRUD.deleteLanguage(e.target.parentNode.dataset.id);
-    } else if (e.target.matches("[data-skidelete]")) {
-      langSkillCRUD.deleteSkill(e.target.parentNode.dataset.id);
-    } else if (e.target.matches("[data-cvdelete]")) {
-      modalUI.openModal(e.target);
-      document.getElementById("delete-cv-button").dataset.id =
-        e.target.dataset.id;
     }
   });
   let currentPage = window.location.href.substring(

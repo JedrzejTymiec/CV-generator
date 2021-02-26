@@ -92,6 +92,7 @@ class validation {
     if (basic && contact && residence) {
       return true;
     } else {
+      document.getElementById("form-container").dataset.valid = "";
       return false;
     }
   }

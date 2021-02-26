@@ -25,6 +25,7 @@ class Contact {
 
 class basicDataUpdate {
   static basicData() {
+    console.log("basicData");
     let name = document.getElementById("name-input").value;
     let surname = document.getElementById("surname-input").value;
     let proffesion = document.getElementById("proffesion-input").value;

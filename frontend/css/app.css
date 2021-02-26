@@ -4,6 +4,7 @@
   --entry-bg: #d0d0d0;
   --entry-hover: #c4c4c4;
   --label-color: #a3a3a3;
+  --main-color: #0006ba;
 }
 
 html,
@@ -200,6 +201,26 @@ form h4 {
   height: 0;
 }
 
+.slide-track {
+  background-color: var(--label-color);
+  height: 20px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: 15px;
+  transition: 0.4s;
+}
+
+.slider {
+  background-color: #fff;
+  height: 18px;
+  width: 18px;
+  margin: 1px;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+/* 
 .slider {
   position: absolute;
   cursor: pointer;
@@ -210,6 +231,7 @@ form h4 {
   background-color: #ccc;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  border-radius: 34px;
 }
 
 .slider:before {
@@ -222,29 +244,18 @@ form h4 {
   background-color: white;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  border-radius: 50%;
 }
 
 input:checked + .slider {
   background-color: #1825aa;
 }
 
-input:focus + .slider {
-  box-shadow: 0 0 1px #1825aa;
-}
-
 input:checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
-}
-
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
-}
+} */
 
 .photo-container {
   display: flex;

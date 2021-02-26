@@ -1,8 +1,8 @@
 import { click, dropHandle, updatePhoto } from "../photoUpload.js";
 
 class PhotoData {
-  constructor(isPhoto, name, path) {
-    this.isPhoto = isPhoto;
+  constructor(showPhoto, name, path) {
+    this.showPhoto = showPhoto;
     this.name = name;
     this.path = path;
   }
@@ -10,11 +10,11 @@ class PhotoData {
 
 class photoCRUD {
   static photoData(data) {
-    let isPhoto = true;
+    let showPhoto = "true";
     let name = data;
     let path = "../pictures/" + name;
 
-    let photoData = new PhotoData(isPhoto, name, path);
+    let photoData = new PhotoData(showPhoto, name, path);
 
     return photoData;
   }
@@ -23,6 +23,8 @@ class photoCRUD {
     let photoData = JSON.parse(localStorage.getItem("photoData"));
     if (photoData) {
       if (document.getElementById("image-field")) {
+        document.getElementById("photo-display").dataset.toggle =
+          photoData.showPhoto;
         updatePhoto(photoData.path);
         document.getElementById("image-field").style.cursor = "auto";
         document.getElementById("save-photo-button").style.display = "none";
