@@ -194,17 +194,36 @@ class langSkillCRUD {
       if (previewSkillContainer) {
         document.querySelector(".skills-container").style.display = "block";
         let previewSkillList = skillData.map((element) => {
+          let value;
+          switch (element.level.data.charAt(0)) {
+            case "1":
+              value = 20;
+              break;
+            case "2":
+              value = 40;
+              break;
+            case "3":
+              value = 60;
+              break;
+            case "4":
+              value = 80;
+              break;
+            case "5":
+              value = 100;
+              break;
+          }
           return `<li>
         ${element.skill.data}
-        <div id="js" class="skill-level" data-level="3">
+        <div id="js" class="skill-level">
           <div>
             <input
-              id="js-slider"
-              class="slider"
+              disabled
               type="range"
-              value="25"
+              value="${value}"
               min="1"
               max="100"
+              style = "background:
+                linear-gradient(to right, var(--mainColor) 0%, var(--mainColor) ${value}%, #fff ${value}%, #fff 100%);"
             />
           </div>
           <div>
