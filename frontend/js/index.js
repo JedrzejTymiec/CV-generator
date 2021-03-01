@@ -11,13 +11,21 @@ import validation from "./validation.js";
 
 ("use strict");
 
-appUI.setTemplate();
-
 let templateButtons = document.getElementsByClassName("mp template-button");
 let colorDots = document.getElementsByClassName("mp color-dot");
 let selectButtons = document.getElementsByClassName("select-button");
 let appTemplateButtons = document.getElementsByClassName("ap template-button");
 let appColorDots = document.getElementsByClassName("ap color-dot");
+let currentPage = window.location.href.substring(
+  window.location.href.lastIndexOf("/") + 1
+);
+
+appUI.setTemplate();
+if (currentPage === "") {
+  mainPageUI.setTemplate(
+    localStorage.getItem("template") + localStorage.getItem("color")
+  );
+}
 
 // texarea auto expand
 
@@ -63,7 +71,7 @@ for (var i = 0; templateButtons.length > i; i++) {
     for (var i = 0; templateButtons.length > i; i++) {
       templateButtons[i].className = "mp template-button";
     }
-    mainPageUI.setTemplate(template, templateType);
+    mainPageUI.setTemplate(template);
   });
 }
 
@@ -115,6 +123,7 @@ if (experienceForm) {
     let editId = document.getElementById("experience-form").dataset.id;
     if (editId !== "") {
       newData = experienceCRUD.experienceData(editId);
+      document.getElementById("experience-form").dataset.id = "";
     } else {
       newData = experienceCRUD.experienceData();
     }
@@ -137,6 +146,7 @@ if (educationForm) {
     let editId = document.getElementById("education-form").dataset.id;
     if (editId != "") {
       newData = educationCRUD.educationData(editId);
+      document.getElementById("education-form").dataset.id = "";
     } else {
       newData = educationCRUD.educationData();
     }
@@ -160,6 +170,7 @@ if (certificationForm) {
     let editId = document.getElementById("certification-form").dataset.id;
     if (editId != "") {
       newData = certificationCRUD.certificationData(editId);
+      document.getElementById("certification-form").dataset.id = "";
     } else {
       newData = certificationCRUD.certificationData();
     }
@@ -183,10 +194,6 @@ if (deleteCvButton) {
     completeCvCRUD.readCv();
   });
 }
-
-let currentPage = window.location.href.substring(
-  window.location.href.lastIndexOf("/") + 1
-);
 
 if (currentPage !== "") {
   window.addEventListener("popstate", router);

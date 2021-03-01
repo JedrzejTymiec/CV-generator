@@ -104,17 +104,17 @@ class validation {
     let startInput;
     let endInput;
     if (data.company) {
-      startDate = new Date(data.expstart);
-      endDate = new Date(data.expend);
+      startDate = new Date(data.expstart.data);
+      endDate = new Date(data.expend.data);
       startInput = "expstart";
       endInput = "expend";
     } else if (data.school) {
-      startDate = new Date(data.edustart);
-      endDate = new Date(data.eduend);
+      startDate = new Date(data.edustart.data);
+      endDate = new Date(data.eduend.data);
       startInput = "edustart";
       endInput = "eduend";
     } else if (data.certdate) {
-      startDate = new Date(data.certdate);
+      startDate = new Date(data.certdate.data);
       startInput = "certdate";
     }
     if (startDate && endDate) {

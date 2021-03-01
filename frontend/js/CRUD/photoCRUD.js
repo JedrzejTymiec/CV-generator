@@ -22,10 +22,16 @@ class photoCRUD {
   static readPhoto() {
     let photoData = JSON.parse(localStorage.getItem("photoData"));
     if (photoData) {
+      updatePhoto(photoData.path);
+      console.log(photoData.showPhoto);
+      if (photoData.showPhoto === "true") {
+        document.querySelector(".profile-photo").style.display = "block";
+      } else {
+        document.querySelector(".profile-photo").style.display = "none";
+      }
       if (document.getElementById("image-field")) {
         document.getElementById("photo-display").dataset.toggle =
           photoData.showPhoto;
-        updatePhoto(photoData.path);
         document.getElementById("image-field").style.cursor = "auto";
         document.getElementById("save-photo-button").style.display = "none";
         document.getElementById("delete-photo-button").style.display = "flex";

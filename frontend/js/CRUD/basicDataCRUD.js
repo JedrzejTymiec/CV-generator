@@ -117,7 +117,7 @@ class basicDataUpdate {
         document.getElementById("linkedin").innerText =
           contactData.linkedin.data;
         document.getElementById("linkedin").parentNode.href =
-          "https://www." + contactData.linkedin.data;
+          contactData.linkedin.data;
       } else {
         document.getElementById("linkedin").parentNode.style.display = "none";
       }
@@ -126,7 +126,7 @@ class basicDataUpdate {
           "list-item";
         document.getElementById("github").innerText = contactData.github.data;
         document.getElementById("github").parentNode.href =
-          "https://www." + contactData.github.data;
+          contactData.github.data;
       } else {
         document.getElementById("github").parentNode.style.display = "none";
       }

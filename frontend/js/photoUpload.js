@@ -166,7 +166,6 @@ function updatePhoto(file) {
       }
     }
   } else {
-    console.log("else");
     if (photoElement) {
       photoElement.remove();
     }

@@ -1,5 +1,5 @@
 class MainPageUI {
-  static setTemplate(templateType, id) {
+  static setTemplate(templateType) {
     let dotLists = document.getElementsByClassName("dot-list");
 
     for (var i = 0; dotLists.length > i; i++) {
@@ -9,8 +9,10 @@ class MainPageUI {
     document.getElementById("template-type").src =
       "../../pictures/CV templates/" + templateType + ".png";
 
-    document.getElementById(id).classList.add("current");
-    document.getElementById(id + "-dot-list").style.zIndex = "1";
+    document.getElementById(templateType.slice(0, -1)).classList.add("current");
+    document.getElementById(
+      templateType.slice(0, -1) + "-dot-list"
+    ).style.zIndex = "1";
 
     localStorage.setItem("template", templateType.slice(0, -1));
   }

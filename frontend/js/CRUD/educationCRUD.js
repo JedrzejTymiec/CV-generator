@@ -113,7 +113,7 @@ class educationCRUD {
       let pastExperience = [];
       educationData.forEach((element) => {
         if (element.stillLearning.data) {
-          stillLeraning.push(element);
+          stillLearning.push(element);
         } else {
           pastExperience.push(element);
         }

@@ -106,6 +106,7 @@ const router = async () => {
   let saveCVButton = document.getElementById("save-cv-button");
 
   if (basic) {
+    modalUI.autoExpandTextarea(document.getElementById("about-input"));
     photoUpload();
     photoCRUD.readPhoto();
     basic.addEventListener("submit", (e) => {

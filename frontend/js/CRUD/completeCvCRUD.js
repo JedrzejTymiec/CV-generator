@@ -98,6 +98,7 @@ class completeCvCRUD {
     let cvData = JSON.parse(localStorage.getItem("completeCvList"));
     let cvToEdit = cvData.find((element) => element.id === id);
     document.getElementById("form-container").dataset.id = cvToEdit.id;
+    localStorage.setItem("photoData", JSON.stringify(cvToEdit.photo));
     localStorage.setItem("basicData", JSON.stringify(cvToEdit.basic));
     localStorage.setItem("residenceData", JSON.stringify(cvToEdit.residence));
     localStorage.setItem("contactData", JSON.stringify(cvToEdit.contact));
@@ -132,7 +133,7 @@ class completeCvCRUD {
             </div>
           </div>
           <div class="cv-action-icons">
-            <i class="fas fa-trash-alt" data-cvdelete data-modal="warning" data-id=${element.id.data}></i>
+            <i class="fas fa-trash-alt" data-cvdelete data-modal="warning" data-id=${element.id}></i>
           </div>
         </div>`;
       });

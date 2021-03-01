@@ -54,7 +54,6 @@ export default class extends AbstractView {
                 type="textarea"
                 id="about-input"
                 maxlength="1000"
-                rows="1"
               ></textarea>
               <span id="about-input-alert"></span>
           </div>

@@ -19,7 +19,9 @@ class modalUI {
     document.getElementById(modal + "-modal").style.display = "none";
     document.body.style.overflow = "visible";
     let id = button.dataset.modal.slice(0, 3);
-    document.getElementById(id + "description-input").style.height = "31px";
+    if (id !== "war") {
+      document.getElementById(id + "description-input").style.height = "31px";
+    }
   }
 
   static openModal(button) {
