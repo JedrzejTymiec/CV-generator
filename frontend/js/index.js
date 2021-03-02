@@ -216,6 +216,35 @@ if (newButton) {
   newButton.addEventListener("click", newHandle);
 }
 
+let cvPreview = document.querySelector(".cv-preview");
+if (cvPreview) {
+  function showMessage() {
+    document.querySelector(".cv-preview").style.backgroundColor = "#d2d2d2";
+    document.querySelector(".cv-preview").style.opacity = "0.7";
+    document.querySelector(".show-message").style.display = "block";
+    document.querySelector(".show-message").style.zIndex = "2";
+  }
+  function hideMessage() {
+    document.querySelector(".cv-preview").style.backgroundColor = "#fff";
+    document.querySelector(".cv-preview").style.opacity = "1";
+    document.querySelector(".show-message").style.display = "none";
+  }
+  cvPreview.addEventListener("mouseover", showMessage);
+  cvPreview.addEventListener("mouseenter", showMessage);
+  cvPreview.addEventListener("mouseleave", hideMessage);
+  document
+    .querySelector(".show-message")
+    .addEventListener("mouseover", showMessage);
+
+  cvPreview.addEventListener("click", (e) => {
+    let modalContent = document.querySelector(".cv-preview");
+    console.log(modalContent.outerHTML);
+    document.querySelector("#preview-modal .modal-content").innerHTML =
+      modalContent.outerHTML;
+    modalUI.openModal(e.target);
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   document.body.addEventListener("click", (e) => {
     if (e.target.tagName !== "BODY") {

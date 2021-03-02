@@ -25,10 +25,10 @@ export default class extends AbstractView {
               <input type="file" id="image-input">
             </div>
             <span id="image-input-alert"></span>
-            <div id="delete-photo-button">
+            <div id="delete-photo-button" class="button">
               <i class="fas fa-trash-alt"></i>
             </div>
-            <div id="save-photo-button">
+            <div id="save-photo-button" class="button">
               <i class="far fa-save"></i>
             </div> 
           </div>

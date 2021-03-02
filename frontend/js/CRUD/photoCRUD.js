@@ -42,7 +42,7 @@ class photoCRUD {
           .getElementById("image-field")
           .removeEventListener("drop", dropHandle);
       }
-      document.querySelector(".photo-container .profile-photo").src =
+      document.querySelector(".preview-photo-container .profile-photo").src =
         photoData.path;
     } else {
       updatePhoto();

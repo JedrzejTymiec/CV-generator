@@ -3,7 +3,6 @@ import { v4 as uuidv4 } from "uuid";
 class Education {
   constructor(
     id,
-    educationLevel,
     school,
     spec,
     startDate,
@@ -12,7 +11,6 @@ class Education {
     description
   ) {
     this.id = { data: id, isRequired: true };
-    this.edulevel = { data: educationLevel, isRequired: true };
     this.school = { data: school, isRequired: true };
     this.specialization = { data: spec, isRequired: false };
     this.edustart = { data: startDate, isRequired: true };
@@ -30,7 +28,6 @@ class educationCRUD {
     } else {
       id = uuidv4();
     }
-    let educationLevel = document.getElementById("edulevel-input").value;
     let school = document.getElementById("school-input").value;
     let spec = document.getElementById("specialization-input").value;
     let startDate = document.getElementById("edustart-input").value;
@@ -46,7 +43,6 @@ class educationCRUD {
 
     let educationData = new Education(
       id,
-      educationLevel,
       school,
       spec,
       startDate,
@@ -131,7 +127,6 @@ class educationCRUD {
           <li>Okres: <span>${element.edustart.data} - ${element.eduend.data}</span></li>
           <li>Kierunek: <span>${element.specialization.data}</span></li>
           <li>Nazwa szkoły: <span>${element.school.data}</span></li>
-          <li>Poziom: <span>${element.edulevel.data}</span>
           <li>Opis: <span>${element.edudescription.data}</span>
         </ul>
       </li>`;

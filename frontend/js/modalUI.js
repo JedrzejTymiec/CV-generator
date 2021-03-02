@@ -25,7 +25,7 @@ class modalUI {
   }
 
   static openModal(button) {
-    let modal = button.dataset.modal;
+    let modal = button.closest("[data-modal]").dataset.modal;
     document.getElementById(modal + "-modal").style.display = "block";
     document.body.style.overflow = "hidden";
   }

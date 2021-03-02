@@ -203,18 +203,19 @@ const router = async () => {
     });
 
     function ExportPdf() {
+      let name = document.querySelector(".about h1").innerText;
       kendo.drawing
         .drawDOM("#myCanvas", {
           forcePageBreak: ".page-break",
           paperSize: "A4",
-          margin: { top: "1cm", bottom: "1cm" },
+          margin: { top: "0cm", bottom: "1cm" },
           scale: 0.8,
           height: 500,
           template: $("#page-template").html(),
           keepTogether: ".prevent-split",
         })
         .then(function (group) {
-          kendo.drawing.pdf.saveAs(group, "Exported_Itinerary.pdf");
+          kendo.drawing.pdf.saveAs(group, name + " CV.pdf");
         });
     }
   }
