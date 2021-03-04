@@ -8,65 +8,77 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
-.cv-preview-container section {
+.cv-preview-container section,
+.preview-modal section {
   padding: 5px 20px;
 }
 
 .cv-preview-container h1,
-.cv-preview-container h2 {
+.cv-preview-container h2,
+.preview-modal h1,
+.preview-modal h2 {
   color: var(--mainColor);
   margin: 0;
 }
 
-.cv-preview-container h2 {
+.cv-preview-container h2,
+.preview-modal h2 {
   margin-bottom: 5px;
 }
 
-.cv-preview-container h3 {
+.cv-preview-container h3,
+.preview-modal h3 {
   margin: 0;
 }
 
-.cv-preview-container .header {
+.resume-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 862px;
+}
+
+.preview-header {
   padding: 10px 20px;
   display: flex;
   background-size: cover;
   background-image: url(../../pictures/Hexagon-dotted-connect-line-background.jpg);
 }
 
-.cv-preview-container .profile-photo {
+.profile-photo {
   display: none;
   border: 2px solid var(--borderColor);
-  width: 90px;
-  height: 90px;
+  width: 120px;
+  height: 120px;
   border-radius: 15px;
   margin-right: 15px;
   object-fit: cover;
 }
 
-.cv-preview-container .about h3 {
+.about h3 {
   margin-top: 5px;
   color: var(--greyColor);
   font-weight: lighter;
   font-size: 16px;
 }
 
-.cv-preview-container .about h1 {
+.about h1 {
   font-size: 22px;
   font-weight: 600;
 }
 
-.cv-preview-container .about p {
+.about p {
   font-size: 10px;
   margin: 5px 0;
 }
 
-.cv-preview-container .contact-bar {
+.contact-bar {
   border-top: 2px solid var(--borderColor);
   border-bottom: 2px solid var(--borderColor);
   background-color: #e8e8e8;
 }
 
-.cv-preview-container .contact-bar ul {
+.contact-bar ul {
   display: flex;
   justify-content: space-evenly;
   list-style: none;
@@ -74,24 +86,24 @@ body {
   padding: 0;
 }
 
-.cv-preview-container .contact-bar .icon {
+.contact-bar .icon {
   margin-right: 5px;
   color: var(--mainColor);
 }
 
-.cv-preview-container .icon {
+.icon {
   font-size: 10px;
 }
 
-.cv-preview-container .section-title {
+.section-title {
   font-size: 18px;
 }
 
-.cv-preview-container .skills input {
+.skills input {
   display: none;
 }
 
-.cv-preview-container .skills ul {
+.skills ul {
   display: flex;
   list-style: none;
   padding: 0;
@@ -99,7 +111,7 @@ body {
   margin: 3px 0;
 }
 
-.cv-preview-container .skills ul li {
+.skills ul li {
   border-radius: 5px;
   background-color: var(--mainColor);
   color: #fff;
@@ -109,66 +121,66 @@ body {
   font-size: 10px;
 }
 
-.cv-preview-container .job-container,
-.cv-preview-container .study-container,
-.cv-preview-container .course-container {
+.job-container,
+.study-container,
+.course-container {
   margin: 10px 0;
 }
 
-.cv-preview-container .workplace,
-.cv-preview-container .school-name,
-.cv-preview-container .course-organizer {
+.workplace,
+.school-name,
+.course-organizer {
   font-weight: lighter;
   margin: 0;
   font-size: 14px;
 }
 
-.cv-preview-container .job-title,
-.cv-preview-container .field-of-study {
+.job-title,
+.field-of-study {
   font-size: 16px;
 }
 
-.cv-preview-container .course-name {
+.course-name {
   font-size: 14px;
 }
 
-.cv-preview-container .time-range {
+.time-range {
   margin: 0;
   font-style: italic;
   color: #8d8d8d;
   font-size: 10px;
 }
 
-.cv-preview-container .job-description {
+.job-description {
   font-size: 10px;
   margin: 3px 0;
 }
 
-.cv-preview-container .certifications {
+.certifications {
   display: grid;
   grid-template-columns: 50% 50%;
   column-gap: 15px;
 }
 
-.cv-preview-container #course-1 {
+#course-1 {
   grid-column-start: 2;
   grid-row-start: 1;
 }
 
-.cv-preview-container .language {
+.language {
   margin-bottom: 0;
   font-size: 14px;
 }
 
-.cv-preview-container .languages {
+.languages {
   display: flex;
 }
 
-.cv-preview-container .language-container {
+.language-container {
   margin-right: 30px;
 }
 
-.cv-preview-container .language-level {
+.language-level {
   margin: 0;
   font-style: italic;
   color: #8d8d8d;

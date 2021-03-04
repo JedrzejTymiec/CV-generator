@@ -75,7 +75,7 @@ a {
 
 .app {
   display: flex;
-  max-width: 1350px;
+  max-width: 1150px;
   margin: auto;
   padding: 0;
   align-items: flex-start;
@@ -99,7 +99,7 @@ a {
 }
 
 .header h1 {
-  max-width: 1350px;
+  max-width: 1150px;
   margin: auto;
   font-weight: 500;
 }
@@ -108,7 +108,7 @@ a {
   display: flex;
   justify-content: space-between;
 
-  max-width: 1350px;
+  max-width: 1150px;
   list-style: none;
   margin: auto;
   padding: 20px 40px;
@@ -232,6 +232,10 @@ form h4 {
   margin-bottom: 20px;
 }
 
+.photo-wrapper {
+  position: relative;
+}
+
 #image-input {
   display: none;
 }
@@ -290,8 +294,8 @@ form h4 {
   color: #fff;
 
   position: absolute;
-  bottom: -10%;
-  right: 27%;
+  bottom: -20px;
+  right: -20px;
 
   display: flex;
   justify-content: center;
@@ -433,16 +437,24 @@ button {
 .form-skill-container {
   margin: 5px 20px;
   width: 40%;
+  height: 40px;
   background-color: var(--entry-bg);
-  border-radius: 10px;
+  border-radius: 50px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-language-container span,
+.form-skill-container span {
+  margin-left: 10px;
 }
 
 .form-language-container i,
 .form-skill-container i {
   margin-left: 15px;
   transition: 250ms;
+  margin-right: 10px;
 }
 
 .form-language-container i:hover,
@@ -490,16 +502,33 @@ button {
 
 .modal-content {
   background-color: #fff;
-  width: 400px;
-  height: 500px;
-  padding: 15px;
   margin: auto;
-  margin-top: 50px;
   padding-bottom: 0;
 
   -webkit-box-shadow: 0px 0px 46px -6px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 0px 46px -6px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 46px -6px rgba(0, 0, 0, 0.75);
+}
+
+.preview-modal {
+  margin-top: 30px;
+  width: 750px;
+  height: 90vh;
+  overflow-y: scroll;
+  position: relative;
+}
+
+.preview-modal .preview {
+  min-height: 1037px;
+  margin-bottom: 20px;
+  overflow-x: hidden;
+}
+
+.form-modal {
+  margin-top: 50px;
+  width: 400px;
+  height: 500px;
+  padding: 15px;
 }
 
 .modal-content h1 {
@@ -508,10 +537,18 @@ button {
   font-weight: 500;
 }
 
-.modal-header {
+.form-modal .modal-header {
   display: flex;
   margin-bottom: 15px;
   justify-content: space-between;
+}
+
+.preview-modal .modal-header {
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  right: 5px;
+  z-index: 1;
 }
 
 .close-modal:hover {
@@ -624,28 +661,10 @@ button {
 }
 
 .cv-preview {
-  min-height: 30cm;
+  max-height: 30cm;
   transition: 0.2s;
   cursor: url("../../pictures/search-plus.svg"), auto;
 }
-
-.show-message {
-  transition: 0.2s;
-  display: none;
-  font-size: 18px;
-  padding: 10px;
-  position: absolute;
-  top: 50%;
-  right: 35%;
-  opacity: 1;
-  background-color: #fff;
-  cursor: url("../../pictures/search-plus.svg"), auto;
-}
-/* 
-.cv-preview:hover {
-  background-color: #d2d2d2;
-  opacity: 0.7;
-} */
 
 .template-list {
   display: flex;
@@ -658,7 +677,7 @@ button {
 }
 
 .template-button {
-  width: 23%;
+  width: 30%;
   border: 2px solid #d7d7d7;
   margin: 3px 2px;
   text-align: center;
@@ -828,6 +847,10 @@ button {
   text-decoration: none;
   color: #000;
   cursor: url("../../pictures/search-plus.svg"), auto;
+}
+
+.preview-modal .contact-bar a {
+  cursor: auto;
 }
 
 @media (max-device-width: 900px), (max-width: 900px) {

@@ -7,57 +7,62 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
-main {
+.cv-preview {
   position: relative;
 }
 
-.cv-preview-container h1 {
+.cv-preview-container h1,
+.preview-modal h1 {
   margin: 0;
 }
 
-.cv-preview-container h2 {
+.cv-preview-container h2,
+.preview-modal h2 {
   margin: 0;
 }
 
-.cv-preview-container h2 {
+.cv-preview-container h2,
+.preview-modal h2 {
   margin-bottom: 10px;
 }
 
 .cv-preview-container h3,
-.cv-preview-container .cv-preview-container h4 {
+.cv-preview-container h4,
+.preview-header h3,
+.preview-modal h4 {
   margin: 0;
 }
 
-.cv-preview-container .profile-photo {
+.profile-photo {
   display: none;
-  height: 115px;
-  width: 115px;
+  height: 120px;
+  width: 120px;
   border-radius: 50%;
   object-fit: cover;
   margin: 15px 27px 0 27px;
 }
 
-.cv-preview-container .header {
+.preview-header {
   display: flex;
   margin-bottom: 15px;
 }
 
-.cv-preview-container .header h1 {
+.preview-header h1 {
   font-size: 22px;
 }
 
-.cv-preview-container .header h3 {
+.preview-header h3 {
   font-weight: lighter;
   margin-top: 5px;
   font-size: 16px;
 }
 
-.cv-preview-container .header p {
+.preview-header p {
   font-size: 10px;
   margin: 5px 0 0 0;
 }
 
-.cv-preview-container .about {
+.about {
   background-color: var(--mainColor);
   margin-top: 15px;
   color: #fff;
@@ -65,91 +70,93 @@ main {
   margin-left: 10px;
 }
 
-.cv-preview-container .about span {
+.about span {
   border-bottom: 1px solid #fff;
 }
 
-.cv-preview-container .contact-bar {
+.contact-bar {
   position: absolute;
   top: 140px;
 }
 
-.cv-preview-container .resume-body {
+.resume-body {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  justify-content: space-between;
 
-  max-height: 900px;
+  height: 900px;
 }
 
-.cv-preview-container .skills-container,
-.cv-preview-container .languages-container {
+.skills-container,
+.languages-container {
   width: 30%;
   order: -1;
 }
 
-.cv-preview-container .languages-container {
+.languages-container {
   margin-top: 10px;
 }
 
-.cv-preview-container .skills-container {
+.skills-container {
   margin-top: 150px;
 }
 
-.cv-preview-container .experience-container,
-.cv-preview-container .education-container,
-.cv-preview-container .certifications-container {
+.experience-container,
+.education-container,
+.certifications-container {
   width: 70%;
   order: 1;
 }
 
-.cv-preview-container .education-container,
-.cv-preview-container .cv-preview-container .certifications-container {
+.education-container,
+.cv-preview-container .certifications-container {
   margin-top: 10px;
 }
 
-.cv-preview-container .study-container,
-.cv-preview-container .course-container {
+.study-container,
+.course-container {
   margin: 15px 0;
 }
 
-.cv-preview-container .workplace,
-.cv-preview-container .school-name,
-.cv-preview-container .course-organizer {
+.workplace,
+.school-name,
+.course-organizer {
   font-weight: lighter;
   margin: 0;
   padding-left: 10px;
 }
 
-.cv-preview-container .contact-bar ul {
+.contact-bar ul {
   list-style: none;
   margin-right: 15px;
   padding-left: 10px;
   font-size: 9px;
 }
 
-.cv-preview-container .contact-bar ul li {
+.contact-bar ul li {
   display: flex;
   flex-direction: column;
   margin-bottom: 3px;
 }
 
-.cv-preview-container .contact-bar .icon {
+.contact-bar .icon {
   color: var(--mainColor);
   margin-bottom: 3px;
 }
 
-.cv-preview-container input {
+.cv-preview input,
+.preview-modal input {
   display: none;
 }
 
-.cv-preview-container .skills ul {
+.skills ul {
   list-style: none;
   padding-left: 10px;
   margin: 0;
 }
 
-.cv-preview-container .skills ul li {
+.skills ul li {
   border-radius: 5px;
   background-color: var(--mainColor);
   color: #fff;
@@ -160,48 +167,48 @@ main {
   font-size: 10px;
 }
 
-.cv-preview-container .section-title {
+.section-title {
   color: var(--mainColor);
   border-bottom: 1px solid var(--mainColor);
   padding-left: 10px;
   font-size: 18px;
 }
 
-.cv-preview-container .job-title,
-.cv-preview-container .field-of-study,
-.cv-preview-container .course-name {
+.job-title,
+.field-of-study,
+.course-name {
   padding-left: 10px;
   color: var(--mainColor);
 }
 
-.cv-preview-container .job-title,
-.cv-preview-container .field-of-study {
+.job-title,
+.field-of-study {
   font-size: 16px;
 }
 
-.cv-preview-container .workplace,
-.cv-preview-container .school-name {
+.workplace,
+.school-name {
   font-size: 14px;
   font-weight: lighter;
   margin: 0;
 }
 
-.cv-preview-container .job-description {
+.job-description {
   font-size: 10px;
   padding-left: 10px;
 }
 
-.cv-preview-container .course-name {
+.course-name {
   font-size: 14px;
 }
 
-.cv-preview-container .course-organizer {
+.course-organizer {
   font-size: 13px;
   font-weight: lighter;
   margin: 0;
 }
 
-.cv-preview-container .time-range {
+.time-range {
   margin: 0;
   font-style: italic;
   color: var(--mainColor);
@@ -209,25 +216,25 @@ main {
   padding-left: 10px;
 }
 
-.cv-preview-container .language {
+.language {
   font-size: 14px;
 }
 
-.cv-preview-container .skills-container .section-title,
-.cv-preview-container .languages-container .section-title {
+.skills-container .section-title,
+.languages-container .section-title {
   padding-left: 0;
   margin-left: 15px;
 }
 
-.cv-preview-container .language-container {
+.language-container {
   margin: 5px 0 0 15px;
 }
 
-.cv-preview-container .language-level {
+.language-level {
   display: none;
 }
 
-.cv-preview-container .language-level-scale .level {
+.language-level-scale .level {
   width: 12px;
   height: 12px;
   border: 1px solid var(--mainColor);
@@ -236,23 +243,23 @@ main {
   margin: 0;
 }
 
-.cv-preview-container .language-level-scale .level:hover {
+.language-level-scale .level:hover {
   cursor: pointer;
 }
 
-.cv-preview-container .language-level-scale {
+.language-level-scale {
   display: flex;
   margin-top: 5px;
 }
 
-.cv-preview-container .language-level-scale .inner {
+.language-level-scale .inner {
   background-color: var(--mainColor);
   height: 8px;
   width: 8px;
   border-radius: 50%;
 }
 
-.cv-preview-container .language-level-scale div {
+.language-level-scale div {
   display: grid;
   grid-template-columns: 1fr;
   margin: 0 5px;
@@ -260,8 +267,8 @@ main {
   justify-items: center;
 }
 
-.cv-preview-container .language-level-scale .level,
-.cv-preview-container .language-level-scale .inner {
+.language-level-scale .level,
+.language-level-scale .inner {
   grid-column: 1;
   grid-row: 1;
 }

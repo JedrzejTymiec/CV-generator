@@ -78,7 +78,7 @@ class langSkillCRUD {
         let previewLanguageList = languageData.map((element) => {
           return `<div class="language-container">
         <h3 class="language">${element.language.data}</h3>
-        <p class="language-level.data">${element.level.data.substring(1)}</p>
+        <p class="language-level">${element.level.data.substring(1)}</p>
         <div class="language-level-dot">
           <div id="${element.language.data}i" class="inner-dot"></div>
           <div id="plo" data-lvl="1" class="outer-dot"></div>

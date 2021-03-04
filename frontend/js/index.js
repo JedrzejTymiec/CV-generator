@@ -22,9 +22,13 @@ let currentPage = window.location.href.substring(
 
 appUI.setTemplate();
 if (currentPage === "") {
-  mainPageUI.setTemplate(
-    localStorage.getItem("template") + localStorage.getItem("color")
-  );
+  let template = localStorage.getItem("template");
+  let color = localStorage.getItem("color");
+  if (template && color) {
+    mainPageUI.setTemplate(template + color);
+  } else {
+    mainPageUI.setTemplate("basic0");
+  }
 }
 
 // texarea auto expand
@@ -221,26 +225,21 @@ if (cvPreview) {
   function showMessage() {
     document.querySelector(".cv-preview").style.backgroundColor = "#d2d2d2";
     document.querySelector(".cv-preview").style.opacity = "0.7";
-    document.querySelector(".show-message").style.display = "block";
-    document.querySelector(".show-message").style.zIndex = "2";
   }
   function hideMessage() {
     document.querySelector(".cv-preview").style.backgroundColor = "#fff";
     document.querySelector(".cv-preview").style.opacity = "1";
-    document.querySelector(".show-message").style.display = "none";
   }
   cvPreview.addEventListener("mouseover", showMessage);
   cvPreview.addEventListener("mouseenter", showMessage);
   cvPreview.addEventListener("mouseleave", hideMessage);
-  document
-    .querySelector(".show-message")
-    .addEventListener("mouseover", showMessage);
 
   cvPreview.addEventListener("click", (e) => {
-    let modalContent = document.querySelector(".cv-preview");
-    console.log(modalContent.outerHTML);
-    document.querySelector("#preview-modal .modal-content").innerHTML =
-      modalContent.outerHTML;
+    let modalContent = document.querySelector(".cv-preview").innerHTML;
+    hideMessage();
+    document.querySelector(
+      "#preview-modal .modal-content .preview"
+    ).innerHTML = modalContent;
     modalUI.openModal(e.target);
   });
 }

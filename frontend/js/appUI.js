@@ -15,8 +15,13 @@ class appUI {
     let template = localStorage.getItem("template");
     let color = localStorage.getItem("color");
 
-    this.changeTemplate(template);
-    this.changeColor("dot-" + (parseInt(color) + 1));
+    if (template && color) {
+      this.changeTemplate(template);
+      this.changeColor("dot-" + (parseInt(color) + 1));
+    } else {
+      this.changeTemplate("basic");
+      this.changeColor("dot-1");
+    }
   }
 
   static changeColor(id) {

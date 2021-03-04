@@ -20,17 +20,19 @@ export default class extends AbstractView {
             </label>
           </div>
           <div class="photo-container">
-            <div id="image-field">
-              <span class="input-placeholder">Drop file</br> or click to upload</span>
-              <input type="file" id="image-input">
-            </div>
-            <span id="image-input-alert"></span>
-            <div id="delete-photo-button" class="button">
+            <div class="photo-wrapper">
+              <div id="image-field">
+                <span class="input-placeholder">Drop file</br> or click to upload</span>
+                <input type="file" id="image-input"> 
+              </div>
+              <div id="delete-photo-button">
               <i class="fas fa-trash-alt"></i>
             </div>
-            <div id="save-photo-button" class="button">
+            <div id="save-photo-button">
               <i class="far fa-save"></i>
-            </div> 
+            </div>
+            </div>
+            <span id="image-input-alert"></span>
           </div>
           <h1 class="form-title">Basic data</h1>
           <div class="form-group">

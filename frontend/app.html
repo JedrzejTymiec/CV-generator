@@ -41,10 +41,15 @@
   </head>
   <body>
     <div id="preview-modal" class="modal">
-      <div class="modal-content"></div>
+      <div class="modal-content preview-modal">
+        <div class="modal-header">
+          <h1><i data-modal="preview" class="close-modal fas fa-times"></i></h>
+        </div>
+        <div class="preview"></div>
+      </div>
     </div>
     <div id="warning-modal" class="modal">
-      <div class="modal-content">
+      <div class="modal-content form-modal">
         <h1>Are you sure you want to delete this CV?</h1>
         <div class="modal-footer">
           <div data-modal="warning" class="button close-modal">Cancel</div>
@@ -60,7 +65,7 @@
       </div>
     </div>
     <div id="experience-modal" class="modal">
-      <div class="modal-content">
+      <div class="modal-content form-modal">
         <div class="modal-header">
           <h1>Professional experience - new position</h1>
           <h1>
@@ -119,7 +124,7 @@
       </div>
     </div>
     <div id="education-modal" class="modal">
-      <div class="modal-content">
+      <div class="modal-content form-modal">
         <div class="modal-header">
           <h1>Education - new position</h1>
           <h1>
@@ -175,7 +180,7 @@
       </div>
     </div>
     <div id="certification-modal" class="modal">
-      <div class="modal-content">
+      <div class="modal-content form-modal">
         <div class="modal-header">
           <h1>Certification - new position</h1>
           <h1>
@@ -293,13 +298,7 @@
             </div>
           </div>
         </div>
-        <div class="show-message">
-          <p>Show full size preview</p>
-        </div>
         <div class="cv-preview" id="myCanvas" data-modal="preview">
-          <div class="show-message">
-            <p>Show full size preview</p>
-          </div>
           <!-- PREVIEW START *************************************************************************************************************  -->
           <div class="preview-header">
             <div class="preview-photo-container">
