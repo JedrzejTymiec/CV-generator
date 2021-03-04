@@ -35,7 +35,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 862px;
+  min-height: 802px;
 }
 
 .preview-header {
@@ -48,8 +48,8 @@ body {
 .profile-photo {
   display: none;
   border: 2px solid var(--borderColor);
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
   border-radius: 15px;
   margin-right: 15px;
   object-fit: cover;

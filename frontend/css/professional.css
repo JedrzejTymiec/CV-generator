@@ -82,7 +82,7 @@ body {
 
 .resume-body {
   width: 45%;
-  height: 830px;
+  height: 720px;
   grid-area: body;
   display: flex;
   flex-direction: column;
@@ -92,10 +92,10 @@ body {
 
 .profile-photo {
   display: none;
-  height: 120px;
-  width: 120px;
+  height: 100px;
+  width: 100px;
   grid-area: photo;
-  border-radius: 50%;
+  border-radius: 100px;
   border: 5px solid var(--mainColor);
   position: absolute;
   top: 20px;
@@ -242,6 +242,24 @@ body {
   height: 5px;
   width: 5px;
   background-color: var(--mainColor);
+}
+
+.skills ul li input::-moz-range-thumb {
+  -moz-appearance: none;
+  appearance: none;
+  height: 5px;
+  width: 5px;
+  background-color: var(--mainColor);
+  border: none;
+}
+
+skills ul li input::-ms-thumb {
+  -ms-appearance: none;
+  appearance: none;
+  height: 5px;
+  width: 5px;
+  background-color: var(--mainColor);
+  border: none;
 }
 
 .skills {

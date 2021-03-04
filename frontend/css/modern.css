@@ -47,9 +47,9 @@ body {
 .preview-header {
   grid-area: about;
   display: flex;
-  justify-content: space-evenly;
   position: relative;
   align-items: center;
+  margin-left: 0px;
 }
 
 .about {
@@ -60,11 +60,13 @@ body {
   color: var(--mainColor);
   margin-top: 5px;
   font-size: 16px;
+  margin-left: 20px;
 }
 
 .about h1 {
   font-size: 22px;
   margin-top: 20px;
+  margin-left: 20px;
 }
 
 .about p {
@@ -83,9 +85,9 @@ body {
 
 .profile-photo {
   display: none;
-  height: 120px;
-  width: 120px;
-  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  border-radius: 100px;
   object-fit: cover;
   margin: 10px 20px 30px 20px;
 }
@@ -117,7 +119,7 @@ body {
 }
 
 .resume-body {
-  height: 857px;
+  height: 720px;
   grid-area: body;
   width: 50%;
   display: flex;

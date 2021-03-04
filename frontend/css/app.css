@@ -160,9 +160,10 @@ a {
 /*  Basic data form styles ***********************************************************************
  */
 #form-container {
-  width: 32cm;
+  width: 50%;
   background-color: #fff;
   margin-right: 20px;
+  margin-bottom: 20px;
 
   padding: 0 15px;
 }
@@ -656,7 +657,7 @@ button {
 
 .cv-preview-container {
   background-color: #fff;
-  width: 21cm;
+  width: 50%;
   position: relative;
 }
 
@@ -664,6 +665,7 @@ button {
   max-height: 30cm;
   transition: 0.2s;
   cursor: url("../../pictures/search-plus.svg"), auto;
+  padding-bottom: 20px;
 }
 
 .template-list {
@@ -851,6 +853,11 @@ button {
 
 .preview-modal .contact-bar a {
   cursor: auto;
+}
+
+#saved-cv-list p {
+  color: var(--label-color);
+  font-style: italic;
 }
 
 @media (max-device-width: 900px), (max-width: 900px) {

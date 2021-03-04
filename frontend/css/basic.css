@@ -11,7 +11,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 825px;
+  height: 755px;
 }
 
 .cv-preview-container section,
@@ -50,8 +50,8 @@ body {
 }
 
 .profile-photo {
-  height: 120px;
-  width: 120px;
+  height: 100px;
+  width: 100px;
   border-radius: 100%;
   object-fit: cover;
   margin-right: 20px;

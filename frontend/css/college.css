@@ -14,7 +14,7 @@ body {
   grid-template-areas:
     "about contact-bar"
     "resume-body resume-body";
-  grid-template-rows: 180px 1fr;
+  grid-template-rows: 150px 1fr;
   position: relative;
 }
 
@@ -46,8 +46,8 @@ body {
 
 .profile-photo {
   display: none;
-  height: 120px;
-  width: 120px;
+  height: 100px;
+  width: 100px;
   border-radius: 50%;
   object-fit: cover;
   margin-right: 20px;
@@ -111,7 +111,7 @@ body {
 .skills ul {
   display: flex;
   list-style: none;
-  padding: 0;
+  padding: 20px;
   flex-wrap: wrap;
   margin: 5px 0;
 }
@@ -159,7 +159,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 887px;
+  min-height: 787px;
 }
 
 .time-range {
