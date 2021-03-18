@@ -328,6 +328,7 @@ body {
   background-color: var(--secondaryColor);
   cursor: pointer;
   border-radius: 2px;
+  opacity: 0.4;
 }
 
 .language-level-scale .inner {
@@ -336,6 +337,7 @@ body {
   background-color: var(--mainColor);
   cursor: pointer;
   border-radius: 2px;
+  opacity: 0;
 }
 
 .language-level-scale div {

@@ -85,34 +85,24 @@ class langSkillCRUD {
         </div>
         <div id="Polish" class="language-level-scale" data-lvl="5">
           <div>
-            <div class="inner"></div>
-            <div id="${
-              element.language.data
-            }1" data-on="off" class="level"></div>
+            <div id="${element.language.data}1" class="inner"></div>
+            <div class="level"></div>
           </div>
           <div>
-            <div class="inner"></div>
-            <div id="${
-              element.language.data
-            }2" data-on="off" class="level"></div>
+            <div id="${element.language.data}2" class="inner"></div>
+            <div class="level"></div>
           </div>
           <div>
-            <div class="inner"></div>
-            <div id="${
-              element.language.data
-            }3" data-on="off" class="level"></div>
+            <div id="${element.language.data}3" class="inner"></div>
+            <div class="level"></div>
           </div>
           <div>
-            <div class="inner"></div>
-            <div id="${
-              element.language.data
-            }4" data-on="off" class="level"></div>
+            <div id="${element.language.data}4" class="inner"></div>
+            <div class="level"></div>
           </div>
           <div>
-            <div class="inner"></div>
-            <div id="${
-              element.language.data
-            }5" data-on="off" class="level"></div>
+            <div id="${element.language.data}5" class="inner"></div>
+            <div class="level"></div>
           </div>
         </div>
       </div>`;
@@ -227,24 +217,24 @@ class langSkillCRUD {
             />
           </div>
           <div>
-            <div class="inner"></div>
-            <div id="${element.skill.data}1" data-on="off" class="level"></div>
+            <div id="${element.skill.data}1" class="inner"></div>
+            <div class="level"></div>
           </div>
           <div>
-            <div class="inner"></div>
-            <div id="${element.skill.data}2" data-on="off" class="level"></div>
+            <div id="${element.skill.data}2" class="inner"></div>
+            <div class="level"></div>
           </div>
           <div>
-            <div class="inner"></div>
-            <div id="${element.skill.data}3" data-on="off" class="level"></div>
+            <div id="${element.skill.data}3" class="inner"></div>
+            <div class="level"></div>
           </div>
           <div>
-            <div class="inner"></div>
-            <div id="${element.skill.data}4" data-on="off" class="level"></div>
+            <div id="${element.skill.data}4" class="inner"></div>
+            <div class="level"></div>
           </div>
           <div>
-            <div class="inner"></div>
-            <div id="${element.skill.data}5" data-on="off" class="level"></div>
+            <div id="${element.skill.data}5" class="inner"></div>
+            <div class="level"></div>
           </div>
         </div>
       </li>`;

@@ -17,6 +17,10 @@
   content: "\f09b";
 }
 
+.fa-linkedin:before {
+  content: "\f0e1";
+}
+
 .fa-trash-alt:before {
   content: "\f2ed";
 }

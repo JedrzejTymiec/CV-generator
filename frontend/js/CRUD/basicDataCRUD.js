@@ -51,6 +51,27 @@ class basicDataUpdate {
     let linkedin = document.getElementById("linkedin-input").value;
     let github = document.getElementById("github-input").value;
 
+    switch (linkedin.slice(0, 4)) {
+      case "http":
+        break;
+      case "www.":
+        linkedin = "https://" + document.getElementById("linkedin-input").value;
+        break;
+      default:
+        linkedin =
+          "https://www." + document.getElementById("linkedin-input").value;
+    }
+
+    switch (github.slice(0, 4)) {
+      case "http":
+        break;
+      case "www.":
+        github = "https://" + document.getElementById("github-input").value;
+        break;
+      default:
+        github = "https://www." + document.getElementById("github-input").value;
+    }
+
     let contactData = new Contact(phone, email, linkedin, github);
 
     return contactData;
@@ -100,6 +121,14 @@ class basicDataUpdate {
     let currentPage = window.location.href.substring(
       window.location.href.lastIndexOf("/") + 1
     );
+    let displayLinkedinLink = contactData.linkedin.data.slice(
+      12,
+      contactData.linkedin.data.length - 1
+    );
+    let displayGithubLink = contactData.github.data.slice(
+      12,
+      contactData.github.data.length - 1
+    );
 
     if (contactData && currentPage === "basic") {
       document.getElementById("phone-input").value = contactData.phone.data;
@@ -114,8 +143,7 @@ class basicDataUpdate {
       if (contactData.linkedin.data !== "") {
         document.getElementById("linkedin").parentNode.style.display =
           "list-item";
-        document.getElementById("linkedin").innerText =
-          contactData.linkedin.data;
+        document.getElementById("linkedin").innerText = displayLinkedinLink;
         document.getElementById("linkedin").parentNode.href =
           contactData.linkedin.data;
       } else {
@@ -124,7 +152,7 @@ class basicDataUpdate {
       if (contactData.github.data !== "") {
         document.getElementById("github").parentNode.style.display =
           "list-item";
-        document.getElementById("github").innerText = contactData.github.data;
+        document.getElementById("github").innerText = displayGithubLink;
         document.getElementById("github").parentNode.href =
           contactData.github.data;
       } else {

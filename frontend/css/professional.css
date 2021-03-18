@@ -314,16 +314,16 @@ skills ul li input::-ms-thumb {
   width: 12px;
   height: 12px;
   background-color: var(--langLevelColor);
-  cursor: pointer;
   border-radius: 2px;
+  opacity: 0.4;
 }
 
 .language-container .language-level-scale .inner {
   width: 12px;
   height: 12px;
   background-color: var(--mainColor);
-  cursor: pointer;
   border-radius: 2px;
+  opacity: 0;
 }
 
 .language-level-scale div {

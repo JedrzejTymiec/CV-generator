@@ -25,8 +25,7 @@ class langSkillLevel {
   static radioButtonSkills(skill, level) {
     //obsługa przycisków poziomu umiejętności przyciski radio
     for (var i = 1; level >= i; i++) {
-      document.getElementById(skill + i).style.backgroundColor =
-        "rgba(255, 255, 255, 0)";
+      document.getElementById(skill + i).style.opacity = "1";
     }
   }
 }
