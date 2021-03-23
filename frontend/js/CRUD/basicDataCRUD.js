@@ -51,25 +51,31 @@ class basicDataUpdate {
     let linkedin = document.getElementById("linkedin-input").value;
     let github = document.getElementById("github-input").value;
 
-    switch (linkedin.slice(0, 4)) {
-      case "http":
-        break;
-      case "www.":
-        linkedin = "https://" + document.getElementById("linkedin-input").value;
-        break;
-      default:
-        linkedin =
-          "https://www." + document.getElementById("linkedin-input").value;
+    if (linkedin) {
+      switch (linkedin.slice(0, 4)) {
+        case "http":
+          break;
+        case "www.":
+          linkedin =
+            "https://" + document.getElementById("linkedin-input").value;
+          break;
+        default:
+          linkedin =
+            "https://www." + document.getElementById("linkedin-input").value;
+      }
     }
 
-    switch (github.slice(0, 4)) {
-      case "http":
-        break;
-      case "www.":
-        github = "https://" + document.getElementById("github-input").value;
-        break;
-      default:
-        github = "https://www." + document.getElementById("github-input").value;
+    if (github) {
+      switch (github.slice(0, 4)) {
+        case "http":
+          break;
+        case "www.":
+          github = "https://" + document.getElementById("github-input").value;
+          break;
+        default:
+          github =
+            "https://www." + document.getElementById("github-input").value;
+      }
     }
 
     let contactData = new Contact(phone, email, linkedin, github);
@@ -121,23 +127,24 @@ class basicDataUpdate {
     let currentPage = window.location.href.substring(
       window.location.href.lastIndexOf("/") + 1
     );
-    let displayLinkedinLink = contactData.linkedin.data.slice(
-      12,
-      contactData.linkedin.data.length - 1
-    );
-    let displayGithubLink = contactData.github.data.slice(
-      12,
-      contactData.github.data.length - 1
-    );
-
-    if (contactData && currentPage === "basic") {
-      document.getElementById("phone-input").value = contactData.phone.data;
-      document.getElementById("email-input").value = contactData.email.data;
-      document.getElementById("linkedin-input").value =
-        contactData.linkedin.data;
-      document.getElementById("github-input").value = contactData.github.data;
-    }
     if (contactData) {
+      let displayLinkedinLink = contactData.linkedin.data.slice(
+        12,
+        contactData.linkedin.data.length - 1
+      );
+      let displayGithubLink = contactData.github.data.slice(
+        12,
+        contactData.github.data.length - 1
+      );
+
+      if (currentPage === "basic") {
+        document.getElementById("phone-input").value = contactData.phone.data;
+        document.getElementById("email-input").value = contactData.email.data;
+        document.getElementById("linkedin-input").value =
+          contactData.linkedin.data;
+        document.getElementById("github-input").value = contactData.github.data;
+      }
+
       document.getElementById("phone").innerText = contactData.phone.data;
       document.getElementById("email").innerText = contactData.email.data;
       if (contactData.linkedin.data !== "") {

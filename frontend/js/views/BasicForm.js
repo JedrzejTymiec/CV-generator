@@ -38,26 +38,28 @@ export default class extends AbstractView {
           <div class="form-group">
             <label class="form-label" for="name-input">Name*</label>
             <input type="text" id="name-input">
-            <span id="name-input-alert"></span>
+            <span id="name-input-alert" class="input-alert"></span>
           </div>
           <div class="form-group">
             <label class="form-label" for="surname-input">Surname*</label>
             <input type="text" id="surname-input">
-            <span id="surname-input-alert"></span>
+            <span id="surname-input-alert" class="input-alert"></span>
           </div>
           <div class="form-group">
             <label class="form-label" for="proffesion-input">Proffesion</label>
             <input type="text" id="proffesion-input">
-            <span id="proffesion-input-alert"></span>
+            <span id="proffesion-input-alert" class="input-alert"></span>
           </div>
           <div class="form-group">
             <label class="form-label" for="about-input">About yourself*</label>
             <textarea
-                type="textarea"
                 id="about-input"
                 maxlength="1000"
               ></textarea>
-              <span id="about-input-alert"></span>
+              <div>
+                <span id="about-input-characters-counter" class="characters-counter"></span>
+                <span id="about-input-alert" class="input-alert"></span>
+              </div>
           </div>
           <button type="submit" class="save-button"><i class="far fa-save"></i>Save</button>
         </form>
@@ -314,12 +316,12 @@ export default class extends AbstractView {
               <option value="Zambia">Zambia</option>
               <option value="Zimbabwe">Zimbabwe</option>
            </select>
-           <span id="country-input-alert"></span>
+           <span id="country-input-alert" class="input-alert"></span>
           </div>
           <div class="form-group">
             <label class="form-label" for="city-input">City*</label>
             <input type="text" id="city-input">
-            <span id="city-input-alert"></span>
+            <span id="city-input-alert" class="input-alert"></span>
           </div>
           <button type="submit" class="save-button"><i class="far fa-save"></i>Save</button>
         </form>
@@ -328,22 +330,22 @@ export default class extends AbstractView {
           <div class="form-group">
             <label class="form-label" for="phone-input">Phone Number*</label>
             <input type="tel" id="phone-input">
-            <span id="phone-input-alert"></span>
+            <span id="phone-input-alert" class="input-alert"></span>
           </div>
           <div class="form-group">
             <label class="form-label" for="email-input">Email*</label>
             <input type="email" id="email-input">
-            <span id="email-input-alert"></span>
+            <span id="email-input-alert" class="input-alert"></span>
           </div>
           <div class="form-group">
             <label class="form-label" for="linkedin-input">Linkedin profile</label>
             <input type="text" id="linkedin-input">
-            <span id="linkedin-input-alert"></span>
+            <span id="linkedin-input-alert" class="input-alert"></span>
           </div>
           <div class="form-group">
             <label class="form-label" for="github-input">Github link</label>
             <input type="text" id="github-input">
-            <span id="github-input-alert"></span>
+            <span id="github-input-alert" class="input-alert"></span>
           </div>
           <button type="submit" class="save-button"><i class="far fa-save"></i>Save</button>
           <h4 class="form-label">* Required fields</h4>

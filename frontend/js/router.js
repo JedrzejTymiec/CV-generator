@@ -107,6 +107,7 @@ const router = async () => {
 
   if (basic) {
     modalUI.autoExpandTextarea(document.getElementById("about-input"));
+    modalUI.countCharacters(document.getElementById("about-input"));
     photoUpload();
     photoCRUD.readPhoto();
     basic.addEventListener("submit", (e) => {

@@ -108,7 +108,7 @@ export default class extends AbstractView {
           <option value="Welsh">Welsh</option>
           <option value="Xhosa">Xhosa</option>
         </select>
-        <span id="language-input-alert"></span>
+        <span id="language-input-alert" class="input-alert"></span>
       </div>
       <div class="form-group">
         <label class="form-label" for="language-level-input">Level</label>

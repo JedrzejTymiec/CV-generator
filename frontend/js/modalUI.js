@@ -14,6 +14,11 @@ class modalUI {
     field.style.height = height + "px";
   }
 
+  static countCharacters(field) {
+    document.getElementById(field.id + "-characters-counter").innerText =
+      field.value.length + "/1000";
+  }
+
   static closeModal(button) {
     let modal = button.dataset.modal;
     document.getElementById(modal + "-modal").style.display = "none";
@@ -69,11 +74,12 @@ class modalUI {
     document.getElementById("location-input").value = location;
     document.getElementById("expstart-input").value = startDate;
     document.getElementById("expdescription-input").value = expdescription;
+    this.countCharacters(document.getElementById("expdescription-input"));
+    this.autoExpandTextarea(document.getElementById("expdescription-input"));
   }
 
   static editEducationInputs(
     id,
-    educationLevel,
     school,
     spec,
     startDate,
@@ -87,11 +93,12 @@ class modalUI {
       document.getElementById("eduend-input").value = endDate;
     }
     document.getElementById("education-form").dataset.id = id;
-    document.getElementById("edulevel-input").value = educationLevel;
     document.getElementById("school-input").value = school;
     document.getElementById("specialization-input").value = spec;
     document.getElementById("edustart-input").value = startDate;
     document.getElementById("edudescription-input").value = description;
+    this.countCharacters(document.getElementById("edudescription-input"));
+    this.autoExpandTextarea(document.getElementById("edudescription-input"));
   }
 
   static editCertificationInputs(
@@ -106,6 +113,8 @@ class modalUI {
     document.getElementById("organizer-input").value = organizer;
     document.getElementById("certdate-input").value = participationDate;
     document.getElementById("cerdescription-input").value = description;
+    this.countCharacters(document.getElementById("cerdescription-input"));
+    this.autoExpandTextarea(document.getElementById("cerdescription-input"));
   }
 }
 

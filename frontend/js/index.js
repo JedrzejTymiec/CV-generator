@@ -38,6 +38,7 @@ document.addEventListener(
   (e) => {
     if (e.target.tagName.toLowerCase() !== "textarea") return;
     modalUI.autoExpandTextarea(e.target);
+    modalUI.countCharacters(e.target);
   },
   false
 );
@@ -298,7 +299,6 @@ document.addEventListener("DOMContentLoaded", () => {
         modalUI.openModal(e.target);
         modalUI.editEducationInputs(
           eduToEdit.id.data,
-          eduToEdit.edulevel.data,
           eduToEdit.school.data,
           eduToEdit.specialization.data,
           eduToEdit.edustart.data,
