@@ -104,6 +104,7 @@ const router = async () => {
   let language = document.getElementById("language-form");
   let skills = document.getElementById("skills-form");
   let saveCVButton = document.getElementById("save-cv-button");
+  let cvId = localStorage.getItem("currentCvId");
 
   if (basic) {
     modalUI.autoExpandTextarea(document.getElementById("about-input"));
@@ -116,6 +117,9 @@ const router = async () => {
       let valid = validation.validateData(newData);
       if (valid) {
         basicDataCRUD.addBasicData(newData);
+        if (cvId) {
+          completeCvCRUD.saveCvHandle(cvId);
+        }
       }
     });
   }
@@ -126,6 +130,9 @@ const router = async () => {
       let valid = validation.validateData(newData);
       if (valid) {
         basicDataCRUD.addResidenceData(newData);
+        if (cvId) {
+          completeCvCRUD.saveCvHandle(cvId);
+        }
       }
     });
   }
@@ -136,6 +143,9 @@ const router = async () => {
       let valid = validation.validateData(newData);
       if (valid) {
         basicDataCRUD.addContactData(newData);
+        if (cvId) {
+          completeCvCRUD.saveCvHandle(cvId);
+        }
       }
     });
   }
@@ -150,6 +160,9 @@ const router = async () => {
           validation.showAlert("language", "Language already on list");
         } else {
           langSkillCRUD.addLanguage(newData);
+          if (cvId) {
+            completeCvCRUD.saveCvHandle(cvId);
+          }
         }
       }
     });
@@ -166,24 +179,16 @@ const router = async () => {
         } else {
           langSkillCRUD.addSkill(newData);
           document.getElementById("skill-input").value = "";
+          if (cvId) {
+            completeCvCRUD.saveCvHandle(cvId);
+          }
         }
       }
     });
   }
   if (saveCVButton) {
     saveCVButton.addEventListener("click", () => {
-      let id = document.getElementById("form-container").dataset.id;
-      let newData;
-      if (id !== "") {
-        newData = completeCvCRUD.completeCvData(id);
-      } else {
-        newData = completeCvCRUD.completeCvData();
-        document.getElementById("form-container").dataset.id = newData.id;
-      }
-      let valid = validation.completeValidation(newData);
-      if (valid) {
-        completeCvCRUD.addCv(newData);
-      }
+      completeCvCRUD.saveCvHandle(cvId);
     });
 
     document

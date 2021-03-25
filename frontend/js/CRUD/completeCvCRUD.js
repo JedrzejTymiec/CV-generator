@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
-import { navigateTo } from "../router";
+import { navigateTo } from "../router.js";
+import validation from "../validation.js";
 
 class completeCV {
   constructor(
@@ -97,7 +98,7 @@ class completeCvCRUD {
   static updateCv(id) {
     let cvData = JSON.parse(localStorage.getItem("completeCvList"));
     let cvToEdit = cvData.find((element) => element.id === id);
-    document.getElementById("form-container").dataset.id = cvToEdit.id;
+    localStorage.setItem("currentCvId", cvToEdit.id);
     localStorage.setItem("photoData", JSON.stringify(cvToEdit.photo));
     localStorage.setItem("basicData", JSON.stringify(cvToEdit.basic));
     localStorage.setItem("residenceData", JSON.stringify(cvToEdit.residence));
@@ -145,6 +146,20 @@ class completeCvCRUD {
         this.updateCv(cvEntriesList[i].dataset.id);
         navigateTo("basic");
       });
+    }
+  }
+
+  static saveCvHandle(id) {
+    let newData;
+    if (id) {
+      newData = this.completeCvData(id);
+    } else {
+      newData = this.completeCvData();
+      document.getElementById("form-container").dataset.id = newData.id;
+    }
+    let valid = validation.completeValidation(newData);
+    if (valid) {
+      this.addCv(newData);
     }
   }
 }

@@ -137,6 +137,9 @@ if (experienceForm) {
       let validDate = validation.dateValidation(newData);
       if (validDate) {
         experienceCRUD.addExperience(newData);
+        if (localStorage.getItem("currentCvId")) {
+          completeCvCRUD.saveCvHandle(localStorage.getItem("currentCvId"));
+        }
         modalUI.clearInputs("experience");
         modalUI.closeModal(e.target);
       }
@@ -160,6 +163,9 @@ if (educationForm) {
       let validDate = validation.dateValidation(newData);
       if (validDate) {
         educationCRUD.addEducation(newData);
+        if (localStorage.getItem("currentCvId")) {
+          completeCvCRUD.saveCvHandle(localStorage.getItem("currentCvId"));
+        }
         modalUI.clearInputs("education");
         modalUI.closeModal(e.target);
       }
@@ -184,6 +190,9 @@ if (certificationForm) {
       let validDate = validation.dateValidation(newData);
       if (validDate) {
         certificationCRUD.addCertification(newData);
+        if (localStorage.getItem("currentCvId")) {
+          completeCvCRUD.saveCvHandle(localStorage.getItem("currentCvId"));
+        }
         modalUI.clearInputs("certification");
         modalUI.closeModal(e.target);
       }
@@ -207,6 +216,7 @@ if (currentPage !== "") {
 let newButton = document.getElementById("new-button");
 if (newButton) {
   function newHandle() {
+    localStorage.removeItem("currentCvId");
     localStorage.removeItem("photoData");
     localStorage.removeItem("basicData");
     localStorage.removeItem("residenceData");

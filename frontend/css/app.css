@@ -17,6 +17,12 @@ body {
   font-family: "DejaVu Sans", "Arial", sans-serif;
 }
 
+textarea {
+  font-family: "Arial", sans-serif;
+  font-weight: 100;
+  margin-top: 10px;
+}
+
 body {
   background-color: var(--background-color);
 
