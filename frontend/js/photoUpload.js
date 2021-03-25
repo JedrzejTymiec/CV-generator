@@ -1,4 +1,5 @@
 import photoCRUD from "./CRUD/photoCRUD";
+import completeCvCRUD from "./CRUD/completeCvCRUD.js";
 
 function photoUpload() {
   const imageField = document.getElementById("image-field");
@@ -42,6 +43,9 @@ function photoUpload() {
         let newPhoto = photoCRUD.photoData(imageInput.files[0].name);
         photoCRUD.addPhoto(newPhoto);
         photoCRUD.readPhoto();
+        if (localStorage.getItem("currentCvId")) {
+          completeCvCRUD.saveCvHandle(localStorage.getItem("currentCvId"));
+        }
         imageField.removeEventListener("click", click);
         imageField.removeEventListener("drop", dropHandle);
         imageField.style.cursor = "auto";
@@ -74,6 +78,9 @@ function photoUpload() {
         });
         photoCRUD.deletePhoto();
         photoCRUD.readPhoto();
+        if (localStorage.getItem("currentCvId")) {
+          completeCvCRUD.saveCvHandle(localStorage.getItem("currentCvId"));
+        }
         imageField.addEventListener("click", click);
         imageField.addEventListener("drop", dropHandle);
         imageInput.value = "";
