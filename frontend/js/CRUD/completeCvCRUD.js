@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
+import MainPageUI from "../mainPageUI.js";
 import { navigateTo } from "../router.js";
 import validation from "../validation.js";
 
@@ -90,6 +91,10 @@ class completeCvCRUD {
     let newCvData = cvData.filter((element) => {
       if (element.id != id) {
         return element;
+      } else {
+        if (id == localStorage.getItem("currentCvId")) {
+          MainPageUI.clearLocalStorage();
+        }
       }
     });
     localStorage.setItem("completeCvList", JSON.stringify(newCvData));

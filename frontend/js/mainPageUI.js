@@ -47,6 +47,19 @@ class MainPageUI {
 
     document.getElementById(template).classList.add("current");
   }
+
+  static clearLocalStorage() {
+    localStorage.removeItem("currentCvId");
+    localStorage.removeItem("photoData");
+    localStorage.removeItem("basicData");
+    localStorage.removeItem("residenceData");
+    localStorage.removeItem("contactData");
+    localStorage.removeItem("experienceData");
+    localStorage.removeItem("educationData");
+    localStorage.removeItem("languagesData");
+    localStorage.removeItem("skillsData");
+    localStorage.removeItem("certificationData");
+  }
 }
 
 export default MainPageUI;

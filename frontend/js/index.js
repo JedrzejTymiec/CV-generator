@@ -215,20 +215,8 @@ if (currentPage !== "") {
 
 let newButton = document.getElementById("new-button");
 if (newButton) {
-  function newHandle() {
-    localStorage.removeItem("currentCvId");
-    localStorage.removeItem("photoData");
-    localStorage.removeItem("basicData");
-    localStorage.removeItem("residenceData");
-    localStorage.removeItem("contactData");
-    localStorage.removeItem("experienceData");
-    localStorage.removeItem("educationData");
-    localStorage.removeItem("languagesData");
-    localStorage.removeItem("skillsData");
-    localStorage.removeItem("certificationData");
-  }
-  newHandle();
-  newButton.addEventListener("click", newHandle);
+  mainPageUI.clearLocalStorage();
+  newButton.addEventListener("click", mainPageUI.clearLocalStorage);
 }
 
 let cvPreview = document.querySelector(".cv-preview");
