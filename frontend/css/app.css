@@ -804,8 +804,8 @@ button {
 
   position: absolute;
 
-  bottom: 60%;
-  left: 90%;
+  top: 5%;
+  right: 3%;
 }
 
 .cv-action-icons i {

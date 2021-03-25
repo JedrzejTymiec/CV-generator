@@ -271,6 +271,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       } else if (e.target.matches("[data-expdelete]")) {
         experienceCRUD.deleteExperience(e.target.parentNode.dataset.id);
+        if (localStorage.getItem("currentCvId")) {
+          completeCvCRUD.saveCvHandle(localStorage.getItem("currentCvId"));
+        }
         experienceCRUD.readExperience();
       } else if (e.target.matches("[data-expedit]")) {
         let jobToEdit = experienceCRUD.updateExperience(
@@ -289,6 +292,9 @@ document.addEventListener("DOMContentLoaded", () => {
         );
       } else if (e.target.matches("[data-edudelete]")) {
         educationCRUD.deleteEducation(e.target.parentNode.dataset.id);
+        if (localStorage.getItem("currentCvId")) {
+          completeCvCRUD.saveCvHandle(localStorage.getItem("currentCvId"));
+        }
         educationCRUD.readEducation();
       } else if (e.target.matches("[data-eduedit]")) {
         let eduToEdit = educationCRUD.updateEducation(
@@ -306,6 +312,9 @@ document.addEventListener("DOMContentLoaded", () => {
         );
       } else if (e.target.matches("[data-cerdelete]")) {
         certificationCRUD.deleteCertification(e.target.parentNode.dataset.id);
+        if (localStorage.getItem("currentCvId")) {
+          completeCvCRUD.saveCvHandle(localStorage.getItem("currentCvId"));
+        }
         certificationCRUD.readCertification();
       } else if (e.target.matches("[data-ceredit]")) {
         let cerToEdit = certificationCRUD.updateCertification(
@@ -321,8 +330,14 @@ document.addEventListener("DOMContentLoaded", () => {
         );
       } else if (e.target.matches("[data-landelete]")) {
         langSkillCRUD.deleteLanguage(e.target.parentNode.dataset.id);
+        if (localStorage.getItem("currentCvId")) {
+          completeCvCRUD.saveCvHandle(localStorage.getItem("currentCvId"));
+        }
       } else if (e.target.matches("[data-skidelete]")) {
         langSkillCRUD.deleteSkill(e.target.parentNode.dataset.id);
+        if (localStorage.getItem("currentCvId")) {
+          completeCvCRUD.saveCvHandle(localStorage.getItem("currentCvId"));
+        }
       } else if (e.target.matches("[data-cvdelete]")) {
         modalUI.openModal(e.target);
         document.getElementById("delete-cv-button").dataset.id =
