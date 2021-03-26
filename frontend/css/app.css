@@ -603,6 +603,14 @@ button {
   justify-self: flex-end;
 }
 
+#projects-form {
+  height: 80%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 /* Download style +-*********************************************************** */
 
 .resume-img {
@@ -735,7 +743,8 @@ button {
 /* form experience entries ****************************************************** */
 #form-job-list,
 #form-education-list,
-#form-certification-list {
+#form-certification-list,
+#form-projects-list {
   list-style: none;
 }
 

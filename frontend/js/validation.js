@@ -37,6 +37,8 @@ class validation {
   }
 
   static showAlert(input, text) {
+    console.log(input);
+    console.log(document.getElementById(input + "-input-alert"));
     document.getElementById(input + "-input-alert").innerText = `${text}`;
     document.getElementById(input + "-input").style.borderBottom =
       "1px solid #ff0000";

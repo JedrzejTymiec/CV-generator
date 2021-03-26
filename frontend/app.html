@@ -225,6 +225,46 @@
         </form>
       </div>
     </div>
+    <div id="projects-modal" class="modal">
+      <div class="modal-content form-modal">
+        <div class="modal-header">
+          <h1>Add project</h1>
+          <h1>
+            <i data-modal="projects" class="close-modal fas fa-times"></i>
+          </h1>
+        </div>
+        <form id="projects-form" data-modal="projects" data-id="">
+          <div class="form-body">
+            <div class="form-group">
+              <label class="form-label" for="projectname-input">Name*</label>
+              <input type="text" id="projectname-input" />
+              <span id="projectname-input-alert" class="input-alert"></span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="link-input">Link</label>
+              <input type="text" id="link-input" />
+              <span id="link-input-alert" class="input-alert"></span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="prodescription-input"
+                >Description</label
+              >
+              <textarea
+                id="prodescription-input"
+                maxlength="1000"
+                rows="1"
+              ></textarea>
+              <span id="prodescription-input-characters-counter" class="characters-counter"></span>
+              <span id="prodescription-input-alert" class="input-alert"></span>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div data-modal="projects" class="button close-modal">Cancel</div>
+            <button type="submit" class="button">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
     <section class="header-container">
       <div class="header">
         <a href="/"><h1>Pracuj.pl CV generator clone</h1></a>
@@ -367,6 +407,10 @@
             <section class="languages-container prevent-split">
               <h2 class="section-title">LANGUAGES</h2>
               <div class="languages" id="preview-languages-container"></div>
+            </section>
+            <section class="projects-container prevent-split">
+              <h2 class="section-title">PROJECTS</h2>
+              <div class="projects" id="preview-projects-container"></div>
             </section>
           </div>
         </div>

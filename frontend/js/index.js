@@ -8,6 +8,7 @@ import certificationCRUD from "./CRUD/certificationCRUD.js";
 import langSkillCRUD from "./CRUD/languageSkillsCRUD.js";
 import completeCvCRUD from "./CRUD/completeCvCRUD.js";
 import validation from "./validation.js";
+import projectsCRUD from "./CRUD/projectsCRUD.js";
 
 ("use strict");
 
@@ -200,6 +201,30 @@ if (certificationForm) {
   });
 }
 
+let projectsForm = document.getElementById("projects-form");
+if (projectsForm) {
+  projectsForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let newData;
+    let editId = document.getElementById("projects-form").dataset.id;
+    if (editId != "") {
+      newData = projectsCRUD.projectData(editId);
+      document.getElementById("projects-form").dataset.id = "";
+    } else {
+      newData = projectsCRUD.projectData();
+    }
+    let valid = validation.validateData(newData);
+    if (valid) {
+      projectsCRUD.addProject(newData);
+      if (localStorage.getItem("currentCvId")) {
+        completeCvCRUD.saveCvHandle(localStorage.getItem("currentCvId"));
+      }
+      modalUI.clearInputs("projects");
+      modalUI.closeModal(e.target);
+    }
+  });
+}
+
 let deleteCvButton = document.getElementById("delete-cv-button");
 if (deleteCvButton) {
   deleteCvButton.addEventListener("click", (e) => {
@@ -342,6 +367,23 @@ document.addEventListener("DOMContentLoaded", () => {
         modalUI.openModal(e.target);
         document.getElementById("delete-cv-button").dataset.id =
           e.target.dataset.id;
+      } else if (e.target.matches("[data-proedit]")) {
+        let projectToEdit = projectsCRUD.updateProject(
+          e.target.parentNode.dataset.id
+        );
+        modalUI.openModal(e.target);
+        modalUI.editProjectInputs(
+          projectToEdit.id.data,
+          projectToEdit.projectname.data,
+          projectToEdit.link.data,
+          projectToEdit.prodescription.data
+        );
+      } else if (e.target.matches("[data-prodelete]")) {
+        projectsCRUD.deleteProject(e.target.parentNode.dataset.id);
+        if (localStorage.getItem("currentCvId")) {
+          completeCvCRUD.saveCvHandle(localStorage.getItem("currentCvId"));
+        }
+        projectsCRUD.readProjects();
       }
     }
   });

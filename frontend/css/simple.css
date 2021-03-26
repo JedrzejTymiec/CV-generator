@@ -137,7 +137,8 @@ body {
 .header,
 .skills-container,
 .certifications-container,
-.languages-container {
+.languages-container,
+.projects-container {
   padding: 5px 30px;
 }
 

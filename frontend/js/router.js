@@ -13,6 +13,7 @@ import completeCvCRUD from "./CRUD/completeCvCRUD.js";
 import validation from "./validation.js";
 import photoCRUD from "./CRUD/photoCRUD.js";
 import { photoUpload, toggle, toggleHandle } from "./photoUpload.js";
+import projectsCRUD from "./CRUD/projectsCRUD.js";
 
 const navigateTo = (url) => {
   history.pushState(null, null, url);
@@ -67,6 +68,7 @@ const router = async () => {
   experienceCRUD.readExperience();
   educationCRUD.readEducation();
   certificationCRUD.readCertification();
+  projectsCRUD.readProjects();
 
   completeCvCRUD.readCv();
 

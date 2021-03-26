@@ -116,6 +116,15 @@ class modalUI {
     this.countCharacters(document.getElementById("cerdescription-input"));
     this.autoExpandTextarea(document.getElementById("cerdescription-input"));
   }
+
+  static editProjectInputs(id, name, link, description) {
+    document.getElementById("projects-form").dataset.id = id;
+    document.getElementById("projectname-input").value = name;
+    document.getElementById("link-input").value = link;
+    document.getElementById("prodescription-input").value = description;
+    this.countCharacters(document.getElementById("prodescription-input"));
+    this.autoExpandTextarea(document.getElementById("prodescription-input"));
+  }
 }
 
 export default modalUI;
