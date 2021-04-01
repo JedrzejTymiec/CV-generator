@@ -123,22 +123,25 @@ body {
 
 .job-container,
 .study-container,
-.course-container {
+.course-container,
+.project-container {
   padding: 5px 0;
 }
 
 .job-container .workplace,
 .school-name,
-.course-organizer {
+.course-organizer,
+.project-link {
   font-weight: lighter;
   margin: 0;
+  color: #000;
+  cursor: url("../../pictures/search-plus.svg"), auto;
 }
 
 .header,
 .skills-container,
 .certifications-container,
-.languages-container,
-.projects-container {
+.languages-container {
   padding: 5px 30px;
 }
 
@@ -149,7 +152,9 @@ body {
 
 .job,
 .study,
+.project,
 .experience-container .section-title,
+.projects-container .section-title,
 .education-container .section-title {
   padding: 0 30px;
 }
@@ -192,7 +197,8 @@ body {
   font-size: 10px;
 }
 
-.job-description {
+.job-description,
+.project-description {
   font-size: 10px;
   margin: 5px 0;
 }

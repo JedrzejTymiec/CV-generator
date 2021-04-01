@@ -132,17 +132,21 @@ body {
 
 .job-container,
 .study-container,
-.course-container {
+.course-container,
+.project-container {
   margin: 9px 0;
   padding: 0 20px;
 }
 
 .workplace,
 .school-name,
-.course-organizer {
+.course-organizer,
+.project-link {
   font-weight: lighter;
   margin: 0;
   font-size: 14px;
+  cursor: url("../../pictures/search-plus.svg"), auto;
+  color: #000;
 }
 
 .job-title,
@@ -169,7 +173,8 @@ body {
   font-size: 0.7rem;
 }
 
-.job-description {
+.job-description,
+.project-description {
   font-size: 10px;
 }
 

@@ -109,6 +109,12 @@ body {
   order: 1;
 }
 
+.project-container,
+.project-name {
+  width: 70%;
+  order: 1;
+}
+
 .education-container,
 .cv-preview-container .certifications-container {
   margin-top: 10px;
@@ -121,10 +127,13 @@ body {
 
 .workplace,
 .school-name,
-.course-organizer {
+.course-organizer,
+.project-link {
   font-weight: lighter;
   margin: 0;
   padding-left: 10px;
+  color: #000;
+  cursor: url("../../pictures/search-plus.svg"), auto;
 }
 
 .contact-bar ul {
@@ -176,7 +185,8 @@ body {
 
 .job-title,
 .field-of-study,
-.course-name {
+.course-name,
+.project-name {
   padding-left: 10px;
   color: var(--mainColor);
 }
@@ -193,7 +203,8 @@ body {
   margin: 0;
 }
 
-.job-description {
+.job-description,
+.project-description {
   font-size: 10px;
   padding-left: 10px;
 }

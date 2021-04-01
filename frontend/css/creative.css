@@ -29,11 +29,11 @@ body {
 
 .resume-body {
   width: 50%;
-  height: 760px;
+  height: 800px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 
 .section-title {
@@ -111,15 +111,23 @@ body {
   margin: 10px 0;
 }
 
+.languages-container {
+  order: 1;
+}
+
 .experience-container,
-.languages-container,
 .education-container {
   order: -1;
   padding: 0 20px;
 }
 
 .certifications-container {
-  order: 1;
+  order: -1;
+  margin-left: 20px;
+}
+
+.prjects-container {
+  order: -1;
 }
 
 .job-title,
@@ -140,27 +148,32 @@ body {
   font-size: 10px;
 }
 
-.job-description {
+.job-description,
+.project-description {
   font-size: 10px;
   margin: 5px 0 0 0;
 }
 
-.job-containee {
+.job-container {
   height: 70%;
 }
 
 .job-container,
 .study-container,
-.course-container {
+.course-container,
+.project-container {
   margin: 20px 0;
 }
 
 .workplace,
 .school-name,
-.course-organizer {
+.course-organizer,
+.project-link {
   font-size: 14px;
   font-weight: lighter;
   margin: 0;
+  color: #000;
+  cursor: url("../../pictures/search-plus.svg"), auto;
 }
 
 .skills {
