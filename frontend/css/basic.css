@@ -137,6 +137,7 @@ body {
 
 .cv-preview-container .job-title,
 .cv-preview-container .field-of-study,
+.cv-preview-container .project-name,
 .preview-modal .job-title,
 .preview-modal .field-of-study {
   font-size: 16px;
@@ -157,6 +158,7 @@ body {
 .cv-preview-container .job-container,
 .cv-preview-container .study-container,
 .cv-preview-container .course-container,
+.cv-preview-container .project-container,
 .preview-modal .job-container,
 .preview-modal .study-container,
 .preview-modal .course-container {
@@ -165,11 +167,15 @@ body {
 
 .cv-preview-container .workplace,
 .cv-preview-container .school-name,
+.cv-preview-container .project-link,
 .preview-modal .workplace,
 .preview-modal .school-name {
   font-size: 15px;
   font-weight: lighter;
   margin: 0;
+  text-decoration: none;
+  color: #000;
+  cursor: url("../../pictures/search-plus.svg"), auto;
 }
 
 .cv-preview-container .time-range,
@@ -181,6 +187,7 @@ body {
 }
 
 .cv-preview-container .job-description,
+.cv-preview-container .project-description,
 .preview-modal .job-description {
   font-size: 11px;
   line-height: 13px;

@@ -98,7 +98,7 @@ class projectsCRUD {
         return `<div class="project-container">
         <div class="project"">
           <h3 class="project-name">${element.projectname.data}</h3>
-          <h4 class="project-link">${element.link.data}</h4>
+          <a href="${element.link.data}" target="_blank"><h4 class="project-link">${element.link.data}</h4></a>
           <p class="project-description">${element.prodescription.data}</p>
         </div>
       </div>`;
