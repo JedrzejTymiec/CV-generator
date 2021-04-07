@@ -216,9 +216,7 @@ const router = async () => {
         .drawDOM("#myCanvas", {
           forcePageBreak: ".page-break",
           paperSize: "A4",
-          margin: { top: "0cm", bottom: "0cm" },
-          scale: 0.9,
-          height: 500,
+          scale: 0.81,
           template: $("#page-template").html(),
           keepTogether: ".prevent-split",
         })

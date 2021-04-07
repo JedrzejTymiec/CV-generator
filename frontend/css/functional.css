@@ -85,7 +85,8 @@ body {
   flex-wrap: wrap;
   justify-content: space-between;
 
-  height: 750px;
+  height: 850px;
+  padding-bottom: 20px;
 }
 
 .skills-container,

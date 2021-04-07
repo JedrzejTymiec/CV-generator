@@ -59,6 +59,7 @@ class MainPageUI {
     localStorage.removeItem("languagesData");
     localStorage.removeItem("skillsData");
     localStorage.removeItem("certificationData");
+    localStorage.removeItem("projectsData");
   }
 }
 

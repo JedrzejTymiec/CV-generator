@@ -12,7 +12,7 @@ body {
 .preview {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 20% 80%;
+  grid-template-rows: 15% 1fr;
   grid-template-areas:
     "about contact"
     "body body";
@@ -82,11 +82,12 @@ body {
 
 .resume-body {
   width: 50%;
-  height: 800px;
   grid-area: body;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  justify-content: space-between;
+  height: 850px;
 }
 
 .profile-photo {
@@ -98,7 +99,7 @@ body {
   border: 5px solid var(--mainColor);
   position: absolute;
   top: 20px;
-  left: 38%;
+  left: 44%;
   object-fit: cover;
 }
 
@@ -126,7 +127,6 @@ body {
 .experience-container {
   padding: 15px 0 5px 40px;
   order: -1;
-  /* height: 400px; */
 }
 
 .education-container {
@@ -141,6 +141,12 @@ body {
 
 .skills-container {
   padding: 15px 20px 0 20px;
+}
+
+.skills-container,
+.languages-container,
+.projects-container {
+  width: 88%;
 }
 
 .certifications-container {
@@ -188,6 +194,11 @@ body {
   font-size: 14px;
   cursor: url("../../pictures/search-plus.svg"), auto;
   color: #000;
+}
+
+.project-link {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .job-description,

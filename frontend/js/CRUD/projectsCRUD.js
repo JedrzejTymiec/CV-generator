@@ -91,12 +91,9 @@ class projectsCRUD {
         });
         formProjectsListContainer.innerHTML = projectsList.join("");
       }
-      document.querySelector(
-        ".projects-container"
-      ).getElementsByClassName.display = "block";
+      document.querySelector(".projects-container").style.display = "block";
       let previewProjectsList = projectsData.map((element) => {
         return `<div class="project-container">
-        <div class="dash"></div>
         <div class="project"">
           <h3 class="project-name">${element.projectname.data}</h3>
           <a href="${element.link.data}" target="_blank"><h4 class="project-link">${element.link.data}</h4></a>
@@ -104,7 +101,6 @@ class projectsCRUD {
         </div>
       </div>`;
       });
-      console.log(previewProjectsListContainer);
       previewProjectsListContainer.innerHTML = previewProjectsList.join("");
     } else {
       document.querySelector(".projects-container").style.display = "none";
