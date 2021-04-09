@@ -37,6 +37,10 @@
     <script src="https://kendo.cdn.telerik.com/2017.2.621/js/kendo.all.min.js"></script>
   </head>
   <body>
+    <div class="flag-buttons">
+      <div class="flag-container"><img class="flag" data-language="polish" src="../pictures/Polish_Flag.png"/></div>
+      <div class="flag-container"><img class="flag" data-language="english" src="../pictures/United_Kingdom_Flag.png"/></div>
+    </div>
     <div id="preview-modal" class="modal">
       <div class="modal-content preview-modal">
         <div class="modal-header">
@@ -72,36 +76,36 @@
         <form id="experience-form" data-modal="experience" data-id="">
           <div class="form-body">
             <div class="form-group">
-              <label class="form-label" for="position-input">Position*</label>
+              <label class="form-label" for="position-input" id="position-input-label">Position*</label>
               <input type="text" id="position-input" />
               <span id="position-input-alert" class="input-alert"></span>
             </div>
             <div class="form-group">
-              <label class="form-label" for="company-input">Company</label>
+              <label class="form-label" for="company-input" id="company-input-label">Company</label>
               <input type="text" id="company-input" />
               <span id="company-input-alert" class="input-alert"></span>
             </div>
             <div class="form-group">
-              <label class="form-label" for="location-input">Location</label>
+              <label class="form-label" for="location-input" id="location-input-label">Location</label>
               <input type="text" id="location-input" />
               <span id="location-input-alert" class="input-alert"></span>
             </div>
             <div class="form-group">
-              <label class="form-label" for="expstart-input">Start date*</label>
+              <label class="form-label" for="expstart-input" id="expstart-input-label">Start date*</label>
               <input type="date" id="expstart-input" />
               <span id="expstart-input-alert" class="input-alert"></span>
             </div>
             <div class="form-group">
-              <label class="form-label" for="expend-input">End date*</label>
+              <label class="form-label" for="expend-input" id="expend-input-label">End date*</label>
               <input type="date" id="expend-input" />
               <span id="expend-input-alert" class="input-alert"></span>
             </div>
             <div class="form-group checkbox-group">
-              <label class="checkbox-label" for="expcheck">Still working</label>
+              <label class="checkbox-label" for="expcheck" id="expcheck-label">Still working</label>
               <input type="checkbox" class="checkbox" id="expcheck" />
             </div>
             <div class="form-group">
-              <label class="form-label" for="expdescription-input"
+              <label class="form-label" for="expdescription-input" id="expdescription-input-label"
                 >Description</label
               >
               <textarea
@@ -131,33 +135,33 @@
         <form id="education-form" data-modal="education" data-id="">
           <div class="form-body">
             <div class="form-group">
-              <label class="form-label" for="school-input">School name*</label>
+              <label class="form-label" for="school-input" id="school-input-label">School name*</label>
               <input type="text" id="school-input" />
               <span id="school-input-alert" class="input-alert"></span>
             </div>
             <div class="form-group">
-              <label class="form-label" for="specialization-input"
+              <label class="form-label" for="specialization-input" id="specialization-input-label"
                 >Specialization</label
               >
               <input type="text" id="specialization-input" />
               <span id="specialization-input-alert" class="input-alert"></span>
             </div>
             <div class="form-group">
-              <label class="form-label" for="edustart-input">Start date*</label>
+              <label class="form-label" for="edustart-input" id="edustart-input-label">Start date*</label>
               <input type="date" id="edustart-input" />
               <span id="edustart-input-alert" class="input-alert"></span>
             </div>
             <div class="form-group">
-              <label class="form-label" for="eduend-input">End date*</label>
+              <label class="form-label" for="eduend-input" id="eduend-input-label">End date*</label>
               <input type="date" id="eduend-input" />
               <span id="eduend-input-alert" class="input-alert"></span>
             </div>
             <div class="form-group checkbox-group">
-              <label class="checkbox-label">Still learning</label>
+              <label class="checkbox-label" id="educheck-label">Still learning</label>
               <input type="checkbox" class="checkbox" id="educheck" />
             </div>
             <div class="form-group">
-              <label class="form-label" for="edudescription-input"
+              <label class="form-label" for="edudescription-input" id="edudescription-input-label"
                 >Description</label
               >
               <textarea

@@ -9,6 +9,10 @@ import langSkillCRUD from "./CRUD/languageSkillsCRUD.js";
 import completeCvCRUD from "./CRUD/completeCvCRUD.js";
 import validation from "./validation.js";
 import projectsCRUD from "./CRUD/projectsCRUD.js";
+import {
+  switchMainPageLanguage,
+  switchAppPageLanguage,
+} from "./switchLanguage.js";
 
 ("use strict");
 
@@ -20,6 +24,20 @@ let appColorDots = document.getElementsByClassName("ap color-dot");
 let currentPage = window.location.href.substring(
   window.location.href.lastIndexOf("/") + 1
 );
+let flagButtons = document.getElementsByClassName("flag");
+
+for (let i = 0; flagButtons.length > i; i++) {
+  flagButtons[i].addEventListener("click", (e) => {
+    currentPage = window.location.href.substring(
+      window.location.href.lastIndexOf("/") + 1
+    );
+    if (currentPage !== "") {
+      switchAppPageLanguage(e.target.dataset.language, currentPage);
+    } else {
+      switchMainPageLanguage(e.target.dataset.language);
+    }
+  });
+}
 
 appUI.setTemplate();
 if (currentPage === "") {
