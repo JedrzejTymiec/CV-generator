@@ -191,24 +191,24 @@
         <form id="certification-form" data-modal="certification" data-id="">
           <div class="form-body">
             <div class="form-group">
-              <label class="form-label" for="certname-input">Name*</label>
+              <label class="form-label" for="certname-input" id="certname-label">Name*</label>
               <input type="text" id="certname-input" />
               <span id="certname-input-alert" class="input-alert"></span>
             </div>
             <div class="form-group">
-              <label class="form-label" for="organizer-input">Organizer*</label>
+              <label class="form-label" for="organizer-input" id="organizer-label">Organizer*</label>
               <input type="text" id="organizer-input" />
               <span id="organizer-input-alert" class="input-alert"></span>
             </div>
             <div class="form-group">
-              <label class="form-label" for="certdate-input"
+              <label class="form-label" for="certdate-input" id="certdate-label"
                 >Participation date*</label
               >
               <input type="date" id="certdate-input" />
               <span id="certdate-input-alert" class="input-alert"></span>
             </div>
             <div class="form-group">
-              <label class="form-label" for="cerdescription-input"
+              <label class="form-label" for="cerdescription-input" id="cerdescription-label"
                 >Description</label
               >
               <textarea
@@ -232,7 +232,7 @@
     <div id="projects-modal" class="modal">
       <div class="modal-content form-modal">
         <div class="modal-header">
-          <h1>Add project</h1>
+          <h1>Projects - new position</h1>
           <h1>
             <i data-modal="projects" class="close-modal fas fa-times"></i>
           </h1>
@@ -240,17 +240,17 @@
         <form id="projects-form" data-modal="projects" data-id="">
           <div class="form-body">
             <div class="form-group">
-              <label class="form-label" for="projectname-input">Name*</label>
+              <label class="form-label" for="projectname-input" id="projectname-label">Name*</label>
               <input type="text" id="projectname-input" />
               <span id="projectname-input-alert" class="input-alert"></span>
             </div>
             <div class="form-group">
-              <label class="form-label" for="link-input">Link</label>
+              <label class="form-label" for="link-input" id="link-label">Link</label>
               <input type="text" id="link-input" />
               <span id="link-input-alert" class="input-alert"></span>
             </div>
             <div class="form-group">
-              <label class="form-label" for="prodescription-input"
+              <label class="form-label" for="prodescription-input" id="prodescription-label"
                 >Description</label
               >
               <textarea
@@ -279,7 +279,7 @@
             <div id="basic-form-dot" class="form-number-dot">
               <p>1</p>
             </div>
-            <p class="form-name-dot">Basic data</p>
+            <p class="form-name" id="basic-dot-label">Basic data</p>
           </a>
         </li>
         <li class="line"></li>
@@ -288,7 +288,7 @@
             <div id="experience-form-dot" class="form-number-dot">
               <p>2</p>
             </div>
-            <p class="form-name">Experience</p>
+            <p class="form-name" id="experience-dot-label">Experience</p>
           </a>
         </li>
         <li class="line"></li>
@@ -297,7 +297,7 @@
             <div id="skills-form-dot" class="form-number-dot">
               <p>3</p>
             </div>
-            <p class="form-name">Skills</p>
+            <p class="form-name" id="skills-dot-label">Skills</p>
           </a>
         </li>
         <li class="line"></li>
@@ -306,7 +306,7 @@
             <div id="download-form-dot" class="form-number-dot">
               <p>4</p>
             </div>
-            <p class="form-name">Download CV</p>
+            <p class="form-name" id="download-dot-label">Download CV</p>
           </a>
         </li>
       </ul>
