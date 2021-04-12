@@ -78,7 +78,8 @@ class projectsCRUD {
     if (projectsData) {
       if (formProjectsListContainer) {
         let projectsList = projectsData.map((element) => {
-          return `<li class="form-entry-container">
+          if (localStorage.getItem("language") === "polish") {
+            return `<li class="form-entry-container">
           <div class="entry-action-icons" data-id=${element.id.data}>
             <i class="fas fa-edit" data-proEdit data-modal="projects"></i><i class="fas fa-trash-alt" data-proDelete></i>
           </div>
@@ -88,6 +89,18 @@ class projectsCRUD {
             <li>Opis: <span>${element.prodescription.data}</span>
           </ul>
         </li>`;
+          } else if (localStorage.getItem("language") === "english") {
+            return `<li class="form-entry-container">
+          <div class="entry-action-icons" data-id=${element.id.data}>
+            <i class="fas fa-edit" data-proEdit data-modal="projects"></i><i class="fas fa-trash-alt" data-proDelete></i>
+          </div>
+          <ul class="entry-description">
+            <li>Name: <span>${element.projectname.data}</span></li>
+            <li>Link: <span>${element.link.data}</span></li>
+            <li>Description: <span>${element.prodescription.data}</span>
+          </ul>
+        </li>`;
+          }
         });
         formProjectsListContainer.innerHTML = projectsList.join("");
       }

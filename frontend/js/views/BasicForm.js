@@ -69,7 +69,7 @@ export default class extends AbstractView {
       <label class="form-label" for="country-input" id="country-input-label">Country*</label>
       <select id="country-input">
         <option selected="selected" value=""> - </option>
-        <option value="Afganistan">Afghanistan</option>
+        <option value="Afghanistan">Afghanistan</option>
         <option value="Albania">Albania</option>
         <option value="Algeria">Algeria</option>
         <option value="American Samoa">American Samoa</option>
@@ -183,7 +183,7 @@ export default class extends AbstractView {
         <option value="Kenya">Kenya</option>
         <option value="Kiribati">Kiribati</option>
         <option value="Korea North">Korea North</option>
-        <option value="Korea Sout">Korea South</option>
+        <option value="Korea South">Korea South</option>
         <option value="Kuwait">Kuwait</option>
         <option value="Kyrgyzstan">Kyrgyzstan</option>
         <option value="Laos">Laos</option>
@@ -261,7 +261,6 @@ export default class extends AbstractView {
         <option value="St Vincent & Grenadines">St Vincent & Grenadines</option>
         <option value="Saipan">Saipan</option>
         <option value="Samoa">Samoa</option>
-        <option value="Samoa American">Samoa American</option>
         <option value="San Marino">San Marino</option>
         <option value="Sao Tome & Principe">Sao Tome & Principe</option>
         <option value="Saudi Arabia">Saudi Arabia</option>
@@ -297,7 +296,6 @@ export default class extends AbstractView {
         <option value="Turks & Caicos Is">Turks & Caicos Is</option>
         <option value="Tuvalu">Tuvalu</option>
         <option value="Uganda">Uganda</option>
-        <option value="United Kingdom">United Kingdom</option>
         <option value="Ukraine">Ukraine</option>
         <option value="United Arab Erimates">United Arab Emirates</option>
         <option value="USA">USA</option>

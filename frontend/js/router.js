@@ -14,6 +14,7 @@ import validation from "./validation.js";
 import photoCRUD from "./CRUD/photoCRUD.js";
 import { photoUpload, toggle, toggleHandle } from "./photoUpload.js";
 import projectsCRUD from "./CRUD/projectsCRUD.js";
+import { switchAppPageLanguage } from "./switchLanguage.js";
 
 const navigateTo = (url) => {
   history.pushState(null, null, url);
@@ -28,6 +29,9 @@ const router = async () => {
     { path: "/app/skills", view: SkillsForm },
     { path: "/app/download", view: Download },
   ];
+  let currentPage = window.location.href.substring(
+    window.location.href.lastIndexOf("/") + 1
+  );
 
   const potentialMatches = routes.map((route) => {
     return {
@@ -49,9 +53,8 @@ const router = async () => {
 
   document.querySelector("#form-container").innerHTML = await view.getHtml();
 
-  let currentPage = window.location.href.substring(
-    window.location.href.lastIndexOf("/") + 1
-  );
+  switchAppPageLanguage(localStorage.getItem("language"), currentPage);
+
   appUI.pagesDone(currentPage);
 
   photoCRUD.readPhoto();

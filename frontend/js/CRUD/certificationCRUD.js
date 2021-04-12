@@ -95,18 +95,33 @@ class certificationCRUD {
     if (certificationDataList && certificationDataList.length !== 0) {
       if (formCertificationListContainer) {
         let cerList = certificationDataList.map((element) => {
-          return `
+          if (localStorage.getItem("language") === "polish") {
+            return `
           <li class="form-entry-container">
           <div class="entry-action-icons" data-id=${element.id.data}>
             <i class="fas fa-edit" data-ceredit data-modal="certification"></i><i class="fas fa-trash-alt" data-cerdelete></i>
           </div>
           <ul class="entry-description">
-            <li>Okres: <span>${element.certdate.data}</span></li>
+            <li>Data uczestnictwa: <span>${element.certdate.data}</span></li>
             <li>Nazwa: <span>${element.certname.data}</span></li>
             <li>Organizator: <span>${element.organizer.data}</span></li>
             <li>Opis: <span>${element.cerdescription.data}</span>
           </ul>
         </li>`;
+          } else if (localStorage.getItem("language") === "english") {
+            return `
+            <li class="form-entry-container">
+            <div class="entry-action-icons" data-id=${element.id.data}>
+              <i class="fas fa-edit" data-ceredit data-modal="certification"></i><i class="fas fa-trash-alt" data-cerdelete></i>
+            </div>
+            <ul class="entry-description">
+              <li>Participation date: <span>${element.certdate.data}</span></li>
+              <li>Name: <span>${element.certname.data}</span></li>
+              <li>Organizer: <span>${element.organizer.data}</span></li>
+              <li>Description: <span>${element.cerdescription.data}</span>
+            </ul>
+          </li>`;
+          }
         });
         formCertificationListContainer.innerHTML = cerList.join("");
       }

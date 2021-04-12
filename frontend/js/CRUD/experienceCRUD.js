@@ -123,7 +123,8 @@ class experienceCRUD {
 
       if (formJobListContainer) {
         let jobList = experienceData.map((element) => {
-          return `
+          if (localStorage.getItem("language") === "polish") {
+            return `
         <li class="form-entry-container">
           <div class="entry-action-icons" data-id=${element.id.data}>
             <i class="fas fa-edit" data-expEdit data-modal="experience"></i><i class="fas fa-trash-alt" data-expDelete></i>
@@ -135,6 +136,20 @@ class experienceCRUD {
             <li>Opis: <span>${element.expdescription.data}</span>
           </ul>
         </li>`;
+          } else if (localStorage.getItem("language") === "english") {
+            return `
+        <li class="form-entry-container">
+          <div class="entry-action-icons" data-id=${element.id.data}>
+            <i class="fas fa-edit" data-expEdit data-modal="experience"></i><i class="fas fa-trash-alt" data-expDelete></i>
+          </div>
+          <ul class="entry-description">
+            <li>Period of time: <span>${element.expstart.data} - ${element.expend.data}</span></li>
+            <li>Position: <span>${element.position.data}</span></li>
+            <li>Company: <span>${element.company.data}</span></li>
+            <li>Description: <span>${element.expdescription.data}</span>
+          </ul>
+        </li>`;
+          }
         });
         formJobListContainer.innerHTML = jobList.join("");
       }

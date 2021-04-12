@@ -26,12 +26,29 @@ let currentPage = window.location.href.substring(
 );
 let flagButtons = document.getElementsByClassName("flag");
 
+if (currentPage !== "") {
+  let language = localStorage.getItem("language");
+  if (!language) {
+    switchAppPageLanguage("polish");
+  } else {
+    switchAppPageLanguage(language);
+  }
+} else {
+  let language = localStorage.getItem("language");
+  if (!language) {
+    switchMainPageLanguage("polish");
+  } else {
+    switchMainPageLanguage(language);
+  }
+}
+
 for (let i = 0; flagButtons.length > i; i++) {
   flagButtons[i].addEventListener("click", (e) => {
     currentPage = window.location.href.substring(
       window.location.href.lastIndexOf("/") + 1
     );
     if (currentPage !== "") {
+      router();
       switchAppPageLanguage(e.target.dataset.language, currentPage);
     } else {
       switchMainPageLanguage(e.target.dataset.language);
@@ -91,7 +108,7 @@ for (var i = 0; templateButtons.length > i; i++) {
     }
 
     var template = templateType + color;
-
+    // CURRENT +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     for (var i = 0; templateButtons.length > i; i++) {
       templateButtons[i].className = "mp template-button";
     }
@@ -114,7 +131,7 @@ for (var i = 0; colorDots.length > i; i++) {
     datasetEl.dataset.color = template.charAt(template.length - 1);
   });
 }
-
+//CURRENT +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 for (var i = 0; selectButtons.length > i; i++) {
   selectButtons[i].addEventListener("click", (e) => {
     for (var i = 0; selectButtons.length > i; i++) {
@@ -123,7 +140,7 @@ for (var i = 0; selectButtons.length > i; i++) {
     e.target.parentNode.classList.add("current");
   });
 }
-
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 for (var i = 0; appTemplateButtons.length > i; i++) {
   appTemplateButtons[i].addEventListener("click", (e) => {
     let template = e.target.id;

@@ -118,7 +118,8 @@ class educationCRUD {
 
       if (formEducationListContainer) {
         let eduList = educationData.map((element) => {
-          return `
+          if (localStorage.getItem("language") === "polish") {
+            return `
         <li class="form-entry-container">
         <div class="entry-action-icons" data-id=${element.id.data}>
           <i class="fas fa-edit" data-eduedit data-modal="education"></i><i class="fas fa-trash-alt" data-edudelete></i>
@@ -130,6 +131,20 @@ class educationCRUD {
           <li>Opis: <span>${element.edudescription.data}</span>
         </ul>
       </li>`;
+          } else if (localStorage.getItem("language") === "english") {
+            return `
+        <li class="form-entry-container">
+        <div class="entry-action-icons" data-id=${element.id.data}>
+          <i class="fas fa-edit" data-eduedit data-modal="education"></i><i class="fas fa-trash-alt" data-edudelete></i>
+        </div>
+        <ul class="entry-description">
+          <li>Period of time: <span>${element.edustart.data} - ${element.eduend.data}</span></li>
+          <li>Specialization: <span>${element.specialization.data}</span></li>
+          <li>Shool: <span>${element.school.data}</span></li>
+          <li>Description: <span>${element.edudescription.data}</span>
+        </ul>
+      </li>`;
+          }
         });
         formEducationListContainer.innerHTML = eduList.join("");
       }
