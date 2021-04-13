@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
-import MainPageUI from "../mainPageUI.js";
+import UI from "../UI.js";
 import { navigateTo } from "../router.js";
 import validation from "../validation.js";
 
@@ -14,7 +14,8 @@ class completeCV {
     education,
     languages,
     skills,
-    certification
+    certification,
+    projects
   ) {
     this.id = id;
     this.photo = photo;
@@ -26,6 +27,7 @@ class completeCV {
     this.languages = languages;
     this.skills = skills;
     this.certification = certification;
+    this.projects = projects;
   }
 }
 
@@ -48,6 +50,7 @@ class completeCvCRUD {
     let certificationData = JSON.parse(
       localStorage.getItem("certificationData")
     );
+    let projectsData = JSON.parse(localStorage.getItem("projectsData"));
 
     let newCv = new completeCV(
       id,
@@ -59,7 +62,8 @@ class completeCvCRUD {
       educationData,
       languagesData,
       skillsData,
-      certificationData
+      certificationData,
+      projectsData
     );
     return newCv;
   }
@@ -93,7 +97,7 @@ class completeCvCRUD {
         return element;
       } else {
         if (id == localStorage.getItem("currentCvId")) {
-          MainPageUI.clearLocalStorage();
+          UI.clearLocalStorage();
         }
       }
     });
@@ -116,6 +120,7 @@ class completeCvCRUD {
       "certificationData",
       JSON.stringify(cvToEdit.certification)
     );
+    localStorage.setItem("projectsData", JSON.stringify(cvToEdit.projects));
   }
 
   static readCv() {
