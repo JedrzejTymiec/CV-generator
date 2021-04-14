@@ -153,6 +153,7 @@ body {
 
 .languages-container {
   order: 4;
+  padding-bottom: 20px;
 }
 
 .skills-container {
@@ -372,4 +373,8 @@ body {
 .language-level-scale .inner {
   grid-column: 1;
   grid-row: 1;
+}
+
+.language-level-dot {
+  display: none;
 }

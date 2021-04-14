@@ -291,3 +291,7 @@ body {
   margin: 5px 0 0 0;
   font-size: 14px;
 }
+
+.language-level-scale {
+  display: none;
+}

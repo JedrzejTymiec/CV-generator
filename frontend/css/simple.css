@@ -143,6 +143,15 @@ body {
   padding: 5px 30px;
 }
 
+.skills-container {
+  order: -2;
+}
+
+.projects-container {
+  margin-top: 10px;
+  order: -1;
+}
+
 .experience-container,
 .education-container {
   margin: 5px 0;
@@ -232,4 +241,9 @@ body {
   font-size: 10px;
   color: var(--mainColor);
   font-weight: bolder;
+}
+
+.language-level-dot,
+.language-level-scale {
+  display: none;
 }

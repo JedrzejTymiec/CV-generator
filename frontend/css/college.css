@@ -166,6 +166,14 @@ body {
   min-height: 787px;
 }
 
+.skills-container {
+  order: -2;
+}
+
+.projects-container {
+  order: -1;
+}
+
 .time-range {
   margin: 0;
   font-style: italic;
@@ -212,4 +220,9 @@ body {
   font-size: 10px;
   color: var(--mainColor);
   font-weight: bolder;
+}
+
+.language-level-dot,
+.language-level-scale {
+  display: none;
 }

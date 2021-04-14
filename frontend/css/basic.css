@@ -13,6 +13,14 @@ body {
   justify-content: space-between;
 }
 
+.skills-container {
+  order: -2;
+}
+
+.projects-container {
+  order: -1;
+}
+
 .cv-preview-container section,
 .preview-modal section {
   padding: 5px 25px;
@@ -211,6 +219,10 @@ body {
   grid-row-start: 1;
 }
 
+.languages-container {
+  margin-top: 10px;
+}
+
 .cv-preview-container .language,
 .preview-modal .language {
   font-size: 14px;
@@ -238,6 +250,7 @@ body {
   font-weight: bolder;
 }
 
-.language-level-dot {
+.language-level-dot,
+.language-level-scale {
   display: none;
 }

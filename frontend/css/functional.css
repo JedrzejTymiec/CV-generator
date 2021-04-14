@@ -280,3 +280,7 @@ body {
   grid-column: 1;
   grid-row: 1;
 }
+
+.language-level-dot {
+  display: none;
+}
