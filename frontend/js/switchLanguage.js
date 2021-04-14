@@ -121,7 +121,7 @@ function switchAppPageLanguage(language, currentPage) {
     document.querySelector("#projects-modal .modal-footer button").innerText =
       "Zapisz";
     //APP
-    document.querySelector(".header h1").innerText =
+    document.querySelector(".header-text").innerText =
       "Klon generatora CV z Pracuj.pl";
     document.getElementById("basic-dot-label").innerText = "Podstawowe dane";
     document.getElementById("experience-dot-label").innerText = "Doświadczenie";
@@ -682,7 +682,7 @@ function switchAppPageLanguage(language, currentPage) {
     document.querySelector("#projects-modal .modal-footer button").innerText =
       "Save";
     //APP
-    document.querySelector(".header h1").innerText =
+    document.querySelector(".header-text").innerText =
       "Pracuj.pl CV generator clone";
     document.getElementById("basic-dot-label").innerText = "Basic data";
     document.getElementById("experience-dot-label").innerText = "Experience";

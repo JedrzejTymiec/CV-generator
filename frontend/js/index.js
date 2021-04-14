@@ -1,5 +1,4 @@
-import mainPageUI from "./mainPageUI.js";
-import appUI from "./appUI.js";
+import UI from "./UI.js";
 import modalUI from "./modalUI.js";
 import { router, navigateTo } from "./router.js";
 import experienceCRUD from "./CRUD/experienceCRUD.js";
@@ -25,20 +24,39 @@ let currentPage = window.location.href.substring(
   window.location.href.lastIndexOf("/") + 1
 );
 let flagButtons = document.getElementsByClassName("flag");
+let polishFlag = document.querySelector(
+  ".flag-buttons .flag-container:first-child .flag"
+);
+let britishFlag = document.querySelector(
+  ".flag-buttons .flag-container:nth-child(2) .flag"
+);
 
 if (currentPage !== "") {
+  router();
   let language = localStorage.getItem("language");
   if (!language) {
     switchAppPageLanguage("polish");
+    UI.addCurrentClass(polishFlag);
   } else {
     switchAppPageLanguage(language);
+    if (language === "polish") {
+      UI.addCurrentClass(polishFlag);
+    } else {
+      UI.addCurrentClass(britishFlag);
+    }
   }
 } else {
   let language = localStorage.getItem("language");
   if (!language) {
     switchMainPageLanguage("polish");
+    UI.addCurrentClass(polishFlag);
   } else {
     switchMainPageLanguage(language);
+    if (language === "polish") {
+      UI.addCurrentClass(polishFlag);
+    } else {
+      UI.addCurrentClass(britishFlag);
+    }
   }
 }
 
@@ -47,6 +65,7 @@ for (let i = 0; flagButtons.length > i; i++) {
     currentPage = window.location.href.substring(
       window.location.href.lastIndexOf("/") + 1
     );
+    UI.addCurrentClass(e.target);
     if (currentPage !== "") {
       router();
       switchAppPageLanguage(e.target.dataset.language, currentPage);
@@ -56,14 +75,16 @@ for (let i = 0; flagButtons.length > i; i++) {
   });
 }
 
-appUI.setTemplate();
 if (currentPage === "") {
   let template = localStorage.getItem("template");
   let color = localStorage.getItem("color");
+
   if (template && color) {
-    mainPageUI.setTemplate(template + color);
+    UI.setMpTemplate(template + color);
+    UI.addCurrentClass(document.getElementById(template));
   } else {
-    mainPageUI.setTemplate("basic0");
+    UI.setMpTemplate("basic0");
+    UI.addCurrentClass(document.getElementById("basic"));
   }
 }
 
@@ -99,7 +120,7 @@ for (let i = 0; checkbox.length > i; i++) {
 for (var i = 0; templateButtons.length > i; i++) {
   templateButtons[i].addEventListener("click", (e) => {
     let templateType = e.target.id;
-    let color = e.target.parentNode.dataset.color;
+    let color = localStorage.getItem("color");
     if (!templateType) {
       templateType = e.target.parentNode.id;
     }
@@ -108,50 +129,41 @@ for (var i = 0; templateButtons.length > i; i++) {
     }
 
     var template = templateType + color;
-    // CURRENT +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    for (var i = 0; templateButtons.length > i; i++) {
-      templateButtons[i].className = "mp template-button";
-    }
-    mainPageUI.setTemplate(template);
+
+    UI.addCurrentClass(e.target);
+    UI.setMpTemplate(template);
   });
 }
 
 for (var i = 0; colorDots.length > i; i++) {
   colorDots[i].addEventListener("click", (e) => {
     let template = e.target.id;
+    let target = e.target;
     if (!template) {
       template = e.target.parentNode.id;
+      target = e.target.parentNode;
     }
-    mainPageUI.setTemplateColor(template);
-    let datasetEl = e.target.parentNode.parentNode;
-    if (!datasetEl) {
-      datasetEl = e.target.parentNode.parentNode.parentNode;
-    }
-
-    datasetEl.dataset.color = template.charAt(template.length - 1);
+    UI.setTemplateColor(template);
+    UI.addCurrentClass(target);
   });
 }
-//CURRENT +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 for (var i = 0; selectButtons.length > i; i++) {
   selectButtons[i].addEventListener("click", (e) => {
-    for (var i = 0; selectButtons.length > i; i++) {
-      selectButtons[i].className = "select-button";
-    }
-    e.target.parentNode.classList.add("current");
+    UI.addCurrentClass(e.target.closest("div"));
   });
 }
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 for (var i = 0; appTemplateButtons.length > i; i++) {
   appTemplateButtons[i].addEventListener("click", (e) => {
     let template = e.target.id;
-    appUI.changeTemplate(template, appTemplateButtons);
+    UI.changeTemplate(template);
   });
 }
 
 for (var i = 0; appColorDots.length > i; i++) {
   appColorDots[i].addEventListener("click", (e) => {
-    let id = e.target.id;
-    appUI.changeColor(id);
+    UI.changeColor(e.target.id);
   });
 }
 
@@ -270,13 +282,14 @@ if (deleteCvButton) {
 }
 
 if (currentPage !== "") {
+  UI.setAppTemplate();
   window.addEventListener("popstate", router);
 }
 
 let newButton = document.getElementById("new-button");
 if (newButton) {
-  mainPageUI.clearLocalStorage();
-  newButton.addEventListener("click", mainPageUI.clearLocalStorage);
+  UI.clearLocalStorage();
+  newButton.addEventListener("click", UI.clearLocalStorage);
 }
 
 let cvPreview = document.querySelector(".cv-preview");
@@ -425,7 +438,4 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentPage = window.location.href.substring(
     window.location.href.lastIndexOf("/") + 1
   );
-  if (currentPage !== "") {
-    router();
-  }
 });

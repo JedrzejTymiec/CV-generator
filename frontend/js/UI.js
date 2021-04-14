@@ -1,17 +1,13 @@
-class appUI {
+class UI {
   static changeTemplate(template) {
-    let buttonList = document.getElementsByClassName("ap template-button");
-    for (var i = 0; buttonList.length > i; i++) {
-      buttonList[i].className = "ap template-button";
-    }
+    this.addCurrentClass(document.getElementById(template));
     document.getElementById("template-type").href =
       "./css/" + template + ".css";
 
-    document.getElementById(template).classList.add("current");
     localStorage.setItem("template", template);
   }
 
-  static setTemplate() {
+  static setAppTemplate() {
     let template = localStorage.getItem("template");
     let color = localStorage.getItem("color");
 
@@ -25,13 +21,7 @@ class appUI {
   }
 
   static changeColor(id) {
-    if (document.getElementById(id)) {
-      let colorDots = document.getElementsByClassName("ap color-dot");
-      for (var i = 0; colorDots.length > i; i++) {
-        colorDots[i].className = "ap color-dot";
-      }
-      document.getElementById(id).classList.add("current");
-    }
+    this.addCurrentClass(document.getElementById(id));
 
     if (id === "dot-1") {
       document.documentElement.style.setProperty("--mainColor", "#4758a8");
@@ -99,6 +89,68 @@ class appUI {
       ).innerHTML = `<p><i class="fas fa-check"></i></p>`;
     }
   }
+
+  static setMpTemplate(templateType) {
+    let dotLists = document.getElementsByClassName("dot-list");
+
+    for (var i = 0; dotLists.length > i; i++) {
+      dotLists[i].style.zIndex = "-1";
+    }
+
+    document.getElementById("template-type").src =
+      "../../pictures/CV templates/" + templateType + ".png";
+
+    document.getElementById(
+      templateType.slice(0, -1) + "-dot-list"
+    ).style.zIndex = "1";
+    let selector =
+      "#" +
+      templateType.slice(0, -1) +
+      "-dot-list .color-dot:nth-child(" +
+      (parseInt(localStorage.getItem("color")) + 1) +
+      ")";
+    UI.addCurrentClass(document.querySelector(selector));
+    localStorage.setItem("template", templateType.slice(0, -1));
+  }
+
+  static setTemplateColor(template) {
+    document.getElementById("template-type").src =
+      "../../pictures/CV templates/" + template + ".png";
+    localStorage.setItem("color", template.slice(template.length - 1));
+  }
+
+  static clearLocalStorage() {
+    localStorage.removeItem("currentCvId");
+    localStorage.removeItem("photoData");
+    localStorage.removeItem("basicData");
+    localStorage.removeItem("residenceData");
+    localStorage.removeItem("contactData");
+    localStorage.removeItem("experienceData");
+    localStorage.removeItem("educationData");
+    localStorage.removeItem("languagesData");
+    localStorage.removeItem("skillsData");
+    localStorage.removeItem("certificationData");
+    localStorage.removeItem("projectsData");
+  }
+
+  static addCurrentClass(target) {
+    let klasa;
+    if (target.classList.length > 0) {
+      klasa = target.classList;
+      console.log(klasa);
+    } else {
+      klasa = target.parentNode.classList;
+    }
+    let buttons = document.getElementsByClassName(klasa);
+    for (let i = 0; buttons.length > i; i++) {
+      buttons[i].classList = klasa;
+    }
+    if (target.classList.length > 0) {
+      target.classList.add("current");
+    } else {
+      target.parentNode.classList.add("current");
+    }
+  }
 }
 
-export default appUI;
+export default UI;

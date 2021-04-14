@@ -3,7 +3,7 @@ import ExperienceForm from "./views/ExperienceForm.js";
 import SkillsForm from "./views/SkillsForm.js";
 import Download from "./views/Download.js";
 import modalUI from "./modalUI.js";
-import appUI from "./appUI.js";
+import UI from "./UI.js";
 import experienceCRUD from "./CRUD/experienceCRUD.js";
 import educationCRUD from "./CRUD/educationCRUD.js";
 import certificationCRUD from "./CRUD/certificationCRUD.js";
@@ -55,7 +55,7 @@ const router = async () => {
 
   switchAppPageLanguage(localStorage.getItem("language"), currentPage);
 
-  appUI.pagesDone(currentPage);
+  UI.pagesDone(currentPage);
 
   photoCRUD.readPhoto();
   basicDataCRUD.readBasicData();

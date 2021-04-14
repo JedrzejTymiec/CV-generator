@@ -20,6 +20,10 @@ body {
   background-size: cover;
 }
 
+.flag-container .current {
+  opacity: 1;
+}
+
 .flag-container:first-child {
   margin-right: 10px;
 }
@@ -28,6 +32,13 @@ body {
   width: 100%;
   height: 100%;
   border: 0 solid #0006ba;
+  opacity: 0.5;
+  cursor: pointer;
+  transition: 400ms;
+}
+
+.flag:hover {
+  opacity: 1;
 }
 
 .cv-preview-container {
@@ -171,13 +182,15 @@ h4 {
   margin-top: 4px;
 }
 
-.dot-1 {
+.dot-list .color-dot:first-child {
   background-color: #4758a8;
 }
-.dot-2 {
+
+.dot-list .color-dot:nth-child(2) {
   background-color: #051561;
 }
-.dot-3 {
+
+.dot-list .color-dot:nth-child(3) {
   background-color: #616d84;
 }
 
@@ -199,7 +212,7 @@ h4 {
   color: #0054a8;
 }
 
-.template-list .current .template-name {
+.template-list .current div {
   border-bottom: 1px solid #0054a8;
 }
 
