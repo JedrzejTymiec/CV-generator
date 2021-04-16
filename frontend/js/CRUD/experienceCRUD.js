@@ -119,7 +119,7 @@ class experienceCRUD {
           pastExperience.push(element);
         }
       });
-      experienceData = stillWorking.concat(pastExperience.reverse());
+      experienceData = stillWorking.concat(pastExperience);
 
       if (formJobListContainer) {
         let jobList = experienceData.map((element) => {

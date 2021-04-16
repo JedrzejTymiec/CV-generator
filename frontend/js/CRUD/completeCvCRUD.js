@@ -15,7 +15,8 @@ class completeCV {
     languages,
     skills,
     certification,
-    projects
+    projects,
+    language
   ) {
     this.id = id;
     this.photo = photo;
@@ -28,6 +29,7 @@ class completeCV {
     this.skills = skills;
     this.certification = certification;
     this.projects = projects;
+    this.language = language;
   }
 }
 
@@ -51,6 +53,7 @@ class completeCvCRUD {
       localStorage.getItem("certificationData")
     );
     let projectsData = JSON.parse(localStorage.getItem("projectsData"));
+    let language = localStorage.getItem("language");
 
     let newCv = new completeCV(
       id,
@@ -63,7 +66,8 @@ class completeCvCRUD {
       languagesData,
       skillsData,
       certificationData,
-      projectsData
+      projectsData,
+      language
     );
     return newCv;
   }
@@ -121,6 +125,7 @@ class completeCvCRUD {
       JSON.stringify(cvToEdit.certification)
     );
     localStorage.setItem("projectsData", JSON.stringify(cvToEdit.projects));
+    localStorage.setItem("language", cvToEdit.language);
   }
 
   static readCv() {
@@ -129,16 +134,21 @@ class completeCvCRUD {
     if (cvData && cvListContainer) {
       let cvList = cvData.map((element) => {
         let img = element.photo
-          ? `<img src='${element.photo.path}' />`
+          ? `<img class="entry-profile-photo" src='${element.photo.path}' />`
           : '<img style="display:none;" />';
-
+        let flagIcon;
+        if (element.language === "polish") {
+          flagIcon = "../pictures/Polish_Flag.png";
+        } else if (element.language === "english") {
+          flagIcon = "../pictures/United_Kingdom_Flag.png";
+        }
         return `
         <div class="entry-wrapper">
           <div class="cv-list-entry" data-id=${element.id}>
             <div class="entry-body-wrapper">
             ${img}
               <div class="cv-entry-desc">
-                <h3>${element.basic.name.data} ${element.basic.surname.data}</h3>
+                <div class="name-wrapper"><h3>${element.basic.name.data} ${element.basic.surname.data}</h3><img class="flag-icon" src="${flagIcon}"/></div>
                 <h5>${element.basic.proffesion.data}</h5>
               </div>
             </div>
@@ -155,6 +165,9 @@ class completeCvCRUD {
       cvEntriesList[i].addEventListener("click", () => {
         this.updateCv(cvEntriesList[i].dataset.id);
         navigateTo("basic");
+        UI.addCurrentClass(
+          document.getElementById(localStorage.getItem("language") + "-flag")
+        );
       });
     }
   }

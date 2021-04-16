@@ -866,7 +866,7 @@ button {
   cursor: pointer;
 }
 
-.cv-list-entry img {
+.entry-profile-photo {
   width: 100px;
   height: auto;
 }
@@ -888,6 +888,21 @@ button {
 #saved-cv-list p {
   color: var(--label-color);
   font-style: italic;
+}
+
+.name-wrapper {
+  display: flex;
+  margin: 15px 0;
+}
+
+.name-wrapper h3 {
+  margin: 0;
+}
+
+.flag-icon {
+  height: 15px;
+  margin-left: 3px;
+  align-self: center;
 }
 
 @media (max-device-width: 900px), (max-width: 900px) {

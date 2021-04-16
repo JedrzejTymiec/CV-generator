@@ -22,7 +22,7 @@ class modalUI {
   static closeModal(button) {
     let modal = button.dataset.modal;
     document.getElementById(modal + "-modal").style.display = "none";
-    document.body.style.overflow = "visible";
+    document.body.style.overflowY = "scroll";
     let id = button.dataset.modal.slice(0, 3);
     if (id !== "war" && id !== "pre") {
       document.getElementById(id + "description-input").style.height = "31px";
@@ -35,7 +35,7 @@ class modalUI {
   static openModal(button) {
     let modal = button.closest("[data-modal]").dataset.modal;
     document.getElementById(modal + "-modal").style.display = "block";
-    document.body.style.overflow = "hidden";
+    document.body.style.overflowY = "hidden";
   }
 
   static clearInputs(inputs) {
