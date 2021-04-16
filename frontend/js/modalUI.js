@@ -57,7 +57,6 @@ class modalUI {
     id,
     position,
     company,
-    location,
     startDate,
     endDate,
     stillWorking,
@@ -71,7 +70,6 @@ class modalUI {
     document.getElementById("experience-form").dataset.id = id;
     document.getElementById("position-input").value = position;
     document.getElementById("company-input").value = company;
-    document.getElementById("location-input").value = location;
     document.getElementById("expstart-input").value = startDate;
     document.getElementById("expdescription-input").value = expdescription;
     this.countCharacters(document.getElementById("expdescription-input"));

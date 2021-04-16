@@ -65,7 +65,6 @@ function switchAppPageLanguage(language, currentPage) {
     ).innerText = "Doświadczenie zawodowe - nowa pozycja";
     document.getElementById("position-input-label").innerText = "Stanowisko*";
     document.getElementById("company-input-label").innerText = "Firma*";
-    document.getElementById("location-input-label").innerText = "Lokalizacja";
     document.getElementById("expstart-input-label").innerText =
       "Data rozpoczęcia*";
     document.getElementById("expend-input-label").innerText =
@@ -629,7 +628,6 @@ function switchAppPageLanguage(language, currentPage) {
     ).innerText = "Professional experience - new position";
     document.getElementById("position-input-label").innerText = "Position*";
     document.getElementById("company-input-label").innerText = "Company*";
-    document.getElementById("location-input-label").innerText = "Location";
     document.getElementById("expstart-input-label").innerText = "Start date*";
     document.getElementById("expend-input-label").innerText = "End date*";
     document.getElementById("expcheck-label").innerText = "Still working";

@@ -5,7 +5,6 @@ class Experience {
     id,
     position,
     company,
-    location,
     expstart,
     expend,
     stillWorking,
@@ -14,7 +13,6 @@ class Experience {
     this.id = { data: id, isRequired: true };
     this.position = { data: position, isRequired: true };
     this.company = { data: company, isRequired: false };
-    this.location = { data: location, isRequired: false };
     this.expstart = { data: expstart, isRequired: true };
     this.expend = { data: expend, isRequired: true };
     this.stillWorking = { data: stillWorking, isRequired: false };
@@ -32,7 +30,6 @@ class experienceCRUD {
     }
     let position = document.getElementById("position-input").value;
     let company = document.getElementById("company-input").value;
-    let location = document.getElementById("location-input").value;
     let expStart = document.getElementById("expstart-input").value;
     let expEnd;
     let stillWorking = document.getElementById("expcheck").checked;
@@ -48,7 +45,6 @@ class experienceCRUD {
       id,
       position,
       company,
-      location,
       expStart,
       expEnd,
       stillWorking,

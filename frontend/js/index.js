@@ -357,7 +357,6 @@ document.addEventListener("DOMContentLoaded", () => {
           jobToEdit.id.data,
           jobToEdit.position.data,
           jobToEdit.company.data,
-          jobToEdit.location.data,
           jobToEdit.expstart.data,
           jobToEdit.expend.data,
           jobToEdit.stillWorking.data,
