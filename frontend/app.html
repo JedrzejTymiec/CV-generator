@@ -32,14 +32,15 @@
       rel="stylesheet"
       href="https://kendo.cdn.telerik.com/2017.2.621/styles/kendo.material.mobile.min.css"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.css">
     <script src="https://kendo.cdn.telerik.com/2017.2.621/js/jquery.min.js"></script>
     <script src="https://kendo.cdn.telerik.com/2017.2.621/js/jszip.min.js"></script>
     <script src="https://kendo.cdn.telerik.com/2017.2.621/js/kendo.all.min.js"></script>
   </head>
   <body>
     <div class="flag-buttons">
-      <div class="flag-container"><img id="polish-falg" class="flag" data-language="polish" src="../pictures/Polish_Flag.png"/></div>
-      <div class="flag-container"><img id="english-falg" class="flag" data-language="english" src="../pictures/United_Kingdom_Flag.png"/></div>
+      <div class="flag-container"><img id="polish-flag" class="flag" data-language="polish" src="../pictures/Polish_Flag.png"/></div>
+      <div class="flag-container"><img id="english-flag" class="flag" data-language="english" src="../pictures/United_Kingdom_Flag.png"/></div>
     </div>
     <div id="preview-modal" class="modal">
       <div class="modal-content preview-modal">
@@ -359,23 +360,27 @@
                 <span id="email" class="list-text"></span>
               </li>
               <li>
-                <i class="icon fas fa-phone"></i>
+                <i class="icon fa fa-phone"></i>
                 <span id="phone" class="list-text"></span>
               </li>
               <li>
-                <i class="icon fas fa-map-marker-alt"></i>
+                <i class="icon fa fa-map-marker"></i>
                 <span id="residence" class="list-text"></span>
               </li>
               <li>
                 <a href="" target="_blank">
-                  <i class="icon fab fa-linkedin"></i>
-                  <span id="linkedin" class="list-text"></span>
+                  <div>
+                    <i class="icon fab fa-linkedin"></i>
+                    <span id="linkedin" class="list-text"></span>
+                  </div>
                 </a>
               </li>
               <li>
                 <a href="" target="_blank">
-                  <i class="icon fab fa-github"></i>
-                  <span id="github" class="list-text"></span>
+                  <div>
+                    <i class="icon fab fa-github"></i>
+                    <span id="github" class="list-text"></span>
+                  </div>
                 </a>
               </li>
             </ul>
@@ -412,10 +417,12 @@
               <h2 class="section-title">LANGUAGES</h2>
               <div class="languages" id="preview-languages-container"></div>
             </section>
+            
             <section class="projects-container prevent-split">
               <h2 class="section-title">PROJECTS</h2>
               <div class="projects" id="preview-projects-container"></div>
             </section>
+            <div class="break"></div>
           </div>
         </div>
       </div>

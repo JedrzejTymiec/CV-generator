@@ -211,6 +211,8 @@ const router = async () => {
         "https://kendo.cdn.telerik.com/2016.2.607/styles/fonts/DejaVu/DejaVuSans-Oblique.ttf",
       WebComponentsIcons:
         "https://kendo.cdn.telerik.com/2017.1.223/styles/fonts/glyphs/WebComponentsIcons.ttf",
+      FontAwesome:
+        "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/fonts/fontawesome-webfont.ttf",
     });
 
     function ExportPdf() {

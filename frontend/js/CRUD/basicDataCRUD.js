@@ -25,7 +25,6 @@ class Contact {
 
 class basicDataUpdate {
   static basicData() {
-    console.log("basicData");
     let name = document.getElementById("name-input").value;
     let surname = document.getElementById("surname-input").value;
     let proffesion = document.getElementById("proffesion-input").value;
@@ -68,6 +67,12 @@ class basicDataUpdate {
     if (github) {
       switch (github.slice(0, 4)) {
         case "http":
+          switch (github.slice(0, 9)) {
+            case "https://w":
+              break;
+            default:
+              github = "https://www." + github.slice(8, github.length);
+          }
           break;
         case "www.":
           github = "https://" + document.getElementById("github-input").value;
@@ -130,11 +135,11 @@ class basicDataUpdate {
     if (contactData) {
       let displayLinkedinLink = contactData.linkedin.data.slice(
         12,
-        contactData.linkedin.data.length - 1
+        contactData.linkedin.data.length
       );
       let displayGithubLink = contactData.github.data.slice(
         12,
-        contactData.github.data.length - 1
+        contactData.github.data.length
       );
 
       if (currentPage === "basic") {
@@ -151,7 +156,7 @@ class basicDataUpdate {
         document.getElementById("linkedin").parentNode.style.display =
           "list-item";
         document.getElementById("linkedin").innerText = displayLinkedinLink;
-        document.getElementById("linkedin").parentNode.href =
+        document.getElementById("linkedin").parentNode.parentNode.href =
           contactData.linkedin.data;
       } else {
         document.getElementById("linkedin").parentNode.style.display = "none";
@@ -160,7 +165,7 @@ class basicDataUpdate {
         document.getElementById("github").parentNode.style.display =
           "list-item";
         document.getElementById("github").innerText = displayGithubLink;
-        document.getElementById("github").parentNode.href =
+        document.getElementById("github").parentNode.parentNode.href =
           contactData.github.data;
       } else {
         document.getElementById("github").parentNode.style.display = "none";
