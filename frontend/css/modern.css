@@ -40,10 +40,6 @@ body {
   margin: 0;
 }
 
-.resume-body section {
-  padding-left: 30px;
-}
-
 .preview-header {
   grid-area: about;
   display: flex;
@@ -70,7 +66,7 @@ body {
 }
 
 .about p {
-  font-size: 10px;
+  font-size: 11px;
 }
 
 .contact-bar {
@@ -85,8 +81,8 @@ body {
 
 .profile-photo {
   display: none;
-  height: 100px;
-  width: 100px;
+  height: 140px;
+  width: 140px;
   border-radius: 100px;
   object-fit: cover;
   margin: 10px 20px 30px 20px;
@@ -105,6 +101,11 @@ body {
   margin-top: 10px;
 }
 
+.contact-bar ul li a div {
+  display: flex !important;
+  flex-direction: row-reverse;
+}
+
 .contact-bar .icon {
   margin-left: 5px;
   color: var(--mainColor);
@@ -119,45 +120,56 @@ body {
 }
 
 .resume-body {
-  height: 800px;
+  height: 900px;
   grid-area: body;
-  width: 50%;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  justify-content: space-between;
   margin-top: 20px;
 }
 
-.experience-container {
-  order: 0;
+.resume-body section {
+  margin-top: 15px;
+  padding-left: 20px;
+  width: 45%;
+}
+
+.resume-body .experience-container {
+  order: 1;
+  padding-left: 0;
+}
+
+.resume-body .experience-container #preview-job-list-container {
+  padding-left: 30px;
+}
+
+.resume-body .experience-container .section-title {
+  margin-left: 20px;
 }
 
 .education-container {
-  margin: 0px 10px 0 0;
   position: relative;
   order: 2;
 }
 
 .education-container .dash {
-  left: 15px;
+  display: none;
 }
 
 .certifications-container {
-  order: 1;
-}
-
-.projects-container {
   order: 3;
 }
 
-.languages-container {
+.projects-container {
   order: 4;
-  padding-bottom: 20px;
+}
+
+.languages-container {
+  order: 5;
 }
 
 .skills-container {
-  order: 4;
+  order: 6;
 }
 
 .projects-container,
@@ -171,7 +183,7 @@ body {
 .section-title {
   position: relative;
   border-bottom: 1px solid var(--mainColor);
-  width: 100%;
+  width: 90%;
   font-size: 18px;
 }
 
@@ -220,12 +232,6 @@ body {
   font-size: 16px;
 }
 
-.field-of-study,
-.school-name,
-.education-container .time-range {
-  padding-left: 10px;
-}
-
 .course-name,
 .project-name {
   font-size: 14px;
@@ -260,7 +266,7 @@ body {
 .job-description,
 .project-description {
   position: relative;
-  font-size: 10px;
+  font-size: 11px;
 }
 
 .job-description::before,

@@ -172,6 +172,30 @@ a {
   width: 100px;
   margin-top: 21px;
 }
+
+.order-list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  justify-content: space-evenly;
+  margin: 0;
+  padding: 0;
+  margin-top: 10px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.order-list li {
+  padding: 5px 0;
+  text-align: center;
+}
+
+.order-list select {
+  outline: none;
+  border: none;
+  margin-top: 5px;
+}
+
 /*  Basic data form styles ***********************************************************************
  */
 #form-container {
@@ -330,7 +354,7 @@ form h4 {
   position: relative;
 }
 
-select {
+.form-group select {
   width: 100%;
   height: 50px;
   border: none;

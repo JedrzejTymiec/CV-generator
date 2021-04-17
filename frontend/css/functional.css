@@ -83,20 +83,41 @@ body {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  justify-content: space-between;
 
-  height: 850px;
+  height: 1000px;
   padding-bottom: 20px;
 }
 
-.skills-container,
-.languages-container {
+.experience-container {
+  order: 1;
+}
+
+.education-container {
+  order: 2;
+}
+
+.certifications-container {
+  order: 3;
+}
+
+.projects-container {
+  order: 4;
+}
+
+.skills-container {
   width: 30%;
-  order: -1;
+  order: 6;
 }
 
 .languages-container {
+  width: 30%;
+  order: 5;
   margin-top: 10px;
+}
+
+.break {
+  order: 0;
+  flex-basis: 100%;
 }
 
 .skills-container {
@@ -107,13 +128,11 @@ body {
 .education-container,
 .certifications-container {
   width: 70%;
-  order: 1;
 }
 
 .project-container,
 .project-name {
   width: 70%;
-  order: 1;
 }
 
 .education-container,

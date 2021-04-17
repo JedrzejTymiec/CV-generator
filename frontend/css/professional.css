@@ -51,7 +51,7 @@ body {
   flex-direction: row-reverse;
   justify-content: space-between;
   border-bottom: 1px solid var(--mainColor);
-  padding: 20px 0 0 40px;
+  padding: 20px 0 0 20px;
 }
 
 .about h3 {
@@ -81,13 +81,17 @@ body {
 }
 
 .resume-body {
-  width: 50%;
   grid-area: body;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  justify-content: space-between;
   height: 850px;
+}
+
+.resume-body section {
+  margin-left: 20px;
+  margin-top: 10px;
+  width: 45%;
 }
 
 .profile-photo {
@@ -125,39 +129,27 @@ body {
 }
 
 .experience-container {
-  padding: 15px 0 5px 40px;
-  order: -1;
+  order: 1;
 }
 
 .education-container {
-  order: -1;
-  padding: 5px 20px 5px 40px;
+  order: 2;
 }
 
 .languages-container {
-  order: 1;
-  padding: 5px 20px 25px 20px;
+  order: 5;
 }
 
 .skills-container {
-  padding: 15px 20px 0 20px;
-}
-
-.skills-container,
-.languages-container,
-.projects-container {
-  width: 88%;
+  order: 6;
 }
 
 .certifications-container {
-  padding: 5px 20px 5px 40px;
-  height: 160px;
-  order: -1;
+  order: 3;
 }
 
 .projects-container {
-  padding: 15px 20px 5px 20px;
-  order: -1;
+  order: 4;
 }
 
 .time-range {
@@ -210,11 +202,12 @@ body {
 
 .dash {
   height: 40px;
-  width: 20px;
+  width: 10px;
   background-color: var(--mainColor);
   position: absolute;
-  left: -40px;
+  left: -30px;
   top: 5px;
+  display: none;
 }
 
 .about .dash {

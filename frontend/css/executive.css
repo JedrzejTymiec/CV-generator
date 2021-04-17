@@ -37,12 +37,28 @@ body {
   justify-content: space-between;
 }
 
+.experience-container {
+  order: 1;
+}
+
+.education-container {
+  order: 2;
+}
+
+.certifications-container {
+  order: 3;
+}
+
+.languages-container {
+  order: 5;
+}
+
 .skills-container {
-  order: -2;
+  order: 6;
 }
 
 .projects-container {
-  order: -1;
+  order: 4;
 }
 
 .preview-header {

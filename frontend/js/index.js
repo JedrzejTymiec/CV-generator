@@ -30,6 +30,14 @@ let polishFlag = document.querySelector(
 let britishFlag = document.querySelector(
   ".flag-buttons .flag-container:nth-child(2) .flag"
 );
+let orderSelects = document.getElementsByClassName("order-input");
+
+for (let i = 0; orderSelects.length > i; i++) {
+  orderSelects[i].addEventListener("change", (e) => {
+    let section = e.target.id.slice(0, -6);
+    UI.changeSectionOrder(e.target.value, section);
+  });
+}
 
 if (currentPage !== "") {
   router();

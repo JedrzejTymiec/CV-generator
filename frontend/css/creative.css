@@ -28,12 +28,16 @@ body {
 }
 
 .resume-body {
-  width: 50%;
-  height: 800px;
+  height: 900px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  justify-content: space-between;
+}
+
+.resume-body section {
+  width: 45%;
+  margin-left: 20px;
+  margin-top: 10px;
 }
 
 .section-title {
@@ -81,7 +85,6 @@ body {
 .contact-bar {
   padding: 1px;
   background-color: var(--contactColor);
-  margin-bottom: 10px;
 }
 
 .contact-bar ul {
@@ -108,27 +111,31 @@ body {
 
 .section-title {
   font-size: 18px;
-  margin: 10px 0;
+  margin-top: 10px;
 }
 
 .languages-container {
+  order: 5;
+}
+
+.experience-container {
   order: 1;
 }
 
-.experience-container,
 .education-container {
-  order: -1;
-  padding: 0 20px;
+  order: 2;
 }
 
 .certifications-container {
-  order: -1;
-  margin-left: 20px;
+  order: 3;
 }
 
 .projects-container {
-  order: -1;
-  padding-right: 15px;
+  order: 4;
+}
+
+.skills-container {
+  order: 6;
 }
 
 .job-title,
@@ -164,7 +171,7 @@ body {
 .study-container,
 .course-container,
 .project-container {
-  margin: 20px 0;
+  margin: 10px 0;
 }
 
 .workplace,

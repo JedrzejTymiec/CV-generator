@@ -4,6 +4,34 @@ class UI {
     document.getElementById("template-type").href =
       "./css/" + template + ".css";
 
+    switch (template) {
+      case "professional":
+        document.getElementById("experience-order").disabled = "false";
+        document.getElementById("education-order").disabled = "false";
+        document.getElementById("skills-order").removeAttribute("disabled");
+        document.getElementById("languages-order").removeAttribute("disabled");
+        break;
+      case "modern":
+        document.getElementById("experience-order").disabled = "false";
+        document.getElementById("education-order").removeAttribute("disabled");
+        document.getElementById("skills-order").removeAttribute("disabled");
+        document.getElementById("languages-order").removeAttribute("disabled");
+        break;
+      case "functional":
+        document.getElementById("experience-order").removeAttribute("disabled");
+        document.getElementById("education-order").removeAttribute("disabled");
+        document.querySelector(".skills-container").style.order = "-1";
+        document.querySelector(".languages-container").style.order = "-1";
+        document.getElementById("skills-order").disabled = "false";
+        document.getElementById("languages-order").disabled = "false";
+        break;
+      default:
+        document.getElementById("experience-order").removeAttribute("disabled");
+        document.getElementById("education-order").removeAttribute("disabled");
+        document.getElementById("skills-order").removeAttribute("disabled");
+        document.getElementById("languages-order").removeAttribute("disabled");
+    }
+
     localStorage.setItem("template", template);
   }
 
@@ -150,6 +178,10 @@ class UI {
     } else {
       target.parentNode.classList.add("current");
     }
+  }
+
+  static changeSectionOrder(order, section) {
+    document.querySelector("." + section + "-container").style.order = order;
   }
 }
 
