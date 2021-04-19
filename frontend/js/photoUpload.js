@@ -38,7 +38,6 @@ function photoUpload() {
           method: "POST",
           body: body,
         });
-        console.log("Response:");
         console.log(await res.json());
         let newPhoto = photoCRUD.photoData(imageInput.files[0].name);
         photoCRUD.addPhoto(newPhoto);
@@ -59,7 +58,6 @@ function photoUpload() {
         // }
         displayAlert(true, "Photo uploaded!");
       } catch (err) {
-        console.log("Error!");
         console.log(err);
       }
     });
@@ -84,10 +82,8 @@ function photoUpload() {
         imageField.addEventListener("click", click);
         imageField.addEventListener("drop", dropHandle);
         imageInput.value = "";
-        console.log(imageInput.files);
         displayAlert(false, "Photo deleted!");
       } catch (err) {
-        console.log("Error!");
         console.log(err);
       }
     });

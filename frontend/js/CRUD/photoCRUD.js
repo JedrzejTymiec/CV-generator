@@ -23,7 +23,6 @@ class photoCRUD {
     let photoData = JSON.parse(localStorage.getItem("photoData"));
     if (photoData) {
       updatePhoto(photoData.path);
-      console.log(photoData.showPhoto);
       if (photoData.showPhoto === "true") {
         document.querySelector(".profile-photo").style.display = "block";
       } else {
