@@ -9,7 +9,7 @@ export default class extends AbstractView {
   async getHtml() {
     return `
     <h1 class="form-title"></h1>
-    <ul id="form-job-list"></ul>
+    <ul id="form-experience-list"></ul>
     <button data-modal="experience" type="button" class="add-button open-modal">
     </button>
     <h1 class="form-title"></h1>

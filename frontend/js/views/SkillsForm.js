@@ -11,7 +11,7 @@ export default class extends AbstractView {
     return `
     <form class="language-form" id="language-form">
       <h1 class="form-title"></h1>
-      <ul id="form-languages-container"></ul>
+      <ul id="form-languages-list"></ul>
       <div class="form-group">
         <label class="form-label" for="language-input"></label>
         <select id="language-input">
@@ -30,7 +30,7 @@ export default class extends AbstractView {
     </form>
     <form class="language-form" id="skills-form">
       <h1 class="form-title"></h1>
-      <ul id="form-skills-container"></ul>
+      <ul id="form-skills-list"></ul>
       <div class="form-group">
       <label class="form-label" for="skill-input"
         ></label

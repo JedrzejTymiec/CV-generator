@@ -316,7 +316,7 @@ function switchAppPageLanguage(language, currentPage) {
     polish ? "WYKSZTAŁCENIE" : "EDUCATION"
   }`;
   document.querySelector(
-    ".certifications-container .section-title"
+    ".certification-container .section-title"
   ).innerText = `${polish ? "CERTYFIKATY" : "CERTIFICATIONS"}`;
   document.querySelector(".languages-container .section-title").innerText = `${
     polish ? "JĘZYKI" : "LANGUAGES"

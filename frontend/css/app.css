@@ -462,8 +462,8 @@ button {
   width: 80%;
 }
 
-#form-languages-container,
-#form-skills-container {
+#form-languages-list,
+#form-skills-list {
   list-style: none;
   text-align: center;
   display: flex;
@@ -800,7 +800,7 @@ button {
 }
 
 /* form experience entries ****************************************************** */
-#form-job-list,
+#form-experience-list,
 #form-education-list,
 #form-certification-list,
 #form-projects-list {

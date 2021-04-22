@@ -126,13 +126,14 @@ body {
 
 .experience-container,
 .education-container,
-.certifications-container {
+.certifications-container,
+.projects-container {
   width: 70%;
 }
 
-.project-container,
-.project-name {
-  width: 70%;
+.job-container,
+.project-container {
+  padding-right: 10px;
 }
 
 .education-container,

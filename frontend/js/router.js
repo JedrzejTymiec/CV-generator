@@ -4,17 +4,13 @@ import SkillsForm from "./views/SkillsForm.js";
 import Download from "./views/Download.js";
 import modalUI from "./modalUI.js";
 import UI from "./UI.js";
-import experienceCRUD from "./CRUD/experienceCRUD.js";
-import educationCRUD from "./CRUD/educationCRUD.js";
-import certificationCRUD from "./CRUD/certificationCRUD.js";
 import basicDataCRUD from "./CRUD/basicDataCRUD.js";
-import langSkillCRUD from "./CRUD/languageSkillsCRUD.js";
 import completeCvCRUD from "./CRUD/completeCvCRUD.js";
 import validation from "./validation.js";
 import photoCRUD from "./CRUD/photoCRUD.js";
 import { photoUpload, toggle, toggleHandle } from "./photoUpload.js";
-import projectsCRUD from "./CRUD/projectsCRUD.js";
 import { switchAppPageLanguage } from "./switchLanguage.js";
+import CRUD from "./CRUD/CRUD.js";
 
 const navigateTo = (url) => {
   history.pushState(null, null, url);
@@ -66,12 +62,12 @@ const router = async () => {
     validation.validateBasicPage();
   }
 
-  langSkillCRUD.readLanguages();
-  langSkillCRUD.readSkills();
-  experienceCRUD.readExperience();
-  educationCRUD.readEducation();
-  certificationCRUD.readCertification();
-  projectsCRUD.readProjects();
+  CRUD.readData("languages");
+  CRUD.readData("skills");
+  CRUD.readData("experience");
+  CRUD.readData("education");
+  CRUD.readData("certification");
+  CRUD.readData("projects");
 
   completeCvCRUD.readCv();
 
@@ -102,6 +98,9 @@ const router = async () => {
     toggle();
     photoToggle.addEventListener("change", toggleHandle);
   }
+  //disabled order selecets while navigating thru popstate
+  UI.setAppTemplate(localStorage.getItem("template"));
+  // UI.setOrder();
 
   let basic = document.getElementById("basic-data-form");
   let residence = document.getElementById("residence-form");
@@ -157,14 +156,15 @@ const router = async () => {
   if (language) {
     language.addEventListener("submit", (e) => {
       e.preventDefault();
-      let newData = langSkillCRUD.languageData();
+      let newData = CRUD.newData("language");
+      console.log(newData);
       let valid = validation.validateData(newData);
       if (valid) {
         let contains = validation.checkForDuplicates(newData);
         if (contains) {
           validation.showAlert("language", "Language already on list");
         } else {
-          langSkillCRUD.addLanguage(newData);
+          CRUD.addData("languages", newData);
           if (cvId) {
             completeCvCRUD.saveCvHandle(cvId);
           }
@@ -175,14 +175,14 @@ const router = async () => {
   if (skills) {
     skills.addEventListener("submit", (e) => {
       e.preventDefault();
-      let newData = langSkillCRUD.skillData();
+      let newData = CRUD.newData("skills");
       let valid = validation.validateData(newData);
       if (valid) {
         let contains = validation.checkForDuplicates(newData);
         if (contains) {
           validation.showAlert("skill", "Skill already on list!");
         } else {
-          langSkillCRUD.addSkill(newData);
+          CRUD.addData("skills", newData);
           document.getElementById("skill-input").value = "";
           if (cvId) {
             completeCvCRUD.saveCvHandle(cvId);
