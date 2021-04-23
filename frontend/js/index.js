@@ -169,109 +169,52 @@ for (var i = 0; appColorDots.length > i; i++) {
   });
 }
 
+function submitForm(e, name) {
+  e.preventDefault();
+  let newData;
+  let form = document.getElementById(`${name}-form`);
+  let editId = form.dataset.id;
+  if (editId !== "") {
+    newData = CRUD.newData(name, editId);
+    form.dataset.id = "";
+  } else {
+    newData = CRUD.newData(name);
+  }
+  let valid = validation.validateData(newData);
+  if (valid) {
+    let validDate = validation.dateValidation(newData);
+    if (validDate) {
+      CRUD.addData(name, newData);
+      let currentCvId = localStorage.getItem("currentCvId");
+      if (currentCvId) {
+        completeCvCRUD.saveCvHandle(currentCvId);
+      }
+      modalUI.clearInputs(name);
+      modalUI.closeModal(e.target);
+    }
+  }
+}
+
 // MODAL SUBMIT liteners
 let experienceForm = document.getElementById("experience-form");
 if (experienceForm) {
-  experienceForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    let newData;
-    let editId = document.getElementById("experience-form").dataset.id;
-    if (editId !== "") {
-      newData = CRUD.newData("experience", editId);
-      document.getElementById("experience-form").dataset.id = "";
-    } else {
-      newData = CRUD.newData("experience");
-    }
-    let valid = validation.validateData(newData);
-    if (valid) {
-      let validDate = validation.dateValidation(newData);
-      if (validDate) {
-        CRUD.addData("experience", newData);
-        if (localStorage.getItem("currentCvId")) {
-          completeCvCRUD.saveCvHandle(localStorage.getItem("currentCvId"));
-        }
-        modalUI.clearInputs("experience");
-        modalUI.closeModal(e.target);
-      }
-    }
-  });
+  experienceForm.addEventListener("submit", (e) => submitForm(e, "experience"));
 }
 let educationForm = document.getElementById("education-form");
 if (educationForm) {
-  educationForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    let newData;
-    let editId = document.getElementById("education-form").dataset.id;
-    if (editId != "") {
-      newData = CRUD.newData("education", editId);
-      document.getElementById("education-form").dataset.id = "";
-    } else {
-      newData = CRUD.newData("education");
-    }
-    let valid = validation.validateData(newData);
-    if (valid) {
-      let validDate = validation.dateValidation(newData);
-      if (validDate) {
-        CRUD.addData("education", newData);
-        if (localStorage.getItem("currentCvId")) {
-          completeCvCRUD.saveCvHandle(localStorage.getItem("currentCvId"));
-        }
-        modalUI.clearInputs("education");
-        modalUI.closeModal(e.target);
-      }
-    }
-  });
+  educationForm.addEventListener("submit", (e) => submitForm(e, "education"));
 }
 
 let certificationForm = document.getElementById("certification-form");
 if (certificationForm) {
-  certificationForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    let newData;
-    let editId = document.getElementById("certification-form").dataset.id;
-    if (editId != "") {
-      newData = CRUD.newData("certification", editId);
-      document.getElementById("certification-form").dataset.id = "";
-    } else {
-      newData = CRUD.newData("certification");
-    }
-    let valid = validation.validateData(newData);
-    if (valid) {
-      let validDate = validation.dateValidation(newData);
-      if (validDate) {
-        CRUD.addData("certification", newData);
-        if (localStorage.getItem("currentCvId")) {
-          completeCvCRUD.saveCvHandle(localStorage.getItem("currentCvId"));
-        }
-        modalUI.clearInputs("certification");
-        modalUI.closeModal(e.target);
-      }
-    }
-  });
+  certificationForm.addEventListener("submit", (e) =>
+    submitForm(e, "certification")
+  );
 }
 
 let projectsForm = document.getElementById("projects-form");
 if (projectsForm) {
-  projectsForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    let newData;
-    let editId = document.getElementById("projects-form").dataset.id;
-    if (editId != "") {
-      newData = CRUD.newData("projects", editId);
-      document.getElementById("projects-form").dataset.id = "";
-    } else {
-      newData = CRUD.newData("projects");
-    }
-    let valid = validation.validateData(newData);
-    if (valid) {
-      CRUD.addData("projects", newData);
-      if (localStorage.getItem("currentCvId")) {
-        completeCvCRUD.saveCvHandle(localStorage.getItem("currentCvId"));
-      }
-      modalUI.clearInputs("projects");
-      modalUI.closeModal(e.target);
-    }
-  });
+  projectsForm.addEventListener("submit", (e) => submitForm(e, "projects"));
 }
 
 let deleteCvButton = document.getElementById("delete-cv-button");
