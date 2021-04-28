@@ -99,8 +99,8 @@ const router = async () => {
     photoToggle.addEventListener("change", toggleHandle);
   }
   //disabled order selecets while navigating thru popstate
+  UI.setOrder();
   UI.setAppTemplate(localStorage.getItem("template"));
-  // UI.setOrder();
 
   let basic = document.getElementById("basic-data-form");
   let residence = document.getElementById("residence-form");

@@ -159,6 +159,7 @@ for (var i = 0; selectButtons.length > i; i++) {
 for (var i = 0; appTemplateButtons.length > i; i++) {
   appTemplateButtons[i].addEventListener("click", (e) => {
     let template = e.target.id;
+    UI.setOrder();
     UI.changeTemplate(template);
   });
 }
@@ -259,10 +260,11 @@ if (cvPreview) {
 document.addEventListener("DOMContentLoaded", () => {
   //disabled order options on page refresh
   if (currentPage !== "") {
+    UI.setOrder();
     UI.setAppTemplate();
-    // UI.setOrder();
     window.addEventListener("popstate", router);
   }
+
   document.body.addEventListener("click", (e) => {
     if (e.target.tagName !== "BODY") {
       if (e.target.matches("[data-link]")) {

@@ -86,22 +86,22 @@ class CRUD {
       id = uuidv4();
     }
 
-    let listOfInpupts = document.querySelectorAll(
+    let listOfInputs = document.querySelectorAll(
       `#${name}-form .form-group input, #${name}-form .form-body textarea, #${name}-form .form-group select`
     );
     let values = new Array();
     let newData;
 
-    for (let i = 0; listOfInpupts.length > i; i++) {
+    for (let i = 0; listOfInputs.length > i; i++) {
       let value;
-      if (listOfInpupts[i].type === "checkbox") {
-        if (listOfInpupts[i].checked) {
+      if (listOfInputs[i].type === "checkbox") {
+        if (listOfInputs[i].checked) {
           let polish = localStorage.getItem("language");
           values[i - 1] = `${polish ? "teraz" : "now"}`;
         }
-        value = listOfInpupts[i].checked;
+        value = listOfInputs[i].checked;
       } else {
-        value = listOfInpupts[i].value;
+        value = listOfInputs[i].value;
       }
       values.push(value);
     }

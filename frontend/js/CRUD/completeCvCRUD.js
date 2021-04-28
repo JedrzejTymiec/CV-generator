@@ -16,7 +16,8 @@ class completeCV {
     skills,
     certification,
     projects,
-    language
+    language,
+    templateOrder
   ) {
     this.id = id;
     this.photo = photo;
@@ -30,6 +31,7 @@ class completeCV {
     this.certification = certification;
     this.projects = projects;
     this.language = language;
+    this.templateOrder = templateOrder;
   }
 }
 
@@ -54,6 +56,7 @@ class completeCvCRUD {
     );
     let projectsData = JSON.parse(localStorage.getItem("projectsData"));
     let language = localStorage.getItem("language");
+    let templateOrder = JSON.parse(localStorage.getItem("templateOrder"));
 
     let newCv = new completeCV(
       id,
@@ -67,7 +70,8 @@ class completeCvCRUD {
       skillsData,
       certificationData,
       projectsData,
-      language
+      language,
+      templateOrder
     );
     return newCv;
   }
@@ -126,6 +130,10 @@ class completeCvCRUD {
     );
     localStorage.setItem("projectsData", JSON.stringify(cvToEdit.projects));
     localStorage.setItem("language", cvToEdit.language);
+    localStorage.setItem(
+      "templateOrder",
+      JSON.stringify(cvToEdit.templateOrder)
+    );
   }
 
   static readCv() {

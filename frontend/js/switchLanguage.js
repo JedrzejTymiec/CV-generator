@@ -6,6 +6,7 @@ import {
   languageLevelsPl,
   languageLevelsEn,
 } from "./listOfCoutries";
+import UI from "./UI.js";
 
 function switchMainPageLanguage(language) {
   localStorage.setItem("language", language);
@@ -239,73 +240,24 @@ function switchAppPageLanguage(language, currentPage) {
   document.querySelector(".templates-container h4:nth-child(5)").innerText = `${
     polish ? "Kolejność sekcji CV" : "Order of CV sections"
   }`;
-  document.querySelector(
-    ".order-list li:first-child"
-    //zrobić zmienną z select poniżej
-  ).innerHTML = `${polish ? "Doświadczenie" : "Experience"}</br>
-      <select id="experience-order" class="order-input">
-        <option selected value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-      </select>`;
-  document.querySelector(".order-list li:nth-child(2)").innerHTML = `${
+  document.querySelector(".order-list li:first-child span").innerText = `${
+    polish ? "Doświadczenie" : "Experience"
+  }`;
+  document.querySelector(".order-list li:nth-child(2) span").innerText = `${
     polish ? "Wykształcenie" : "Education"
-  }</br>
-    <select id="education-order" class="order-input">
-      <option value="1">1</option>
-      <option selected value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-    </select>`;
-  document.querySelector(".order-list li:nth-child(3)").innerHTML = `${
+  }`;
+  document.querySelector(".order-list li:nth-child(3) span").innerText = `${
     polish ? "Certyfikaty" : "Certifications"
-  }</br>
-    <select id="certifications-order" class="order-input">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option selected value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-    </select>`;
-  document.querySelector(".order-list li:nth-child(4)").innerHTML = `${
+  }`;
+  document.querySelector(".order-list li:nth-child(4) span").innerText = `${
     polish ? "Projekty" : "Projects"
-  }</br>
-    <select id="projects-order" class="order-input">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option selected value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-    </select>`;
-  document.querySelector(".order-list li:nth-child(5)").innerHTML = `${
+  }`;
+  document.querySelector(".order-list li:nth-child(5) span").innerText = `${
     polish ? "Języki" : "Languages"
-  }</br>
-    <select id="languages-order" class="order-input">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option selected value="5">5</option>
-      <option value="6">6</option>
-    </select>`;
-  document.querySelector(".order-list li:nth-child(6)").innerHTML = `${
+  }`;
+  document.querySelector(".order-list li:nth-child(6) span").innerText = `${
     polish ? "Umiejętności" : "Skills"
-  }</br>
-    <select id="skills-order" class="order-input">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option selected value="6">6</option>
-    </select>`;
+  }`;
   document.querySelector(".skills-container .section-title").innerText = `${
     polish ? "UMIEJĘTNOŚCI" : "SKILLS"
   }`;
