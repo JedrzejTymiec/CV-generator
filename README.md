@@ -1,4 +1,4 @@
-# Pracuj.pl CV generator clone
+# CV generator
 
 In order to launch this app, after installing front and back dependencies paste below in project directory :) 
 ## *npm run start* 
