@@ -183,7 +183,13 @@ function submitForm(e, name) {
   }
   let valid = validation.validateData(newData);
   if (valid) {
-    let validDate = validation.dateValidation(newData);
+    let validDate;
+    //no date in projects to validate
+    if (name === "projects") {
+      validDate = true;
+    } else {
+      validDate = validation.dateValidation(newData);
+    }
     if (validDate) {
       CRUD.addData(name, newData);
       let currentCvId = localStorage.getItem("currentCvId");
@@ -250,9 +256,8 @@ if (cvPreview) {
   cvPreview.addEventListener("click", (e) => {
     let modalContent = document.querySelector(".cv-preview").innerHTML;
     hideMessage();
-    document.querySelector(
-      "#preview-modal .modal-content .preview"
-    ).innerHTML = modalContent;
+    document.querySelector("#preview-modal .modal-content .preview").innerHTML =
+      modalContent;
     modalUI.openModal(e.target);
   });
 }

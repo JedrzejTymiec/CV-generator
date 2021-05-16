@@ -85,7 +85,7 @@ body {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  height: 850px;
+  height: 1000px;
 }
 
 .resume-body section {

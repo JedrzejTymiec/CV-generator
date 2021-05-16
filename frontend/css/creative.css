@@ -28,7 +28,7 @@ body {
 }
 
 .resume-body {
-  height: 900px;
+  height: 950px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -247,7 +247,7 @@ body {
   grid-row: 1;
 }
 
-.languages {
+#preview-languages-container {
   display: flex;
 }
 

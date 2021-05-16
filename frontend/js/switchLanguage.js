@@ -17,10 +17,8 @@ function switchMainPageLanguage(language) {
     polish = false;
   }
   //MAIN PAGE POLISH
-  document.querySelector(".select-title").innerHTML = `${
-    polish
-      ? "Klon generatora CV</br>z Pracuj.pl"
-      : "Pracuj.pl </br>CV generator clone"
+  document.querySelector(".select-title").innerText = `${
+    polish ? "Generator CV" : "CV Generator"
   }`;
   document.querySelector(
     "#new-button h5"
@@ -193,7 +191,7 @@ function switchAppPageLanguage(language, currentPage) {
   }`;
   //APP
   document.querySelector(".header-text").innerText = `${
-    polish ? "Klon generatora CV z Pracuj.pl" : "Pracuj.pl CV generator clone"
+    polish ? "Generator CV" : "CV generator"
   }`;
   document.getElementById("basic-dot-label").innerText = `${
     polish ? "Podstawowe dane" : "Basic data"

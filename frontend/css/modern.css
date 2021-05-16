@@ -120,7 +120,7 @@ body {
 }
 
 .resume-body {
-  height: 900px;
+  height: 879px;
   grid-area: body;
   display: flex;
   flex-direction: column;
@@ -139,7 +139,7 @@ body {
   padding-left: 0;
 }
 
-.resume-body .experience-container #preview-job-list-container {
+.resume-body .experience-container #preview-experience-container {
   padding-left: 30px;
 }
 

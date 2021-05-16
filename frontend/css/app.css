@@ -5,6 +5,7 @@
   --entry-hover: #c4c4c4;
   --label-color: #a3a3a3;
   --main-color: #0006ba;
+  --button-hover-color: #000471;
 }
 
 html,
@@ -83,6 +84,7 @@ a {
 
 .button:hover {
   cursor: pointer;
+  background-color: var(--button-hover-color);
 }
 
 .app {
@@ -253,6 +255,10 @@ form h4 {
   transition: 0.4s;
 }
 
+.slide-track:hover {
+  cursor: pointer;
+}
+
 .slider {
   background-color: #fff;
   height: 18px;
@@ -315,6 +321,11 @@ form h4 {
 #delete-photo-button {
   display: none;
   cursor: pointer;
+  transition: 200ms;
+}
+
+#delete-photo-button:hover {
+  background-color: var(--button-hover-color);
 }
 
 #save-photo-button {
@@ -394,10 +405,12 @@ input {
   margin-top: 50px;
 
   text-align: center;
+  transition: 200ms;
 }
 
 .save-button:hover {
   cursor: pointer;
+  background-color: var(--button-hover-color);
 }
 
 button {
@@ -423,10 +436,12 @@ button {
   padding: 15px 0;
 
   margin-bottom: 100px;
+  transition: 200ms;
 }
 
 .next-button:hover {
   cursor: pointer;
+  background-color: var(--button-hover-color);
 }
 
 .next-button .fas {
@@ -443,10 +458,12 @@ button {
   color: #fff;
   font-size: 20px;
   padding: 15px 0;
+  transition: 200ms;
 }
 
 .add-button:hover {
   cursor: pointer;
+  background-color: var(--button-hover-color);
 }
 
 .add-button i {
@@ -493,7 +510,7 @@ button {
 .form-language-container i,
 .form-skill-container i {
   margin-left: 15px;
-  transition: 250ms;
+  transition: 200ms;
   margin-right: 10px;
 }
 
@@ -738,10 +755,12 @@ button {
   text-align: center;
   border-radius: 15px;
   padding: 3px 0;
+  transition: 200ms;
 }
 
 .template-button:hover {
   cursor: pointer;
+  background-color: var(--background-color);
 }
 
 .template-list .current {
@@ -763,10 +782,12 @@ button {
   border-radius: 50%;
 
   text-align: center;
+  transition: 200ms;
 }
 
 .color-dot:hover {
   cursor: pointer;
+  opacity: 0.8;
 }
 
 .color-dots-list i {
@@ -816,7 +837,7 @@ button {
 }
 
 .entry-action-icons i {
-  transition: 250ms;
+  transition: 200ms;
 }
 
 .entry-action-icons i:hover {
@@ -849,6 +870,8 @@ button {
   display: flex;
   margin: 10px;
   justify-content: space-between;
+
+  transition: 200ms;
 }
 
 .entry-body-wrapper {
@@ -877,7 +900,7 @@ button {
 }
 
 .cv-action-icons i {
-  transition: 250ms;
+  transition: 200ms;
 }
 
 .cv-action-icons i:hover {
